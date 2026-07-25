@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fdf6e9">
+<title>WayfinderGEO | AI Search Visibility, GEO and AIO for Modern Brands</title>
+<meta name="description" content="WayfinderGEO makes your brand the answer inside ChatGPT, Gemini, Perplexity, Claude and AI Overviews. Generative Engine Optimization, AI optimization and technical SEO built for the way people search now.">
+<link rel="canonical" href="https://wayfindergeo.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WayfinderGEO | Be the brand AI recommends">
+<meta property="og:description" content="Generative Engine Optimization, AI optimization and technical SEO. We get your brand named inside AI answers and report on citation share, not vanity rankings.">
+<meta property="og:url" content="https://wayfindergeo.com/">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Add once you have exported og-image.svg to a 1200x630 PNG:
+     <meta property="og:image" content="https://wayfindergeo.com/og-image.png"> -->
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS
+   Palette contrast, measured against the paper (#fdf6e9):
+   ink 16.9:1 · ink-2 8.7:1 · ink-3 5.0:1 · ember-ink 5.7:1
+   ============================================================ */
+:root{
+  --paper:#fdf6e9;
+  --paper-2:#f8efdf;
+  --paper-3:#f4e8d3;
+  --card:rgba(255,255,255,.62);
+  --card-solid:#fffaf1;
+
+  --ink:#1c1408;
+  --ink-2:rgba(28,20,8,.78);
+  --ink-3:rgba(28,20,8,.62);
+  --ink-4:rgba(28,20,8,.44);
+
+  --hair:rgba(28,20,8,.13);
+  --hair-soft:rgba(28,20,8,.075);
+  --hover:rgba(28,20,8,.05);
+
+  --ember:#c2521a;
+  --ember-ink:#a8410d;
+  --ember-hi:#e8801f;
+  --on-ember:#fff6ea;
+
+  --sun:rgba(255,246,234,.88);
+  --sun-2:rgba(255,246,234,.72);
+
+  --f-display:Fraunces,Georgia,"Times New Roman",serif;
+  --f-body:"Inter Tight",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --r-sm:8px;
+  --r:12px;
+  --r-lg:18px;
+  --r-pill:999px;
+
+  --shell:1200px;
+  --gut:clamp(18px,5vw,52px);
+  --sec:clamp(56px,8vw,116px);
+  --hdr:66px;
+
+  --t:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr) + 12px)}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+h1,h2,h3,h4{margin:0}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px;border-radius:4px}
+
+.shell{width:100%;max-width:var(--shell);margin-inline:auto;padding-inline:var(--gut)}
+.sec{padding-block:var(--sec);position:relative}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:999;
+  background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:0 0 var(--r-sm) 0;font-size:14px}
+.skip:focus{left:0}
+
+/* ---- type ---- */
+.d1,.d2,.d3{font-family:var(--f-display);font-weight:400;font-optical-sizing:auto;
+  letter-spacing:-.024em;line-height:1.04;text-wrap:balance}
+.d1{font-size:clamp(36px,6.4vw,76px);line-height:1.02}
+.d2{font-size:clamp(27px,4.2vw,50px)}
+.d3{font-size:clamp(23px,3.2vw,36px)}
+.h4{font-family:var(--f-display);font-weight:500;font-size:clamp(18px,1.7vw,22px);
+  letter-spacing:-.018em;line-height:1.22}
+.lead{font-size:clamp(15.5px,1.3vw,18.5px);line-height:1.6;color:var(--ink-2)}
+.body{font-size:15px;line-height:1.62;color:var(--ink-2)}
+.small{font-size:13px;line-height:1.6;color:var(--ink-3)}
+
+.eyebrow{
+  font-family:var(--f-mono);font-size:11px;font-weight:400;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);
+}
+.eyebrow.on-sun{color:var(--sun-2)}
+.amber{color:var(--ember-ink)}
+
+/* ---- hairline column rules, the Daylight signature ---- */
+.ruled{position:relative}
+.ruled::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(to right,transparent calc(25% - .5px),var(--hair-soft) calc(25% - .5px),var(--hair-soft) calc(25% + .5px),transparent calc(25% + .5px)),
+    linear-gradient(to right,transparent calc(75% - .5px),var(--hair-soft) calc(75% - .5px),var(--hair-soft) calc(75% + .5px),transparent calc(75% + .5px));
+}
+.ruled > *{position:relative;z-index:1}
+
+/* ============================================================
+   SURFACES
+   Blur is reserved for elements sitting on the warm bands.
+   Everything on paper uses a flat translucent white, which is
+   far cheaper to composite.
+   ============================================================ */
+.panel{background:var(--card);border:1px solid var(--hair);border-radius:var(--r)}
+.frost{
+  background:rgba(255,246,234,.16);
+  -webkit-backdrop-filter:blur(20px) saturate(140%);
+  backdrop-filter:blur(20px) saturate(140%);
+  border:1px solid rgba(255,246,234,.26);
+  border-radius:var(--r);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  position:relative;isolation:isolate;overflow:hidden;
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:13px 20px;border-radius:var(--r-sm);
+  font-family:var(--f-body);font-size:14.5px;font-weight:500;letter-spacing:-.005em;
+  border:1px solid transparent;cursor:pointer;white-space:nowrap;
+  min-height:46px;
+  transition:transform .3s var(--t),background .3s var(--t),
+             border-color .3s var(--t),box-shadow .35s var(--t),color .3s var(--t);
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0);transition-duration:.08s}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  transform:translateX(-125%) skewX(-14deg);transition:transform .78s var(--t)}
+.btn:hover::before{transform:translateX(125%) skewX(-14deg)}
+
+.btn .dot{
+  position:relative;overflow:hidden;z-index:1;
+  width:20px;height:20px;border-radius:var(--r-pill);
+  display:grid;place-items:center;flex:0 0 auto;transition:transform .3s var(--t);
+}
+.btn .dot svg{width:11px;height:11px;transition:transform .36s var(--t),opacity .22s var(--t)}
+.btn:hover .dot{transform:translateX(2px)}
+.btn:hover .dot svg{transform:translateX(150%);opacity:0}
+.btn .dot::after{
+  content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;
+  border-right:2px solid currentColor;border-top:2px solid currentColor;
+  transform:translate(-210%,-50%) rotate(45deg);opacity:0;
+  transition:transform .36s var(--t) .07s,opacity .22s var(--t) .07s;
+}
+.btn:hover .dot::after{transform:translate(-64%,-50%) rotate(45deg);opacity:1}
+
+/* BUTTON SYSTEM
+   One primary colour, two contexts:
+     on paper        primary = .btn-ember   secondary = .btn-line
+     on a warm band  primary = .btn-sun     secondary = .btn-glass
+   The band variant has to invert because ember on the deep end of the
+   gradient measures 1.5:1 and would disappear. Same button, same role,
+   flipped for legibility. */
+
+/* ember button, the primary. Uses ember-ink rather than ember:
+   cream on #c2521a lands at 4.37:1, which misses AA for the 15.5px
+   label. ember-ink clears it at 5.7:1. */
+.btn-ember{background:var(--ember-ink);color:var(--on-ember)}
+.btn-ember .dot{background:var(--on-ember);color:var(--ember-ink)}
+.btn-ember::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,.34),transparent)}
+.btn-ember:hover{background:#8f360a;box-shadow:0 14px 32px -13px rgba(168,65,13,.55)}
+
+/* outline button on paper */
+.btn-line{background:transparent;color:var(--ink);border-color:var(--hair)}
+.btn-line .dot{background:var(--ink);color:var(--paper)}
+.btn-line::before{background:linear-gradient(90deg,transparent,rgba(28,20,8,.06),transparent)}
+.btn-line:hover{background:var(--hover);border-color:rgba(28,20,8,.28)}
+
+/* paper button, used on the warm bands */
+.btn-sun{background:var(--on-ember);color:var(--ink)}
+.btn-sun .dot{background:var(--ink);color:var(--on-ember)}
+.btn-sun::before{background:linear-gradient(90deg,transparent,rgba(28,20,8,.08),transparent)}
+.btn-sun:hover{background:#fffdf8;box-shadow:0 14px 32px -14px rgba(74,25,7,.6)}
+
+/* glass button, used on the warm bands */
+.btn-glass{background:rgba(255,246,234,.15);color:var(--on-ember);border-color:rgba(255,246,234,.34);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.btn-glass .dot{background:rgba(255,246,234,.24);color:var(--on-ember)}
+.btn-glass::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,.24),transparent)}
+.btn-glass:hover{background:rgba(255,246,234,.26);border-color:rgba(255,246,234,.55)}
+
+.btn-lg{padding:16px 26px;font-size:15.5px;min-height:52px}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.hdr{
+  position:fixed;inset:0 0 auto 0;z-index:120;
+  background:rgba(253,246,233,.72);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  backdrop-filter:blur(18px) saturate(160%);
+  border-bottom:1px solid var(--hair-soft);
+  transition:background .4s var(--t),border-color .4s var(--t);
+  padding-top:env(safe-area-inset-top);
+}
+.hdr.solid{background:rgba(253,246,233,.93);border-bottom-color:var(--hair)}
+.hdr-in{
+  max-width:var(--shell);margin-inline:auto;padding-inline:var(--gut);
+  height:var(--hdr);display:flex;align-items:center;gap:26px;
+}
+.brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:17px;letter-spacing:-.025em}
+.wordmark{display:inline-block;white-space:nowrap}
+.wordmark em{font-style:normal;color:var(--ember-ink)}
+.mark{
+  width:26px;height:26px;border-radius:7px;flex:0 0 auto;display:grid;place-items:center;
+  background:linear-gradient(140deg,#ef8b3c,#b0400f);
+}
+.mark svg{width:15px;height:15px}
+
+.nav{display:flex;align-items:center;gap:2px;margin-left:6px}
+.nav a{padding:8px 12px;border-radius:var(--r-sm);font-size:14.5px;color:var(--ink-2);
+  transition:color .22s var(--t),background .22s var(--t)}
+.nav a:hover{color:var(--ink);background:var(--hover)}
+.hdr-cta{margin-left:auto;display:flex;align-items:center;gap:10px}
+.hdr-cta .ghost{font-size:14.5px;color:var(--ink-2);padding:8px 4px;transition:color .22s var(--t)}
+.hdr-cta .ghost:hover{color:var(--ember-ink)}
+
+.burger{
+  display:none;margin-left:auto;width:44px;height:44px;
+  border-radius:var(--r-sm);border:1px solid var(--hair);
+  background:var(--card);align-items:center;justify-content:center;cursor:pointer;
+}
+.burger span{display:block;width:17px;height:1.6px;background:var(--ink);position:relative;
+  transition:background .2s var(--t)}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:17px;height:1.6px;
+  background:var(--ink);transition:transform .3s var(--t),top .3s var(--t)}
+.burger span::before{top:-5.5px}
+.burger span::after{top:5.5px}
+.burger[aria-expanded="true"] span{background:transparent}
+.burger[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+
+.mnav{
+  display:none;position:fixed;left:0;right:0;top:calc(var(--hdr) + env(safe-area-inset-top));
+  bottom:0;z-index:119;
+  background:var(--paper);
+  padding:8px var(--gut) calc(28px + env(safe-area-inset-bottom));
+  overflow-y:auto;overscroll-behavior:contain;
+}
+.mnav.open{display:block}
+.mnav a:not(.btn){display:flex;align-items:center;justify-content:space-between;
+  padding:17px 2px;font-family:var(--f-display);font-size:23px;font-weight:400;letter-spacing:-.02em;
+  border-bottom:1px solid var(--hair-soft);color:var(--ink)}
+.mnav a:not(.btn)::after{content:"";width:8px;height:8px;border-right:1.6px solid var(--ink-4);
+  border-top:1.6px solid var(--ink-4);transform:rotate(45deg)}
+.mnav .btn{width:100%;margin-top:22px}
+.mnav .mmeta{margin-top:20px;display:grid;gap:5px}
+body.locked{overflow:hidden}
+
+/* ============================================================
+   HERO
+   The copy sits over the deep end of the gradient so cream text
+   clears 8:1. The bright end is kept clear of any text.
+   ============================================================ */
+.hero{
+  position:relative;overflow:hidden;isolation:isolate;
+  padding:calc(var(--hdr) + clamp(46px,8vw,92px)) 0 clamp(52px,8vw,100px);
+  background:
+    radial-gradient(128% 122% at 86% 4%, #f2ab55 0%, #e07c26 20%, #bd4b1a 44%, #7d2d0d 70%, #4a1907 100%);
+  color:var(--on-ember);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(76% 84% at 8% 84%, rgba(58,18,4,.62) 0%, rgba(58,18,4,0) 68%);
+}
+.hero-noise{
+  position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.2;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+.hero-in{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(30px,4.6vw,64px);align-items:center}
+.hero-copy{display:flex;flex-direction:column;align-items:flex-start;gap:22px}
+.hero-copy h1{max-width:13ch;color:var(--on-ember)}
+.hero-copy .lead{max-width:44ch;color:var(--sun)}
+.hero-chip{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:6px 15px 6px 7px;border-radius:var(--r-pill);
+  background:rgba(40,12,2,.3);border:1px solid rgba(255,246,234,.28);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  font-size:12.5px;color:var(--sun);
+}
+.hero-chip b{
+  font-family:var(--f-mono);font-weight:500;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--on-ember);color:#a8410d;padding:4px 9px;border-radius:var(--r-pill);
+}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;width:100%}
+
+/* the AI answer mockup, a solid paper block on the warm band */
+.ans{
+  padding:22px;border-radius:var(--r-lg);
+  background:var(--card-solid);border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 30px 64px -34px rgba(60,20,0,.75);
+  display:flex;flex-direction:column;gap:15px;color:var(--ink);
+}
+.ans .top{display:flex;align-items:center;gap:9px;padding-bottom:13px;border-bottom:1px solid var(--hair)}
+.ans .top i{width:22px;height:22px;border-radius:6px;background:var(--hover);
+  display:grid;place-items:center;font-style:normal;font-size:11px;color:var(--ember-ink)}
+.ans .top span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.ans .q{font-size:14px;color:var(--ink-3)}
+.ans .a{font-size:15px;line-height:1.6;color:var(--ink)}
+.ans .a mark{background:rgba(194,82,26,.15);color:var(--ember-ink);padding:1px 5px;border-radius:5px;font-weight:500}
+.ans .cites{display:flex;gap:6px;flex-wrap:wrap;padding-top:13px;border-top:1px solid var(--hair)}
+.ans .cite{font-family:var(--f-mono);font-size:10.5px;padding:5px 9px;border-radius:var(--r-pill);
+  background:var(--hover);border:1px solid var(--hair);color:var(--ink-3)}
+.ans .cite.hit{background:rgba(194,82,26,.13);border-color:rgba(194,82,26,.4);color:var(--ember-ink)}
+
+/* ============================================================
+   SURFACES MARQUEE
+   ============================================================ */
+.surfaces{padding-block:clamp(30px,4.6vw,52px);border-bottom:1px solid var(--hair-soft);background:var(--paper-2)}
+.marq{overflow:hidden;position:relative;margin-top:20px;
+  mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
+.marq-track{display:flex;gap:10px;width:max-content;animation:slide 38s linear infinite}
+.marq:hover .marq-track,.marq:focus-within .marq-track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.surf{display:flex;align-items:center;gap:9px;flex:0 0 auto;
+  padding:11px 19px;border-radius:var(--r-pill);
+  background:var(--card);border:1px solid var(--hair);
+  font-size:14px;color:var(--ink-2);white-space:nowrap}
+.surf i{width:6px;height:6px;border-radius:var(--r-pill);background:var(--ember);font-style:normal;flex:0 0 auto}
+
+/* ============================================================
+   SECTION HEADS
+   ============================================================ */
+.sec-head{display:flex;flex-direction:column;gap:16px}
+.sec-head .d2{max-width:17ch}
+.sec-head.center{text-align:center;align-items:center;margin-inline:auto}
+.sec-head.center .d2{max-width:21ch}
+
+/* ---- shift, sticky rail ----
+   The left grid item is left to stretch so it fills the row height, and
+   the sticky block lives inside it. A sticky element pinned directly to a
+   grid item with align-items:start has no room to travel. */
+.split{display:grid;grid-template-columns:.86fr 1.14fr;gap:clamp(30px,5vw,84px)}
+.rail-side{position:sticky;top:calc(var(--hdr) + 28px);display:flex;flex-direction:column;gap:16px}
+.rail-side .body{max-width:42ch}
+.rail-kicker{margin-top:6px;padding-top:20px;border-top:1px solid var(--hair);
+  display:flex;flex-direction:column;gap:5px}
+.rail-kicker b{font-family:var(--f-display);font-weight:400;font-size:clamp(30px,3.4vw,42px);
+  letter-spacing:-.03em;line-height:1;color:var(--ember-ink)}
+.rail-kicker span{font-size:13px;color:var(--ink-3);max-width:30ch}
+
+.rail{position:relative;padding-left:52px}
+.rail::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:2px;border-radius:2px;
+  background:linear-gradient(180deg,var(--ember),rgba(194,82,26,.28) 62%,rgba(194,82,26,0))}
+.rail-item{position:relative;padding-bottom:clamp(30px,4vw,46px)}
+.rail-item:last-child{padding-bottom:0}
+.rail-item::before{
+  content:"";position:absolute;left:-45px;top:4px;width:24px;height:24px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--ember);
+  transition:background .3s var(--t),transform .3s var(--t);
+}
+.rail-item:hover::before{background:var(--ember);transform:scale(1.12)}
+.rail-item .n{font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;color:var(--ember-ink)}
+.rail-item h3{margin-top:7px}
+.rail-item .body{margin-top:8px;max-width:56ch}
+
+/* ---- stats ---- */
+.stats-band{background:var(--paper-2);border-block:1px solid var(--hair-soft)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:34px;
+  border:1px solid var(--hair);border-radius:var(--r);overflow:hidden;background:var(--card)}
+.stat{padding:24px clamp(16px,2vw,24px);border-right:1px solid var(--hair);
+  display:flex;flex-direction:column;gap:9px;min-height:158px}
+.stat:last-child{border-right:0}
+.stat .v{font-family:var(--f-display);font-weight:400;font-size:clamp(34px,4vw,50px);
+  letter-spacing:-.03em;line-height:1;color:var(--ember-ink)}
+.stat .k{font-size:13.5px;color:var(--ink-2);line-height:1.45;margin-top:auto}
+.stat .src{font-family:var(--f-mono);font-size:10px;color:var(--ink-4);line-height:1.4}
+
+/* ---- services ---- */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+.svc-card{padding:0;overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .4s var(--t),border-color .4s var(--t),box-shadow .4s var(--t)}
+.svc-card:hover{transform:translateY(-4px);border-color:rgba(28,20,8,.24);
+  box-shadow:0 22px 44px -28px rgba(74,25,7,.42)}
+.svc-art{height:150px;position:relative;overflow:hidden;border-bottom:1px solid var(--hair)}
+.a1{background:radial-gradient(64% 92% at 30% 26%,#f6bd7d,#d9711f 44%,#8a3410 100%)}
+.a2{background:radial-gradient(68% 88% at 70% 22%,#ffd9b0,#e0832c 42%,#93411a 100%)}
+.a3{background:radial-gradient(58% 84% at 50% 78%,#f7a95d,#bf5817 46%,#6d2a0c 100%)}
+.orb{position:absolute;border-radius:50%;
+  background:radial-gradient(circle at 34% 28%,rgba(255,252,246,.95),rgba(255,222,188,.5) 38%,rgba(140,60,15,.16) 70%,transparent 78%)}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(255,246,234,.4)}
+.svc-body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.svc-body .tag{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ember-ink)}
+.svc-list{display:grid;gap:6px;margin-top:4px}
+.svc-list li{font-size:13.5px;color:var(--ink-2);display:flex;gap:9px;align-items:flex-start}
+.svc-list li::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--ember);margin-top:8px;flex:0 0 auto}
+
+/* ---- process ---- */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:40px;counter-reset:s}
+.step{padding:22px;display:flex;flex-direction:column;gap:9px;counter-increment:s}
+.step::before{content:"0" counter(s);font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;color:var(--ember-ink)}
+.step .bar{height:2px;border-radius:2px;margin-top:auto;
+  background:linear-gradient(90deg,var(--ember),rgba(194,82,26,0))}
+
+/* ---- warm band ---- */
+.band{
+  position:relative;overflow:hidden;border-radius:var(--r-lg);color:var(--on-ember);
+  background:radial-gradient(126% 134% at 84% 6%, #f0a34a 0%, #dd7524 22%, #b8481a 46%, #75290c 72%, #461806 100%);
+  padding:clamp(28px,4.4vw,58px);
+  display:grid;grid-template-columns:1.24fr .76fr;gap:clamp(24px,4vw,52px);align-items:center;
+}
+.band .d3{color:var(--on-ember)}
+.band .lead{color:var(--sun)}
+.band-metrics{display:grid;gap:11px}
+.bm{padding:16px 18px;border-radius:var(--r)}
+.bm .v{font-family:var(--f-display);font-weight:400;font-size:clamp(24px,2.6vw,32px);letter-spacing:-.028em;line-height:1}
+.bm .k{font-size:12.5px;color:var(--sun-2);margin-top:5px;line-height:1.45}
+
+/* ---- testimonials ---- */
+.tests{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:38px}
+.test{padding:24px;display:flex;flex-direction:column;gap:18px;justify-content:space-between;
+  transition:transform .4s var(--t),border-color .4s var(--t),box-shadow .4s var(--t)}
+.test:hover{transform:translateY(-3px);border-color:rgba(28,20,8,.24);
+  box-shadow:0 22px 44px -28px rgba(74,25,7,.36)}
+.test .stars{display:flex;gap:3px;color:var(--ember)}
+.test .stars svg{width:14px;height:14px}
+.test q{quotes:none;font-size:14.5px;line-height:1.62;color:var(--ink-2)}
+.test .who{display:flex;align-items:center;gap:12px}
+.test .av{width:40px;height:40px;border-radius:var(--r-pill);flex:0 0 auto;
+  background:linear-gradient(150deg,#f6bd7d,#b0400f);display:grid;place-items:center;
+  font-size:12.5px;font-weight:600;color:#fff6ea}
+.test .nm{font-size:14.5px;font-weight:600;letter-spacing:-.01em}
+.test .rl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ember-ink);margin-top:3px}
+
+/* ---- pricing ---- */
+.plans{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:38px auto 0;max-width:800px}
+.plan{padding:26px;display:flex;flex-direction:column;gap:18px;position:relative;overflow:hidden;
+  background:var(--card-solid)}
+.plan.hi{border-color:rgba(194,82,26,.42);
+  background:linear-gradient(180deg,rgba(194,82,26,.09),var(--card-solid) 46%)}
+.plan .flag{position:absolute;top:0;right:0;padding:5px 12px;border-radius:0 var(--r) 0 var(--r);
+  background:var(--ember-ink);color:var(--on-ember);
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase}
+.plan .pname{font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ember-ink)}
+.plan .price{display:flex;align-items:baseline;gap:6px;margin-top:12px}
+.plan .price b{font-family:var(--f-display);font-weight:400;font-size:clamp(32px,3.8vw,46px);
+  letter-spacing:-.032em;line-height:1}
+.plan .price span{font-size:14px;color:var(--ink-3)}
+.plan .for{font-size:13.5px;color:var(--ink-2);line-height:1.55;margin-top:10px}
+.plan hr{border:0;border-top:1px solid var(--hair);margin:0}
+.plan ul{display:grid;gap:9px}
+.plan li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.plan li svg{width:15px;height:15px;flex:0 0 auto;margin-top:3px;color:var(--ember)}
+.plan .btn{width:100%;margin-top:auto}
+.plan-note{margin:20px auto 0;max-width:640px;text-align:center}
+
+/* ---- faq ---- */
+.faq{margin-top:32px;border-top:1px solid var(--hair)}
+.qa{border-bottom:1px solid var(--hair)}
+.qa summary{
+  list-style:none;cursor:pointer;padding:20px 44px 20px 0;position:relative;
+  font-family:var(--f-display);font-weight:400;font-size:clamp(17px,1.6vw,21px);letter-spacing:-.018em;
+  transition:color .25s var(--t);
+}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary:hover{color:var(--ember-ink)}
+.qa summary::after{
+  content:"";position:absolute;right:10px;top:50%;width:10px;height:10px;
+  border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;
+  transform:translateY(-70%) rotate(45deg);transition:transform .3s var(--t);opacity:.55;
+}
+.qa[open] summary::after{transform:translateY(-30%) rotate(225deg)}
+.qa .ans-txt{padding:0 8% 24px 0;font-size:15px;line-height:1.62;color:var(--ink-2)}
+
+/* ---- contact ---- */
+/* stretch, so the form and the left column share one height and their
+   bottom edges line up. margin-top:auto on the last block in each column
+   pins them to that shared baseline whichever side happens to be taller. */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,64px);align-items:stretch}
+.form{padding:clamp(22px,3vw,32px);display:flex;flex-direction:column;gap:14px;background:var(--card-solid)}
+.form > .btn{margin-top:auto}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:grid;gap:7px}
+.field label{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 14px;border-radius:var(--r-sm);
+  background:#fff;border:1px solid var(--hair);
+  color:var(--ink);font-family:inherit;font-size:16px;line-height:1.4;outline:none;
+  transition:border-color .25s var(--t),box-shadow .25s var(--t);
+}
+.field input,.field select{height:50px;padding-block:0}
+.field select{
+  -webkit-appearance:none;-moz-appearance:none;appearance:none;
+  padding-right:40px;cursor:pointer;text-overflow:ellipsis;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231c1408' stroke-opacity='.55' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:12px 12px;
+}
+.field select::-ms-expand{display:none}
+.field textarea{resize:vertical;min-height:106px}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink-4)}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--ember);box-shadow:0 0 0 3px rgba(194,82,26,.14)}
+.contact-side{display:grid;gap:11px;margin-top:auto;padding-top:6px}
+.cinfo{padding:18px 20px;display:flex;gap:13px;align-items:center}
+.cinfo .ico{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;flex:0 0 auto;
+  background:rgba(194,82,26,.11);border:1px solid rgba(194,82,26,.22);color:var(--ember-ink)}
+.cinfo .ico svg{width:17px;height:17px}
+.cinfo .k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.cinfo .v{font-size:15px;margin-top:3px}
+.cinfo .v a:hover{color:var(--ember-ink)}
+
+/* ---- final cta ---- */
+.final{position:relative;overflow:hidden;isolation:isolate;text-align:center;color:var(--on-ember);
+  padding-block:clamp(68px,10vw,142px);
+  background:radial-gradient(120% 108% at 50% 118%, #f2ab55 0%, #dd7524 20%, #b8481a 42%, #6d270c 70%, #3d1405 100%)}
+.final .d2{color:var(--on-ember);margin-inline:auto}
+.final .lead{max-width:54ch;margin:18px auto 0;color:var(--sun)}
+.final-btns{display:flex;gap:10px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.ftr{background:var(--paper-3);border-top:1px solid var(--hair)}
+.ftr-top{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:clamp(26px,3.6vw,52px);
+  padding-block:clamp(44px,6vw,74px)}
+.ftr-brand{display:flex;flex-direction:column;gap:15px;max-width:340px}
+.ftr-brand p{font-size:14px;color:var(--ink-2);line-height:1.6}
+.socials{display:flex;gap:8px;margin-top:2px}
+.socials a{width:40px;height:40px;border-radius:var(--r-sm);display:grid;place-items:center;
+  background:var(--card);border:1px solid var(--hair);color:var(--ink-3);
+  transition:color .25s var(--t),background .25s var(--t),border-color .25s var(--t)}
+.socials a:hover{color:var(--ember-ink);background:#fff;border-color:rgba(194,82,26,.4)}
+.socials svg{width:17px;height:17px}
+.fcol h4{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:400;margin-bottom:14px}
+.fcol a{display:block;padding:6px 0;font-size:14px;color:var(--ink-2);transition:color .22s var(--t)}
+.fcol a:hover{color:var(--ember-ink)}
+
+.ftr-mid{border-top:1px solid var(--hair-soft);padding-block:30px;
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,44px)}
+.fblock{display:flex;gap:13px;align-items:center}
+.fblock .ico{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;flex:0 0 auto;
+  background:rgba(194,82,26,.11);border:1px solid rgba(194,82,26,.22);color:var(--ember-ink)}
+.fblock .ico svg{width:17px;height:17px}
+.fblock .k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.fblock .v{font-size:15px;margin-top:3px}
+.fblock .v a:hover{color:var(--ember-ink)}
+
+.ftr-wordmark{position:relative;overflow:hidden;margin-top:clamp(12px,2.2vw,26px);
+  pointer-events:none;user-select:none;line-height:0}
+.ftr-wordmark svg{display:block;width:100%;height:auto;margin-bottom:clamp(-50px,-3.2vw,-11px)}
+
+.ftr-btm{border-top:1px solid var(--hair-soft);padding-block:22px;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;
+  font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3);
+  padding-bottom:calc(22px + env(safe-area-inset-bottom))}
+.ftr-btm .mid{justify-self:center}
+.ftr-btm .end{justify-self:end;display:flex;gap:8px;align-items:center}
+.ftr-btm a:hover{color:var(--ember-ink)}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .75s var(--t),transform .75s var(--t)}
+.rv.in{opacity:1;transform:none}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1080px){
+  .svc,.proc{grid-template-columns:repeat(2,1fr)}
+  .ftr-top{grid-template-columns:1fr 1fr}
+  .ftr-brand{grid-column:1 / -1;max-width:none}
+}
+
+@media (max-width:900px){
+  :root{--hdr:60px}
+  .nav,.hdr-cta{display:none}
+  .burger{display:flex}
+  .split,.band,.contact-wrap,.hero-in{grid-template-columns:1fr}
+  /* nothing to stick against once the columns stack */
+  .rail-side{position:static;top:auto}
+  .tests{grid-template-columns:1fr}
+  .plans{grid-template-columns:1fr;max-width:520px}
+  .ftr-mid{grid-template-columns:1fr;gap:22px}
+  .ftr-btm{grid-template-columns:1fr;text-align:center;gap:10px}
+  .ftr-btm .mid,.ftr-btm .end{justify-self:center}
+  .ruled::before{display:none}
+  .band{text-align:left}
+  .hero-copy{gap:19px}
+  .hero-btns .btn{flex:1 1 auto}
+}
+
+@media (max-width:760px){
+  .svc,.proc{grid-template-columns:1fr}
+  /* two by two keeps the stat block compact instead of a four card tower */
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat{min-height:0;padding:20px;border-bottom:1px solid var(--hair)}
+  .stat:nth-child(2n){border-right:0}
+  .stat:nth-child(n+3){border-bottom:0}
+  .qa .ans-txt{padding-right:0}
+  .svc-art{height:124px}
+}
+
+@media (max-width:560px){
+  .row2{grid-template-columns:1fr}
+  .ftr-top{grid-template-columns:1fr;gap:30px}
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .hero-btns .btn{width:100%}
+  .final-btns{flex-direction:column;align-items:stretch}
+  .final-btns .btn{width:100%}
+  .plan .price b{font-size:38px}
+  .surf{font-size:13.5px;padding:10px 16px}
+  .cinfo{padding:16px 18px}
+  .rail{padding-left:36px}
+  .rail::before{left:9px}
+  .rail-item::before{left:-36px;top:3px;width:19px;height:19px}
+}
+
+@media (max-width:400px){
+  .stats{grid-template-columns:1fr}
+  /* nth-child selectors here to outrank the 2 by 2 border rules above,
+     which are more specific than a bare .stat and would otherwise win */
+  .stat:nth-child(n){border-right:0;border-bottom:1px solid var(--hair)}
+  .stat:nth-last-child(1){border-bottom:0}
+}
+
+/* coarse pointers get no hover transforms, they only cause sticky states */
+@media (hover:none){
+  .btn:hover,.svc-card:hover,.test:hover{transform:none;box-shadow:none}
+  .btn:hover::before{transform:translateX(-125%) skewX(-14deg)}
+  .btn:hover .dot svg{transform:none;opacity:1}
+  .btn:hover .dot::after{opacity:0}
+  .btn:hover .dot{transform:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .marq-track{animation:none}
+  html{scroll-behavior:auto}
+  .btn,.btn::before,.btn .dot,.btn .dot svg,.btn .dot::after{transition:none}
+  .btn::before{display:none}
+  .btn:hover,.svc-card:hover,.test:hover{transform:none}
+  .btn:hover .dot svg{transform:none;opacity:1}
+  .btn:hover .dot::after{opacity:0}
+}
+
+@media print{
+  .hdr,.mnav,.marq,.final-btns,.hero-btns{display:none}
+  body{background:#fff;color:#000}
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://wayfindergeo.com/#organization",
+      "name": "WayfinderGEO",
+      "alternateName": "Wayfinder GEO",
+      "url": "https://wayfindergeo.com/",
+      "email": "hello@wayfindergeo.com",
+      "slogan": "Be the brand AI recommends.",
+      "description": "WayfinderGEO is an AI search visibility agency running Generative Engine Optimization, AI optimization and technical SEO as one system, measured in citation share rather than keyword rankings.",
+      "knowsAbout": [
+        "Generative Engine Optimization",
+        "AI search visibility",
+        "AI Overviews optimization",
+        "Large language model citation tracking",
+        "Structured data and schema architecture",
+        "llms.txt",
+        "Technical SEO",
+        "Digital PR"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://wayfindergeo.com/#website",
+      "url": "https://wayfindergeo.com/",
+      "name": "WayfinderGEO",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wayfindergeo.com/#organization" }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://wayfindergeo.com/#service",
+      "name": "WayfinderGEO",
+      "url": "https://wayfindergeo.com/",
+      "email": "hello@wayfindergeo.com",
+      "parentOrganization": { "@id": "https://wayfindergeo.com/#organization" },
+      "serviceType": "Generative Engine Optimization",
+      "areaServed": { "@type": "Place", "name": "Worldwide" },
+      "priceRange": "$500 to $1500 per month",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "AI search visibility retainers",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Beacon",
+            "description": "AI visibility audit and baseline score, tracking on up to 50 priority prompts, core schema and structured data build, llms.txt and crawler access setup, two answer ready pages per month, monthly reporting and one strategy call.",
+            "price": "500",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "500",
+              "priceCurrency": "USD",
+              "unitCode": "MON",
+              "billingIncrement": 1
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "North Star",
+            "description": "Everything in Beacon plus tracking on up to 300 prompts across every major model, competitor share of voice and citation gap analysis, six answer ready pages per month, off site placement and digital PR, entity reinforcement, agent log monitoring, live dashboard and biweekly calls.",
+            "price": "1500",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "1500",
+              "priceCurrency": "USD",
+              "unitCode": "MON",
+              "billingIncrement": 1
+            }
+          }
+        ]
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Mahroos A." },
+          "publisher": { "@type": "Organization", "name": "CleanMeter" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "I wanted someone who cared about results instead of just rankings, and that is exactly what we got. They helped us build a stronger SEO foundation while also making sure our product is discoverable through AI search. The communication was clear, the work was consistent, and we have seen steady growth ever since."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Alim M." },
+          "publisher": { "@type": "Organization", "name": "IBFNet Group" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Working with them has been one of the best decisions we made for our online presence. They understood our business quickly, improved our visibility across search and AI platforms, and brought in qualified enquiries without making the process complicated."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Adnan J." },
+          "publisher": { "@type": "Organization", "name": "Crispy Studio" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "They became an extension of our team from day one. Every recommendation had a clear reason behind it, and the improvements started showing within a few months."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://wayfindergeo.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is GEO and how is it different from SEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SEO earns you a position in a list of links. GEO, or Generative Engine Optimization, earns you a mention inside a generated answer. The inputs overlap, since models still lean heavily on indexed content, but the optimization targets are different. GEO cares about passage level retrievability, entity clarity, third party corroboration and how quotable your content is."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you influence what ChatGPT says about my brand?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Influence, yes. Control, no. Models draw on indexed pages, live retrieval and the wider corpus of what the internet says about you. The work covers all three: making your own content the cleanest source available, strengthening entity signals so models know who you are, and building presence on the third party sources they already pull from in your category."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long before I see movement in AI search visibility?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Technical and structural fixes register within weeks, and crawler activity is usually visible inside the first month. Meaningful citation share generally moves between month two and month four, depending on how competitive the category is and how much authority the site starts with."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you report on AI search performance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A live dashboard tracking visibility score, share of voice against named competitors, prompt level wins and losses, citation sources and AI crawler activity on your pages, plus a written monthly read on what moved and what is changing next."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which WayfinderGEO plan should I pick?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Beacon at 500 dollars per month if you need to establish presence and fix the fundamentals. North Star at 1500 dollars per month if you are actively competing for the recommendation slot and want off site work, content production and faster cycles."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to content</a>
+
+<!-- ============================ HEADER ============================ -->
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a href="#top" class="brand" aria-label="WayfinderGEO home">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff6ea" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 10.8 10.8 8.5 15.5l4.7-2.3z"/>
+        </svg>
+      </span>
+      <span class="wordmark">Wayfinder<em>GEO</em></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#shift">The shift</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="hdr-cta">
+      <a href="#contact" class="ghost">Free visibility check</a>
+      <a href="#contact" class="btn btn-ember">
+        Get a free audit
+        <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+      </a>
+    </div>
+
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><span></span></button>
+  </div>
+</header>
+
+<div class="mnav" id="mnav">
+  <a href="#shift">The shift</a>
+  <a href="#services">Services</a>
+  <a href="#process">Process</a>
+  <a href="#clients">Clients</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact" class="btn btn-ember btn-lg">
+    Get your free report
+    <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+  </a>
+  <div class="mmeta">
+    <p class="eyebrow">Email</p>
+    <p class="body"><a href="mailto:hello@wayfindergeo.com">hello@wayfindergeo.com</a></p>
+  </div>
+</div>
+
+<main id="main">
+<div id="top"></div>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="hero-noise" aria-hidden="true"></div>
+  <div class="shell hero-in">
+    <div class="hero-copy">
+      <span class="hero-chip rv"><b>GEO</b> Generative Engine Optimization</span>
+      <h1 class="d1 rv" style="transition-delay:.06s">Be the brand AI recommends.</h1>
+      <p class="lead rv" style="transition-delay:.12s">
+        Your buyers ask a model before they ask you. We make sure your name is in the answer, and we bring the receipts every month.
+      </p>
+      <div class="hero-btns rv" style="transition-delay:.18s">
+        <a href="#contact" class="btn btn-sun btn-lg">
+          Get your free report
+          <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </a>
+        <a href="#services" class="btn btn-glass btn-lg">See how it works</a>
+      </div>
+    </div>
+
+    <div class="ans rv" style="transition-delay:.24s">
+      <div class="top"><i aria-hidden="true">&#10035;</i><span>AI answer</span></div>
+      <p class="q">Who is the best GEO agency for a growing brand?</p>
+      <p class="a">For brands moving into AI search, <mark>WayfinderGEO</mark> is a strong fit. They run Generative Engine Optimization alongside technical SEO and report on citation share rather than rankings, with plans starting at $500 per month.</p>
+      <div class="cites">
+        <span class="cite hit">wayfindergeo.com</span>
+        <span class="cite">reddit.com</span>
+        <span class="cite">g2.com</span>
+        <span class="cite">searchengineland.com</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SURFACES ============================ -->
+<section class="surfaces">
+  <div class="shell"><p class="eyebrow rv">Surfaces we optimize for</p></div>
+  <div class="marq">
+    <div class="marq-track">
+      <span class="surf"><i></i>ChatGPT</span>
+      <span class="surf"><i></i>Google AI Overviews</span>
+      <span class="surf"><i></i>Google AI Mode</span>
+      <span class="surf"><i></i>Perplexity</span>
+      <span class="surf"><i></i>Claude</span>
+      <span class="surf"><i></i>Gemini</span>
+      <span class="surf"><i></i>Microsoft Copilot</span>
+      <span class="surf"><i></i>Reddit and forums</span>
+      <span class="surf"><i></i>YouTube</span>
+      <span class="surf"><i></i>Classic organic search</span>
+      <span class="surf" aria-hidden="true"><i></i>ChatGPT</span>
+      <span class="surf" aria-hidden="true"><i></i>Google AI Overviews</span>
+      <span class="surf" aria-hidden="true"><i></i>Google AI Mode</span>
+      <span class="surf" aria-hidden="true"><i></i>Perplexity</span>
+      <span class="surf" aria-hidden="true"><i></i>Claude</span>
+      <span class="surf" aria-hidden="true"><i></i>Gemini</span>
+      <span class="surf" aria-hidden="true"><i></i>Microsoft Copilot</span>
+      <span class="surf" aria-hidden="true"><i></i>Reddit and forums</span>
+      <span class="surf" aria-hidden="true"><i></i>YouTube</span>
+      <span class="surf" aria-hidden="true"><i></i>Classic organic search</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SHIFT ============================ -->
+<section class="sec ruled" id="shift">
+  <div class="shell split">
+    <div>
+      <div class="rail-side rv">
+        <p class="eyebrow">The shift</p>
+        <h2 class="d2">Search did not slow down. It moved.</h2>
+        <p class="body">
+          Answers are synthesized before the click now. The brands quoted inside those answers win the consideration set by default. Ranking is no longer the finish line. Being retrieved, cited and recommended is.
+        </p>
+        <div class="rail-kicker">
+          <b>68%</b>
+          <span>of Google searches now end without a single click to any website</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rail">
+      <article class="rail-item rv">
+        <span class="n">01</span>
+        <h3 class="h4">The click is optional now</h3>
+        <p class="body">Models fan one prompt into dozens of sub queries, then stitch an answer together. If your brand is not inside it, you were never in the running, whatever position you hold.</p>
+      </article>
+      <article class="rail-item rv" style="transition-delay:.07s">
+        <span class="n">02</span>
+        <h3 class="h4">Your reputation is training data</h3>
+        <p class="body">Reviews, Reddit threads and comparison posts shape what models say about you. Off site coverage is now on page real estate.</p>
+      </article>
+      <article class="rail-item rv" style="transition-delay:.14s">
+        <span class="n">03</span>
+        <h3 class="h4">The traffic that remains is better</h3>
+        <p class="body">Fewer sessions, higher intent. Someone arriving from an AI recommendation has already been pre sold, which is why they convert at a multiple of ordinary organic visits.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ STATS ============================ -->
+<section class="sec stats-band">
+  <div class="shell">
+    <div class="sec-head rv" style="max-width:620px">
+      <p class="eyebrow">Where the market actually is</p>
+      <h2 class="d3">Industry averages, not our marketing math.</h2>
+    </div>
+
+    <div class="stats rv">
+      <article class="stat">
+        <span class="v">68%</span>
+        <p class="k">of Google searches now end without a single click to a website</p>
+        <p class="src">2026 clickstream studies</p>
+      </article>
+      <article class="stat">
+        <span class="v">60%</span>
+        <p class="k">average drop in organic click through rate when an AI Overview appears</p>
+        <p class="src">Published CTR studies</p>
+      </article>
+      <article class="stat">
+        <span class="v">4x</span>
+        <p class="k">higher conversion rate for AI referred visitors versus traditional organic</p>
+        <p class="src">Conservative average</p>
+      </article>
+      <article class="stat">
+        <span class="v">70%</span>
+        <p class="k">of consumers now use generative AI tools for product and service recommendations</p>
+        <p class="src">2026 consumer research</p>
+      </article>
+    </div>
+
+    <p class="small rv" style="margin-top:18px;max-width:70ch">
+      Figures are blended industry averages compiled from publicly reported 2026 research. Your baseline will differ by category, and measuring it is step one of every engagement.
+    </p>
+  </div>
+</section>
+
+<!-- ============================ SERVICES ============================ -->
+<section class="sec ruled" id="services">
+  <div class="shell">
+    <div class="sec-head rv" style="max-width:700px">
+      <p class="eyebrow">What we do</p>
+      <h2 class="d2">Three disciplines. One visibility system.</h2>
+      <p class="lead">SEO still feeds the index. GEO earns the citation. AIO makes your site legible to machines. Run them apart and you leak. Run them together and they compound.</p>
+    </div>
+
+    <div class="svc">
+      <article class="panel svc-card rv">
+        <div class="svc-art a1" aria-hidden="true">
+          <span class="orb" style="width:118px;height:118px;left:50%;top:52%;transform:translate(-50%,-50%)"></span>
+          <span class="ring" style="width:186px;height:186px;left:50%;top:52%;transform:translate(-50%,-50%)"></span>
+        </div>
+        <div class="svc-body">
+          <span class="tag">GEO</span>
+          <h3 class="h4">Generative Engine Optimization</h3>
+          <p class="body">Getting your brand named, quoted and linked inside AI answers, on the prompts your buyers actually type.</p>
+          <ul class="svc-list">
+            <li>Prompt research and share of voice tracking</li>
+            <li>Citation gap analysis against competitors</li>
+            <li>Answer ready content built for passage retrieval</li>
+            <li>Entity and knowledge graph reinforcement</li>
+            <li>Off site presence on the sources models trust</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="panel svc-card rv" style="transition-delay:.08s">
+        <div class="svc-art a2" aria-hidden="true">
+          <span class="orb" style="width:84px;height:84px;left:26%;top:62%"></span>
+          <span class="orb" style="width:104px;height:104px;left:58%;top:32%"></span>
+          <span class="ring" style="width:150px;height:150px;left:54%;top:46%;transform:translate(-50%,-50%)"></span>
+        </div>
+        <div class="svc-body">
+          <span class="tag">AIO</span>
+          <h3 class="h4">AI optimization and readability</h3>
+          <p class="body">Making your site trivially easy for crawlers and agents to parse, quote and attribute back to you.</p>
+          <ul class="svc-list">
+            <li>Structured data and schema architecture</li>
+            <li>llms.txt, crawler access and agent log auditing</li>
+            <li>Chunking, headings and semantic content structure</li>
+            <li>Rendering, speed and core web vitals</li>
+            <li>Freshness signals and content maintenance loops</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="panel svc-card rv" style="transition-delay:.16s">
+        <div class="svc-art a3" aria-hidden="true">
+          <span class="orb" style="width:104px;height:104px;left:50%;top:56%;transform:translate(-50%,-50%)"></span>
+          <span class="ring" style="width:170px;height:170px;left:50%;top:56%;transform:translate(-50%,-50%)"></span>
+          <span class="ring" style="width:240px;height:240px;left:50%;top:56%;transform:translate(-50%,-50%);opacity:.45"></span>
+        </div>
+        <div class="svc-body">
+          <span class="tag">SEO</span>
+          <h3 class="h4">Foundational search</h3>
+          <p class="body">The index is still where models source from. Classic search remains the substrate the whole system stands on.</p>
+          <ul class="svc-list">
+            <li>Technical audits and crawl health</li>
+            <li>Topical authority and internal linking</li>
+            <li>Content strategy mapped to buyer intent</li>
+            <li>Local and multi location visibility</li>
+            <li>Digital PR and authority link acquisition</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROCESS ============================ -->
+<section class="sec" id="process" style="padding-top:0">
+  <div class="shell">
+    <div class="sec-head rv" style="max-width:620px">
+      <p class="eyebrow">How it runs</p>
+      <h2 class="d2">Four moves, repeated until it compounds.</h2>
+    </div>
+
+    <div class="proc">
+      <article class="panel step rv">
+        <h3 class="h4">Baseline</h3>
+        <p class="body">Where you stand across every AI surface, benchmarked against the three competitors taking your slot. Raw numbers before opinions.</p>
+        <span class="bar" aria-hidden="true"></span>
+      </article>
+      <article class="panel step rv" style="transition-delay:.07s">
+        <h3 class="h4">Diagnose</h3>
+        <p class="body">Prompt mapping, citation gaps, entity coverage, technical blockers. We separate content problems from authority problems, because the fixes are nothing alike.</p>
+        <span class="bar" aria-hidden="true"></span>
+      </article>
+      <article class="panel step rv" style="transition-delay:.14s">
+        <h3 class="h4">Build</h3>
+        <p class="body">Schema, site structure, answer ready pages, entity reinforcement and placement on the sources models already trust in your category.</p>
+        <span class="bar" aria-hidden="true"></span>
+      </article>
+      <article class="panel step rv" style="transition-delay:.21s">
+        <h3 class="h4">Compound</h3>
+        <p class="body">Track, prune, expand. AI visibility behaves like interest, not like a campaign. The programs that win are the ones still running in month twelve.</p>
+        <span class="bar" aria-hidden="true"></span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ BAND ============================ -->
+<section class="sec" style="padding-top:0">
+  <div class="shell">
+    <div class="band rv">
+      <div>
+        <p class="eyebrow on-sun">Why it matters now</p>
+        <h2 class="d3" style="margin-top:14px;max-width:20ch">The brands getting cited today are training the answers of tomorrow.</h2>
+        <p class="lead" style="margin-top:16px;max-width:52ch">
+          Every month you stay invisible, a competitor becomes the default recommendation in your category. That position is sticky, and it gets more expensive to take the longer you wait.
+        </p>
+        <a href="#contact" class="btn btn-sun btn-lg" style="margin-top:24px">
+          Start with a free audit
+          <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </a>
+      </div>
+      <div class="band-metrics">
+        <div class="frost bm"><div class="v">Week 1</div><p class="k">Your baseline AI visibility score, delivered before anything is billed</p></div>
+        <div class="frost bm"><div class="v">Week 4</div><p class="k">First structural fixes live and crawler activity measurable</p></div>
+        <div class="frost bm"><div class="v">Month 3</div><p class="k">Citation trend line you can take into a board meeting</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TESTIMONIALS ============================ -->
+<section class="sec ruled" id="clients" style="padding-top:0">
+  <div class="shell">
+    <div class="sec-head rv" style="max-width:620px">
+      <p class="eyebrow">Client words</p>
+      <h2 class="d2">What working with us sounds like.</h2>
+    </div>
+
+    <div class="tests">
+      <article class="panel test rv">
+        <div class="stars" aria-label="Rated 5 out of 5">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+        </div>
+        <q>I wanted someone who cared about results instead of just rankings, and that’s exactly what we got. They helped us build a stronger SEO foundation while also making sure our product is discoverable through AI search. The communication was clear, the work was consistent, and we’ve seen steady growth ever since.</q>
+        <div class="who">
+          <span class="av" aria-hidden="true">MA</span>
+          <div><div class="nm">Mahroos A.</div><div class="rl">CleanMeter</div></div>
+        </div>
+      </article>
+
+      <article class="panel test rv" style="transition-delay:.08s">
+        <div class="stars" aria-label="Rated 5 out of 5">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+        </div>
+        <q>Working with them has been one of the best decisions we made for our online presence. They understood our business quickly, improved our visibility across search and AI platforms, and brought in qualified enquiries without making the process complicated. I’d happily recommend them to anyone serious about long-term growth.</q>
+        <div class="who">
+          <span class="av" aria-hidden="true">AM</span>
+          <div><div class="nm">Alim M.</div><div class="rl">IBFNet Group</div></div>
+        </div>
+      </article>
+
+      <article class="panel test rv" style="transition-delay:.16s">
+        <div class="stars" aria-label="Rated 5 out of 5">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+        </div>
+        <q>They became an extension of our team from day one. Every recommendation had a clear reason behind it, and the improvements started showing within a few months. If you’re looking for someone who understands where search is heading and knows how to get your business in front of the right audience, I highly recommend them.</q>
+        <div class="who">
+          <span class="av" aria-hidden="true">AJ</span>
+          <div><div class="nm">Adnan J.</div><div class="rl">Crispy Studio</div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PRICING ============================ -->
+<section class="sec" id="pricing">
+  <div class="shell">
+    <div class="sec-head center rv" style="max-width:640px">
+      <p class="eyebrow">Pricing</p>
+      <h2 class="d2">Two ways in. Both start with the audit.</h2>
+      <p class="lead">Flat monthly retainers. No setup fee, no percentage of ad spend, no surprise line items. Ninety day initial term, month to month after that.</p>
+    </div>
+
+    <div class="plans">
+      <article class="panel plan rv">
+        <div>
+          <p class="pname">Beacon</p>
+          <div class="price"><b>$500</b><span>per month</span></div>
+          <p class="for">For small teams and local businesses who need to show up in AI answers and stop losing ground.</p>
+        </div>
+        <hr>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Full AI visibility audit and baseline score</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Tracking on up to 50 priority prompts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Core schema and structured data build</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>llms.txt and crawler access setup</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Two answer ready pages optimized per month</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Monthly visibility report and one strategy call</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Email support within one business day</li>
+        </ul>
+        <a href="#contact" class="btn btn-line btn-lg">Start with Beacon</a>
+      </article>
+
+      <article class="panel plan hi rv" style="transition-delay:.08s">
+        <span class="flag">Most chosen</span>
+        <div>
+          <p class="pname">North Star</p>
+          <div class="price"><b>$1,500</b><span>per month</span></div>
+          <p class="for">For brands treating AI search as a real revenue channel and competing for the recommendation slot in their category.</p>
+        </div>
+        <hr>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Everything in Beacon</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Tracking on up to 300 prompts across every major model</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Competitor share of voice and citation gap analysis</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Six answer ready pages produced or rebuilt per month</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Off site placement and digital PR for citation sources</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Entity and knowledge graph reinforcement</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Agent log monitoring and technical SEO retainer</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Live dashboard, biweekly calls and shared Slack channel</li>
+        </ul>
+        <a href="#contact" class="btn btn-ember btn-lg">
+          Start with North Star
+          <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </a>
+      </article>
+    </div>
+
+    <p class="small plan-note rv">
+      Multi location, ecommerce catalogues and enterprise scopes are quoted separately. If neither tier fits, say so on the call and we will tell you honestly whether we are the right partner.
+    </p>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="sec ruled" id="faq" style="padding-top:0">
+  <div class="shell">
+    <div class="sec-head rv" style="max-width:580px">
+      <p class="eyebrow">Questions</p>
+      <h2 class="d2">The things people ask before signing.</h2>
+    </div>
+
+    <div class="faq">
+      <details class="qa rv"><summary>What is GEO and how is it different from SEO?</summary>
+        <div class="ans-txt">SEO earns you a position in a list of links. GEO earns you a mention inside a generated answer. The inputs overlap, since models still lean heavily on indexed content, but the optimization targets are different. GEO cares about passage level retrievability, entity clarity, third party corroboration and how quotable your content is. We run both because neither works properly alone.</div>
+      </details>
+      <details class="qa rv"><summary>Can you actually influence what ChatGPT says about my brand?</summary>
+        <div class="ans-txt">Influence, yes. Control, no, and be skeptical of anyone promising otherwise. Models draw on indexed pages, live retrieval and the wider corpus of what the internet says about you. We work on all three: making your own content the cleanest source available, strengthening entity signals so models know who you are, and building presence on the third party sources they already pull from in your category.</div>
+      </details>
+      <details class="qa rv"><summary>How long before I see movement?</summary>
+        <div class="ans-txt">Technical and structural fixes register within weeks, and crawler activity is usually visible inside the first month. Meaningful citation share generally moves between month two and month four, depending on how competitive your category is and how much authority you start with. Anyone quoting you a fixed date is guessing.</div>
+      </details>
+      <details class="qa rv"><summary>How do you report on something this new?</summary>
+        <div class="ans-txt">You get a live dashboard tracking visibility score, share of voice against named competitors, prompt level wins and losses, citation sources and AI crawler activity on your pages. Plus a written monthly read on what moved, what did not and what we are changing next.</div>
+      </details>
+      <details class="qa rv"><summary>Which plan should I pick?</summary>
+        <div class="ans-txt">Beacon if you need to establish presence and fix the fundamentals. North Star if you are actively competing for the recommendation slot and want off site work, content production and faster cycles. Most teams start on Beacon and move up once the baseline report shows what the gap costs them.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTACT ============================ -->
+<section class="sec" id="contact" style="padding-top:0">
+  <div class="shell contact-wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Get started</p>
+      <h2 class="d2">Find out where you stand.</h2>
+      <p class="lead">Tell us your domain and we will send back a free AI visibility snapshot: which models mention you, which prompts you are missing and who is taking the slot instead. No pitch deck attached.</p>
+
+      <div class="contact-side">
+        <div class="panel cinfo">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <div><div class="k">Email</div><div class="v"><a href="mailto:hello@wayfindergeo.com">hello@wayfindergeo.com</a></div></div>
+        </div>
+        <div class="panel cinfo">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><div class="k">Response time</div><div class="v">Within one business day</div></div>
+        </div>
+        <div class="panel cinfo">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6.5v5c0 4.6 3.4 8.4 8 9.5 4.6-1.1 8-4.9 8-9.5v-5z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <div><div class="k">No commitment</div><div class="v">The audit is free, no contract</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- action is filled in by the script from FORMSPREE_ID at the bottom of the page -->
+    <form class="panel form rv" id="leadForm" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New WayfinderGEO enquiry">
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"
+             style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <div class="row2">
+        <div class="field"><label for="fname">Name</label><input id="fname" name="name" type="text" autocomplete="name" placeholder="Jane Rivera" required></div>
+        <div class="field"><label for="femail">Work email</label><input id="femail" name="email" type="email" autocomplete="email" inputmode="email" placeholder="jane@company.com" required></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="fsite">Website</label><input id="fsite" name="website" type="text" autocomplete="url" inputmode="url" placeholder="company.com" required></div>
+        <div class="field">
+          <label for="fplan">Interested in</label>
+          <select id="fplan" name="plan">
+            <option>Free AI visibility audit</option>
+            <option>Beacon, $500 per month</option>
+            <option>North Star, $1,500 per month</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="fmsg">What are you trying to fix</label>
+        <textarea id="fmsg" name="message" rows="3" placeholder="We are invisible in ChatGPT while two competitors get named every time."></textarea>
+      </div>
+      <button type="submit" class="btn btn-ember btn-lg">
+        Send it over
+        <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+      </button>
+      <p class="small" id="formNote" role="status" aria-live="polite">We reply within one business day. Your details stay with us.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ FINAL CTA ============================ -->
+<section class="final">
+  <div class="hero-noise" aria-hidden="true"></div>
+  <div class="shell">
+    <p class="eyebrow on-sun rv">WayfinderGEO</p>
+    <h2 class="d2 rv" style="margin-top:16px;max-width:18ch">Make AI search your next revenue channel.</h2>
+    <p class="lead rv">Every answer a model gives is a shelf. We put you on it, then show you the receipts.</p>
+    <div class="final-btns rv">
+      <a href="#contact" class="btn btn-sun btn-lg">
+        Get your free audit
+        <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+      </a>
+      <a href="#pricing" class="btn btn-glass btn-lg">Compare plans</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="ftr">
+  <div class="shell">
+    <div class="ftr-top">
+      <div class="ftr-brand">
+        <a href="#top" class="brand">
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff6ea" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 10.8 10.8 8.5 15.5l4.7-2.3z"/></svg>
+          </span>
+          <span class="wordmark">Wayfinder<em>GEO</em></span>
+        </a>
+        <p>AI search visibility for brands that intend to be the answer. GEO, AIO and SEO run as one system, measured in citations rather than vanity rankings.</p>
+        <!-- Social icons removed until the profiles exist. To restore, paste the real
+             URLs into the href attributes and uncomment. Dead links hurt more than
+             absent ones, both for visitors and for entity signals.
+        <div class="socials">
+          <a href="" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.03-3.07-1.9-3.07-1.9 0-2.2 1.46-2.2 2.97V21H9z"/></svg></a>
+          <a href="" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 3h3.1l-6.8 7.8L21.9 21h-6.2l-4.9-6.4L5.2 21H2.1l7.3-8.3L2.4 3h6.4l4.4 5.8zm-1.1 16.1h1.7L7.7 4.8H5.9z"/></svg></a>
+        </div>
+        -->
+        <p class="small" style="margin-top:2px">
+          <a href="mailto:hello@wayfindergeo.com" style="color:var(--ember-ink)">hello@wayfindergeo.com</a>
+        </p>
+      </div>
+
+      <div class="fcol">
+        <h4>Services</h4>
+        <a href="#services">Generative Engine Optimization</a>
+        <a href="#services">AI optimization and readability</a>
+        <a href="#services">Technical and foundational SEO</a>
+        <a href="#services">Content and digital PR</a>
+        <a href="#process">How we work</a>
+      </div>
+
+      <div class="fcol">
+        <h4>Company</h4>
+        <a href="#shift">The shift</a>
+        <a href="#clients">Client results</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="fcol">
+        <h4>Get started</h4>
+        <a href="#contact">Free AI visibility audit</a>
+        <a href="mailto:hello@wayfindergeo.com">Email us</a>
+        <a href="#pricing">Beacon, $500 per month</a>
+        <a href="#pricing">North Star, $1,500 per month</a>
+      </div>
+    </div>
+
+    <div class="ftr-mid">
+      <div class="fblock">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+        <div><div class="k">New business</div><div class="v"><a href="mailto:hello@wayfindergeo.com">hello@wayfindergeo.com</a></div></div>
+      </div>
+      <div class="fblock">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 8.3 6.7 15 15 15v-3.2l-4-1.6-2 2a12.4 12.4 0 0 1-6.2-6.2l2-2L7.2 5z"/></svg></span>
+        <div><div class="k">Existing clients</div><div class="v"><a href="mailto:support@wayfindergeo.com">support@wayfindergeo.com</a></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shell">
+    <div class="ftr-wordmark" aria-hidden="true">
+      <svg viewBox="0 0 1200 195" role="presentation" focusable="false">
+        <defs>
+          <linearGradient id="wmInk" gradientUnits="userSpaceOnUse" x1="0" y1="34" x2="0" y2="190">
+            <stop offset="0%"   stop-color="#1c1408" stop-opacity=".14"/>
+            <stop offset="55%"  stop-color="#1c1408" stop-opacity=".075"/>
+            <stop offset="100%" stop-color="#1c1408" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="wmEmber" gradientUnits="userSpaceOnUse" x1="0" y1="34" x2="0" y2="190">
+            <stop offset="0%"   stop-color="#c2521a" stop-opacity=".46"/>
+            <stop offset="55%"  stop-color="#c2521a" stop-opacity=".24"/>
+            <stop offset="100%" stop-color="#c2521a" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <g transform="translate(-10,17) scale(6.5)" fill="none" stroke="url(#wmInk)"
+           stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M15.5 8.5 10.8 10.8 8.5 15.5l4.7-2.3z"/>
+        </g>
+        <text x="175" y="152" textLength="1025" lengthAdjust="spacingAndGlyphs" xml:space="preserve" font-family="Fraunces, Georgia, serif" font-size="162" font-weight="400"><tspan fill="url(#wmInk)">Wayfinder</tspan><tspan fill="url(#wmEmber)">GEO</tspan></text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="shell">
+    <div class="ftr-btm">
+      <span>&copy; <span id="yr">2026</span> WayfinderGEO. All rights reserved.</span>
+      <span class="mid">wayfindergeo.com</span>
+      <span class="end"><a href="/privacy.html">Privacy Policy</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var hdr=document.getElementById('hdr');
+  var ticking=false;
+  function onScroll(){
+    if(ticking) return;
+    ticking=true;
+    requestAnimationFrame(function(){
+      hdr.classList.toggle('solid', window.scrollY>20);
+      ticking=false;
+    });
+  }
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* mobile menu */
+  var burger=document.getElementById('burger'), mnav=document.getElementById('mnav');
+  function setMenu(open){
+    mnav.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open?'true':'false');
+    document.body.classList.toggle('locked', open);
+  }
+  burger.addEventListener('click', function(){ setMenu(!mnav.classList.contains('open')); });
+  mnav.addEventListener('click', function(e){ if(e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') setMenu(false); });
+  window.addEventListener('resize', function(){ if(window.innerWidth>900) setMenu(false); });
+
+  /* reveal on scroll */
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    },{rootMargin:'0px 0px -6% 0px',threshold:.05});
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  /* ----------------------------------------------------------
+     CONTACT FORM
+     Paste your Formspree form ID below. Sign up free at
+     formspree.io, create a form, and it gives you an endpoint
+     like https://formspree.io/f/xdorwqvb  ->  the ID is xdorwqvb
+     Until this is filled in the form refuses to submit and says so,
+     which is safer than silently swallowing a lead.
+     ---------------------------------------------------------- */
+  var FORMSPREE_ID = '';
+
+  var form=document.getElementById('leadForm'),
+      note=document.getElementById('formNote'),
+      btn=form.querySelector('button[type="submit"]'),
+      btnLabel=btn.childNodes[0];
+
+  if(FORMSPREE_ID){ form.action='https://formspree.io/f/'+FORMSPREE_ID; }
+
+  function say(msg,tone){
+    note.textContent=msg;
+    note.style.color = tone==='bad' ? '#b3261e' : (tone==='good' ? '#1c1408' : '#a8410d');
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    if(!form.checkValidity()){
+      say('Please fill in your name, work email and website.','bad');
+      var firstBad=form.querySelector(':invalid');
+      if(firstBad) firstBad.focus();
+      return;
+    }
+
+    if(!FORMSPREE_ID){
+      say('This form is not connected yet. Add your Formspree ID in the script at the bottom of index.html.','bad');
+      return;
+    }
+
+    btn.disabled=true;
+    btnLabel.textContent='Sending ';
+    say('Sending your details.','');
+
+    fetch(form.action,{
+      method:'POST',
+      body:new FormData(form),
+      headers:{Accept:'application/json'}
+    }).then(function(r){
+      if(r.ok){
+        form.reset();
+        btnLabel.textContent='Sent ';
+        say('Thanks. Your audit request is in and we will reply within one business day.','good');
+      } else {
+        return r.json().then(function(d){
+          throw new Error((d.errors||[]).map(function(x){return x.message;}).join(', ') || 'Submission failed');
+        });
+      }
+    }).catch(function(err){
+      btn.disabled=false;
+      btnLabel.textContent='Send it over ';
+      say('Something went wrong. Please email hello@wayfindergeo.com instead.','bad');
+      if(window.console) console.error(err);
+    });
+  });
+})();
+</script>
+</body>
+</html>
