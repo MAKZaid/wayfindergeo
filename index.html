@@ -15,8 +15,10 @@
 <!-- Add once you have exported og-image.svg to a 1200x630 PNG:
      <meta property="og:image" content="https://wayfindergeo.com/og-image.png"> -->
 
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/favicon.svg">
+<!-- relative, not root relative, so the same files work on the github.io
+     project URL and later on wayfindergeo.com without editing -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1466,7 +1468,7 @@ body.locked{overflow:hidden}
     <div class="ftr-btm">
       <span>&copy; <span id="yr">2026</span> WayfinderGEO. All rights reserved.</span>
       <span class="mid">wayfindergeo.com</span>
-      <span class="end"><a href="/privacy.html">Privacy Policy</a></span>
+      <span class="end"><a href="privacy.html">Privacy Policy</a></span>
     </div>
   </div>
 </footer>
