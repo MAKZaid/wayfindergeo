@@ -11,14 +11,18 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=IBM+Plex+Mono:wght@400&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#fdf6e9;--paper-3:#f4e8d3;
   --ink:#1c1408;--ink-2:rgba(28,20,8,.78);--ink-3:rgba(28,20,8,.62);
   --hair:rgba(28,20,8,.13);--ember-ink:#a8410d;
-  --f-display:Fraunces,Georgia,serif;--f-body:"Inter Tight",system-ui,sans-serif;
-  --f-mono:"IBM Plex Mono",monospace;
+  /* Inter throughout, matching index.html. Character comes from the scale,
+     weight contrast and tracking rather than from a second face, so the
+     negative tracking on the headings below is load-bearing, not decoration. */
+  --f-display:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --f-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --f-mono:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --gut:clamp(20px,5vw,48px);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -29,18 +33,15 @@ a{color:var(--ember-ink)}
 .back{font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--ink-3);text-decoration:none;display:inline-flex;gap:8px;align-items:center}
 .back:hover{color:var(--ember-ink)}
-h1{font-family:var(--f-display);font-weight:400;font-size:clamp(32px,5.4vw,52px);
-  letter-spacing:-.026em;line-height:1.05;margin:26px 0 0}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(32px,5.4vw,52px);
+  letter-spacing:-.035em;line-height:1.02;margin:26px 0 0}
 .meta{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3);margin-top:14px}
-h2{font-family:var(--f-display);font-weight:400;font-size:clamp(20px,2.6vw,27px);
-  letter-spacing:-.02em;margin:38px 0 10px}
+h2{font-family:var(--f-display);font-weight:600;font-size:clamp(20px,2.6vw,27px);
+  letter-spacing:-.022em;margin:38px 0 10px}
 p,li{color:var(--ink-2);margin:0 0 12px}
 ul{padding-left:20px;margin:0 0 12px}
 li{margin-bottom:7px}
 hr{border:0;border-top:1px solid var(--hair);margin:38px 0}
-.callout{background:var(--paper-3);border:1px solid var(--hair);border-radius:12px;
-  padding:20px 22px;margin:26px 0}
-.callout p{margin:0;font-size:14.5px}
 footer{border-top:1px solid var(--hair);margin-top:52px;padding-top:22px;
   font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3)}
 </style>
@@ -51,10 +52,6 @@ footer{border-top:1px solid var(--hair);margin-top:52px;padding-top:22px;
 
   <h1>Privacy Policy</h1>
   <p class="meta">Last updated 24 July 2026</p>
-
-  <div class="callout">
-    <p><strong>Note for the site owner:</strong> this is a plain language starting point covering what the site actually does today, which is a single contact form. It is not legal advice. Have it reviewed by a solicitor before you rely on it, particularly if you add analytics, advertising pixels, or start serving customers in the EU or California. Delete this box before publishing.</p>
-  </div>
 
   <p>This policy explains what happens to information you give WayfinderGEO through this website. It is short because the site does very little.</p>
 
