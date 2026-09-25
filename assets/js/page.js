@@ -664,3 +664,48 @@
     }, true);
   });
 })();
+
+/* post-launch fixes (25 Sep 2026), phones only */
+(function () {
+  'use strict';
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var phone = function () { return innerWidth <= 900; };
+
+  /* the nav bar hides while you keep scrolling down, and returns as soon as you scroll up or stop */
+  var wn = document.getElementById('wn'), sheet = document.getElementById('wn-sheet'), lastY = scrollY, idle = 0;
+  if (wn) addEventListener('scroll', function () {
+    var y = scrollY, dy = y - lastY; lastY = y;
+    clearTimeout(idle);
+    if (!phone() || (sheet && !sheet.hidden) || y < 120) { wn.classList.remove('wn-hide'); return; }
+    if (dy > 2) wn.classList.add('wn-hide'); else if (dy < -2) wn.classList.remove('wn-hide');
+    idle = setTimeout(function () { wn.classList.remove('wn-hide'); }, 260);
+  }, { passive: true });
+
+  /* the city reel: swipe it by hand; when nobody's touching it, it keeps drifting (and wraps round, like before) */
+  document.querySelectorAll('.reel').forEach(function (reel) {
+    var track = reel.querySelector('.reel-track'); if (!track) return;
+    var pos = 0, last = 0, holdUntil = 0, touching = false, seen = false, dir = reel.classList.contains('reel-rev') ? -1 : 1;
+    var half = function () { return track.scrollWidth / 2 + 7; };
+    var speed = function () { return half() / 80; };                        /* px per second, as the desktop loop */
+    function wrap() {
+      var h = half(); if (h <= reel.clientWidth) return;
+      if (reel.scrollLeft >= h) { reel.scrollLeft -= h; pos -= h; }
+      else if (reel.scrollLeft <= 0) { reel.scrollLeft += h; pos += h; }
+    }
+    reel.addEventListener('touchstart', function () { touching = true; }, { passive: true });
+    reel.addEventListener('touchend', function () { touching = false; holdUntil = performance.now() + 1800; }, { passive: true });
+    reel.addEventListener('scroll', function () { if (touching || performance.now() < holdUntil) { holdUntil = Math.max(holdUntil, performance.now() + 900); pos = reel.scrollLeft; wrap(); } }, { passive: true });
+    var vis = 'IntersectionObserver' in window && new IntersectionObserver(function (es) { seen = es[0].isIntersecting; if (seen) requestAnimationFrame(step); });
+    if (vis) vis.observe(reel); else seen = true;
+    function step(t) {
+      var dt = last ? Math.min(64, t - last) : 16; last = t;
+      if (!phone()) { reel.scrollLeft = 0; return; }
+      if (!reduce && !touching && t > holdUntil) {
+        if (Math.abs(reel.scrollLeft - pos) > 2) pos = reel.scrollLeft;         /* the user moved it */
+        pos += dir * speed() * dt / 1000; reel.scrollLeft = pos; wrap();
+      }
+      if (seen) requestAnimationFrame(step); else last = 0;
+    }
+    if (phone()) { reel.scrollLeft = dir > 0 ? 1 : half(); pos = reel.scrollLeft; }
+  });
+})();

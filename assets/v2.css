@@ -1610,3 +1610,39 @@ html .night-end .fx-edge{overflow:visible}
 .iter-hero span{padding:0 .45rem;text-transform:uppercase;letter-spacing:.06em}
 .iter-hero button{height:32px;min-width:40px;padding:0 .75rem;border:1px solid #c9d5ee;border-radius:9px;background:#fff;color:#2b4a8a;font:inherit;cursor:pointer}
 .iter-hero button[aria-pressed="true"]{background:#2b4a8a;border-color:#2b4a8a;color:#fff}
+
+/* ---------------------------------------------------------------- post-launch fixes (25 Sep 2026) */
+/* business tabs: the pill is the outer box; the row inside scrolls, so words never run into its rounded ends */
+.who-pill{display:inline-flex;max-width:100%;padding:4px;border-radius:999px;background:#fff;border:1px solid var(--rule)}
+.who-pill .who-tabs{display:flex;max-width:100%;padding:0;border:0;border-radius:999px;background:none}
+@media (max-width:900px){
+  .who-pill .who-tabs{padding:0 12px;scroll-padding-inline:12px;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 14px),transparent);mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 14px),transparent)}
+
+  /* film grain: on phones the same tile reads much heavier, so every grain layer is about 40% lighter */
+  .grain,.o5 .sky .grain{opacity:.07}
+  .sx-globe::after,.night::after,.spot3::after{opacity:.06}
+  .process-art::before,.pw-sky::before,.fg-grain::before{opacity:.07}
+
+  /* hero star: its glow 15% softer (the glow's opacity pulses, so the colours are softened instead) */
+  .o5 .hx-focus::before{background:radial-gradient(circle,rgba(255,226,196,.61),rgba(242,154,85,.2) 34%,rgba(242,154,85,0) 66%)}
+
+  /* the nav bar slides away while you scroll down and comes back when you stop or scroll up (page.js adds .wn-hide) */
+  .wn-bar{transition:transform .38s cubic-bezier(.22,1,.36,1),background .3s ease,border-color .3s ease}
+  .wn.wn-hide .wn-bar{transform:translateY(-105%)}
+
+  /* city reel: a real swipeable row on phones; page.js keeps it drifting when it's not being touched */
+  .reel{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .reel::-webkit-scrollbar{display:none}
+  .reel .reel-track{animation:none!important}
+}
+@media (max-width:900px) and (prefers-reduced-motion:reduce){.wn-bar{transition:none}}
+@media (max-width:700px){
+  /* platforms: four equal columns, each logo and its name centred */
+  .hx-plat .platform-logos{grid-template-columns:repeat(4,minmax(0,1fr));justify-content:stretch;justify-items:center}
+  .hx-plat .platform-logos li{justify-content:center;width:100%}
+  .hx-plat .platform-logos a{display:grid;grid-template-rows:24px auto;justify-items:center;align-items:center;text-align:center}   /* every icon in the same box, so the names line up */
+  /* footer base on one line: the year and name on the left, the privacy link on the right */
+  .night-end .footer-base{flex-direction:row;justify-content:space-between;align-items:center;gap:1rem}
+  .night-end .footer-base .fb-long{display:none}
+}
