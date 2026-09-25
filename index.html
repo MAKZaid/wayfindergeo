@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-curve="bowl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WayfinderGEO — AI search visibility, GEO and AIO for modern brands</title>
+<title>WayfinderGEO: AI search visibility, GEO and AIO for modern brands</title>
 <meta name="description" content="Your buyers ask a model before they ask you. WayfinderGEO runs Generative Engine Optimization, AI readability and technical SEO as one system, measured in citations rather than rankings.">
 <link rel="canonical" href="https://wayfindergeo.com/">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="WayfinderGEO — Be the brand AI recommends.">
+<meta property="og:title" content="WayfinderGEO: Be the brand AI recommends.">
 <meta property="og:description" content="GEO, AIO and SEO run as one visibility system, measured in citations rather than vanity rankings. Free AI visibility audit.">
 <meta property="og:url" content="https://wayfindergeo.com/">
 <meta property="og:image" content="https://wayfindergeo.com/og-image.png">
@@ -16,18 +16,21 @@
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="WayfinderGEO">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WayfinderGEO — Be the brand AI recommends.">
+<meta name="twitter:title" content="WayfinderGEO: Be the brand AI recommends.">
 <meta name="twitter:description" content="GEO, AIO and SEO run as one visibility system, measured in citations rather than vanity rankings.">
 <meta name="twitter:image" content="https://wayfindergeo.com/og-image.png">
 <meta name="theme-color" content="#fffdf8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#fffdf8">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='6' fill='%23fffdf8'/%3E%3Ccircle cx='14' cy='14' r='10.5' fill='none' stroke='%23c2521a' stroke-opacity='.35' stroke-width='1.5'/%3E%3Cpath d='M14 3.6 18.2 14 9.8 14Z' fill='%23c2521a'/%3E%3Cpath d='M14 24.4 18.2 14 9.8 14Z' fill='%23c2521a' fill-opacity='.35'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="assets/v2.css">
 
 <script type="application/ld+json">
 {
@@ -36,13 +39,44 @@
   "name": "WayfinderGEO",
   "url": "https://wayfindergeo.com/",
   "email": "hello@wayfindergeo.com",
-  "description": "AI search visibility for brands that intend to be the answer. Generative Engine Optimization, AI optimization and technical SEO run as one system, measured in citations rather than rankings.",
-  "areaServed": ["CA", "US"],
+  "logo": "https://wayfindergeo.com/brand/wayfinder-logo-512.png",
+  "image": "https://wayfindergeo.com/og-image.png",
+  "description": "Improve AI search visibility by bringing together SEO, GEO, and AIO to get your brand cited, recommended, and discovered.",
+  "areaServed": [
+    "CA",
+    "US"
+  ],
   "makesOffer": [
-    { "@type": "Offer", "name": "Beacon", "price": "500", "priceCurrency": "USD",
-      "priceSpecification": { "@type": "UnitPriceSpecification", "price": "500", "priceCurrency": "USD", "unitCode": "MON" } },
-    { "@type": "Offer", "name": "North Star", "price": "1500", "priceCurrency": "USD",
-      "priceSpecification": { "@type": "UnitPriceSpecification", "price": "1500", "priceCurrency": "USD", "unitCode": "MON" } }
+    {
+      "@type": "Offer",
+      "name": "Beacon",
+      "price": "500",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "500",
+        "priceCurrency": "USD",
+        "unitCode": "MON"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "North Star",
+      "price": "1500",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "1500",
+        "priceCurrency": "USD",
+        "unitCode": "MON"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Compass",
+      "price": "1250",
+      "priceCurrency": "USD"
+    }
   ]
 }
 </script>
@@ -55,101 +89,156 @@
     {
       "@type": "Question",
       "name": "What is GEO and how is it different from SEO?",
-      "acceptedAnswer": { "@type": "Answer", "text": "SEO earns you a position in a list of links. GEO earns you a mention inside a generated answer. The inputs overlap, since models still lean heavily on indexed content, but the optimization targets are different. GEO cares about passage level retrievability, entity clarity, third party corroboration and how quotable your content is. We run both because neither works properly alone." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SEO earns you a position in a list of links. GEO earns you a mention inside a generated answer. The inputs overlap, since models still lean heavily on indexed content, but the targets are different. GEO cares about how easily a passage can be retrieved, how clearly models understand who you are, whether other sources back you up and how quotable your content is. We run both because neither works properly alone."
+      }
     },
     {
       "@type": "Question",
       "name": "Can you actually influence what ChatGPT says about my brand?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Influence, yes. Control, no, and be skeptical of anyone promising otherwise. Models draw on indexed pages, live retrieval and the wider corpus of what the internet says about you. We work on all three: making your own content the cleanest source available, strengthening entity signals so models know who you are, and building presence on the third party sources they already pull from in your category." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Influence, yes. Control, no, and be skeptical of anyone promising otherwise. Models draw on indexed pages, live retrieval and the wider record of what the internet says about you. We work on all three: making your own content the cleanest source available, strengthening the signals that tell models who you are, and building presence on the third-party sources they already pull from in your category."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI engines do you track?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ChatGPT, Google AI Overviews and AI Mode, Gemini, Perplexity, Claude and Grok. We also watch the sources those engines lean on, such as Reddit, YouTube and review sites, because that’s often where a recommendation is won or lost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I still need SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. AI engines still pull heavily from the search index, so a site that’s hard to crawl or rank is hard to cite. Foundational SEO is part of every plan, not an extra."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is in the free audit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Send us your domain and we come back with a snapshot of your AI visibility: which engines mention you, the prompts where you’re missing and which competitors take the slot instead. It’s yours to keep, with no contract and no pitch deck."
+      }
     },
     {
       "@type": "Question",
       "name": "How long before I see movement?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Technical and structural fixes register within weeks, and crawler activity is usually visible inside the first month. Meaningful citation share generally moves between month two and month four, depending on how competitive your category is and how much authority you start with. Anyone quoting you a fixed date is guessing." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Technical and structural fixes register within weeks, and crawler activity is usually visible inside the first month. Meaningful citation share generally moves between month two and month four, depending on how competitive your category is and how much authority you start with. Anyone quoting you a fixed date is guessing."
+      }
     },
     {
       "@type": "Question",
       "name": "How do you report on something this new?",
-      "acceptedAnswer": { "@type": "Answer", "text": "You get a live dashboard tracking visibility score, share of voice against named competitors, prompt level wins and losses, citation sources and AI crawler activity on your pages. Plus a written monthly read on what moved, what did not and what we are changing next." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every plan gets a written read on what moved, what didn’t and what we’re changing next: once at the end of Compass, monthly on the retainers. North Star clients also get a live dashboard tracking visibility score, share of voice against named competitors, prompt-level wins and losses, citation sources and AI crawler activity on your pages."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many prompts do you track?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Up to 50 priority prompts on Compass and Beacon, and up to 300 on North Star, across every major AI engine. We pick them with you from the questions your buyers actually ask."
+      }
     },
     {
       "@type": "Question",
       "name": "Which plan should I pick?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Beacon if you need to establish presence and fix the fundamentals. North Star if you are actively competing for the recommendation slot and want off site work, content production and faster cycles. Most teams start on Beacon and move up once the baseline report shows what the gap costs them." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Compass if you want the full picture and the fundamentals fixed once, without a retainer. Beacon if you want that work to keep going every month. North Star if you’re actively competing for the recommendation slot and want off-site work, content production and faster cycles. If you’re unsure, Compass is the low-commitment way to start, and nothing in it is wasted if you move to a monthly plan later."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a contract or setup fee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No setup fee and no percentage of ad spend. Compass is a single payment with nothing after it. The monthly plans start with a ninety-day term, since citation share usually takes two to four months to move, then run month to month."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if no plan fits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multi-location businesses, ecommerce catalogues and enterprise scopes are quoted separately. Tell us on the call and we’ll say honestly whether we’re the right partner."
+      }
     }
   ]
 }
 </script>
-</head>
-<body id="top">
-
-<a class="skip" href="#main">Skip to content</a>
-
-<header class="topbar">
-  <nav class="nav" aria-label="Primary">
-    <a class="brand" href="#top">
-      <span class="mark" aria-hidden="true">
-        <svg viewBox="0 0 28 28" focusable="false">
-          <circle cx="14" cy="14" r="12" fill="none" stroke="currentColor" stroke-opacity=".3" stroke-width="1.4"/>
-          <circle cx="14" cy="14" r="7.6" fill="none" stroke="currentColor" stroke-opacity=".22" stroke-width="1" stroke-dasharray="2.5 3.5"/>
-          <path d="M14 2.6 18.6 14 9.4 14Z" fill="currentColor"/>
-          <path d="M14 25.4 18.6 14 9.4 14Z" fill="currentColor" fill-opacity=".32"/>
-        </svg>
-      </span>
-      <span class="brand-name">Wayfinder<span class="brand-geo">GEO</span></span>
+</head><body id="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="wf-gem" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4796E3"/><stop offset=".55" stop-color="#9177C7"/><stop offset="1" stop-color="#CA6673"/></linearGradient></defs></svg>
+<header class="wn on-dark" id="wn">
+  <div class="wn-blur" aria-hidden="true"></div>
+  <nav class="wn-bar" aria-label="Primary">
+    <a class="wn-logo" href="#top" aria-label="WayfinderGEO home">
+      <img class="mk" src="assets/img/mark.svg" width="28" height="28" alt="">
+      <span class="wn-word"><img class="std" src="assets/img/wm-word.svg" alt=""><img class="rev" src="assets/img/wm-word-rev.svg" alt=""></span>
     </a>
-
-    <ul class="nav-links">
-      <li><a href="#shift">The shift</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#faq">FAQ</a></li>
-    </ul>
-
-    <div class="nav-cta">
-      <a class="link-quiet" href="#contact">Free visibility check</a>
-      <a class="btn btn-solid btn-sm" href="#contact">Get a free audit</a>
+    <div class="wn-links"><span class="wn-hl" aria-hidden="true"></span>
+      <a href="#shift">The Shift</a>
+      <button class="wn-drop" type="button" aria-expanded="false" aria-controls="wn-mega">Services <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <a href="#process">Process</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
     </div>
-
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
-      <span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i></span>
-      <span class="sr-only">Menu</span>
-    </button>
+    <div class="wn-cta">
+      <a class="wn-ghost" href="mailto:hello@wayfindergeo.com">Email us</a>
+      <a class="wn-solid" href="#contact"><span class="l-long">Get a free audit</span><span class="l-short">Free audit</span><span class="wn-pop" aria-hidden="true"><img src="assets/img/star.svg" alt=""></span></a>
+      <button class="wn-menu" type="button" aria-expanded="false" aria-controls="wn-sheet" aria-label="Menu"><i></i><i></i></button>
+    </div>
   </nav>
-
-  <div class="mobile-menu" id="mobile-menu" hidden>
-    <ul>
-      <li><a href="#shift">The shift</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#voices">Clients</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#faq">FAQ</a></li>
-    </ul>
-    <a class="btn btn-solid btn-block" href="#contact">Get your free report</a>
-    <p class="mobile-menu-note"><span>Email</span><a href="mailto:hello@wayfindergeo.com">hello@wayfindergeo.com</a></p>
+  <div class="wn-mega" id="wn-mega" role="region" aria-label="Services">
+    <div>
+      <a class="mg-item" href="#services" data-open="geo"><span class="mg-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7a2.5 2.5 0 0 1-2.5 2.5H11l-4.2 3.6V16h-.3A2.5 2.5 0 0 1 4 13.5z" stroke="#C2521A" stroke-width="1.6" stroke-linejoin="round"/><path d="m12 6.6.85 2.45 2.45.85-2.45.85L12 13.2l-.85-2.45-2.45-.85 2.45-.85z" fill="#E07A3A"/></svg></span><span class="mg-tx"><b>Generative Engine Optimization</b><span>Get your brand named and linked inside AI answers.</span></span></a>
+      <a class="mg-item" href="#services" data-open="aio"><span class="mg-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="3.5" width="14" height="17" rx="2.5" stroke="#C2521A" stroke-width="1.6"/><path d="M8.5 8.5h7M8.5 12h7M8.5 15.5h4" stroke="#E07A3A" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="mg-tx"><b>AI optimization and readability</b><span>Make your site easy for models to read, trust and quote.</span></span></a>
+      <a class="mg-item" href="#services" data-open="seo"><span class="mg-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="#C2521A" stroke-width="1.6"/><path d="m15.4 15.4 4.6 4.6" stroke="#C2521A" stroke-width="1.8" stroke-linecap="round"/><path d="m7.6 12.2 2-2 1.5 1.3 2.3-2.7" stroke="#E07A3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="mg-tx"><b>Technical and foundational SEO</b><span>The groundwork every AI answer still leans on.</span></span></a>
+    </div>
+    <a class="mg-feature" href="#contact"><span><small>Free</small><b>AI visibility audit</b>
+      <p>Which models mention you, which prompts you're missing, and who takes the slot instead.</p>
+      <span class="mg-mini">"For agencies your size, <span class="you">your brand</span> comes up most often…"</span></span>
+      <span class="mg-go">Get a free audit →</span></a>
+  </div>
+  <div class="wn-sheet" id="wn-sheet" hidden>
+    <nav class="ms-list" aria-label="Menu">
+      <a class="ms-row" href="#shift"><span>The Shift</span><svg class="ms-ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
+      <div class="ms-acc"><button class="ms-row" type="button" aria-expanded="false" aria-controls="ms-svc"><span>Services</span><svg class="ms-chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></button>
+        <div class="ms-sub" id="ms-svc" hidden><a href="#services" data-open="geo"><span class="mg-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7a2.5 2.5 0 0 1-2.5 2.5H11l-4.2 3.6V16h-.3A2.5 2.5 0 0 1 4 13.5z" stroke="#C2521A" stroke-width="1.6" stroke-linejoin="round"/><path d="m12 6.6.85 2.45 2.45.85-2.45.85L12 13.2l-.85-2.45-2.45-.85 2.45-.85z" fill="#E07A3A"/></svg></span><span class="mg-tx"><b>Generative Engine Optimization</b><span>Get your brand named and linked inside AI answers.</span></span></a><a href="#services" data-open="aio"><span class="mg-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="3.5" width="14" height="17" rx="2.5" stroke="#C2521A" stroke-width="1.6"/><path d="M8.5 8.5h7M8.5 12h7M8.5 15.5h4" stroke="#E07A3A" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="mg-tx"><b>AI optimization and readability</b><span>Make your site easy for models to read, trust and quote.</span></span></a><a href="#services" data-open="seo"><span class="mg-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="#C2521A" stroke-width="1.6"/><path d="m15.4 15.4 4.6 4.6" stroke="#C2521A" stroke-width="1.8" stroke-linecap="round"/><path d="m7.6 12.2 2-2 1.5 1.3 2.3-2.7" stroke="#E07A3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="mg-tx"><b>Technical and foundational SEO</b><span>The groundwork every AI answer still leans on.</span></span></a></div></div>
+      <a class="ms-row" href="#process"><span>Process</span><svg class="ms-ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
+      <a class="ms-row" href="#pricing"><span>Pricing</span><svg class="ms-ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
+      <a class="ms-row" href="#faq"><span>FAQ</span><svg class="ms-ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
+    </nav>
+    <div class="ms-foot">
+      <p class="ms-note">Usually replies within 1 business day</p>
+      <div class="ms-btns"><a class="ms-ghost" href="mailto:hello@wayfindergeo.com">Email us</a><a class="ms-solid" href="#contact">Get a free audit <svg class="ms-ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a></div>
+    </div>
   </div>
 </header>
-
 <main id="main">
-
-<div class="shell">
-
-  <!-- ============================================ HERO -->
-  <section class="section hero">
+<section class="hx o5 horizon">
+  <div class="sky" aria-hidden="true"><canvas id="orbits" data-theme="dark"></canvas><div class="grain-wrap"><div class="grain"></div></div></div>
+  <div class="earth" aria-hidden="true"></div><div class="rim-wrap" aria-hidden="true"><div class="rim"></div></div>
+  <div class="hx-copy">
     <p class="eyebrow eyebrow-center"><span class="chip" aria-hidden="true"></span>Generative Engine Optimization</p>
-    <h1 class="hero-title">Be the brand<br>AI <em>recommends</em>.</h1>
-    <p class="hero-lead">Your buyers ask a model before they ask you. We make sure your name is in the answer, and we bring the receipts every month.</p>
-    <div class="hero-actions">
-      <a class="btn btn-solid" href="#contact">Get your free report</a>
-      <a class="btn btn-ghost" href="#shift">See how it works</a>
+    <h1 class="hero-title">Discovery happens<br>in the <em>AI answers</em> now.</h1>
+    <p class="hero-lead">Search didn’t slow down; it moved. We help your brand be where the customers are.</p>
+    <div class="hero-actions"><a class="btn btn-solid" href="#contact">Get a free audit</a><a class="btn btn-ghost" href="#shift">See why</a></div>
+  </div>
+  <div class="hx-stage" id="stage">
+      <svg class="hx-lines" id="lines" aria-hidden="true"></svg>
+      <div class="hx-focus" id="focus" aria-hidden="true"><img src="assets/img/star.svg" alt=""></div>
     </div>
-  </section>
-
-  <!-- ============================================ PLATFORMS -->
-  <section class="section platforms">
-    <p class="platforms-label" id="platforms-label">Platforms we<br>optimize for</p>
+    <div class="hx-cardwrap"><div class="card" id="card" aria-hidden="true"><div class="c-top"><span class="c-eng"></span><span>Example answer</span></div><p class="c-q"></p><p class="c-a"></p></div></div>
+  <div class="hx-plat"><p class="platforms-label" id="platforms-label">Platforms we optimize for</p>
     <ul class="platform-logos" aria-labelledby="platforms-label">
         <li data-logo="openai"><a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg><span>ChatGPT</span></a></li>
         <li data-logo="google"><a href="https://www.google.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg><span>Google</span></a></li>
@@ -159,118 +248,64 @@
         <li data-logo="perplexity"><a href="https://www.perplexity.ai" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M22.3977 7.0896h-2.3106V.0676l-7.5094 6.3542V.1577h-1.1554v6.1966L4.4904 0v7.0896H1.6023v10.3976h2.8882V24l6.932-6.3591v6.2005h1.1554v-6.0469l6.9318 6.1807v-6.4879h2.8882V7.0896zm-3.4657-4.531v4.531h-5.355l5.355-4.531zm-13.2862.0676 4.8691 4.4634H5.6458V2.6262zM2.7576 16.332V8.245h7.8476l-6.1149 6.1147v1.9723H2.7576zm2.8882 5.0404v-3.8852h.0001v-2.6488l5.7763-5.7764v7.0111l-5.7764 5.2993zm12.7086.0248-5.7766-5.1509V9.0618l5.7766 5.7766v6.5588zm2.8882-5.0652h-1.733v-1.9723L13.3948 8.245h7.8478v8.087z"/></svg><span>Perplexity</span></a></li>
         <li data-logo="reddit"><a href="https://www.reddit.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 3.314 1.343 6.314 3.515 8.485l-2.286 2.286C.775 23.225 1.097 24 1.738 24H12c6.627 0 12-5.373 12-12S18.627 0 12 0Zm4.388 3.199c1.104 0 1.999.895 1.999 1.999 0 1.105-.895 2-1.999 2-.946 0-1.739-.657-1.947-1.539v.002c-1.147.162-2.032 1.15-2.032 2.341v.007c1.776.067 3.4.567 4.686 1.363.473-.363 1.064-.58 1.707-.58 1.547 0 2.802 1.254 2.802 2.802 0 1.117-.655 2.081-1.601 2.531-.088 3.256-3.637 5.876-7.997 5.876-4.361 0-7.905-2.617-7.998-5.87-.954-.447-1.614-1.415-1.614-2.538 0-1.548 1.255-2.802 2.803-2.802.645 0 1.239.218 1.712.585 1.275-.79 2.881-1.291 4.64-1.365v-.01c0-1.663 1.263-3.034 2.88-3.207.188-.911.993-1.595 1.959-1.595Zm-8.085 8.376c-.784 0-1.459.78-1.506 1.797-.047 1.016.64 1.429 1.426 1.429.786 0 1.371-.369 1.418-1.385.047-1.017-.553-1.841-1.338-1.841Zm7.406 0c-.786 0-1.385.824-1.338 1.841.047 1.017.634 1.385 1.418 1.385.785 0 1.473-.413 1.426-1.429-.046-1.017-.721-1.797-1.506-1.797Zm-3.703 4.013c-.974 0-1.907.048-2.77.135-.147.015-.241.168-.183.305.483 1.154 1.622 1.964 2.953 1.964 1.33 0 2.47-.81 2.953-1.964.057-.137-.037-.29-.184-.305-.863-.087-1.795-.135-2.769-.135Z"/></svg><span>Reddit</span></a></li>
         <li data-logo="youtube"><a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><span>YouTube</span></a></li>
-    </ul>
+    </ul></div>
+</section>
+<div class="page">
+
+  <!-- ============================================ 01 THE SHIFT: a light globe of city lights beside the text, the city reel under it.
+       The globe turns from city to city; the reel card for that city lights up, and tapping a reel card turns the globe there. -->
+  <section class="sec shift" id="shift">
+    <script type="application/json" id="wf-cities">[{"k": "chicago", "n": "Chicago", "tz": "America/Chicago", "lat": 41.88, "lon": -87.63, "key": 1, "q": ["Best CPA for startups in Chicago?", "Who does kitchen remodels near me?"]}, {"k": "toronto", "n": "Toronto", "tz": "America/Toronto", "lat": 43.65, "lon": -79.38, "key": 1, "q": ["Family dentist taking new patients?", "Best bakery for custom cakes?"]}, {"k": "newyork", "n": "New York", "tz": "America/New_York", "lat": 40.71, "lon": -74.01, "key": 0, "q": ["NetSuite alternatives for Shopify?", "Florist with same-day delivery?"]}, {"k": "raleigh", "n": "Raleigh", "tz": "America/New_York", "lat": 35.78, "lon": -78.64, "key": 0, "q": ["HVAC repair open this weekend?", "Brunch spot that takes bookings?"]}, {"k": "cleveland", "n": "Cleveland", "tz": "America/New_York", "lat": 41.5, "lon": -81.69, "key": 0, "q": ["Physical therapy near downtown?", "Reliable roofer with good reviews?"]}, {"k": "jeddah", "n": "Jeddah", "tz": "Asia/Riyadh", "lat": 21.49, "lon": 39.19, "key": 1, "q": ["Contractor for a villa renovation?", "Best interior fit-out company?"]}, {"k": "dubai", "n": "Dubai", "tz": "Asia/Dubai", "lat": 25.2, "lon": 55.27, "key": 0, "q": ["Agency to get us cited by ChatGPT?", "Top-rated clinic in Dubai Marina?"]}, {"k": "hyderabad", "n": "Hyderabad", "tz": "Asia/Kolkata", "lat": 17.39, "lon": 78.49, "key": 0, "q": ["Payroll software for startups?", "Coworking space in Hi-Tech City?"]}]</script>
+    <div class="sx sx-orbit">
+      <div class="sx-copy">
+          <p class="kicker"><span>01</span>The shift</p>
+          <h2 class="h2">The rules of search are being rewritten.</h2>
+          <p class="lead">Buyers now ask an AI and get one short answer instead of ten links. If you aren’t named in that answer, you might as well be invisible.</p>
+          <ol class="sx-points">
+            <li><span class="sx-n">01</span><div><b>The answer matters most.</b> An assistant reads dozens of pages and writes one reply for the buyer. Being inside sort of matters more than ranking now.</div></li>
+            <li><span class="sx-n">02</span><div><b>What others say counts.</b> Reviews, Reddit threads, and comparisons shape how models describe you, just like your site does.</div></li>
+            <li><span class="sx-n">03</span><div><b>Fewer visits, but better ones.</b> People who arrive from an AI recommendation know why they came and tend to convert better.</div></li>
+          </ol>
+        </div>
+      <div class="sx-art">
+        <div class="gl-wrap"><canvas class="gl-canvas" aria-hidden="true"></canvas></div>
+      </div>
+    </div>
+    <div class="reel">
+      <div class="reel-row"><div class="reel-track"><figure class="reel-card key" data-city="chicago" tabindex="0" role="button" aria-label="Show Chicago on the globe"><picture><source srcset="assets/img/city-chicago.webp" type="image/webp"><img src="assets/img/city-chicago.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>Chicago</b><span class="rc-time" data-tz="America/Chicago"></span></span><span class="rc-q">“Best CPA for startups in Chicago?”</span></figcaption></figure><figure class="reel-card key" data-city="toronto" tabindex="0" role="button" aria-label="Show Toronto on the globe"><picture><source srcset="assets/img/city-toronto.webp" type="image/webp"><img src="assets/img/city-toronto.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>Toronto</b><span class="rc-time" data-tz="America/Toronto"></span></span><span class="rc-q">“Family dentist taking new patients?”</span></figcaption></figure><figure class="reel-card key" data-city="jeddah" tabindex="0" role="button" aria-label="Show Jeddah on the globe"><picture><source srcset="assets/img/city-jeddah.webp" type="image/webp"><img src="assets/img/city-jeddah.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>Jeddah</b><span class="rc-time" data-tz="Asia/Riyadh"></span></span><span class="rc-q">“Contractor for a villa renovation?”</span></figcaption></figure><figure class="reel-card" data-city="newyork" tabindex="0" role="button" aria-label="Show New York on the globe"><picture><source srcset="assets/img/city-newyork.webp" type="image/webp"><img src="assets/img/city-newyork.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>New York</b><span class="rc-time" data-tz="America/New_York"></span></span><span class="rc-q">“NetSuite alternatives for Shopify?”</span></figcaption></figure><figure class="reel-card" data-city="dubai" tabindex="0" role="button" aria-label="Show Dubai on the globe"><picture><source srcset="assets/img/city-dubai.webp" type="image/webp"><img src="assets/img/city-dubai.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>Dubai</b><span class="rc-time" data-tz="Asia/Dubai"></span></span><span class="rc-q">“Agency to get us cited by ChatGPT?”</span></figcaption></figure><figure class="reel-card" data-city="raleigh" tabindex="0" role="button" aria-label="Show Raleigh on the globe"><picture><source srcset="assets/img/city-raleigh.webp" type="image/webp"><img src="assets/img/city-raleigh.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>Raleigh</b><span class="rc-time" data-tz="America/New_York"></span></span><span class="rc-q">“HVAC repair open this weekend?”</span></figcaption></figure><figure class="reel-card" data-city="cleveland" tabindex="0" role="button" aria-label="Show Cleveland on the globe"><picture><source srcset="assets/img/city-cleveland.webp" type="image/webp"><img src="assets/img/city-cleveland.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>Cleveland</b><span class="rc-time" data-tz="America/New_York"></span></span><span class="rc-q">“Physical therapy near downtown?”</span></figcaption></figure><figure class="reel-card" data-city="hyderabad" tabindex="0" role="button" aria-label="Show Hyderabad on the globe"><picture><source srcset="assets/img/city-hyderabad.webp" type="image/webp"><img src="assets/img/city-hyderabad.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>Hyderabad</b><span class="rc-time" data-tz="Asia/Kolkata"></span></span><span class="rc-q">“Payroll software for startups?”</span></figcaption></figure><figure class="reel-card key" data-city="chicago" aria-hidden="true" tabindex="-1"><picture><source srcset="assets/img/city-chicago.webp" type="image/webp"><img src="assets/img/city-chicago.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>Chicago</b><span class="rc-time" data-tz="America/Chicago"></span></span><span class="rc-q">“Best CPA for startups in Chicago?”</span></figcaption></figure><figure class="reel-card key" data-city="toronto" aria-hidden="true" tabindex="-1"><picture><source srcset="assets/img/city-toronto.webp" type="image/webp"><img src="assets/img/city-toronto.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>Toronto</b><span class="rc-time" data-tz="America/Toronto"></span></span><span class="rc-q">“Family dentist taking new patients?”</span></figcaption></figure><figure class="reel-card key" data-city="jeddah" aria-hidden="true" tabindex="-1"><picture><source srcset="assets/img/city-jeddah.webp" type="image/webp"><img src="assets/img/city-jeddah.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>Jeddah</b><span class="rc-time" data-tz="Asia/Riyadh"></span></span><span class="rc-q">“Contractor for a villa renovation?”</span></figcaption></figure><figure class="reel-card" data-city="newyork" aria-hidden="true" tabindex="-1"><picture><source srcset="assets/img/city-newyork.webp" type="image/webp"><img src="assets/img/city-newyork.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>New York</b><span class="rc-time" data-tz="America/New_York"></span></span><span class="rc-q">“NetSuite alternatives for Shopify?”</span></figcaption></figure><figure class="reel-card" data-city="dubai" aria-hidden="true" tabindex="-1"><picture><source srcset="assets/img/city-dubai.webp" type="image/webp"><img src="assets/img/city-dubai.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>Dubai</b><span class="rc-time" data-tz="Asia/Dubai"></span></span><span class="rc-q">“Agency to get us cited by ChatGPT?”</span></figcaption></figure><figure class="reel-card" data-city="raleigh" aria-hidden="true" tabindex="-1"><picture><source srcset="assets/img/city-raleigh.webp" type="image/webp"><img src="assets/img/city-raleigh.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>Raleigh</b><span class="rc-time" data-tz="America/New_York"></span></span><span class="rc-q">“HVAC repair open this weekend?”</span></figcaption></figure><figure class="reel-card" data-city="cleveland" aria-hidden="true" tabindex="-1"><picture><source srcset="assets/img/city-cleveland.webp" type="image/webp"><img src="assets/img/city-cleveland.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>Cleveland</b><span class="rc-time" data-tz="America/New_York"></span></span><span class="rc-q">“Physical therapy near downtown?”</span></figcaption></figure><figure class="reel-card" data-city="hyderabad" aria-hidden="true" tabindex="-1"><picture><source srcset="assets/img/city-hyderabad.webp" type="image/webp"><img src="assets/img/city-hyderabad.jpg" alt="" loading="lazy" width="680" height="680"></picture><figcaption><span class="rc-meta"><b>Hyderabad</b><span class="rc-time" data-tz="Asia/Kolkata"></span></span><span class="rc-q">“Payroll software for startups?”</span></figcaption></figure></div></div>
+    </div>
+    <p class="credit">Cities at night from the International Space Station; Raleigh from NASA Black Marble · NASA</p>
   </section>
 
-  <!-- ============================================ THE SHIFT -->
-  <section class="section split" id="shift">
-    <div class="split-copy">
-      <p class="eyebrow">The shift</p>
-      <h2 class="h2">Search did not slow down. It moved.</h2>
-      <p class="lead">Answers are synthesized before the click now. The brands quoted inside those answers win the consideration set by default. Ranking is no longer the finish line. Being retrieved, cited and recommended is.</p>
-
-      <div class="steps">
-        <div class="step is-open">
-          <h3><button type="button" class="step-head" aria-expanded="true" aria-controls="step-1">
-            <span class="step-num">1</span><span class="step-title">The click is optional now</span>
-          </button></h3>
-          <div class="step-body" id="step-1">
-            <p>Models fan one prompt into dozens of sub queries, then stitch an answer together. If your brand is not inside it, you were never in the running, whatever position you hold.</p>
-          </div>
-        </div>
-        <div class="step">
-          <h3><button type="button" class="step-head" aria-expanded="false" aria-controls="step-2">
-            <span class="step-num">2</span><span class="step-title">Your reputation is training data</span>
-          </button></h3>
-          <div class="step-body" id="step-2" hidden>
-            <p>Reviews, Reddit threads and comparison posts shape what models say about you. Off site coverage is now on page real estate.</p>
-          </div>
-        </div>
-        <div class="step">
-          <h3><button type="button" class="step-head" aria-expanded="false" aria-controls="step-3">
-            <span class="step-num">3</span><span class="step-title">The traffic that remains is better</span>
-          </button></h3>
-          <div class="step-body" id="step-3" hidden>
-            <p>Fewer sessions, higher intent. Someone arriving from an AI recommendation has already been pre sold, which is why they convert at a multiple of ordinary organic visits.</p>
-          </div>
-        </div>
-      </div>
+  <!-- ============================================ 02 MARKET -->
+  <section class="sec market" id="market">
+    <div class="sec-head">
+      <p class="kicker"><span>02</span>Where the market actually is</p>
+      <h2 class="h2">The proof isn’t in our pitch. It’s out there.</h2>
     </div>
-
-    <div class="split-panel">
-      <figure class="answer-card">
-        <figcaption class="answer-head">
-          <span class="mark mark-xs" aria-hidden="true">
-            <svg viewBox="0 0 28 28" focusable="false">
-              <circle cx="14" cy="14" r="12" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="1.6"/>
-              <path d="M14 2.6 18.6 14 9.4 14Z" fill="currentColor"/>
-              <path d="M14 25.4 18.6 14 9.4 14Z" fill="currentColor" fill-opacity=".32"/>
-            </svg>
-          </span>
-          AI answer
-        </figcaption>
-        <p class="answer-prompt">“Who is the best GEO agency for a growing brand?”</p>
-        <blockquote class="answer-body">
-          <p>For brands moving into AI search, <mark>WayfinderGEO</mark> is a strong fit. They run Generative Engine Optimization alongside technical SEO and report on citation share rather than rankings, with plans starting at $500 per month.</p>
-        </blockquote>
-        <div class="answer-sources">
-          <span class="answer-sources-label">Sources</span>
-          <ul>
-            <li>wayfindergeo.com</li><li>reddit.com</li><li>g2.com</li><li>searchengineland.com</li>
-          </ul>
-        </div>
-      </figure>
+    <div class="stats">
+      <div class="stat"><p class="stat-fig"><b data-to="68">68</b><span>%</span></p><div class="meter" style="--v:.68"><i></i></div><p class="stat-copy">of Google searches in the US now end without a click to any website</p><p class="stat-src"><a href="https://sparktoro.com/blog/in-2026-less-than-one-third-of-google-searches-still-send-a-click/" target="_blank" rel="noopener noreferrer">SparkToro and Similarweb, 2026</a></p></div>
+      <div class="stat"><p class="stat-fig"><b data-to="61">61</b><span>%</span></p><div class="meter" style="--v:.61"><i></i></div><p class="stat-copy">drop in organic click-through on searches that show an AI Overview</p><p class="stat-src"><a href="https://www.seerinteractive.com/insights/aio-impact-on-google-ctr-september-2025-update" target="_blank" rel="noopener noreferrer">Seer Interactive, 2025</a></p></div>
+      <div class="stat"><p class="stat-fig"><b data-to="4.4" data-dec="1">4.4</b><span>&times;</span></p><div class="meter dots"><i></i><i></i><i></i><i></i></div><p class="stat-copy">the average value of a visitor from AI search, compared with one from traditional search</p><p class="stat-src"><a href="https://www.semrush.com/blog/ai-search-seo-traffic-study/" target="_blank" rel="noopener noreferrer">Semrush, 2025</a></p></div>
+      <div class="stat"><p class="stat-fig"><b data-to="58">58</b><span>%</span></p><div class="meter" style="--v:.58"><i></i></div><p class="stat-copy">of consumers now go to AI tools first for product and service recommendations</p><p class="stat-src"><a href="https://www.capgemini.com/news/press-releases/71-of-consumers-want-generative-ai-integrated-into-their-shopping-experiences/" target="_blank" rel="noopener noreferrer">Capgemini Research Institute, 2025</a></p></div>
     </div>
+    <p class="note">Each number links to the study behind it. Your own baseline will differ by category, and measuring it is step one of every engagement.</p>
   </section>
 
-  <!-- ============================================ MARKET -->
-  <section class="section market" id="market">
-    <div class="market-head">
-      <p class="eyebrow">Where the market actually is</p>
-      <h2 class="h2">Industry averages, not our marketing math.</h2>
+  <!-- ============================================ 03 SERVICES (compact; each card opens on its own) -->
+  <section class="sec services" id="services">
+    <div class="sec-head">
+      <p class="kicker"><span>03</span>What we do</p>
+      <h2 class="h2">Three kinds of work.<br>One job: getting you named.</h2>
+      <p class="lead">The old playbook was built for search engines. We build for search, AI, and everything in between.</p>
     </div>
-
-    <div class="hairgrid hairgrid-4">
-      <div class="datum">
-        <p class="datum-fig">68<span>%</span></p>
-        <p class="datum-copy">of Google searches now end without a single click to a website</p>
-        <p class="datum-src">2026 clickstream studies</p>
-      </div>
-      <div class="datum">
-        <p class="datum-fig">60<span>%</span></p>
-        <p class="datum-copy">average drop in organic click through rate when an AI Overview appears</p>
-        <p class="datum-src">Published CTR studies</p>
-      </div>
-      <div class="datum">
-        <p class="datum-fig">4<span>&times;</span></p>
-        <p class="datum-copy">higher conversion rate for AI referred visitors versus traditional organic</p>
-        <p class="datum-src">Conservative average</p>
-      </div>
-      <div class="datum">
-        <p class="datum-fig">70<span>%</span></p>
-        <p class="datum-copy">of consumers now use generative AI tools for product and service recommendations</p>
-        <p class="datum-src">2026 consumer research</p>
-      </div>
-    </div>
-
-    <p class="market-note">Figures are blended industry averages compiled from publicly reported 2026 research. Your baseline will differ by category, and measuring it is step one of every engagement.</p>
-  </section>
-
-  <!-- ============================================ SERVICES -->
-  <section class="section services" id="services">
-    <div class="services-head">
-      <div>
-        <p class="eyebrow">What we do</p>
-        <h2 class="h2">Three disciplines.<br>One visibility system.</h2>
-      </div>
-      <p class="lead">SEO still feeds the index. GEO earns the citation. AIO makes your site legible to machines. Run them apart and you leak. Run them together and they compound.</p>
-    </div>
-
-    <div class="hairgrid hairgrid-3 svc-grid">
-
-      <article class="svc">
-        <div class="svc-art">
-          <svg viewBox="0 0 320 176" role="img" aria-label="An answer panel with one highlighted passage linked out to three citation sources">
+    <div class="discs">
+      <article class="disc">
+        <p class="disc-tag">GEO</p>
+        <h3 class="disc-title">Generative Engine Optimization</h3>
+        <p class="disc-sum">Getting your brand named, quoted and linked in AI answers to the questions your buyers ask.</p>
+        <button type="button" class="disc-head" aria-expanded="false" aria-controls="disc-geo"><span>What is included</span><span class="disc-plus" aria-hidden="true"></span></button>
+        <div class="disc-body" id="disc-geo" inert><div class="disc-clip"><div class="disc-inner"><div class="disc-art" aria-hidden="true"><svg viewBox="0 0 320 176" role="img" aria-label="An answer panel with one highlighted passage linked out to three citation sources">
             <rect x="18" y="26" width="176" height="124" rx="10" fill="var(--paper)" stroke="var(--rule)"/>
             <rect x="34" y="46" width="120" height="8" rx="4" fill="var(--sand)"/>
             <rect x="34" y="66" width="144" height="8" rx="4" fill="var(--sand)"/>
@@ -283,25 +318,20 @@
             <circle cx="258" cy="54" r="11" fill="var(--paper)" stroke="var(--ember)" stroke-width="1.6"/>
             <circle cx="258" cy="91" r="11" fill="var(--ember)"/>
             <circle cx="258" cy="128" r="11" fill="var(--paper)" stroke="var(--ember)" stroke-width="1.6"/>
-          </svg>
-        </div>
-        <div class="svc-body">
-          <p class="tag">GEO</p>
-          <h3 class="h3">Generative Engine Optimization</h3>
-          <p>Getting your brand named, quoted and linked inside AI answers, on the prompts your buyers actually type.</p>
-          <ul class="ticks">
-            <li>Prompt research and share of voice tracking</li>
-            <li>Citation gap analysis against competitors</li>
-            <li>Answer ready content built for passage retrieval</li>
-            <li>Entity and knowledge graph reinforcement</li>
-            <li>Off site presence on the sources models trust</li>
-          </ul>
-        </div>
+          </svg></div><ul class="ticks">
+            <li>Finding the questions your buyers ask, and tracking how often you’re named</li>
+            <li>Seeing where competitors get cited and you don’t</li>
+            <li>Pages written so an AI can quote them cleanly</li>
+            <li>Making sure models know exactly who you are</li>
+            <li>Mentions on the sites AI engines already trust</li>
+          </ul></div></div></div>
       </article>
-
-      <article class="svc">
-        <div class="svc-art">
-          <svg viewBox="0 0 320 176" role="img" aria-label="A structured data tree branching from one root node into four leaf nodes">
+      <article class="disc">
+        <p class="disc-tag">AIO</p>
+        <h3 class="disc-title">AI optimization and readability</h3>
+        <p class="disc-sum">Making your site easy for AI crawlers to read, quote and credit back to you.</p>
+        <button type="button" class="disc-head" aria-expanded="false" aria-controls="disc-aio"><span>What is included</span><span class="disc-plus" aria-hidden="true"></span></button>
+        <div class="disc-body" id="disc-aio" inert><div class="disc-clip"><div class="disc-inner"><div class="disc-art" aria-hidden="true"><svg viewBox="0 0 320 176" role="img" aria-label="A structured data tree branching from one root node into four leaf nodes">
             <rect x="126" y="26" width="68" height="24" rx="6" fill="var(--ember)"/>
             <path d="M160 50 V66 M86 66 H234 M86 66 V82 M234 66 V82" fill="none" stroke="var(--rule-mid)" stroke-width="1.4"/>
             <rect x="52" y="82" width="68" height="22" rx="6" fill="var(--paper)" stroke="var(--rule-mid)" stroke-width="1.2"/>
@@ -312,25 +342,20 @@
             <rect x="94" y="132" width="44" height="18" rx="5" fill="var(--sand)"/>
             <rect x="182" y="132" width="44" height="18" rx="5" fill="var(--sand)"/>
             <rect x="242" y="132" width="44" height="18" rx="5" fill="var(--ember)" fill-opacity=".25"/>
-          </svg>
-        </div>
-        <div class="svc-body">
-          <p class="tag">AIO</p>
-          <h3 class="h3">AI optimization and readability</h3>
-          <p>Making your site trivially easy for crawlers and agents to parse, quote and attribute back to you.</p>
-          <ul class="ticks">
-            <li>Structured data and schema architecture</li>
-            <li>llms.txt, crawler access and agent log auditing</li>
-            <li>Chunking, headings and semantic content structure</li>
-            <li>Rendering, speed and core web vitals</li>
-            <li>Freshness signals and content maintenance loops</li>
-          </ul>
-        </div>
+          </svg></div><ul class="ticks">
+            <li>Structured data (schema), set up properly</li>
+            <li>llms.txt, crawler access and AI bot logs</li>
+            <li>Headings and sections an AI can lift straight into an answer</li>
+            <li>Speed and Core Web Vitals</li>
+            <li>Keeping your key pages up to date</li>
+          </ul></div></div></div>
       </article>
-
-      <article class="svc">
-        <div class="svc-art">
-          <svg viewBox="0 0 320 176" role="img" aria-label="An abstract downtown street grid with one location marked">
+      <article class="disc">
+        <p class="disc-tag">SEO</p>
+        <h3 class="disc-title">Foundational search</h3>
+        <p class="disc-sum">AI answers still start from search results. If you’re hard to find there, you’re hard to quote.</p>
+        <button type="button" class="disc-head" aria-expanded="false" aria-controls="disc-seo"><span>What is included</span><span class="disc-plus" aria-hidden="true"></span></button>
+        <div class="disc-body" id="disc-seo" inert><div class="disc-clip"><div class="disc-inner"><div class="disc-art" aria-hidden="true"><svg viewBox="0 0 320 176" role="img" aria-label="An abstract downtown street grid with one location marked">
             <g stroke="var(--rule-mid)" stroke-width="1.2" fill="none">
               <path d="M46 22 V154 M100 22 V154 M160 22 V154 M220 22 V154 M274 22 V154"/>
               <path d="M46 52 H274 M46 88 H274 M46 124 H274"/>
@@ -343,272 +368,385 @@
             <circle cx="160" cy="88" r="22" fill="none" stroke="var(--ember)" stroke-opacity=".3" stroke-width="1.2"/>
             <path d="M160 76a10 10 0 0 0-10 10c0 7.4 10 16 10 16s10-8.6 10-16a10 10 0 0 0-10-10Z" fill="var(--ember)"/>
             <circle cx="160" cy="86" r="3.6" fill="var(--paper)"/>
-          </svg>
-        </div>
-        <div class="svc-body">
-          <p class="tag">SEO</p>
-          <h3 class="h3">Foundational search</h3>
-          <p>The index is still where models source from. Classic search remains the substrate the whole system stands on.</p>
-          <ul class="ticks">
+          </svg></div><ul class="ticks">
             <li>Technical audits and crawl health</li>
             <li>Topical authority and internal linking</li>
-            <li>Content strategy mapped to buyer intent</li>
-            <li>Local and multi location visibility</li>
-            <li>Digital PR and authority link acquisition</li>
-          </ul>
-        </div>
+            <li>Content planned around what buyers search for</li>
+            <li>Local and multi-location visibility</li>
+            <li>Digital PR and links from trusted sites</li>
+          </ul></div></div></div>
       </article>
-
     </div>
   </section>
 
-  <!-- ============================================ PROCESS -->
-  <section class="section split split-reverse" id="process">
-    <div class="split-panel">
-      <div class="route" role="img" aria-label="A route plotted across a grid through four numbered waypoints">
-        <svg viewBox="0 0 520 400" focusable="false">
-          <g fill="none" stroke="var(--rule-mid)" stroke-width="1.2" opacity=".9">
-            <path d="M-10 322 C 90 300 150 336 250 312 S 420 268 530 288"/>
-            <path d="M-10 252 C 90 230 150 266 250 242 S 420 198 530 218"/>
-            <path d="M-10 182 C 90 160 150 196 250 172 S 420 128 530 148"/>
-          </g>
-          <path d="M62 330 L176 252 L318 196 L444 84" fill="none" stroke="var(--ember)" stroke-width="2.2"
-                stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="9 8" opacity=".55"/>
-          <g class="route-pt">
-            <circle cx="62" cy="330" r="17" fill="var(--paper)" stroke="var(--ember)" stroke-width="2"/>
-            <text x="62" y="335">01</text>
-          </g>
-          <g class="route-pt">
-            <circle cx="176" cy="252" r="17" fill="var(--paper)" stroke="var(--ember)" stroke-width="2"/>
-            <text x="176" y="257">02</text>
-          </g>
-          <g class="route-pt">
-            <circle cx="318" cy="196" r="17" fill="var(--paper)" stroke="var(--ember)" stroke-width="2"/>
-            <text x="318" y="201">03</text>
-          </g>
-          <g class="route-pt route-pt-end">
-            <circle cx="444" cy="84" r="19" fill="var(--ember)"/>
-            <text x="444" y="89">04</text>
-          </g>
-        </svg>
-      </div>
+  <!-- ============================================ 04 WHO IT IS FOR (cards run past the page edges) -->
+  <section class="sec who" id="who">
+    <div class="sec-head">
+      <p class="kicker"><span>04</span>Who it’s for</p>
+      <h2 class="h2">For businesses people now ask AI about.</h2>
+      <p class="lead">Local businesses and growing brands whose customers ask an assistant before they search, call or visit.</p>
     </div>
-
-    <div class="split-copy">
-      <p class="eyebrow">How it runs</p>
-      <h2 class="h2">Four moves, repeated until it compounds.</h2>
-      <ol class="moves">
-        <li>
-          <span class="move-num">01</span>
-          <h3 class="h4">Baseline</h3>
-          <p>Where you stand across every AI surface, benchmarked against the three competitors taking your slot. Raw numbers before opinions.</p>
-        </li>
-        <li>
-          <span class="move-num">02</span>
-          <h3 class="h4">Diagnose</h3>
-          <p>Prompt mapping, citation gaps, entity coverage, technical blockers. We separate content problems from authority problems, because the fixes are nothing alike.</p>
-        </li>
-        <li>
-          <span class="move-num">03</span>
-          <h3 class="h4">Build</h3>
-          <p>Schema, site structure, answer ready pages, entity reinforcement and placement on the sources models already trust in your category.</p>
-        </li>
-        <li>
-          <span class="move-num">04</span>
-          <h3 class="h4">Compound</h3>
-          <p>Track, prune, expand. AI visibility behaves like interest, not like a campaign. The programs that win are the ones still running in month twelve.</p>
-        </li>
-      </ol>
+    <div class="who-tabs-wrap"><div class="who-tabs" role="tablist" aria-label="Business types"><button type="button" role="tab" id="who-tab-clinic" aria-controls="who-clinic" aria-selected="true">Clinics</button><button type="button" role="tab" id="who-tab-cafe" aria-controls="who-cafe" aria-selected="false" tabindex="-1">Cafés and restaurants</button><button type="button" role="tab" id="who-tab-trades" aria-controls="who-trades" aria-selected="false" tabindex="-1">Trades</button><button type="button" role="tab" id="who-tab-shop" aria-controls="who-shop" aria-selected="false" tabindex="-1">Shops</button><button type="button" role="tab" id="who-tab-software" aria-controls="who-software" aria-selected="false" tabindex="-1">Software and B2B</button></div></div>
+    <div class="who-rail">
+      <div class="who-track" tabindex="-1"><article class="who-card is-on" id="who-clinic" role="tabpanel" aria-labelledby="who-tab-clinic">
+          <div class="who-copy">
+            <p class="who-eyebrow">Clinics and dental practices</p>
+            <h3 class="who-q">“Which dentist near me takes new patients on Saturdays?”</h3>
+            <p class="who-p">An assistant answers with two or three practice names. We work on the listings, reviews and service pages that decide which names those are.</p>
+            <a class="who-link" href="#contact"><span class="who-go" aria-hidden="true"></span>See where you stand</a>
+          </div>
+          <figure class="who-photo"><picture><source srcset="assets/img/biz-clinic.webp" type="image/webp"><img src="assets/img/biz-clinic.jpg" alt="" loading="lazy" width="640" height="800"></picture></figure>
+        </article><article class="who-card" id="who-cafe" role="tabpanel" aria-labelledby="who-tab-cafe">
+          <div class="who-copy">
+            <p class="who-eyebrow">Cafés, bakeries and restaurants</p>
+            <h3 class="who-q">“Where can I get a good brunch nearby that takes bookings?”</h3>
+            <p class="who-p">Recommendations lean on menus, reviews and local mentions. We make sure yours are complete, current and easy for a model to quote.</p>
+            <a class="who-link" href="#contact"><span class="who-go" aria-hidden="true"></span>See where you stand</a>
+          </div>
+          <figure class="who-photo"><picture><source srcset="assets/img/biz-cafe.webp" type="image/webp"><img src="assets/img/biz-cafe.jpg" alt="" loading="lazy" width="640" height="800"></picture></figure>
+        </article><article class="who-card" id="who-trades" role="tabpanel" aria-labelledby="who-tab-trades">
+          <div class="who-copy">
+            <p class="who-eyebrow">Contractors and trades</p>
+            <h3 class="who-q">“Who is a reliable contractor for a kitchen renovation in my area?”</h3>
+            <p class="who-p">People ask for someone they can trust. We build the service-area pages, project proof and outside mentions that get you named.</p>
+            <a class="who-link" href="#contact"><span class="who-go" aria-hidden="true"></span>See where you stand</a>
+          </div>
+          <figure class="who-photo"><picture><source srcset="assets/img/biz-trades.webp" type="image/webp"><img src="assets/img/biz-trades.jpg" alt="" loading="lazy" width="640" height="800"></picture></figure>
+        </article><article class="who-card" id="who-shop" role="tabpanel" aria-labelledby="who-tab-shop">
+          <div class="who-copy">
+            <p class="who-eyebrow">Shops and local retail</p>
+            <h3 class="who-q">“Where can I order fresh flowers for delivery today?”</h3>
+            <p class="who-p">Stock, hours and delivery details decide whether an assistant sends buyers your way. We keep that information clear and consistent everywhere it appears.</p>
+            <a class="who-link" href="#contact"><span class="who-go" aria-hidden="true"></span>See where you stand</a>
+          </div>
+          <figure class="who-photo"><picture><source srcset="assets/img/biz-shop.webp" type="image/webp"><img src="assets/img/biz-shop.jpg" alt="" loading="lazy" width="640" height="800"></picture></figure>
+        </article><article class="who-card" id="who-software" role="tabpanel" aria-labelledby="who-tab-software">
+          <div class="who-copy">
+            <p class="who-eyebrow">Software and B2B brands</p>
+            <h3 class="who-q">“What are the best alternatives to the tool we use now?”</h3>
+            <p class="who-p">Buyers build their shortlist in an AI chat before they visit a website. We earn your place in the comparisons and roundups models read.</p>
+            <a class="who-link" href="#contact"><span class="who-go" aria-hidden="true"></span>See where you stand</a>
+          </div>
+          <figure class="who-photo"><picture><source srcset="assets/img/biz-software.webp" type="image/webp"><img src="assets/img/biz-software.jpg" alt="" loading="lazy" width="640" height="800"></picture></figure>
+        </article></div>
     </div>
   </section>
 
-  <!-- ============================================ VOICES -->
-  <section class="section voices" id="voices">
-    <div class="voices-head">
-      <p class="eyebrow">Client words</p>
+  <!-- ============================================ 05 CLIENT WORDS: spotlight, then the wider client list -->
+  <section class="sec voices2" id="voices">
+    <div class="sec-head">
+      <p class="kicker"><span>05</span>Client words</p>
       <h2 class="h2">What working with us sounds like.</h2>
     </div>
-
-    <div class="voices-carousel">
-      <div class="v-track" id="v-track" tabindex="0" role="group" aria-label="Client testimonials, scrollable">
-        <figure class="v-slide" id="v-slide-0" data-i="0">
-          <span class="avatar" data-photo="people/mahroos.jpg" aria-hidden="true">MC</span>
-          <blockquote><p>&ldquo;I wanted someone who cared about results instead of just rankings, and that’s exactly what we got. They helped us build a stronger SEO foundation while also making sure our product is <mark>discoverable through AI search</mark>. The communication was clear, the work was consistent, and we’ve seen steady growth ever since.&rdquo;</p></blockquote>
-          <figcaption>
-            <span class="who"><b>Mahroos A.</b><i>CleanMeter</i></span>
-            <a class="li" href="https://www.linkedin.com/in/marsdesigns/" target="_blank" rel="noopener noreferrer" aria-label="Mahroos A. on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a>
-          </figcaption>
-        </figure>
-        <figure class="v-slide" id="v-slide-1" data-i="1">
-          <span class="avatar" data-photo="people/alim.jpg" aria-hidden="true">AI</span>
-          <blockquote><p>&ldquo;Working with them has been one of the best decisions we made for our online presence. They understood our business quickly, <mark>improved our visibility across search and AI platforms</mark>, and brought in qualified enquiries without making the process complicated. I’d happily recommend them to anyone serious about long-term growth.&rdquo;</p></blockquote>
-          <figcaption>
-            <span class="who"><b>Alim M.</b><i>IBFNet Group</i></span>
-            <a class="li" href="https://www.linkedin.com/in/apyfz/" target="_blank" rel="noopener noreferrer" aria-label="Alim M. on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a>
-          </figcaption>
-        </figure>
-        <figure class="v-slide" id="v-slide-2" data-i="2">
-          <span class="avatar" data-photo="people/adnan.jpg" aria-hidden="true">AC</span>
-          <blockquote><p>&ldquo;They became an extension of our team from day one. Every recommendation had a clear reason behind it, and the improvements started showing within a few months. If you’re looking for someone who <mark>understands where search is heading</mark> and knows how to get your business in front of the right audience, I highly recommend them.&rdquo;</p></blockquote>
-          <figcaption>
-            <span class="who"><b>Adnan J.</b><i>Crispy Studio</i></span>
-            <a class="li" href="https://www.linkedin.com/in/crispyux/" target="_blank" rel="noopener noreferrer" aria-label="Adnan J. on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="v-nav">
-        <div class="v-dots" id="v-dots">
-          <button class="v-dot" type="button" data-i="0" aria-label="Show testimonial from Mahroos A." aria-current="true"></button>
-          <button class="v-dot" type="button" data-i="1" aria-label="Show testimonial from Alim M."></button>
-          <button class="v-dot" type="button" data-i="2" aria-label="Show testimonial from Adnan J."></button>
+    <div class="spot spot3" data-look="c" data-frame="round" data-cur="0">
+      <div class="sp-stage">
+      <div class="sp-win" aria-hidden="true">
+        <div class="scn scn-game" data-i="0">
+          <svg viewBox="0 0 480 440" preserveAspectRatio="xMidYMid slice"><defs>
+            <linearGradient id="w0-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151823"/><stop offset=".55" stop-color="#2a1a14"/><stop offset=".66" stop-color="#6a3514"/></linearGradient>
+            <radialGradient id="w0-sunglow"><stop offset="0" stop-color="#f29a55" stop-opacity=".45"/><stop offset="1" stop-color="#f29a55" stop-opacity="0"/></radialGradient>
+            <pattern id="w0-de" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.35" fill="#f29a55"/></pattern>
+            <pattern id="w0-ds" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.1" fill="#c9b492"/></pattern>
+            <linearGradient id="w0-body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b2819"/><stop offset=".45" stop-color="#1c130c"/><stop offset="1" stop-color="#0d0805"/></linearGradient>
+            <linearGradient id="w0-glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9a5226"/><stop offset=".5" stop-color="#2a1a10"/><stop offset="1" stop-color="#110b07"/></linearGradient>
+            <filter id="w0-glow" x="-20%" y="-300%" width="140%" height="700%"><feGaussianBlur stdDeviation="3.2"/></filter>
+            <filter id="w0-soft" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="4"/></filter></defs>
+            <rect width="480" height="440" fill="url(#w0-sky)"/><g fill="#fffdf8" class="stars"><circle cx="114" cy="131" r="0.8" opacity="0.61"/><circle cx="300" cy="16" r="0.5" opacity="0.75"/><circle cx="124" cy="56" r="1.3" opacity="0.53"/><circle cx="402" cy="114" r="1.0" opacity="0.34"/><circle cx="305" cy="208" r="0.9" opacity="0.69"/><circle cx="322" cy="15" r="1.1" opacity="0.60"/><circle cx="145" cy="7" r="1.2" opacity="0.53"/><circle cx="345" cy="211" r="1.1" opacity="0.80"/><circle cx="190" cy="192" r="0.9" opacity="0.81"/><circle cx="422" cy="23" r="0.6" opacity="0.38"/><circle cx="463" cy="105" r="1.0" opacity="0.43"/><circle cx="243" cy="93" r="0.8" opacity="0.60"/><circle cx="280" cy="217" r="1.0" opacity="0.81"/><circle cx="411" cy="238" r="1.0" opacity="0.35"/><circle cx="413" cy="232" r="1.2" opacity="0.59"/><circle cx="343" cy="51" r="1.2" opacity="0.59"/><circle cx="137" cy="15" r="1.2" opacity="0.84"/><circle cx="42" cy="192" r="0.8" opacity="0.34"/><circle cx="141" cy="185" r="1.2" opacity="0.28"/><circle cx="295" cy="11" r="1.1" opacity="0.45"/><circle cx="423" cy="235" r="0.9" opacity="0.85"/><circle cx="149" cy="18" r="1.0" opacity="0.27"/><circle cx="95" cy="98" r="1.0" opacity="0.34"/><circle cx="20" cy="208" r="0.8" opacity="0.83"/><circle cx="430" cy="91" r="0.9" opacity="0.56"/><circle cx="309" cy="143" r="0.9" opacity="0.62"/><circle cx="451" cy="122" r="0.8" opacity="0.68"/><circle cx="114" cy="72" r="1.3" opacity="0.56"/><circle cx="263" cy="3" r="0.8" opacity="0.60"/><circle cx="10" cy="148" r="1.0" opacity="0.29"/><circle cx="301" cy="112" r="1.0" opacity="0.46"/><circle cx="339" cy="177" r="0.5" opacity="0.29"/><circle cx="324" cy="231" r="0.7" opacity="0.52"/><circle cx="284" cy="77" r="0.8" opacity="0.44"/><circle cx="177" cy="143" r="0.7" opacity="0.48"/><circle cx="371" cy="6" r="1.0" opacity="0.69"/><circle cx="149" cy="53" r="1.1" opacity="0.39"/><circle cx="90" cy="104" r="1.1" opacity="0.31"/><circle cx="155" cy="80" r="1.2" opacity="0.51"/><circle cx="411" cy="41" r="0.8" opacity="0.64"/><circle cx="425" cy="108" r="0.7" opacity="0.32"/><circle cx="254" cy="46" r="1.1" opacity="0.75"/><circle cx="88" cy="67" r="1.1" opacity="0.64"/><circle cx="387" cy="83" r="0.6" opacity="0.43"/><circle cx="381" cy="65" r="0.8" opacity="0.50"/><circle cx="201" cy="98" r="1.2" opacity="0.34"/></g>
+            <circle cx="240" cy="262" r="150" fill="url(#w0-sunglow)"/><circle cx="240" cy="262" r="76" fill="url(#w0-de)"/>
+            <path d="M0 292L40 250L78 268L122 214L170 262L206 240L240 280L276 236L318 262L360 206L408 256L446 232L480 262V292Z" fill="url(#w0-ds)" opacity=".55"/>
+            <path d="M-10 292L52 262L96 286L150 248L200 292Z M290 292L352 244L398 276L436 254L490 292Z" fill="#140d06"/>
+            <rect y="291" width="480" height="150" fill="#140d06"/>
+            <g class="gnd" stroke="#f29a55" stroke-width="1" fill="none" opacity=".5"><path d="M240 292L-1426 440"/><path d="M240 292L-1188 440"/><path d="M240 292L-950 440"/><path d="M240 292L-712 440"/><path d="M240 292L-474 440"/><path d="M240 292L-236 440"/><path d="M240 292L2 440"/><path d="M240 292L240 440"/><path d="M240 292L478 440"/><path d="M240 292L716 440"/><path d="M240 292L954 440"/><path d="M240 292L1192 440"/><path d="M240 292L1430 440"/><path d="M240 292L1668 440"/><path d="M240 292L1906 440"/><g class="gnd-h"></g></g>
+            <path d="M233 292L64 440H416L247 292Z" fill="#0b0704"/>
+            <path d="M233 292L64 440M247 292L416 440" stroke="#f29a55" stroke-width="1.4" fill="none" opacity=".8"/>
+            <g class="gnd-d" fill="#f6c89a"></g>
+            <g transform="translate(166 318) scale(.74)"><g class="car-in">
+              <ellipse cx="100" cy="100" rx="100" ry="9" fill="#000" opacity=".75" filter="url(#w0-soft)"/>
+              <ellipse cx="100" cy="104" rx="80" ry="10" fill="#ff3b2f" opacity=".16" filter="url(#w0-soft)"/>
+              <rect x="13" y="64" width="35" height="36" rx="6" fill="#070403" stroke="#3a2a1c" stroke-width="1.2"/><rect x="152" y="64" width="35" height="36" rx="6" fill="#070403" stroke="#3a2a1c" stroke-width="1.2"/>
+              <path d="M8 66C8 56 13 50 22 48H178C187 50 192 56 192 66V81C192 85 189 88 184 88H16C11 88 8 85 8 81Z" fill="url(#w0-body)"/>
+              <path d="M12 53C14 42 22 36 34 34L62 21C70 17 130 17 138 21L166 34C178 36 186 42 188 53Z" fill="url(#w0-body)"/>
+              <path d="M58 34L71 24C77 21 123 21 129 24L142 34Z" fill="url(#w0-glass)"/>
+              <path d="M34 35H166L172 40H28Z" fill="#0b0705"/>
+              <path d="M62 21C70 17 130 17 138 21" stroke="#ffc08a" stroke-width="1.7" fill="none"/>
+              <path d="M34 34L62 21M138 21L166 34" stroke="#f29a55" stroke-width="1.2" fill="none" opacity=".65"/>
+              <path d="M12 53C14 42 22 36 34 34M166 34C178 36 186 42 188 53" stroke="#f29a55" stroke-width="1" fill="none" opacity=".45"/>
+              <rect x="22" y="43.5" width="156" height="5" rx="2.5" fill="#ff3b22" filter="url(#w0-glow)"/>
+              <rect x="24" y="44.5" width="152" height="2.6" rx="1.3" fill="#ff6a4a"/>
+              <rect x="19" y="41.5" width="30" height="8" rx="2.5" fill="#ff2e1c"/><rect x="151" y="41.5" width="30" height="8" rx="2.5" fill="#ff2e1c"/>
+              <rect x="84" y="58" width="32" height="11" rx="1.5" fill="#2b2017"/>
+              <path d="M56 81V88M68 81V88M132 81V88M144 81V88" stroke="#2a1f16" stroke-width="2"/>
+              <rect x="70" y="76" width="15" height="7" rx="3.5" fill="#050302" stroke="#4a3626"/><rect x="115" y="76" width="15" height="7" rx="3.5" fill="#050302" stroke="#4a3626"/>
+            </g></g></svg>
+          <div class="cmm"><span class="cmm-p"><span class="cmo-l">FPS</span><b class="cmo-v tick" data-lo="118" data-hi="122">120</b></span><span class="cmm-p"><span class="cmo-l">CPU</span><b class="cmo-v">62<small>°C</small></b></span><span class="cmm-p"><span class="cmo-l">GPU</span><b class="cmo-v">71<small>°C</small></b></span></div>
         </div>
-        <div class="v-arrows">
-          <button class="v-arrow" id="v-prev" type="button" aria-label="Previous testimonial">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button class="v-arrow" id="v-next" type="button" aria-label="Next testimonial">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
+        <div class="scn scn-chart" data-i="1" style="--t-dark:#0b120c">
+          <i class="scn-glow" style="background:radial-gradient(38% 42% at 78% 22%,#ff7a3d,transparent 70%),radial-gradient(32% 36% at 92% 8%,#ff86ad,transparent 70%),radial-gradient(40% 40% at 100% 34%,#2f89ff,transparent 70%)"></i>
+          <svg viewBox="0 0 480 440" preserveAspectRatio="xMidYMid meet"><defs>
+            <linearGradient id="w1-ln" x1="24" y1="0" x2="456" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0.00" stop-color="#ff5b2b"/><stop offset="0.50" stop-color="#ff86ad"/><stop offset="1.00" stop-color="#2f89ff"/></linearGradient>
+            <linearGradient id="w1-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <mask id="w1-am"><rect x="0" y="90" width="480" height="215" fill="url(#w1-fade)"/></mask>
+            <linearGradient id="w1-bar" x1="0" y1="1" x2="0" y2="0"><stop offset="0.00" stop-color="#ff5b2b"/><stop offset="0.50" stop-color="#ff86ad"/><stop offset="1.00" stop-color="#2f89ff"/></linearGradient></defs>
+            <g class="sk"><rect x="24" y="26" width="96" height="10" rx="5"/><rect x="24" y="44" width="58" height="8" rx="4" opacity=".6"/>
+              <rect x="316" y="24" width="64" height="26" rx="13" class="pill"/><rect x="388" y="24" width="68" height="26" rx="13" class="pill on"/><path d="M430 37h9M436 33.5l3.5 3.5-3.5 3.5" class="pill-arrow"/></g>
+            <g class="gl" stroke="#ecdfc9" stroke-dasharray="3 5"><path d="M24 104H456M24 160H456M24 216H456M24 272H456"/></g>
+            <path d="M24 262C70 256 92 222 132 228S196 196 228 188S290 200 318 166S398 112 456 96 V300H24Z" fill="url(#w1-ln)" mask="url(#w1-am)" class="w-area"/>
+            <path class="draw w-line" pathLength="1" d="M24 262C70 256 92 222 132 228S196 196 228 188S290 200 318 166S398 112 456 96" stroke="url(#w1-ln)"/>
+            <g class="guide"><path d="M318 88V300" stroke="#ddcbae" stroke-dasharray="2 4"/><circle cx="318" cy="166" r="5" class="dot"/><circle cx="318" cy="166" r="11" class="pulse"/>
+              <rect x="330" y="120" width="88" height="34" rx="8" class="tip"/><rect x="340" y="130" width="42" height="6" rx="3" fill="#fffdf8" opacity=".85"/><rect x="340" y="141" width="62" height="5" rx="2.5" fill="#fffdf8" opacity=".4"/></g>
+            <path d="M24 318H456" stroke="#ecdfc9"/>
+            <g class="bars" style="--hi:url(#w1-bar)"><rect x="24" y="362" width="22" height="18" rx="2" class="b" style="--d:0ms"/><rect x="60" y="354" width="22" height="26" rx="2" class="b" style="--d:45ms"/><rect x="96" y="358" width="22" height="22" rx="2" class="b" style="--d:90ms"/><rect x="132" y="346" width="22" height="34" rx="2" class="b" style="--d:135ms"/><rect x="168" y="350" width="22" height="30" rx="2" class="b" style="--d:180ms"/><rect x="204" y="340" width="22" height="40" rx="2" class="b" style="--d:225ms"/><rect x="240" y="342" width="22" height="38" rx="2" class="b" style="--d:270ms"/><rect x="276" y="330" width="22" height="50" rx="2" class="b" style="--d:315ms"/><rect x="312" y="334" width="22" height="46" rx="2" class="b" style="--d:360ms"/><rect x="348" y="322" width="22" height="58" rx="2" class="b" style="--d:405ms"/><rect x="384" y="314" width="22" height="66" rx="2" class="b-hi" style="--d:450ms"/></g></svg>
+        </div>
+        <div class="scn scn-site is-square" data-i="2" style="--t-bg:#fafaf9;--t-ink:#0c0a09;--t-line:#e7e5e4;--t-acc:#ec003f">
+          <div class="scn-chrome"><i></i><i></i><i></i><span>crispy.studio</span></div>
+          <svg viewBox="0 0 480 404" preserveAspectRatio="xMidYMin meet"><defs><clipPath id="w2-pc"><rect x="274" y="80" width="182" height="150" rx="0"/></clipPath></defs>
+            <g class="cols dashed"><path d="M24.0 0V900"/><path d="M110.4 0V900"/><path d="M196.8 0V900"/><path d="M283.2 0V900"/><path d="M369.6 0V900"/><path d="M456.0 0V900"/></g>
+            <g class="sk">
+              <g class="blk" style="--d:0ms"><svg x="24" y="23" width="24" height="24" viewBox="0 0 32 32" class="mark"><g fill="currentColor"><path d="M0 32H16V16L7.92 23.92L0 32Z"/><path d="M0 0H16V16L7.92 8.08L0 0Z"/><path d="M16 32H32V16L23.92 23.92L16 32Z"/><path d="M16 0H32V16L23.92 8.08L16 0Z"/></g></svg><rect x="220" y="31" width="34" height="8" rx="0"/><rect x="262" y="31" width="40" height="8" rx="0"/><rect x="310" y="31" width="30" height="8" rx="0"/><rect x="372" y="22" width="84" height="26" rx="0" class="cta"/></g>
+              <g class="blk" style="--d:120ms"><rect x="24" y="84" width="228" height="20" rx="0" class="ink"/><rect x="24" y="112" width="178" height="20" rx="0" class="acc"/><rect x="24" y="146" width="196" height="8" rx="0"/><rect x="24" y="162" width="150" height="8" rx="0"/></g>
+              <g class="blk" style="--d:240ms"><rect x="24" y="192" width="98" height="30" rx="0" class="cta"/><rect x="130" y="192" width="86" height="30" rx="0" class="line"/></g>
+              <g class="blk img" style="--d:360ms"><rect x="274" y="80" width="182" height="150" rx="0" class="ph"/><image href="assets/img/crispy-dither.png?v=3" x="274" y="80" width="182" height="150" preserveAspectRatio="xMidYMin slice" class="pat" clip-path="url(#w2-pc)"/></g>
+              <g class="blk" style="--d:480ms"><rect x="24" y="262" width="134" height="112" rx="0" class="card"/><rect x="173" y="262" width="134" height="112" rx="0" class="card"/><rect x="322" y="262" width="134" height="112" rx="0" class="card"/></g>
+            </g>
+            <g class="sel"><rect x="274" y="80" width="182" height="150" class="box"/>
+              <rect x="270" y="76" width="8" height="8" class="h"/><rect x="452" y="76" width="8" height="8" class="h"/><rect x="270" y="226" width="8" height="8" class="h"/><rect x="452" y="226" width="8" height="8" class="h"/>
+              <rect x="326" y="238" width="78" height="20" rx="0" class="tag"/><text x="365" y="252" text-anchor="middle">1200 × 990</text></g></svg>
+          <div class="scn-cursor"><svg viewBox="0 0 16 20"><path d="M1 1l13.5 8.2-6 1.4-3 5.6z"/></svg><span>Adnan</span></div>
         </div>
       </div>
+      <figure class="sp-q" role="tabpanel" id="sp-q-0" aria-labelledby="sp-tab-0">
+          <span class="avatar" data-photo="people/mahroos.jpg" aria-hidden="true">MC</span><blockquote><p>“We didn’t want another agency chasing rankings. We wanted more people to find Cleanmeter, and that’s what happened. They sorted out our SEO basics and got us showing up when people ask AI tools for apps like ours. <mark>Growth has been steady ever since.</mark>”</p></blockquote>
+          <figcaption><b>Mahroos A.</b><span>Founder, Cleanmeter</span><a class="li" href="https://www.linkedin.com/in/marsdesigns/" target="_blank" rel="noopener noreferrer" aria-label="Mahroos A. on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a></figcaption></figure><figure class="sp-q" role="tabpanel" id="sp-q-1" aria-labelledby="sp-tab-1" hidden>
+          <span class="avatar" data-photo="people/alim.jpg" aria-hidden="true">AI</span><blockquote><p>“They understood our business faster than we expected, and they never made it complicated. We’re easier to find in search and in AI answers now, and <mark>the enquiries coming in are better ones.</mark> I’d recommend them to anyone who’s in it for the long run.”</p></blockquote>
+          <figcaption><b>Alim M.</b><span>CEO, IBFNet Group</span><a class="li" href="https://www.linkedin.com/in/apyfz/" target="_blank" rel="noopener noreferrer" aria-label="Alim M. on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a></figcaption></figure><figure class="sp-q" role="tabpanel" id="sp-q-2" aria-labelledby="sp-tab-2" hidden>
+          <span class="avatar" data-photo="people/adnan.jpg" aria-hidden="true">AC</span><blockquote><p>“They felt like part of our team from the first week. Every recommendation came with a reason, and we saw results within a few months. If you want people who <mark>know where search is going</mark>, talk to them.”</p></blockquote>
+          <figcaption><b>Adnan J.</b><span>Founder and CEO, Crispy Studio</span><a class="li" href="https://www.linkedin.com/in/crispyux/" target="_blank" rel="noopener noreferrer" aria-label="Adnan J. on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a></figcaption></figure></div>
+      <div class="sp-tabs" role="tablist" aria-label="Choose a client"><button type="button" class="sp-tab" role="tab" id="sp-tab-0" aria-controls="sp-q-0" aria-selected="true" aria-label="Mahroos A., Cleanmeter">
+          <span class="co-logo co-cm"><svg viewBox="0 0 97 32" aria-hidden="true" focusable="false">
+<path d="M31 16C31 24.5604 24.0604 31.5 15.5 31.5C6.93959 31.5 0 24.5604 0 16C0 7.43959 6.93959 0.5 15.5 0.5C24.0604 0.5 31 7.43959 31 16ZM4.29597 16C4.29597 22.1878 9.31219 27.204 15.5 27.204C21.6878 27.204 26.704 22.1878 26.704 16C26.704 9.81219 21.6878 4.79597 15.5 4.79597C9.31219 4.79597 4.29597 9.81219 4.29597 16Z" fill="currentColor"/>
+<path d="M31 16C31 24.5604 24.0604 31.5 15.5 31.5C6.93959 31.5 0 24.5604 0 16C0 7.43959 6.93959 0.5 15.5 0.5C24.0604 0.5 31 7.43959 31 16ZM4.29597 16C4.29597 22.1878 9.31219 27.204 15.5 27.204C21.6878 27.204 26.704 22.1878 26.704 16C26.704 9.81219 21.6878 4.79597 15.5 4.79597C9.31219 4.79597 4.29597 9.81219 4.29597 16Z" fill="currentColor"/>
+<path d="M56.7648 9.75631C58.7765 6.76446 62.193 4.79597 66.0693 4.79597C72.2571 4.79597 77.2733 9.81219 77.2733 16C77.2733 22.1878 72.2571 27.204 66.0693 27.204C62.2149 27.204 58.8151 25.2577 56.799 22.2943C56.2346 23.7398 55.4794 25.0899 54.5643 26.3135C54.5543 26.3269 54.5443 26.3402 54.5342 26.3536C57.3718 29.5129 61.4885 31.5 66.0693 31.5C74.6297 31.5 81.5693 24.5604 81.5693 16C81.5693 7.43959 74.6297 0.5 66.0693 0.5C61.4581 0.5 57.3172 2.5136 54.4779 5.70947C55.4102 6.93468 56.1812 8.28936 56.7591 9.7418C56.761 9.74663 56.7629 9.75147 56.7648 9.75631Z" fill="currentColor"/>
+<path d="M31.4866 9.74705C33.4991 6.7604 36.9125 4.79597 40.7848 4.79597C46.9726 4.79597 51.9888 9.81219 51.9888 16C51.9888 22.1878 46.9726 27.204 40.7848 27.204C36.9344 27.204 33.5377 25.2618 31.5209 22.3035C30.9568 23.7456 30.2029 25.0925 29.2898 26.3135C29.2783 26.3289 29.2667 26.3442 29.2552 26.3596C32.0926 29.5154 36.2069 31.5 40.7848 31.5C49.3452 31.5 56.2848 24.5604 56.2848 16C56.2848 7.43959 49.3452 0.5 40.7848 0.5C36.1765 0.5 32.0379 2.51108 29.1988 5.70347C29.2009 5.7063 29.2031 5.70914 29.2052 5.71197C30.064 6.84099 30.7859 8.0799 31.3459 9.4039C31.394 9.51766 31.4409 9.63205 31.4866 9.74705Z" fill="currentColor"/>
+</svg><span>Cleanmeter</span></span><i class="sp-bar" aria-hidden="true"></i></button><button type="button" class="sp-tab" role="tab" id="sp-tab-1" aria-controls="sp-q-1" aria-selected="false" aria-label="Alim M., IBFNet Group" tabindex="-1">
+          <span class="co-logo co-ibf"><svg viewBox="0 0 6 8.5" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="0" y="0" width="1" height="7"/><rect x="1" y="0" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="0" width="1" height="7"/><rect x="3" y="2" width="3" height="1"/><rect x="3" y="4" width="3" height="1"/><rect x="3" y="6" width="2" height="1"/><rect x="4" y="2" width="1" height="5"/><rect x="4" y=".35" width="1" height="1"/><rect x="1" y="7.47" width="1" height="1"/></g></svg><span>IBFNet Group</span></span><i class="sp-bar" aria-hidden="true"></i></button><button type="button" class="sp-tab" role="tab" id="sp-tab-2" aria-controls="sp-q-2" aria-selected="false" aria-label="Adnan J., Crispy Studio" tabindex="-1">
+          <span class="co-logo co-crispy"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M0 32H16V16L7.92 23.92L0 32Z"/><path d="M0 0H16V16L7.92 8.08L0 0Z"/><path d="M16 32H32V16L23.92 23.92L16 32Z"/><path d="M16 0H32V16L23.92 8.08L16 0Z"/></g></svg><span>Crispy Studio</span></span><i class="sp-bar" aria-hidden="true"></i></button></div>
+    </div>
+    <div class="clients">
+      <p class="clients-label">Brands we work with</p>
+      <div class="clients-marquee"><ul class="clients-row" style="animation-duration:57s"><li class="cl cl-cm"><span class="co-logo co-cm"><svg viewBox="0 0 97 32" aria-hidden="true" focusable="false">
+<path d="M31 16C31 24.5604 24.0604 31.5 15.5 31.5C6.93959 31.5 0 24.5604 0 16C0 7.43959 6.93959 0.5 15.5 0.5C24.0604 0.5 31 7.43959 31 16ZM4.29597 16C4.29597 22.1878 9.31219 27.204 15.5 27.204C21.6878 27.204 26.704 22.1878 26.704 16C26.704 9.81219 21.6878 4.79597 15.5 4.79597C9.31219 4.79597 4.29597 9.81219 4.29597 16Z" fill="currentColor"/>
+<path d="M31 16C31 24.5604 24.0604 31.5 15.5 31.5C6.93959 31.5 0 24.5604 0 16C0 7.43959 6.93959 0.5 15.5 0.5C24.0604 0.5 31 7.43959 31 16ZM4.29597 16C4.29597 22.1878 9.31219 27.204 15.5 27.204C21.6878 27.204 26.704 22.1878 26.704 16C26.704 9.81219 21.6878 4.79597 15.5 4.79597C9.31219 4.79597 4.29597 9.81219 4.29597 16Z" fill="currentColor"/>
+<path d="M56.7648 9.75631C58.7765 6.76446 62.193 4.79597 66.0693 4.79597C72.2571 4.79597 77.2733 9.81219 77.2733 16C77.2733 22.1878 72.2571 27.204 66.0693 27.204C62.2149 27.204 58.8151 25.2577 56.799 22.2943C56.2346 23.7398 55.4794 25.0899 54.5643 26.3135C54.5543 26.3269 54.5443 26.3402 54.5342 26.3536C57.3718 29.5129 61.4885 31.5 66.0693 31.5C74.6297 31.5 81.5693 24.5604 81.5693 16C81.5693 7.43959 74.6297 0.5 66.0693 0.5C61.4581 0.5 57.3172 2.5136 54.4779 5.70947C55.4102 6.93468 56.1812 8.28936 56.7591 9.7418C56.761 9.74663 56.7629 9.75147 56.7648 9.75631Z" fill="currentColor"/>
+<path d="M31.4866 9.74705C33.4991 6.7604 36.9125 4.79597 40.7848 4.79597C46.9726 4.79597 51.9888 9.81219 51.9888 16C51.9888 22.1878 46.9726 27.204 40.7848 27.204C36.9344 27.204 33.5377 25.2618 31.5209 22.3035C30.9568 23.7456 30.2029 25.0925 29.2898 26.3135C29.2783 26.3289 29.2667 26.3442 29.2552 26.3596C32.0926 29.5154 36.2069 31.5 40.7848 31.5C49.3452 31.5 56.2848 24.5604 56.2848 16C56.2848 7.43959 49.3452 0.5 40.7848 0.5C36.1765 0.5 32.0379 2.51108 29.1988 5.70347C29.2009 5.7063 29.2031 5.70914 29.2052 5.71197C30.064 6.84099 30.7859 8.0799 31.3459 9.4039C31.394 9.51766 31.4409 9.63205 31.4866 9.74705Z" fill="currentColor"/>
+</svg><span>Cleanmeter</span></span></li><li class="cl cl-ibf"><span class="co-logo co-ibf"><svg viewBox="0 0 6 8.5" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="0" y="0" width="1" height="7"/><rect x="1" y="0" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="0" width="1" height="7"/><rect x="3" y="2" width="3" height="1"/><rect x="3" y="4" width="3" height="1"/><rect x="3" y="6" width="2" height="1"/><rect x="4" y="2" width="1" height="5"/><rect x="4" y=".35" width="1" height="1"/><rect x="1" y="7.47" width="1" height="1"/></g></svg><span>IBFNet Group</span></span></li><li class="cl cl-crispy"><span class="co-logo co-crispy"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M0 32H16V16L7.92 23.92L0 32Z"/><path d="M0 0H16V16L7.92 8.08L0 0Z"/><path d="M16 32H32V16L23.92 23.92L16 32Z"/><path d="M16 0H32V16L23.92 8.08L16 0Z"/></g></svg><span>Crispy Studio</span></span></li><li class="cl cl-goodday"><span class="co-logo co-word" aria-label="GoodDay"><svg viewBox="0 0 84 24" aria-hidden="true" focusable="false">
+<path d="M74.6612 19.3818C74.466 19.3818 74.2769 19.3635 74.0939 19.3269C73.9231 19.3025 73.7706 19.272 73.6364 19.2354V17.6982C73.734 17.7348 73.856 17.7653 74.0024 17.7897C74.1488 17.8141 74.3074 17.8263 74.4782 17.8263C74.9052 17.8263 75.2407 17.7104 75.4847 17.4786C75.7409 17.2591 75.9666 16.887 76.1618 16.3624L76.967 14.2579L77.333 13.6357L80.078 6.11441H81.9995L77.6258 17.0944C77.4184 17.6189 77.1744 18.052 76.8938 18.3936C76.6132 18.7352 76.2899 18.9853 75.9239 19.1439C75.5701 19.3025 75.1492 19.3818 74.6612 19.3818ZM76.7108 15.4474L72.7031 6.11441H74.7161L78.0833 14.4592L76.7108 15.4474Z" fill="currentColor"/>
+<path d="M66.0735 15.63C65.2317 15.63 64.4936 15.4287 63.8592 15.0261C63.237 14.6235 62.749 14.0623 62.3952 13.3425C62.0536 12.6227 61.8828 11.7809 61.8828 10.8171C61.8828 9.84115 62.0597 8.98716 62.4135 8.25516C62.7673 7.52316 63.2614 6.95587 63.8958 6.55327C64.5302 6.15067 65.2744 5.94937 66.1284 5.94937C67.019 5.94937 67.751 6.16287 68.3244 6.58987C68.91 7.00467 69.2943 7.59026 69.4773 8.34666L69.2943 8.38326V6.11407H71.106V15.447H69.2943V13.3059L69.4773 13.3608C69.2821 14.0562 68.8795 14.6113 68.2695 15.0261C67.6595 15.4287 66.9275 15.63 66.0735 15.63ZM66.5493 14.0379C67.4033 14.0379 68.0682 13.7512 68.544 13.1778C69.032 12.5922 69.276 11.787 69.276 10.7622C69.276 9.76185 69.032 8.97496 68.544 8.40156C68.056 7.81596 67.385 7.52316 66.531 7.52316C65.6892 7.52316 65.0304 7.81596 64.5546 8.40156C64.0788 8.97496 63.8409 9.78015 63.8409 10.8171C63.8409 11.8297 64.0788 12.6227 64.5546 13.1961C65.0426 13.7573 65.7075 14.0379 66.5493 14.0379Z" fill="currentColor"/>
+<path d="M50.3353 15.4476V13.8372H53.7939C54.8431 13.8372 55.7398 13.6237 56.484 13.1967C57.2404 12.7697 57.8199 12.178 58.2225 11.4216C58.6251 10.6652 58.8264 9.7868 58.8264 8.7864C58.8264 7.79821 58.6251 6.93811 58.2225 6.20612C57.8321 5.47412 57.2587 4.90682 56.5023 4.50423C55.7581 4.08943 54.8553 3.88203 53.7939 3.88203H50.3536V2.27164H53.7939C55.2091 2.27164 56.4413 2.54004 57.4905 3.07683C58.5397 3.61363 59.351 4.37613 59.9244 5.36432C60.51 6.34032 60.8028 7.49321 60.8028 8.823C60.8028 10.1528 60.51 11.3179 59.9244 12.3183C59.3388 13.3065 58.5214 14.0751 57.4722 14.6241C56.4352 15.1731 55.2152 15.4476 53.8122 15.4476H50.3353ZM49.1641 15.4476V2.27164H51.1039V15.4476H49.1641Z" fill="currentColor"/>
+<path d="M45.0247 15.4476V13.3065L45.2077 13.3614C45.0125 14.0568 44.6099 14.6119 43.9999 15.0267C43.3899 15.4293 42.658 15.6306 41.804 15.6306C40.9622 15.6306 40.2241 15.4293 39.5897 15.0267C38.9675 14.6241 38.4795 14.0629 38.1257 13.3431C37.7841 12.6233 37.6133 11.7815 37.6133 10.8177C37.6133 9.8417 37.7902 8.9877 38.144 8.2557C38.4978 7.52371 38.9919 6.95641 39.6263 6.55381C40.2607 6.15122 41.0049 5.94992 41.8589 5.94992C42.7495 5.94992 43.4815 6.16342 44.0548 6.59041C44.6404 7.00521 45.0247 7.59081 45.2077 8.34721L44.9515 8.3838V2.27164H46.8364V15.4476H45.0247ZM42.2798 14.0385C43.1216 14.0385 43.7864 13.7518 44.2744 13.1784C44.7624 12.5928 45.0064 11.7876 45.0064 10.7628C45.0064 9.7624 44.7563 8.9755 44.2561 8.4021C43.7681 7.81651 43.1033 7.52371 42.2615 7.52371C41.4319 7.52371 40.7731 7.81651 40.2851 8.4021C39.8093 8.9755 39.5714 9.7807 39.5714 10.8177C39.5714 11.8303 39.8093 12.6233 40.2851 13.1967C40.7731 13.7579 41.438 14.0385 42.2798 14.0385Z" fill="currentColor"/>
+<path d="M31.4899 15.6298C30.5383 15.6298 29.7026 15.4224 28.9828 15.0076C28.263 14.5806 27.7018 14.0011 27.2992 13.2691C26.8966 12.5249 26.6953 11.6831 26.6953 10.7437C26.6953 9.7921 26.8966 8.9564 27.2992 8.2366C27.714 7.51681 28.2752 6.95561 28.9828 6.55301C29.7026 6.13822 30.5383 5.93082 31.4899 5.93082C32.4537 5.93082 33.2955 6.13822 34.0153 6.55301C34.7351 6.95561 35.2902 7.51681 35.6806 8.2366C36.0832 8.9564 36.2845 9.7921 36.2845 10.7437C36.2845 11.6831 36.0832 12.5249 35.6806 13.2691C35.2902 14.0011 34.7351 14.5806 34.0153 15.0076C33.2955 15.4224 32.4537 15.6298 31.4899 15.6298ZM31.4899 14.0743C32.0633 14.0743 32.5574 13.934 32.9722 13.6534C33.3992 13.3728 33.7347 12.9824 33.9787 12.4822C34.2227 11.982 34.3447 11.3964 34.3447 10.7254C34.3447 9.725 34.0763 8.9381 33.5395 8.3647C33.0149 7.77911 32.3317 7.48631 31.4899 7.48631C30.6603 7.48631 29.9771 7.77911 29.4403 8.3647C28.9157 8.9503 28.6534 9.7372 28.6534 10.7254C28.6534 11.3964 28.7693 11.982 29.0011 12.4822C29.2451 12.9824 29.5806 13.3728 30.0076 13.6534C30.4468 13.934 30.9409 14.0743 31.4899 14.0743Z" fill="currentColor"/>
+<path d="M20.6774 15.6298C19.7258 15.6298 18.8901 15.4224 18.1703 15.0076C17.4505 14.5806 16.8893 14.0011 16.4867 13.2691C16.0841 12.5249 15.8828 11.6831 15.8828 10.7437C15.8828 9.7921 16.0841 8.9564 16.4867 8.2366C16.9015 7.51681 17.4627 6.95561 18.1703 6.55301C18.8901 6.13822 19.7258 5.93082 20.6774 5.93082C21.6412 5.93082 22.483 6.13822 23.2028 6.55301C23.9226 6.95561 24.4777 7.51681 24.8681 8.2366C25.2707 8.9564 25.472 9.7921 25.472 10.7437C25.472 11.6831 25.2707 12.5249 24.8681 13.2691C24.4777 14.0011 23.9226 14.5806 23.2028 15.0076C22.483 15.4224 21.6412 15.6298 20.6774 15.6298ZM20.6774 14.0743C21.2508 14.0743 21.7449 13.934 22.1597 13.6534C22.5867 13.3728 22.9222 12.9824 23.1662 12.4822C23.4102 11.982 23.5322 11.3964 23.5322 10.7254C23.5322 9.725 23.2638 8.9381 22.727 8.3647C22.2024 7.77911 21.5192 7.48631 20.6774 7.48631C19.8478 7.48631 19.1646 7.77911 18.6278 8.3647C18.1032 8.9503 17.8409 9.7372 17.8409 10.7254C17.8409 11.3964 17.9568 11.982 18.1886 12.4822C18.4326 12.9824 18.7681 13.3728 19.1951 13.6534C19.6343 13.934 20.1284 14.0743 20.6774 14.0743Z" fill="currentColor"/>
+<path d="M8.53307 15.63C7.23987 15.63 6.09918 15.3433 5.11098 14.7699C4.13499 14.1843 3.37249 13.3852 2.8235 12.3726C2.2745 11.3478 2 10.1827 2 8.87731C2 7.54752 2.2745 6.37632 2.8235 5.36373C3.38469 4.35113 4.15329 3.55204 5.12928 2.96644C6.11748 2.38084 7.25207 2.08804 8.53307 2.08804C9.58226 2.08804 10.5095 2.28934 11.3147 2.69194C12.132 3.08234 12.7969 3.60694 13.3093 4.26573C13.8217 4.92453 14.1389 5.66262 14.2609 6.48002H12.3577C12.2601 5.97982 12.0466 5.52233 11.7172 5.10753C11.4001 4.69273 10.9731 4.36333 10.4363 4.11933C9.91166 3.86313 9.28336 3.73503 8.55137 3.73503C7.62417 3.73503 6.81287 3.94853 6.11748 4.37553C5.43428 4.80253 4.90358 5.40643 4.52539 6.18722C4.15939 6.95582 3.97639 7.85251 3.97639 8.87731C3.97639 9.8899 4.15939 10.7805 4.52539 11.5491C4.89138 12.3177 5.41598 12.9155 6.09918 13.3425C6.79457 13.7695 7.62417 13.983 8.58797 13.983C9.36876 13.983 10.0642 13.8244 10.6742 13.5072C11.2964 13.1778 11.7843 12.6776 12.1381 12.0066C12.4919 11.3356 12.6688 10.4755 12.6688 9.42631H14.4805C14.4805 10.7683 14.2182 11.9029 13.6936 12.8301C13.1812 13.7573 12.4736 14.4588 11.5709 14.9346C10.6803 15.3982 9.66766 15.63 8.53307 15.63ZM13.0531 10.14H8.86246V8.54791H14.4805V9.42631L13.0531 10.14Z" fill="currentColor"/>
+<path d="M16.1 19.0774C19.1883 21.0045 22.6164 21.9668 26.0457 21.9668H26.0471C29.4764 21.9668 32.9056 21.0033 35.9927 19.0774C36.2072 18.9436 36.2659 18.6593 36.1271 18.448L35.6091 17.6595C35.4704 17.4484 35.1868 17.3904 34.9722 17.5236C29.4263 20.9636 22.6665 20.9636 17.1207 17.5236C16.906 17.3904 16.6224 17.4484 16.4837 17.6595L15.9657 18.448C15.8269 18.6593 15.8856 18.9436 16.1 19.0774Z" fill="currentColor"/>
+</svg></span></li><li class="cl cl-cm" aria-hidden="true"><span class="co-logo co-cm"><svg viewBox="0 0 97 32" aria-hidden="true" focusable="false">
+<path d="M31 16C31 24.5604 24.0604 31.5 15.5 31.5C6.93959 31.5 0 24.5604 0 16C0 7.43959 6.93959 0.5 15.5 0.5C24.0604 0.5 31 7.43959 31 16ZM4.29597 16C4.29597 22.1878 9.31219 27.204 15.5 27.204C21.6878 27.204 26.704 22.1878 26.704 16C26.704 9.81219 21.6878 4.79597 15.5 4.79597C9.31219 4.79597 4.29597 9.81219 4.29597 16Z" fill="currentColor"/>
+<path d="M31 16C31 24.5604 24.0604 31.5 15.5 31.5C6.93959 31.5 0 24.5604 0 16C0 7.43959 6.93959 0.5 15.5 0.5C24.0604 0.5 31 7.43959 31 16ZM4.29597 16C4.29597 22.1878 9.31219 27.204 15.5 27.204C21.6878 27.204 26.704 22.1878 26.704 16C26.704 9.81219 21.6878 4.79597 15.5 4.79597C9.31219 4.79597 4.29597 9.81219 4.29597 16Z" fill="currentColor"/>
+<path d="M56.7648 9.75631C58.7765 6.76446 62.193 4.79597 66.0693 4.79597C72.2571 4.79597 77.2733 9.81219 77.2733 16C77.2733 22.1878 72.2571 27.204 66.0693 27.204C62.2149 27.204 58.8151 25.2577 56.799 22.2943C56.2346 23.7398 55.4794 25.0899 54.5643 26.3135C54.5543 26.3269 54.5443 26.3402 54.5342 26.3536C57.3718 29.5129 61.4885 31.5 66.0693 31.5C74.6297 31.5 81.5693 24.5604 81.5693 16C81.5693 7.43959 74.6297 0.5 66.0693 0.5C61.4581 0.5 57.3172 2.5136 54.4779 5.70947C55.4102 6.93468 56.1812 8.28936 56.7591 9.7418C56.761 9.74663 56.7629 9.75147 56.7648 9.75631Z" fill="currentColor"/>
+<path d="M31.4866 9.74705C33.4991 6.7604 36.9125 4.79597 40.7848 4.79597C46.9726 4.79597 51.9888 9.81219 51.9888 16C51.9888 22.1878 46.9726 27.204 40.7848 27.204C36.9344 27.204 33.5377 25.2618 31.5209 22.3035C30.9568 23.7456 30.2029 25.0925 29.2898 26.3135C29.2783 26.3289 29.2667 26.3442 29.2552 26.3596C32.0926 29.5154 36.2069 31.5 40.7848 31.5C49.3452 31.5 56.2848 24.5604 56.2848 16C56.2848 7.43959 49.3452 0.5 40.7848 0.5C36.1765 0.5 32.0379 2.51108 29.1988 5.70347C29.2009 5.7063 29.2031 5.70914 29.2052 5.71197C30.064 6.84099 30.7859 8.0799 31.3459 9.4039C31.394 9.51766 31.4409 9.63205 31.4866 9.74705Z" fill="currentColor"/>
+</svg><span>Cleanmeter</span></span></li><li class="cl cl-ibf" aria-hidden="true"><span class="co-logo co-ibf"><svg viewBox="0 0 6 8.5" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="0" y="0" width="1" height="7"/><rect x="1" y="0" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="0" width="1" height="7"/><rect x="3" y="2" width="3" height="1"/><rect x="3" y="4" width="3" height="1"/><rect x="3" y="6" width="2" height="1"/><rect x="4" y="2" width="1" height="5"/><rect x="4" y=".35" width="1" height="1"/><rect x="1" y="7.47" width="1" height="1"/></g></svg><span>IBFNet Group</span></span></li><li class="cl cl-crispy" aria-hidden="true"><span class="co-logo co-crispy"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M0 32H16V16L7.92 23.92L0 32Z"/><path d="M0 0H16V16L7.92 8.08L0 0Z"/><path d="M16 32H32V16L23.92 23.92L16 32Z"/><path d="M16 0H32V16L23.92 8.08L16 0Z"/></g></svg><span>Crispy Studio</span></span></li><li class="cl cl-goodday" aria-hidden="true"><span class="co-logo co-word" aria-label="GoodDay"><svg viewBox="0 0 84 24" aria-hidden="true" focusable="false">
+<path d="M74.6612 19.3818C74.466 19.3818 74.2769 19.3635 74.0939 19.3269C73.9231 19.3025 73.7706 19.272 73.6364 19.2354V17.6982C73.734 17.7348 73.856 17.7653 74.0024 17.7897C74.1488 17.8141 74.3074 17.8263 74.4782 17.8263C74.9052 17.8263 75.2407 17.7104 75.4847 17.4786C75.7409 17.2591 75.9666 16.887 76.1618 16.3624L76.967 14.2579L77.333 13.6357L80.078 6.11441H81.9995L77.6258 17.0944C77.4184 17.6189 77.1744 18.052 76.8938 18.3936C76.6132 18.7352 76.2899 18.9853 75.9239 19.1439C75.5701 19.3025 75.1492 19.3818 74.6612 19.3818ZM76.7108 15.4474L72.7031 6.11441H74.7161L78.0833 14.4592L76.7108 15.4474Z" fill="currentColor"/>
+<path d="M66.0735 15.63C65.2317 15.63 64.4936 15.4287 63.8592 15.0261C63.237 14.6235 62.749 14.0623 62.3952 13.3425C62.0536 12.6227 61.8828 11.7809 61.8828 10.8171C61.8828 9.84115 62.0597 8.98716 62.4135 8.25516C62.7673 7.52316 63.2614 6.95587 63.8958 6.55327C64.5302 6.15067 65.2744 5.94937 66.1284 5.94937C67.019 5.94937 67.751 6.16287 68.3244 6.58987C68.91 7.00467 69.2943 7.59026 69.4773 8.34666L69.2943 8.38326V6.11407H71.106V15.447H69.2943V13.3059L69.4773 13.3608C69.2821 14.0562 68.8795 14.6113 68.2695 15.0261C67.6595 15.4287 66.9275 15.63 66.0735 15.63ZM66.5493 14.0379C67.4033 14.0379 68.0682 13.7512 68.544 13.1778C69.032 12.5922 69.276 11.787 69.276 10.7622C69.276 9.76185 69.032 8.97496 68.544 8.40156C68.056 7.81596 67.385 7.52316 66.531 7.52316C65.6892 7.52316 65.0304 7.81596 64.5546 8.40156C64.0788 8.97496 63.8409 9.78015 63.8409 10.8171C63.8409 11.8297 64.0788 12.6227 64.5546 13.1961C65.0426 13.7573 65.7075 14.0379 66.5493 14.0379Z" fill="currentColor"/>
+<path d="M50.3353 15.4476V13.8372H53.7939C54.8431 13.8372 55.7398 13.6237 56.484 13.1967C57.2404 12.7697 57.8199 12.178 58.2225 11.4216C58.6251 10.6652 58.8264 9.7868 58.8264 8.7864C58.8264 7.79821 58.6251 6.93811 58.2225 6.20612C57.8321 5.47412 57.2587 4.90682 56.5023 4.50423C55.7581 4.08943 54.8553 3.88203 53.7939 3.88203H50.3536V2.27164H53.7939C55.2091 2.27164 56.4413 2.54004 57.4905 3.07683C58.5397 3.61363 59.351 4.37613 59.9244 5.36432C60.51 6.34032 60.8028 7.49321 60.8028 8.823C60.8028 10.1528 60.51 11.3179 59.9244 12.3183C59.3388 13.3065 58.5214 14.0751 57.4722 14.6241C56.4352 15.1731 55.2152 15.4476 53.8122 15.4476H50.3353ZM49.1641 15.4476V2.27164H51.1039V15.4476H49.1641Z" fill="currentColor"/>
+<path d="M45.0247 15.4476V13.3065L45.2077 13.3614C45.0125 14.0568 44.6099 14.6119 43.9999 15.0267C43.3899 15.4293 42.658 15.6306 41.804 15.6306C40.9622 15.6306 40.2241 15.4293 39.5897 15.0267C38.9675 14.6241 38.4795 14.0629 38.1257 13.3431C37.7841 12.6233 37.6133 11.7815 37.6133 10.8177C37.6133 9.8417 37.7902 8.9877 38.144 8.2557C38.4978 7.52371 38.9919 6.95641 39.6263 6.55381C40.2607 6.15122 41.0049 5.94992 41.8589 5.94992C42.7495 5.94992 43.4815 6.16342 44.0548 6.59041C44.6404 7.00521 45.0247 7.59081 45.2077 8.34721L44.9515 8.3838V2.27164H46.8364V15.4476H45.0247ZM42.2798 14.0385C43.1216 14.0385 43.7864 13.7518 44.2744 13.1784C44.7624 12.5928 45.0064 11.7876 45.0064 10.7628C45.0064 9.7624 44.7563 8.9755 44.2561 8.4021C43.7681 7.81651 43.1033 7.52371 42.2615 7.52371C41.4319 7.52371 40.7731 7.81651 40.2851 8.4021C39.8093 8.9755 39.5714 9.7807 39.5714 10.8177C39.5714 11.8303 39.8093 12.6233 40.2851 13.1967C40.7731 13.7579 41.438 14.0385 42.2798 14.0385Z" fill="currentColor"/>
+<path d="M31.4899 15.6298C30.5383 15.6298 29.7026 15.4224 28.9828 15.0076C28.263 14.5806 27.7018 14.0011 27.2992 13.2691C26.8966 12.5249 26.6953 11.6831 26.6953 10.7437C26.6953 9.7921 26.8966 8.9564 27.2992 8.2366C27.714 7.51681 28.2752 6.95561 28.9828 6.55301C29.7026 6.13822 30.5383 5.93082 31.4899 5.93082C32.4537 5.93082 33.2955 6.13822 34.0153 6.55301C34.7351 6.95561 35.2902 7.51681 35.6806 8.2366C36.0832 8.9564 36.2845 9.7921 36.2845 10.7437C36.2845 11.6831 36.0832 12.5249 35.6806 13.2691C35.2902 14.0011 34.7351 14.5806 34.0153 15.0076C33.2955 15.4224 32.4537 15.6298 31.4899 15.6298ZM31.4899 14.0743C32.0633 14.0743 32.5574 13.934 32.9722 13.6534C33.3992 13.3728 33.7347 12.9824 33.9787 12.4822C34.2227 11.982 34.3447 11.3964 34.3447 10.7254C34.3447 9.725 34.0763 8.9381 33.5395 8.3647C33.0149 7.77911 32.3317 7.48631 31.4899 7.48631C30.6603 7.48631 29.9771 7.77911 29.4403 8.3647C28.9157 8.9503 28.6534 9.7372 28.6534 10.7254C28.6534 11.3964 28.7693 11.982 29.0011 12.4822C29.2451 12.9824 29.5806 13.3728 30.0076 13.6534C30.4468 13.934 30.9409 14.0743 31.4899 14.0743Z" fill="currentColor"/>
+<path d="M20.6774 15.6298C19.7258 15.6298 18.8901 15.4224 18.1703 15.0076C17.4505 14.5806 16.8893 14.0011 16.4867 13.2691C16.0841 12.5249 15.8828 11.6831 15.8828 10.7437C15.8828 9.7921 16.0841 8.9564 16.4867 8.2366C16.9015 7.51681 17.4627 6.95561 18.1703 6.55301C18.8901 6.13822 19.7258 5.93082 20.6774 5.93082C21.6412 5.93082 22.483 6.13822 23.2028 6.55301C23.9226 6.95561 24.4777 7.51681 24.8681 8.2366C25.2707 8.9564 25.472 9.7921 25.472 10.7437C25.472 11.6831 25.2707 12.5249 24.8681 13.2691C24.4777 14.0011 23.9226 14.5806 23.2028 15.0076C22.483 15.4224 21.6412 15.6298 20.6774 15.6298ZM20.6774 14.0743C21.2508 14.0743 21.7449 13.934 22.1597 13.6534C22.5867 13.3728 22.9222 12.9824 23.1662 12.4822C23.4102 11.982 23.5322 11.3964 23.5322 10.7254C23.5322 9.725 23.2638 8.9381 22.727 8.3647C22.2024 7.77911 21.5192 7.48631 20.6774 7.48631C19.8478 7.48631 19.1646 7.77911 18.6278 8.3647C18.1032 8.9503 17.8409 9.7372 17.8409 10.7254C17.8409 11.3964 17.9568 11.982 18.1886 12.4822C18.4326 12.9824 18.7681 13.3728 19.1951 13.6534C19.6343 13.934 20.1284 14.0743 20.6774 14.0743Z" fill="currentColor"/>
+<path d="M8.53307 15.63C7.23987 15.63 6.09918 15.3433 5.11098 14.7699C4.13499 14.1843 3.37249 13.3852 2.8235 12.3726C2.2745 11.3478 2 10.1827 2 8.87731C2 7.54752 2.2745 6.37632 2.8235 5.36373C3.38469 4.35113 4.15329 3.55204 5.12928 2.96644C6.11748 2.38084 7.25207 2.08804 8.53307 2.08804C9.58226 2.08804 10.5095 2.28934 11.3147 2.69194C12.132 3.08234 12.7969 3.60694 13.3093 4.26573C13.8217 4.92453 14.1389 5.66262 14.2609 6.48002H12.3577C12.2601 5.97982 12.0466 5.52233 11.7172 5.10753C11.4001 4.69273 10.9731 4.36333 10.4363 4.11933C9.91166 3.86313 9.28336 3.73503 8.55137 3.73503C7.62417 3.73503 6.81287 3.94853 6.11748 4.37553C5.43428 4.80253 4.90358 5.40643 4.52539 6.18722C4.15939 6.95582 3.97639 7.85251 3.97639 8.87731C3.97639 9.8899 4.15939 10.7805 4.52539 11.5491C4.89138 12.3177 5.41598 12.9155 6.09918 13.3425C6.79457 13.7695 7.62417 13.983 8.58797 13.983C9.36876 13.983 10.0642 13.8244 10.6742 13.5072C11.2964 13.1778 11.7843 12.6776 12.1381 12.0066C12.4919 11.3356 12.6688 10.4755 12.6688 9.42631H14.4805C14.4805 10.7683 14.2182 11.9029 13.6936 12.8301C13.1812 13.7573 12.4736 14.4588 11.5709 14.9346C10.6803 15.3982 9.66766 15.63 8.53307 15.63ZM13.0531 10.14H8.86246V8.54791H14.4805V9.42631L13.0531 10.14Z" fill="currentColor"/>
+<path d="M16.1 19.0774C19.1883 21.0045 22.6164 21.9668 26.0457 21.9668H26.0471C29.4764 21.9668 32.9056 21.0033 35.9927 19.0774C36.2072 18.9436 36.2659 18.6593 36.1271 18.448L35.6091 17.6595C35.4704 17.4484 35.1868 17.3904 34.9722 17.5236C29.4263 20.9636 22.6665 20.9636 17.1207 17.5236C16.906 17.3904 16.6224 17.4484 16.4837 17.6595L15.9657 18.448C15.8269 18.6593 15.8856 18.9436 16.1 19.0774Z" fill="currentColor"/>
+</svg></span></li><li class="cl cl-cm" aria-hidden="true"><span class="co-logo co-cm"><svg viewBox="0 0 97 32" aria-hidden="true" focusable="false">
+<path d="M31 16C31 24.5604 24.0604 31.5 15.5 31.5C6.93959 31.5 0 24.5604 0 16C0 7.43959 6.93959 0.5 15.5 0.5C24.0604 0.5 31 7.43959 31 16ZM4.29597 16C4.29597 22.1878 9.31219 27.204 15.5 27.204C21.6878 27.204 26.704 22.1878 26.704 16C26.704 9.81219 21.6878 4.79597 15.5 4.79597C9.31219 4.79597 4.29597 9.81219 4.29597 16Z" fill="currentColor"/>
+<path d="M31 16C31 24.5604 24.0604 31.5 15.5 31.5C6.93959 31.5 0 24.5604 0 16C0 7.43959 6.93959 0.5 15.5 0.5C24.0604 0.5 31 7.43959 31 16ZM4.29597 16C4.29597 22.1878 9.31219 27.204 15.5 27.204C21.6878 27.204 26.704 22.1878 26.704 16C26.704 9.81219 21.6878 4.79597 15.5 4.79597C9.31219 4.79597 4.29597 9.81219 4.29597 16Z" fill="currentColor"/>
+<path d="M56.7648 9.75631C58.7765 6.76446 62.193 4.79597 66.0693 4.79597C72.2571 4.79597 77.2733 9.81219 77.2733 16C77.2733 22.1878 72.2571 27.204 66.0693 27.204C62.2149 27.204 58.8151 25.2577 56.799 22.2943C56.2346 23.7398 55.4794 25.0899 54.5643 26.3135C54.5543 26.3269 54.5443 26.3402 54.5342 26.3536C57.3718 29.5129 61.4885 31.5 66.0693 31.5C74.6297 31.5 81.5693 24.5604 81.5693 16C81.5693 7.43959 74.6297 0.5 66.0693 0.5C61.4581 0.5 57.3172 2.5136 54.4779 5.70947C55.4102 6.93468 56.1812 8.28936 56.7591 9.7418C56.761 9.74663 56.7629 9.75147 56.7648 9.75631Z" fill="currentColor"/>
+<path d="M31.4866 9.74705C33.4991 6.7604 36.9125 4.79597 40.7848 4.79597C46.9726 4.79597 51.9888 9.81219 51.9888 16C51.9888 22.1878 46.9726 27.204 40.7848 27.204C36.9344 27.204 33.5377 25.2618 31.5209 22.3035C30.9568 23.7456 30.2029 25.0925 29.2898 26.3135C29.2783 26.3289 29.2667 26.3442 29.2552 26.3596C32.0926 29.5154 36.2069 31.5 40.7848 31.5C49.3452 31.5 56.2848 24.5604 56.2848 16C56.2848 7.43959 49.3452 0.5 40.7848 0.5C36.1765 0.5 32.0379 2.51108 29.1988 5.70347C29.2009 5.7063 29.2031 5.70914 29.2052 5.71197C30.064 6.84099 30.7859 8.0799 31.3459 9.4039C31.394 9.51766 31.4409 9.63205 31.4866 9.74705Z" fill="currentColor"/>
+</svg><span>Cleanmeter</span></span></li><li class="cl cl-ibf" aria-hidden="true"><span class="co-logo co-ibf"><svg viewBox="0 0 6 8.5" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="0" y="0" width="1" height="7"/><rect x="1" y="0" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="0" width="1" height="7"/><rect x="3" y="2" width="3" height="1"/><rect x="3" y="4" width="3" height="1"/><rect x="3" y="6" width="2" height="1"/><rect x="4" y="2" width="1" height="5"/><rect x="4" y=".35" width="1" height="1"/><rect x="1" y="7.47" width="1" height="1"/></g></svg><span>IBFNet Group</span></span></li><li class="cl cl-crispy" aria-hidden="true"><span class="co-logo co-crispy"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M0 32H16V16L7.92 23.92L0 32Z"/><path d="M0 0H16V16L7.92 8.08L0 0Z"/><path d="M16 32H32V16L23.92 23.92L16 32Z"/><path d="M16 0H32V16L23.92 8.08L16 0Z"/></g></svg><span>Crispy Studio</span></span></li><li class="cl cl-goodday" aria-hidden="true"><span class="co-logo co-word" aria-label="GoodDay"><svg viewBox="0 0 84 24" aria-hidden="true" focusable="false">
+<path d="M74.6612 19.3818C74.466 19.3818 74.2769 19.3635 74.0939 19.3269C73.9231 19.3025 73.7706 19.272 73.6364 19.2354V17.6982C73.734 17.7348 73.856 17.7653 74.0024 17.7897C74.1488 17.8141 74.3074 17.8263 74.4782 17.8263C74.9052 17.8263 75.2407 17.7104 75.4847 17.4786C75.7409 17.2591 75.9666 16.887 76.1618 16.3624L76.967 14.2579L77.333 13.6357L80.078 6.11441H81.9995L77.6258 17.0944C77.4184 17.6189 77.1744 18.052 76.8938 18.3936C76.6132 18.7352 76.2899 18.9853 75.9239 19.1439C75.5701 19.3025 75.1492 19.3818 74.6612 19.3818ZM76.7108 15.4474L72.7031 6.11441H74.7161L78.0833 14.4592L76.7108 15.4474Z" fill="currentColor"/>
+<path d="M66.0735 15.63C65.2317 15.63 64.4936 15.4287 63.8592 15.0261C63.237 14.6235 62.749 14.0623 62.3952 13.3425C62.0536 12.6227 61.8828 11.7809 61.8828 10.8171C61.8828 9.84115 62.0597 8.98716 62.4135 8.25516C62.7673 7.52316 63.2614 6.95587 63.8958 6.55327C64.5302 6.15067 65.2744 5.94937 66.1284 5.94937C67.019 5.94937 67.751 6.16287 68.3244 6.58987C68.91 7.00467 69.2943 7.59026 69.4773 8.34666L69.2943 8.38326V6.11407H71.106V15.447H69.2943V13.3059L69.4773 13.3608C69.2821 14.0562 68.8795 14.6113 68.2695 15.0261C67.6595 15.4287 66.9275 15.63 66.0735 15.63ZM66.5493 14.0379C67.4033 14.0379 68.0682 13.7512 68.544 13.1778C69.032 12.5922 69.276 11.787 69.276 10.7622C69.276 9.76185 69.032 8.97496 68.544 8.40156C68.056 7.81596 67.385 7.52316 66.531 7.52316C65.6892 7.52316 65.0304 7.81596 64.5546 8.40156C64.0788 8.97496 63.8409 9.78015 63.8409 10.8171C63.8409 11.8297 64.0788 12.6227 64.5546 13.1961C65.0426 13.7573 65.7075 14.0379 66.5493 14.0379Z" fill="currentColor"/>
+<path d="M50.3353 15.4476V13.8372H53.7939C54.8431 13.8372 55.7398 13.6237 56.484 13.1967C57.2404 12.7697 57.8199 12.178 58.2225 11.4216C58.6251 10.6652 58.8264 9.7868 58.8264 8.7864C58.8264 7.79821 58.6251 6.93811 58.2225 6.20612C57.8321 5.47412 57.2587 4.90682 56.5023 4.50423C55.7581 4.08943 54.8553 3.88203 53.7939 3.88203H50.3536V2.27164H53.7939C55.2091 2.27164 56.4413 2.54004 57.4905 3.07683C58.5397 3.61363 59.351 4.37613 59.9244 5.36432C60.51 6.34032 60.8028 7.49321 60.8028 8.823C60.8028 10.1528 60.51 11.3179 59.9244 12.3183C59.3388 13.3065 58.5214 14.0751 57.4722 14.6241C56.4352 15.1731 55.2152 15.4476 53.8122 15.4476H50.3353ZM49.1641 15.4476V2.27164H51.1039V15.4476H49.1641Z" fill="currentColor"/>
+<path d="M45.0247 15.4476V13.3065L45.2077 13.3614C45.0125 14.0568 44.6099 14.6119 43.9999 15.0267C43.3899 15.4293 42.658 15.6306 41.804 15.6306C40.9622 15.6306 40.2241 15.4293 39.5897 15.0267C38.9675 14.6241 38.4795 14.0629 38.1257 13.3431C37.7841 12.6233 37.6133 11.7815 37.6133 10.8177C37.6133 9.8417 37.7902 8.9877 38.144 8.2557C38.4978 7.52371 38.9919 6.95641 39.6263 6.55381C40.2607 6.15122 41.0049 5.94992 41.8589 5.94992C42.7495 5.94992 43.4815 6.16342 44.0548 6.59041C44.6404 7.00521 45.0247 7.59081 45.2077 8.34721L44.9515 8.3838V2.27164H46.8364V15.4476H45.0247ZM42.2798 14.0385C43.1216 14.0385 43.7864 13.7518 44.2744 13.1784C44.7624 12.5928 45.0064 11.7876 45.0064 10.7628C45.0064 9.7624 44.7563 8.9755 44.2561 8.4021C43.7681 7.81651 43.1033 7.52371 42.2615 7.52371C41.4319 7.52371 40.7731 7.81651 40.2851 8.4021C39.8093 8.9755 39.5714 9.7807 39.5714 10.8177C39.5714 11.8303 39.8093 12.6233 40.2851 13.1967C40.7731 13.7579 41.438 14.0385 42.2798 14.0385Z" fill="currentColor"/>
+<path d="M31.4899 15.6298C30.5383 15.6298 29.7026 15.4224 28.9828 15.0076C28.263 14.5806 27.7018 14.0011 27.2992 13.2691C26.8966 12.5249 26.6953 11.6831 26.6953 10.7437C26.6953 9.7921 26.8966 8.9564 27.2992 8.2366C27.714 7.51681 28.2752 6.95561 28.9828 6.55301C29.7026 6.13822 30.5383 5.93082 31.4899 5.93082C32.4537 5.93082 33.2955 6.13822 34.0153 6.55301C34.7351 6.95561 35.2902 7.51681 35.6806 8.2366C36.0832 8.9564 36.2845 9.7921 36.2845 10.7437C36.2845 11.6831 36.0832 12.5249 35.6806 13.2691C35.2902 14.0011 34.7351 14.5806 34.0153 15.0076C33.2955 15.4224 32.4537 15.6298 31.4899 15.6298ZM31.4899 14.0743C32.0633 14.0743 32.5574 13.934 32.9722 13.6534C33.3992 13.3728 33.7347 12.9824 33.9787 12.4822C34.2227 11.982 34.3447 11.3964 34.3447 10.7254C34.3447 9.725 34.0763 8.9381 33.5395 8.3647C33.0149 7.77911 32.3317 7.48631 31.4899 7.48631C30.6603 7.48631 29.9771 7.77911 29.4403 8.3647C28.9157 8.9503 28.6534 9.7372 28.6534 10.7254C28.6534 11.3964 28.7693 11.982 29.0011 12.4822C29.2451 12.9824 29.5806 13.3728 30.0076 13.6534C30.4468 13.934 30.9409 14.0743 31.4899 14.0743Z" fill="currentColor"/>
+<path d="M20.6774 15.6298C19.7258 15.6298 18.8901 15.4224 18.1703 15.0076C17.4505 14.5806 16.8893 14.0011 16.4867 13.2691C16.0841 12.5249 15.8828 11.6831 15.8828 10.7437C15.8828 9.7921 16.0841 8.9564 16.4867 8.2366C16.9015 7.51681 17.4627 6.95561 18.1703 6.55301C18.8901 6.13822 19.7258 5.93082 20.6774 5.93082C21.6412 5.93082 22.483 6.13822 23.2028 6.55301C23.9226 6.95561 24.4777 7.51681 24.8681 8.2366C25.2707 8.9564 25.472 9.7921 25.472 10.7437C25.472 11.6831 25.2707 12.5249 24.8681 13.2691C24.4777 14.0011 23.9226 14.5806 23.2028 15.0076C22.483 15.4224 21.6412 15.6298 20.6774 15.6298ZM20.6774 14.0743C21.2508 14.0743 21.7449 13.934 22.1597 13.6534C22.5867 13.3728 22.9222 12.9824 23.1662 12.4822C23.4102 11.982 23.5322 11.3964 23.5322 10.7254C23.5322 9.725 23.2638 8.9381 22.727 8.3647C22.2024 7.77911 21.5192 7.48631 20.6774 7.48631C19.8478 7.48631 19.1646 7.77911 18.6278 8.3647C18.1032 8.9503 17.8409 9.7372 17.8409 10.7254C17.8409 11.3964 17.9568 11.982 18.1886 12.4822C18.4326 12.9824 18.7681 13.3728 19.1951 13.6534C19.6343 13.934 20.1284 14.0743 20.6774 14.0743Z" fill="currentColor"/>
+<path d="M8.53307 15.63C7.23987 15.63 6.09918 15.3433 5.11098 14.7699C4.13499 14.1843 3.37249 13.3852 2.8235 12.3726C2.2745 11.3478 2 10.1827 2 8.87731C2 7.54752 2.2745 6.37632 2.8235 5.36373C3.38469 4.35113 4.15329 3.55204 5.12928 2.96644C6.11748 2.38084 7.25207 2.08804 8.53307 2.08804C9.58226 2.08804 10.5095 2.28934 11.3147 2.69194C12.132 3.08234 12.7969 3.60694 13.3093 4.26573C13.8217 4.92453 14.1389 5.66262 14.2609 6.48002H12.3577C12.2601 5.97982 12.0466 5.52233 11.7172 5.10753C11.4001 4.69273 10.9731 4.36333 10.4363 4.11933C9.91166 3.86313 9.28336 3.73503 8.55137 3.73503C7.62417 3.73503 6.81287 3.94853 6.11748 4.37553C5.43428 4.80253 4.90358 5.40643 4.52539 6.18722C4.15939 6.95582 3.97639 7.85251 3.97639 8.87731C3.97639 9.8899 4.15939 10.7805 4.52539 11.5491C4.89138 12.3177 5.41598 12.9155 6.09918 13.3425C6.79457 13.7695 7.62417 13.983 8.58797 13.983C9.36876 13.983 10.0642 13.8244 10.6742 13.5072C11.2964 13.1778 11.7843 12.6776 12.1381 12.0066C12.4919 11.3356 12.6688 10.4755 12.6688 9.42631H14.4805C14.4805 10.7683 14.2182 11.9029 13.6936 12.8301C13.1812 13.7573 12.4736 14.4588 11.5709 14.9346C10.6803 15.3982 9.66766 15.63 8.53307 15.63ZM13.0531 10.14H8.86246V8.54791H14.4805V9.42631L13.0531 10.14Z" fill="currentColor"/>
+<path d="M16.1 19.0774C19.1883 21.0045 22.6164 21.9668 26.0457 21.9668H26.0471C29.4764 21.9668 32.9056 21.0033 35.9927 19.0774C36.2072 18.9436 36.2659 18.6593 36.1271 18.448L35.6091 17.6595C35.4704 17.4484 35.1868 17.3904 34.9722 17.5236C29.4263 20.9636 22.6665 20.9636 17.1207 17.5236C16.906 17.3904 16.6224 17.4484 16.4837 17.6595L15.9657 18.448C15.8269 18.6593 15.8856 18.9436 16.1 19.0774Z" fill="currentColor"/>
+</svg></span></li><li class="cl cl-cm" aria-hidden="true"><span class="co-logo co-cm"><svg viewBox="0 0 97 32" aria-hidden="true" focusable="false">
+<path d="M31 16C31 24.5604 24.0604 31.5 15.5 31.5C6.93959 31.5 0 24.5604 0 16C0 7.43959 6.93959 0.5 15.5 0.5C24.0604 0.5 31 7.43959 31 16ZM4.29597 16C4.29597 22.1878 9.31219 27.204 15.5 27.204C21.6878 27.204 26.704 22.1878 26.704 16C26.704 9.81219 21.6878 4.79597 15.5 4.79597C9.31219 4.79597 4.29597 9.81219 4.29597 16Z" fill="currentColor"/>
+<path d="M31 16C31 24.5604 24.0604 31.5 15.5 31.5C6.93959 31.5 0 24.5604 0 16C0 7.43959 6.93959 0.5 15.5 0.5C24.0604 0.5 31 7.43959 31 16ZM4.29597 16C4.29597 22.1878 9.31219 27.204 15.5 27.204C21.6878 27.204 26.704 22.1878 26.704 16C26.704 9.81219 21.6878 4.79597 15.5 4.79597C9.31219 4.79597 4.29597 9.81219 4.29597 16Z" fill="currentColor"/>
+<path d="M56.7648 9.75631C58.7765 6.76446 62.193 4.79597 66.0693 4.79597C72.2571 4.79597 77.2733 9.81219 77.2733 16C77.2733 22.1878 72.2571 27.204 66.0693 27.204C62.2149 27.204 58.8151 25.2577 56.799 22.2943C56.2346 23.7398 55.4794 25.0899 54.5643 26.3135C54.5543 26.3269 54.5443 26.3402 54.5342 26.3536C57.3718 29.5129 61.4885 31.5 66.0693 31.5C74.6297 31.5 81.5693 24.5604 81.5693 16C81.5693 7.43959 74.6297 0.5 66.0693 0.5C61.4581 0.5 57.3172 2.5136 54.4779 5.70947C55.4102 6.93468 56.1812 8.28936 56.7591 9.7418C56.761 9.74663 56.7629 9.75147 56.7648 9.75631Z" fill="currentColor"/>
+<path d="M31.4866 9.74705C33.4991 6.7604 36.9125 4.79597 40.7848 4.79597C46.9726 4.79597 51.9888 9.81219 51.9888 16C51.9888 22.1878 46.9726 27.204 40.7848 27.204C36.9344 27.204 33.5377 25.2618 31.5209 22.3035C30.9568 23.7456 30.2029 25.0925 29.2898 26.3135C29.2783 26.3289 29.2667 26.3442 29.2552 26.3596C32.0926 29.5154 36.2069 31.5 40.7848 31.5C49.3452 31.5 56.2848 24.5604 56.2848 16C56.2848 7.43959 49.3452 0.5 40.7848 0.5C36.1765 0.5 32.0379 2.51108 29.1988 5.70347C29.2009 5.7063 29.2031 5.70914 29.2052 5.71197C30.064 6.84099 30.7859 8.0799 31.3459 9.4039C31.394 9.51766 31.4409 9.63205 31.4866 9.74705Z" fill="currentColor"/>
+</svg><span>Cleanmeter</span></span></li><li class="cl cl-ibf" aria-hidden="true"><span class="co-logo co-ibf"><svg viewBox="0 0 6 8.5" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="0" y="0" width="1" height="7"/><rect x="1" y="0" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="0" width="1" height="7"/><rect x="3" y="2" width="3" height="1"/><rect x="3" y="4" width="3" height="1"/><rect x="3" y="6" width="2" height="1"/><rect x="4" y="2" width="1" height="5"/><rect x="4" y=".35" width="1" height="1"/><rect x="1" y="7.47" width="1" height="1"/></g></svg><span>IBFNet Group</span></span></li><li class="cl cl-crispy" aria-hidden="true"><span class="co-logo co-crispy"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M0 32H16V16L7.92 23.92L0 32Z"/><path d="M0 0H16V16L7.92 8.08L0 0Z"/><path d="M16 32H32V16L23.92 23.92L16 32Z"/><path d="M16 0H32V16L23.92 8.08L16 0Z"/></g></svg><span>Crispy Studio</span></span></li><li class="cl cl-goodday" aria-hidden="true"><span class="co-logo co-word" aria-label="GoodDay"><svg viewBox="0 0 84 24" aria-hidden="true" focusable="false">
+<path d="M74.6612 19.3818C74.466 19.3818 74.2769 19.3635 74.0939 19.3269C73.9231 19.3025 73.7706 19.272 73.6364 19.2354V17.6982C73.734 17.7348 73.856 17.7653 74.0024 17.7897C74.1488 17.8141 74.3074 17.8263 74.4782 17.8263C74.9052 17.8263 75.2407 17.7104 75.4847 17.4786C75.7409 17.2591 75.9666 16.887 76.1618 16.3624L76.967 14.2579L77.333 13.6357L80.078 6.11441H81.9995L77.6258 17.0944C77.4184 17.6189 77.1744 18.052 76.8938 18.3936C76.6132 18.7352 76.2899 18.9853 75.9239 19.1439C75.5701 19.3025 75.1492 19.3818 74.6612 19.3818ZM76.7108 15.4474L72.7031 6.11441H74.7161L78.0833 14.4592L76.7108 15.4474Z" fill="currentColor"/>
+<path d="M66.0735 15.63C65.2317 15.63 64.4936 15.4287 63.8592 15.0261C63.237 14.6235 62.749 14.0623 62.3952 13.3425C62.0536 12.6227 61.8828 11.7809 61.8828 10.8171C61.8828 9.84115 62.0597 8.98716 62.4135 8.25516C62.7673 7.52316 63.2614 6.95587 63.8958 6.55327C64.5302 6.15067 65.2744 5.94937 66.1284 5.94937C67.019 5.94937 67.751 6.16287 68.3244 6.58987C68.91 7.00467 69.2943 7.59026 69.4773 8.34666L69.2943 8.38326V6.11407H71.106V15.447H69.2943V13.3059L69.4773 13.3608C69.2821 14.0562 68.8795 14.6113 68.2695 15.0261C67.6595 15.4287 66.9275 15.63 66.0735 15.63ZM66.5493 14.0379C67.4033 14.0379 68.0682 13.7512 68.544 13.1778C69.032 12.5922 69.276 11.787 69.276 10.7622C69.276 9.76185 69.032 8.97496 68.544 8.40156C68.056 7.81596 67.385 7.52316 66.531 7.52316C65.6892 7.52316 65.0304 7.81596 64.5546 8.40156C64.0788 8.97496 63.8409 9.78015 63.8409 10.8171C63.8409 11.8297 64.0788 12.6227 64.5546 13.1961C65.0426 13.7573 65.7075 14.0379 66.5493 14.0379Z" fill="currentColor"/>
+<path d="M50.3353 15.4476V13.8372H53.7939C54.8431 13.8372 55.7398 13.6237 56.484 13.1967C57.2404 12.7697 57.8199 12.178 58.2225 11.4216C58.6251 10.6652 58.8264 9.7868 58.8264 8.7864C58.8264 7.79821 58.6251 6.93811 58.2225 6.20612C57.8321 5.47412 57.2587 4.90682 56.5023 4.50423C55.7581 4.08943 54.8553 3.88203 53.7939 3.88203H50.3536V2.27164H53.7939C55.2091 2.27164 56.4413 2.54004 57.4905 3.07683C58.5397 3.61363 59.351 4.37613 59.9244 5.36432C60.51 6.34032 60.8028 7.49321 60.8028 8.823C60.8028 10.1528 60.51 11.3179 59.9244 12.3183C59.3388 13.3065 58.5214 14.0751 57.4722 14.6241C56.4352 15.1731 55.2152 15.4476 53.8122 15.4476H50.3353ZM49.1641 15.4476V2.27164H51.1039V15.4476H49.1641Z" fill="currentColor"/>
+<path d="M45.0247 15.4476V13.3065L45.2077 13.3614C45.0125 14.0568 44.6099 14.6119 43.9999 15.0267C43.3899 15.4293 42.658 15.6306 41.804 15.6306C40.9622 15.6306 40.2241 15.4293 39.5897 15.0267C38.9675 14.6241 38.4795 14.0629 38.1257 13.3431C37.7841 12.6233 37.6133 11.7815 37.6133 10.8177C37.6133 9.8417 37.7902 8.9877 38.144 8.2557C38.4978 7.52371 38.9919 6.95641 39.6263 6.55381C40.2607 6.15122 41.0049 5.94992 41.8589 5.94992C42.7495 5.94992 43.4815 6.16342 44.0548 6.59041C44.6404 7.00521 45.0247 7.59081 45.2077 8.34721L44.9515 8.3838V2.27164H46.8364V15.4476H45.0247ZM42.2798 14.0385C43.1216 14.0385 43.7864 13.7518 44.2744 13.1784C44.7624 12.5928 45.0064 11.7876 45.0064 10.7628C45.0064 9.7624 44.7563 8.9755 44.2561 8.4021C43.7681 7.81651 43.1033 7.52371 42.2615 7.52371C41.4319 7.52371 40.7731 7.81651 40.2851 8.4021C39.8093 8.9755 39.5714 9.7807 39.5714 10.8177C39.5714 11.8303 39.8093 12.6233 40.2851 13.1967C40.7731 13.7579 41.438 14.0385 42.2798 14.0385Z" fill="currentColor"/>
+<path d="M31.4899 15.6298C30.5383 15.6298 29.7026 15.4224 28.9828 15.0076C28.263 14.5806 27.7018 14.0011 27.2992 13.2691C26.8966 12.5249 26.6953 11.6831 26.6953 10.7437C26.6953 9.7921 26.8966 8.9564 27.2992 8.2366C27.714 7.51681 28.2752 6.95561 28.9828 6.55301C29.7026 6.13822 30.5383 5.93082 31.4899 5.93082C32.4537 5.93082 33.2955 6.13822 34.0153 6.55301C34.7351 6.95561 35.2902 7.51681 35.6806 8.2366C36.0832 8.9564 36.2845 9.7921 36.2845 10.7437C36.2845 11.6831 36.0832 12.5249 35.6806 13.2691C35.2902 14.0011 34.7351 14.5806 34.0153 15.0076C33.2955 15.4224 32.4537 15.6298 31.4899 15.6298ZM31.4899 14.0743C32.0633 14.0743 32.5574 13.934 32.9722 13.6534C33.3992 13.3728 33.7347 12.9824 33.9787 12.4822C34.2227 11.982 34.3447 11.3964 34.3447 10.7254C34.3447 9.725 34.0763 8.9381 33.5395 8.3647C33.0149 7.77911 32.3317 7.48631 31.4899 7.48631C30.6603 7.48631 29.9771 7.77911 29.4403 8.3647C28.9157 8.9503 28.6534 9.7372 28.6534 10.7254C28.6534 11.3964 28.7693 11.982 29.0011 12.4822C29.2451 12.9824 29.5806 13.3728 30.0076 13.6534C30.4468 13.934 30.9409 14.0743 31.4899 14.0743Z" fill="currentColor"/>
+<path d="M20.6774 15.6298C19.7258 15.6298 18.8901 15.4224 18.1703 15.0076C17.4505 14.5806 16.8893 14.0011 16.4867 13.2691C16.0841 12.5249 15.8828 11.6831 15.8828 10.7437C15.8828 9.7921 16.0841 8.9564 16.4867 8.2366C16.9015 7.51681 17.4627 6.95561 18.1703 6.55301C18.8901 6.13822 19.7258 5.93082 20.6774 5.93082C21.6412 5.93082 22.483 6.13822 23.2028 6.55301C23.9226 6.95561 24.4777 7.51681 24.8681 8.2366C25.2707 8.9564 25.472 9.7921 25.472 10.7437C25.472 11.6831 25.2707 12.5249 24.8681 13.2691C24.4777 14.0011 23.9226 14.5806 23.2028 15.0076C22.483 15.4224 21.6412 15.6298 20.6774 15.6298ZM20.6774 14.0743C21.2508 14.0743 21.7449 13.934 22.1597 13.6534C22.5867 13.3728 22.9222 12.9824 23.1662 12.4822C23.4102 11.982 23.5322 11.3964 23.5322 10.7254C23.5322 9.725 23.2638 8.9381 22.727 8.3647C22.2024 7.77911 21.5192 7.48631 20.6774 7.48631C19.8478 7.48631 19.1646 7.77911 18.6278 8.3647C18.1032 8.9503 17.8409 9.7372 17.8409 10.7254C17.8409 11.3964 17.9568 11.982 18.1886 12.4822C18.4326 12.9824 18.7681 13.3728 19.1951 13.6534C19.6343 13.934 20.1284 14.0743 20.6774 14.0743Z" fill="currentColor"/>
+<path d="M8.53307 15.63C7.23987 15.63 6.09918 15.3433 5.11098 14.7699C4.13499 14.1843 3.37249 13.3852 2.8235 12.3726C2.2745 11.3478 2 10.1827 2 8.87731C2 7.54752 2.2745 6.37632 2.8235 5.36373C3.38469 4.35113 4.15329 3.55204 5.12928 2.96644C6.11748 2.38084 7.25207 2.08804 8.53307 2.08804C9.58226 2.08804 10.5095 2.28934 11.3147 2.69194C12.132 3.08234 12.7969 3.60694 13.3093 4.26573C13.8217 4.92453 14.1389 5.66262 14.2609 6.48002H12.3577C12.2601 5.97982 12.0466 5.52233 11.7172 5.10753C11.4001 4.69273 10.9731 4.36333 10.4363 4.11933C9.91166 3.86313 9.28336 3.73503 8.55137 3.73503C7.62417 3.73503 6.81287 3.94853 6.11748 4.37553C5.43428 4.80253 4.90358 5.40643 4.52539 6.18722C4.15939 6.95582 3.97639 7.85251 3.97639 8.87731C3.97639 9.8899 4.15939 10.7805 4.52539 11.5491C4.89138 12.3177 5.41598 12.9155 6.09918 13.3425C6.79457 13.7695 7.62417 13.983 8.58797 13.983C9.36876 13.983 10.0642 13.8244 10.6742 13.5072C11.2964 13.1778 11.7843 12.6776 12.1381 12.0066C12.4919 11.3356 12.6688 10.4755 12.6688 9.42631H14.4805C14.4805 10.7683 14.2182 11.9029 13.6936 12.8301C13.1812 13.7573 12.4736 14.4588 11.5709 14.9346C10.6803 15.3982 9.66766 15.63 8.53307 15.63ZM13.0531 10.14H8.86246V8.54791H14.4805V9.42631L13.0531 10.14Z" fill="currentColor"/>
+<path d="M16.1 19.0774C19.1883 21.0045 22.6164 21.9668 26.0457 21.9668H26.0471C29.4764 21.9668 32.9056 21.0033 35.9927 19.0774C36.2072 18.9436 36.2659 18.6593 36.1271 18.448L35.6091 17.6595C35.4704 17.4484 35.1868 17.3904 34.9722 17.5236C29.4263 20.9636 22.6665 20.9636 17.1207 17.5236C16.906 17.3904 16.6224 17.4484 16.4837 17.6595L15.9657 18.448C15.8269 18.6593 15.8856 18.9436 16.1 19.0774Z" fill="currentColor"/>
+</svg></span></li><li class="cl cl-cm" aria-hidden="true"><span class="co-logo co-cm"><svg viewBox="0 0 97 32" aria-hidden="true" focusable="false">
+<path d="M31 16C31 24.5604 24.0604 31.5 15.5 31.5C6.93959 31.5 0 24.5604 0 16C0 7.43959 6.93959 0.5 15.5 0.5C24.0604 0.5 31 7.43959 31 16ZM4.29597 16C4.29597 22.1878 9.31219 27.204 15.5 27.204C21.6878 27.204 26.704 22.1878 26.704 16C26.704 9.81219 21.6878 4.79597 15.5 4.79597C9.31219 4.79597 4.29597 9.81219 4.29597 16Z" fill="currentColor"/>
+<path d="M31 16C31 24.5604 24.0604 31.5 15.5 31.5C6.93959 31.5 0 24.5604 0 16C0 7.43959 6.93959 0.5 15.5 0.5C24.0604 0.5 31 7.43959 31 16ZM4.29597 16C4.29597 22.1878 9.31219 27.204 15.5 27.204C21.6878 27.204 26.704 22.1878 26.704 16C26.704 9.81219 21.6878 4.79597 15.5 4.79597C9.31219 4.79597 4.29597 9.81219 4.29597 16Z" fill="currentColor"/>
+<path d="M56.7648 9.75631C58.7765 6.76446 62.193 4.79597 66.0693 4.79597C72.2571 4.79597 77.2733 9.81219 77.2733 16C77.2733 22.1878 72.2571 27.204 66.0693 27.204C62.2149 27.204 58.8151 25.2577 56.799 22.2943C56.2346 23.7398 55.4794 25.0899 54.5643 26.3135C54.5543 26.3269 54.5443 26.3402 54.5342 26.3536C57.3718 29.5129 61.4885 31.5 66.0693 31.5C74.6297 31.5 81.5693 24.5604 81.5693 16C81.5693 7.43959 74.6297 0.5 66.0693 0.5C61.4581 0.5 57.3172 2.5136 54.4779 5.70947C55.4102 6.93468 56.1812 8.28936 56.7591 9.7418C56.761 9.74663 56.7629 9.75147 56.7648 9.75631Z" fill="currentColor"/>
+<path d="M31.4866 9.74705C33.4991 6.7604 36.9125 4.79597 40.7848 4.79597C46.9726 4.79597 51.9888 9.81219 51.9888 16C51.9888 22.1878 46.9726 27.204 40.7848 27.204C36.9344 27.204 33.5377 25.2618 31.5209 22.3035C30.9568 23.7456 30.2029 25.0925 29.2898 26.3135C29.2783 26.3289 29.2667 26.3442 29.2552 26.3596C32.0926 29.5154 36.2069 31.5 40.7848 31.5C49.3452 31.5 56.2848 24.5604 56.2848 16C56.2848 7.43959 49.3452 0.5 40.7848 0.5C36.1765 0.5 32.0379 2.51108 29.1988 5.70347C29.2009 5.7063 29.2031 5.70914 29.2052 5.71197C30.064 6.84099 30.7859 8.0799 31.3459 9.4039C31.394 9.51766 31.4409 9.63205 31.4866 9.74705Z" fill="currentColor"/>
+</svg><span>Cleanmeter</span></span></li><li class="cl cl-ibf" aria-hidden="true"><span class="co-logo co-ibf"><svg viewBox="0 0 6 8.5" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="0" y="0" width="1" height="7"/><rect x="1" y="0" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="0" width="1" height="7"/><rect x="3" y="2" width="3" height="1"/><rect x="3" y="4" width="3" height="1"/><rect x="3" y="6" width="2" height="1"/><rect x="4" y="2" width="1" height="5"/><rect x="4" y=".35" width="1" height="1"/><rect x="1" y="7.47" width="1" height="1"/></g></svg><span>IBFNet Group</span></span></li><li class="cl cl-crispy" aria-hidden="true"><span class="co-logo co-crispy"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M0 32H16V16L7.92 23.92L0 32Z"/><path d="M0 0H16V16L7.92 8.08L0 0Z"/><path d="M16 32H32V16L23.92 23.92L16 32Z"/><path d="M16 0H32V16L23.92 8.08L16 0Z"/></g></svg><span>Crispy Studio</span></span></li><li class="cl cl-goodday" aria-hidden="true"><span class="co-logo co-word" aria-label="GoodDay"><svg viewBox="0 0 84 24" aria-hidden="true" focusable="false">
+<path d="M74.6612 19.3818C74.466 19.3818 74.2769 19.3635 74.0939 19.3269C73.9231 19.3025 73.7706 19.272 73.6364 19.2354V17.6982C73.734 17.7348 73.856 17.7653 74.0024 17.7897C74.1488 17.8141 74.3074 17.8263 74.4782 17.8263C74.9052 17.8263 75.2407 17.7104 75.4847 17.4786C75.7409 17.2591 75.9666 16.887 76.1618 16.3624L76.967 14.2579L77.333 13.6357L80.078 6.11441H81.9995L77.6258 17.0944C77.4184 17.6189 77.1744 18.052 76.8938 18.3936C76.6132 18.7352 76.2899 18.9853 75.9239 19.1439C75.5701 19.3025 75.1492 19.3818 74.6612 19.3818ZM76.7108 15.4474L72.7031 6.11441H74.7161L78.0833 14.4592L76.7108 15.4474Z" fill="currentColor"/>
+<path d="M66.0735 15.63C65.2317 15.63 64.4936 15.4287 63.8592 15.0261C63.237 14.6235 62.749 14.0623 62.3952 13.3425C62.0536 12.6227 61.8828 11.7809 61.8828 10.8171C61.8828 9.84115 62.0597 8.98716 62.4135 8.25516C62.7673 7.52316 63.2614 6.95587 63.8958 6.55327C64.5302 6.15067 65.2744 5.94937 66.1284 5.94937C67.019 5.94937 67.751 6.16287 68.3244 6.58987C68.91 7.00467 69.2943 7.59026 69.4773 8.34666L69.2943 8.38326V6.11407H71.106V15.447H69.2943V13.3059L69.4773 13.3608C69.2821 14.0562 68.8795 14.6113 68.2695 15.0261C67.6595 15.4287 66.9275 15.63 66.0735 15.63ZM66.5493 14.0379C67.4033 14.0379 68.0682 13.7512 68.544 13.1778C69.032 12.5922 69.276 11.787 69.276 10.7622C69.276 9.76185 69.032 8.97496 68.544 8.40156C68.056 7.81596 67.385 7.52316 66.531 7.52316C65.6892 7.52316 65.0304 7.81596 64.5546 8.40156C64.0788 8.97496 63.8409 9.78015 63.8409 10.8171C63.8409 11.8297 64.0788 12.6227 64.5546 13.1961C65.0426 13.7573 65.7075 14.0379 66.5493 14.0379Z" fill="currentColor"/>
+<path d="M50.3353 15.4476V13.8372H53.7939C54.8431 13.8372 55.7398 13.6237 56.484 13.1967C57.2404 12.7697 57.8199 12.178 58.2225 11.4216C58.6251 10.6652 58.8264 9.7868 58.8264 8.7864C58.8264 7.79821 58.6251 6.93811 58.2225 6.20612C57.8321 5.47412 57.2587 4.90682 56.5023 4.50423C55.7581 4.08943 54.8553 3.88203 53.7939 3.88203H50.3536V2.27164H53.7939C55.2091 2.27164 56.4413 2.54004 57.4905 3.07683C58.5397 3.61363 59.351 4.37613 59.9244 5.36432C60.51 6.34032 60.8028 7.49321 60.8028 8.823C60.8028 10.1528 60.51 11.3179 59.9244 12.3183C59.3388 13.3065 58.5214 14.0751 57.4722 14.6241C56.4352 15.1731 55.2152 15.4476 53.8122 15.4476H50.3353ZM49.1641 15.4476V2.27164H51.1039V15.4476H49.1641Z" fill="currentColor"/>
+<path d="M45.0247 15.4476V13.3065L45.2077 13.3614C45.0125 14.0568 44.6099 14.6119 43.9999 15.0267C43.3899 15.4293 42.658 15.6306 41.804 15.6306C40.9622 15.6306 40.2241 15.4293 39.5897 15.0267C38.9675 14.6241 38.4795 14.0629 38.1257 13.3431C37.7841 12.6233 37.6133 11.7815 37.6133 10.8177C37.6133 9.8417 37.7902 8.9877 38.144 8.2557C38.4978 7.52371 38.9919 6.95641 39.6263 6.55381C40.2607 6.15122 41.0049 5.94992 41.8589 5.94992C42.7495 5.94992 43.4815 6.16342 44.0548 6.59041C44.6404 7.00521 45.0247 7.59081 45.2077 8.34721L44.9515 8.3838V2.27164H46.8364V15.4476H45.0247ZM42.2798 14.0385C43.1216 14.0385 43.7864 13.7518 44.2744 13.1784C44.7624 12.5928 45.0064 11.7876 45.0064 10.7628C45.0064 9.7624 44.7563 8.9755 44.2561 8.4021C43.7681 7.81651 43.1033 7.52371 42.2615 7.52371C41.4319 7.52371 40.7731 7.81651 40.2851 8.4021C39.8093 8.9755 39.5714 9.7807 39.5714 10.8177C39.5714 11.8303 39.8093 12.6233 40.2851 13.1967C40.7731 13.7579 41.438 14.0385 42.2798 14.0385Z" fill="currentColor"/>
+<path d="M31.4899 15.6298C30.5383 15.6298 29.7026 15.4224 28.9828 15.0076C28.263 14.5806 27.7018 14.0011 27.2992 13.2691C26.8966 12.5249 26.6953 11.6831 26.6953 10.7437C26.6953 9.7921 26.8966 8.9564 27.2992 8.2366C27.714 7.51681 28.2752 6.95561 28.9828 6.55301C29.7026 6.13822 30.5383 5.93082 31.4899 5.93082C32.4537 5.93082 33.2955 6.13822 34.0153 6.55301C34.7351 6.95561 35.2902 7.51681 35.6806 8.2366C36.0832 8.9564 36.2845 9.7921 36.2845 10.7437C36.2845 11.6831 36.0832 12.5249 35.6806 13.2691C35.2902 14.0011 34.7351 14.5806 34.0153 15.0076C33.2955 15.4224 32.4537 15.6298 31.4899 15.6298ZM31.4899 14.0743C32.0633 14.0743 32.5574 13.934 32.9722 13.6534C33.3992 13.3728 33.7347 12.9824 33.9787 12.4822C34.2227 11.982 34.3447 11.3964 34.3447 10.7254C34.3447 9.725 34.0763 8.9381 33.5395 8.3647C33.0149 7.77911 32.3317 7.48631 31.4899 7.48631C30.6603 7.48631 29.9771 7.77911 29.4403 8.3647C28.9157 8.9503 28.6534 9.7372 28.6534 10.7254C28.6534 11.3964 28.7693 11.982 29.0011 12.4822C29.2451 12.9824 29.5806 13.3728 30.0076 13.6534C30.4468 13.934 30.9409 14.0743 31.4899 14.0743Z" fill="currentColor"/>
+<path d="M20.6774 15.6298C19.7258 15.6298 18.8901 15.4224 18.1703 15.0076C17.4505 14.5806 16.8893 14.0011 16.4867 13.2691C16.0841 12.5249 15.8828 11.6831 15.8828 10.7437C15.8828 9.7921 16.0841 8.9564 16.4867 8.2366C16.9015 7.51681 17.4627 6.95561 18.1703 6.55301C18.8901 6.13822 19.7258 5.93082 20.6774 5.93082C21.6412 5.93082 22.483 6.13822 23.2028 6.55301C23.9226 6.95561 24.4777 7.51681 24.8681 8.2366C25.2707 8.9564 25.472 9.7921 25.472 10.7437C25.472 11.6831 25.2707 12.5249 24.8681 13.2691C24.4777 14.0011 23.9226 14.5806 23.2028 15.0076C22.483 15.4224 21.6412 15.6298 20.6774 15.6298ZM20.6774 14.0743C21.2508 14.0743 21.7449 13.934 22.1597 13.6534C22.5867 13.3728 22.9222 12.9824 23.1662 12.4822C23.4102 11.982 23.5322 11.3964 23.5322 10.7254C23.5322 9.725 23.2638 8.9381 22.727 8.3647C22.2024 7.77911 21.5192 7.48631 20.6774 7.48631C19.8478 7.48631 19.1646 7.77911 18.6278 8.3647C18.1032 8.9503 17.8409 9.7372 17.8409 10.7254C17.8409 11.3964 17.9568 11.982 18.1886 12.4822C18.4326 12.9824 18.7681 13.3728 19.1951 13.6534C19.6343 13.934 20.1284 14.0743 20.6774 14.0743Z" fill="currentColor"/>
+<path d="M8.53307 15.63C7.23987 15.63 6.09918 15.3433 5.11098 14.7699C4.13499 14.1843 3.37249 13.3852 2.8235 12.3726C2.2745 11.3478 2 10.1827 2 8.87731C2 7.54752 2.2745 6.37632 2.8235 5.36373C3.38469 4.35113 4.15329 3.55204 5.12928 2.96644C6.11748 2.38084 7.25207 2.08804 8.53307 2.08804C9.58226 2.08804 10.5095 2.28934 11.3147 2.69194C12.132 3.08234 12.7969 3.60694 13.3093 4.26573C13.8217 4.92453 14.1389 5.66262 14.2609 6.48002H12.3577C12.2601 5.97982 12.0466 5.52233 11.7172 5.10753C11.4001 4.69273 10.9731 4.36333 10.4363 4.11933C9.91166 3.86313 9.28336 3.73503 8.55137 3.73503C7.62417 3.73503 6.81287 3.94853 6.11748 4.37553C5.43428 4.80253 4.90358 5.40643 4.52539 6.18722C4.15939 6.95582 3.97639 7.85251 3.97639 8.87731C3.97639 9.8899 4.15939 10.7805 4.52539 11.5491C4.89138 12.3177 5.41598 12.9155 6.09918 13.3425C6.79457 13.7695 7.62417 13.983 8.58797 13.983C9.36876 13.983 10.0642 13.8244 10.6742 13.5072C11.2964 13.1778 11.7843 12.6776 12.1381 12.0066C12.4919 11.3356 12.6688 10.4755 12.6688 9.42631H14.4805C14.4805 10.7683 14.2182 11.9029 13.6936 12.8301C13.1812 13.7573 12.4736 14.4588 11.5709 14.9346C10.6803 15.3982 9.66766 15.63 8.53307 15.63ZM13.0531 10.14H8.86246V8.54791H14.4805V9.42631L13.0531 10.14Z" fill="currentColor"/>
+<path d="M16.1 19.0774C19.1883 21.0045 22.6164 21.9668 26.0457 21.9668H26.0471C29.4764 21.9668 32.9056 21.0033 35.9927 19.0774C36.2072 18.9436 36.2659 18.6593 36.1271 18.448L35.6091 17.6595C35.4704 17.4484 35.1868 17.3904 34.9722 17.5236C29.4263 20.9636 22.6665 20.9636 17.1207 17.5236C16.906 17.3904 16.6224 17.4484 16.4837 17.6595L15.9657 18.448C15.8269 18.6593 15.8856 18.9436 16.1 19.0774Z" fill="currentColor"/>
+</svg></span></li><li class="cl cl-cm" aria-hidden="true"><span class="co-logo co-cm"><svg viewBox="0 0 97 32" aria-hidden="true" focusable="false">
+<path d="M31 16C31 24.5604 24.0604 31.5 15.5 31.5C6.93959 31.5 0 24.5604 0 16C0 7.43959 6.93959 0.5 15.5 0.5C24.0604 0.5 31 7.43959 31 16ZM4.29597 16C4.29597 22.1878 9.31219 27.204 15.5 27.204C21.6878 27.204 26.704 22.1878 26.704 16C26.704 9.81219 21.6878 4.79597 15.5 4.79597C9.31219 4.79597 4.29597 9.81219 4.29597 16Z" fill="currentColor"/>
+<path d="M31 16C31 24.5604 24.0604 31.5 15.5 31.5C6.93959 31.5 0 24.5604 0 16C0 7.43959 6.93959 0.5 15.5 0.5C24.0604 0.5 31 7.43959 31 16ZM4.29597 16C4.29597 22.1878 9.31219 27.204 15.5 27.204C21.6878 27.204 26.704 22.1878 26.704 16C26.704 9.81219 21.6878 4.79597 15.5 4.79597C9.31219 4.79597 4.29597 9.81219 4.29597 16Z" fill="currentColor"/>
+<path d="M56.7648 9.75631C58.7765 6.76446 62.193 4.79597 66.0693 4.79597C72.2571 4.79597 77.2733 9.81219 77.2733 16C77.2733 22.1878 72.2571 27.204 66.0693 27.204C62.2149 27.204 58.8151 25.2577 56.799 22.2943C56.2346 23.7398 55.4794 25.0899 54.5643 26.3135C54.5543 26.3269 54.5443 26.3402 54.5342 26.3536C57.3718 29.5129 61.4885 31.5 66.0693 31.5C74.6297 31.5 81.5693 24.5604 81.5693 16C81.5693 7.43959 74.6297 0.5 66.0693 0.5C61.4581 0.5 57.3172 2.5136 54.4779 5.70947C55.4102 6.93468 56.1812 8.28936 56.7591 9.7418C56.761 9.74663 56.7629 9.75147 56.7648 9.75631Z" fill="currentColor"/>
+<path d="M31.4866 9.74705C33.4991 6.7604 36.9125 4.79597 40.7848 4.79597C46.9726 4.79597 51.9888 9.81219 51.9888 16C51.9888 22.1878 46.9726 27.204 40.7848 27.204C36.9344 27.204 33.5377 25.2618 31.5209 22.3035C30.9568 23.7456 30.2029 25.0925 29.2898 26.3135C29.2783 26.3289 29.2667 26.3442 29.2552 26.3596C32.0926 29.5154 36.2069 31.5 40.7848 31.5C49.3452 31.5 56.2848 24.5604 56.2848 16C56.2848 7.43959 49.3452 0.5 40.7848 0.5C36.1765 0.5 32.0379 2.51108 29.1988 5.70347C29.2009 5.7063 29.2031 5.70914 29.2052 5.71197C30.064 6.84099 30.7859 8.0799 31.3459 9.4039C31.394 9.51766 31.4409 9.63205 31.4866 9.74705Z" fill="currentColor"/>
+</svg><span>Cleanmeter</span></span></li><li class="cl cl-ibf" aria-hidden="true"><span class="co-logo co-ibf"><svg viewBox="0 0 6 8.5" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="0" y="0" width="1" height="7"/><rect x="1" y="0" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="0" width="1" height="7"/><rect x="3" y="2" width="3" height="1"/><rect x="3" y="4" width="3" height="1"/><rect x="3" y="6" width="2" height="1"/><rect x="4" y="2" width="1" height="5"/><rect x="4" y=".35" width="1" height="1"/><rect x="1" y="7.47" width="1" height="1"/></g></svg><span>IBFNet Group</span></span></li><li class="cl cl-crispy" aria-hidden="true"><span class="co-logo co-crispy"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M0 32H16V16L7.92 23.92L0 32Z"/><path d="M0 0H16V16L7.92 8.08L0 0Z"/><path d="M16 32H32V16L23.92 23.92L16 32Z"/><path d="M16 0H32V16L23.92 8.08L16 0Z"/></g></svg><span>Crispy Studio</span></span></li><li class="cl cl-goodday" aria-hidden="true"><span class="co-logo co-word" aria-label="GoodDay"><svg viewBox="0 0 84 24" aria-hidden="true" focusable="false">
+<path d="M74.6612 19.3818C74.466 19.3818 74.2769 19.3635 74.0939 19.3269C73.9231 19.3025 73.7706 19.272 73.6364 19.2354V17.6982C73.734 17.7348 73.856 17.7653 74.0024 17.7897C74.1488 17.8141 74.3074 17.8263 74.4782 17.8263C74.9052 17.8263 75.2407 17.7104 75.4847 17.4786C75.7409 17.2591 75.9666 16.887 76.1618 16.3624L76.967 14.2579L77.333 13.6357L80.078 6.11441H81.9995L77.6258 17.0944C77.4184 17.6189 77.1744 18.052 76.8938 18.3936C76.6132 18.7352 76.2899 18.9853 75.9239 19.1439C75.5701 19.3025 75.1492 19.3818 74.6612 19.3818ZM76.7108 15.4474L72.7031 6.11441H74.7161L78.0833 14.4592L76.7108 15.4474Z" fill="currentColor"/>
+<path d="M66.0735 15.63C65.2317 15.63 64.4936 15.4287 63.8592 15.0261C63.237 14.6235 62.749 14.0623 62.3952 13.3425C62.0536 12.6227 61.8828 11.7809 61.8828 10.8171C61.8828 9.84115 62.0597 8.98716 62.4135 8.25516C62.7673 7.52316 63.2614 6.95587 63.8958 6.55327C64.5302 6.15067 65.2744 5.94937 66.1284 5.94937C67.019 5.94937 67.751 6.16287 68.3244 6.58987C68.91 7.00467 69.2943 7.59026 69.4773 8.34666L69.2943 8.38326V6.11407H71.106V15.447H69.2943V13.3059L69.4773 13.3608C69.2821 14.0562 68.8795 14.6113 68.2695 15.0261C67.6595 15.4287 66.9275 15.63 66.0735 15.63ZM66.5493 14.0379C67.4033 14.0379 68.0682 13.7512 68.544 13.1778C69.032 12.5922 69.276 11.787 69.276 10.7622C69.276 9.76185 69.032 8.97496 68.544 8.40156C68.056 7.81596 67.385 7.52316 66.531 7.52316C65.6892 7.52316 65.0304 7.81596 64.5546 8.40156C64.0788 8.97496 63.8409 9.78015 63.8409 10.8171C63.8409 11.8297 64.0788 12.6227 64.5546 13.1961C65.0426 13.7573 65.7075 14.0379 66.5493 14.0379Z" fill="currentColor"/>
+<path d="M50.3353 15.4476V13.8372H53.7939C54.8431 13.8372 55.7398 13.6237 56.484 13.1967C57.2404 12.7697 57.8199 12.178 58.2225 11.4216C58.6251 10.6652 58.8264 9.7868 58.8264 8.7864C58.8264 7.79821 58.6251 6.93811 58.2225 6.20612C57.8321 5.47412 57.2587 4.90682 56.5023 4.50423C55.7581 4.08943 54.8553 3.88203 53.7939 3.88203H50.3536V2.27164H53.7939C55.2091 2.27164 56.4413 2.54004 57.4905 3.07683C58.5397 3.61363 59.351 4.37613 59.9244 5.36432C60.51 6.34032 60.8028 7.49321 60.8028 8.823C60.8028 10.1528 60.51 11.3179 59.9244 12.3183C59.3388 13.3065 58.5214 14.0751 57.4722 14.6241C56.4352 15.1731 55.2152 15.4476 53.8122 15.4476H50.3353ZM49.1641 15.4476V2.27164H51.1039V15.4476H49.1641Z" fill="currentColor"/>
+<path d="M45.0247 15.4476V13.3065L45.2077 13.3614C45.0125 14.0568 44.6099 14.6119 43.9999 15.0267C43.3899 15.4293 42.658 15.6306 41.804 15.6306C40.9622 15.6306 40.2241 15.4293 39.5897 15.0267C38.9675 14.6241 38.4795 14.0629 38.1257 13.3431C37.7841 12.6233 37.6133 11.7815 37.6133 10.8177C37.6133 9.8417 37.7902 8.9877 38.144 8.2557C38.4978 7.52371 38.9919 6.95641 39.6263 6.55381C40.2607 6.15122 41.0049 5.94992 41.8589 5.94992C42.7495 5.94992 43.4815 6.16342 44.0548 6.59041C44.6404 7.00521 45.0247 7.59081 45.2077 8.34721L44.9515 8.3838V2.27164H46.8364V15.4476H45.0247ZM42.2798 14.0385C43.1216 14.0385 43.7864 13.7518 44.2744 13.1784C44.7624 12.5928 45.0064 11.7876 45.0064 10.7628C45.0064 9.7624 44.7563 8.9755 44.2561 8.4021C43.7681 7.81651 43.1033 7.52371 42.2615 7.52371C41.4319 7.52371 40.7731 7.81651 40.2851 8.4021C39.8093 8.9755 39.5714 9.7807 39.5714 10.8177C39.5714 11.8303 39.8093 12.6233 40.2851 13.1967C40.7731 13.7579 41.438 14.0385 42.2798 14.0385Z" fill="currentColor"/>
+<path d="M31.4899 15.6298C30.5383 15.6298 29.7026 15.4224 28.9828 15.0076C28.263 14.5806 27.7018 14.0011 27.2992 13.2691C26.8966 12.5249 26.6953 11.6831 26.6953 10.7437C26.6953 9.7921 26.8966 8.9564 27.2992 8.2366C27.714 7.51681 28.2752 6.95561 28.9828 6.55301C29.7026 6.13822 30.5383 5.93082 31.4899 5.93082C32.4537 5.93082 33.2955 6.13822 34.0153 6.55301C34.7351 6.95561 35.2902 7.51681 35.6806 8.2366C36.0832 8.9564 36.2845 9.7921 36.2845 10.7437C36.2845 11.6831 36.0832 12.5249 35.6806 13.2691C35.2902 14.0011 34.7351 14.5806 34.0153 15.0076C33.2955 15.4224 32.4537 15.6298 31.4899 15.6298ZM31.4899 14.0743C32.0633 14.0743 32.5574 13.934 32.9722 13.6534C33.3992 13.3728 33.7347 12.9824 33.9787 12.4822C34.2227 11.982 34.3447 11.3964 34.3447 10.7254C34.3447 9.725 34.0763 8.9381 33.5395 8.3647C33.0149 7.77911 32.3317 7.48631 31.4899 7.48631C30.6603 7.48631 29.9771 7.77911 29.4403 8.3647C28.9157 8.9503 28.6534 9.7372 28.6534 10.7254C28.6534 11.3964 28.7693 11.982 29.0011 12.4822C29.2451 12.9824 29.5806 13.3728 30.0076 13.6534C30.4468 13.934 30.9409 14.0743 31.4899 14.0743Z" fill="currentColor"/>
+<path d="M20.6774 15.6298C19.7258 15.6298 18.8901 15.4224 18.1703 15.0076C17.4505 14.5806 16.8893 14.0011 16.4867 13.2691C16.0841 12.5249 15.8828 11.6831 15.8828 10.7437C15.8828 9.7921 16.0841 8.9564 16.4867 8.2366C16.9015 7.51681 17.4627 6.95561 18.1703 6.55301C18.8901 6.13822 19.7258 5.93082 20.6774 5.93082C21.6412 5.93082 22.483 6.13822 23.2028 6.55301C23.9226 6.95561 24.4777 7.51681 24.8681 8.2366C25.2707 8.9564 25.472 9.7921 25.472 10.7437C25.472 11.6831 25.2707 12.5249 24.8681 13.2691C24.4777 14.0011 23.9226 14.5806 23.2028 15.0076C22.483 15.4224 21.6412 15.6298 20.6774 15.6298ZM20.6774 14.0743C21.2508 14.0743 21.7449 13.934 22.1597 13.6534C22.5867 13.3728 22.9222 12.9824 23.1662 12.4822C23.4102 11.982 23.5322 11.3964 23.5322 10.7254C23.5322 9.725 23.2638 8.9381 22.727 8.3647C22.2024 7.77911 21.5192 7.48631 20.6774 7.48631C19.8478 7.48631 19.1646 7.77911 18.6278 8.3647C18.1032 8.9503 17.8409 9.7372 17.8409 10.7254C17.8409 11.3964 17.9568 11.982 18.1886 12.4822C18.4326 12.9824 18.7681 13.3728 19.1951 13.6534C19.6343 13.934 20.1284 14.0743 20.6774 14.0743Z" fill="currentColor"/>
+<path d="M8.53307 15.63C7.23987 15.63 6.09918 15.3433 5.11098 14.7699C4.13499 14.1843 3.37249 13.3852 2.8235 12.3726C2.2745 11.3478 2 10.1827 2 8.87731C2 7.54752 2.2745 6.37632 2.8235 5.36373C3.38469 4.35113 4.15329 3.55204 5.12928 2.96644C6.11748 2.38084 7.25207 2.08804 8.53307 2.08804C9.58226 2.08804 10.5095 2.28934 11.3147 2.69194C12.132 3.08234 12.7969 3.60694 13.3093 4.26573C13.8217 4.92453 14.1389 5.66262 14.2609 6.48002H12.3577C12.2601 5.97982 12.0466 5.52233 11.7172 5.10753C11.4001 4.69273 10.9731 4.36333 10.4363 4.11933C9.91166 3.86313 9.28336 3.73503 8.55137 3.73503C7.62417 3.73503 6.81287 3.94853 6.11748 4.37553C5.43428 4.80253 4.90358 5.40643 4.52539 6.18722C4.15939 6.95582 3.97639 7.85251 3.97639 8.87731C3.97639 9.8899 4.15939 10.7805 4.52539 11.5491C4.89138 12.3177 5.41598 12.9155 6.09918 13.3425C6.79457 13.7695 7.62417 13.983 8.58797 13.983C9.36876 13.983 10.0642 13.8244 10.6742 13.5072C11.2964 13.1778 11.7843 12.6776 12.1381 12.0066C12.4919 11.3356 12.6688 10.4755 12.6688 9.42631H14.4805C14.4805 10.7683 14.2182 11.9029 13.6936 12.8301C13.1812 13.7573 12.4736 14.4588 11.5709 14.9346C10.6803 15.3982 9.66766 15.63 8.53307 15.63ZM13.0531 10.14H8.86246V8.54791H14.4805V9.42631L13.0531 10.14Z" fill="currentColor"/>
+<path d="M16.1 19.0774C19.1883 21.0045 22.6164 21.9668 26.0457 21.9668H26.0471C29.4764 21.9668 32.9056 21.0033 35.9927 19.0774C36.2072 18.9436 36.2659 18.6593 36.1271 18.448L35.6091 17.6595C35.4704 17.4484 35.1868 17.3904 34.9722 17.5236C29.4263 20.9636 22.6665 20.9636 17.1207 17.5236C16.906 17.3904 16.6224 17.4484 16.4837 17.6595L15.9657 18.448C15.8269 18.6593 15.8856 18.9436 16.1 19.0774Z" fill="currentColor"/>
+</svg></span></li></ul></div>
     </div>
   </section>
 
-</div><!-- /shell -->
+</div>
 
-<!-- ============================================ FLAME PANEL -->
-<section class="flame" aria-labelledby="flame-title">
-  <div class="flame-art" aria-hidden="true">
-    <svg viewBox="0 0 420 420" focusable="false">
-      <g transform="translate(210,210)" fill="none" stroke="currentColor" stroke-width="1.2">
-        <circle r="196"/><circle r="150" stroke-dasharray="4 7"/><circle r="96"/>
-        <path d="M0 -196 L26 0 L0 196 L-26 0Z"/>
-        <path d="M-196 0 L0 -26 L196 0 L0 26Z"/>
-        <path d="M-139 -139 L14 -8 L139 139 L-14 8Z" opacity=".55"/>
-        <path d="M139 -139 L8 -14 L-139 139 L-8 14Z" opacity=".55"/>
-      </g>
-    </svg>
-  </div>
-
-  <div class="flame-inner">
-    <div class="flame-copy">
-      <p class="eyebrow eyebrow-invert">Why it matters now</p>
-      <h2 class="h2 h2-invert" id="flame-title">The brands getting cited today are training the answers of tomorrow.</h2>
-      <p>Every month you stay invisible, a competitor becomes the default recommendation in your category. That position is sticky, and it gets more expensive to take the longer you wait.</p>
-      <a class="btn btn-cream" href="#contact">Start with a free audit</a>
+<!-- ============================================ WHY NOW, and how it runs: the timeline names the four moves (the old section 05 is saved in _saved/) -->
+<section class="night" id="process" aria-labelledby="night-title">
+  <picture class="night-bg" aria-hidden="true"><source media="(max-width:700px)" srcset="assets/img/why-blackhole-phone.webp" type="image/webp"><source srcset="assets/img/why-blackhole.webp" type="image/webp"><img src="assets/img/why-blackhole.jpg" alt="" loading="lazy" width="1600" height="800"></picture>
+  <div class="night-inner">
+    <div class="night-copy">
+      <p class="kicker kicker-invert">Why it matters now</p>
+      <h2 class="h2 h2-invert" id="night-title">The brands cited today are shaping what people discover tomorrow.</h2>
+      <p>Each month that goes by without you being visible, a competitor becomes the default recommendation in your category. Familiarity has a way of becoming preference.</p>
+      <a class="btn btn-solid" href="#contact">Get a free audit</a>
     </div>
-
-    <ol class="flame-timeline">
-      <li><span class="tl-when">Week 1</span><span class="tl-what">Your baseline AI visibility score, delivered before anything is billed</span></li>
-      <li><span class="tl-when">Week 4</span><span class="tl-what">First structural fixes live and crawler activity measurable</span></li>
-      <li><span class="tl-when">Month 3</span><span class="tl-what">Citation trend line you can take into a board meeting</span></li>
+    <ol class="night-timeline">
+      <li><span class="tl-dot" aria-hidden="true"></span><span class="tl-when">Week 1</span><span class="tl-move">Baseline</span><span class="tl-what">Your AI visibility score on every engine, delivered before anything is billed</span></li>
+      <li><span class="tl-dot" aria-hidden="true"></span><span class="tl-when">Month 1</span><span class="tl-move">Diagnose and build</span><span class="tl-what">First structural fixes live and AI crawler activity measurable</span></li>
+      <li><span class="tl-dot" aria-hidden="true"></span><span class="tl-when">Month 3</span><span class="tl-move">Measure</span><span class="tl-what">A citation trend line you can take into a board meeting</span></li>
+      <li><span class="tl-dot" aria-hidden="true"></span><span class="tl-when">Month 6+</span><span class="tl-move">Compound</span><span class="tl-what">Share of voice compounds as fixes, content and citations stack up</span></li>
     </ol>
   </div>
-  <div class="flame-hatch" aria-hidden="true"></div>
 </section>
 
-<div class="shell">
+<div class="page">
 
-  <!-- ============================================ PRICING -->
-  <section class="section pricing" id="pricing">
-    <div class="pricing-head">
-      <div>
-        <p class="eyebrow">Pricing</p>
-        <h2 class="h2">Two ways in.<br>Both start with the audit.</h2>
-      </div>
-      <p class="lead">Flat monthly retainers. No setup fee, no percentage of ad spend, no surprise line items. Ninety day initial term, month to month after that.</p>
+  <!-- ============================================ 06 PRICING: two retainers, then the one-time sprint -->
+  <section class="sec pricing" id="pricing">
+    <div class="sec-head">
+      <p class="kicker"><span>06</span>Pricing</p>
+      <h2 class="h2">Three ways to work together. One place to start.</h2>
+      <p class="lead">A flat monthly retainer or a one-time sprint. No setup fee and no percentage of ad spend. Retainers start with a ninety-day term, then run month to month.</p>
     </div>
-
-    <div class="plans">
-      <article class="plan">
-        <header class="plan-head">
-          <p class="tag">Beacon</p>
-          <p class="plan-price">$500<span>per month</span></p>
-          <p class="plan-for">For small teams and local businesses who need to show up in AI answers and stop losing ground.</p>
-        </header>
+    <div class="plans3">
+      <article class="plan2">
+        <p class="tag">Beacon</p>
+        <p class="plan2-price">$500<span>per month</span></p>
+        <p class="plan2-for">For small teams and local businesses who need to show up in AI answers.</p>
         <ul class="ticks">
           <li>Full AI visibility audit and baseline score</li>
           <li>Tracking on up to 50 priority prompts</li>
-          <li>Core schema and structured data build</li>
-          <li>llms.txt and crawler access setup</li>
-          <li>Two answer ready pages optimized per month</li>
-          <li>Monthly visibility report and one strategy call</li>
-          <li>Email support within one business day</li>
+          <li>Schema, llms.txt and crawler setup</li>
+          <li>Two answer-ready pages every month</li>
         </ul>
+        <p class="plan2-more">And more</p>
         <a class="btn btn-ghost btn-block" href="#contact">Start with Beacon</a>
       </article>
-
-      <article class="plan plan-lead">
-        <p class="plan-flag">Most chosen</p>
-        <header class="plan-head">
-          <p class="tag">North Star</p>
-          <p class="plan-price">$1,500<span>per month</span></p>
-          <p class="plan-for">For brands treating AI search as a real revenue channel and competing for the recommendation slot in their category.</p>
-        </header>
+      <article class="plan2 plan2-lead">
+        <div class="plan2-sky" aria-hidden="true"></div>
+        <p class="plan2-flag">Most complete</p>
+        <p class="tag">North Star</p>
+        <p class="plan2-price">$1,500<span>per month</span></p>
+        <p class="plan2-for">For brands competing for the recommendation slot in their category.</p>
         <ul class="ticks">
           <li>Everything in Beacon</li>
-          <li>Tracking on up to 300 prompts across every major model</li>
-          <li>Competitor share of voice and citation gap analysis</li>
-          <li>Six answer ready pages produced or rebuilt per month</li>
-          <li>Off site placement and digital PR for citation sources</li>
-          <li>Entity and knowledge graph reinforcement</li>
-          <li>Agent log monitoring and technical SEO retainer</li>
-          <li>Live dashboard, biweekly calls and shared Slack channel</li>
+          <li>Tracking on up to 300 prompts across every model</li>
+          <li>Six answer-ready pages every month</li>
+          <li>Off-site placement and digital PR</li>
         </ul>
+        <p class="plan2-more">And more</p>
         <a class="btn btn-solid btn-block" href="#contact">Start with North Star</a>
       </article>
+      <article class="plan2">
+        <p class="plan2-flag plan2-flag-soft">One time</p>
+        <p class="tag">Compass</p>
+        <p class="plan2-price">$1,250<span>one payment</span></p>
+        <p class="plan2-for">For teams who want the full picture and the fundamentals fixed, without a retainer.</p>
+        <ul class="ticks">
+          <li>Full audit and a 50-prompt baseline</li>
+          <li>Competitor citation gap report</li>
+          <li>Schema, llms.txt and crawler setup</li>
+          <li>A 90-day roadmap and walkthrough call</li>
+        </ul>
+        <p class="plan2-more">And more</p>
+        <a class="btn btn-ghost btn-block" href="#contact">Start with Compass</a>
+      </article>
     </div>
-
-    <p class="market-note">Multi location, ecommerce catalogues and enterprise scopes are quoted separately. If neither tier fits, say so on the call and we will tell you honestly whether we are the right partner.</p>
+    <p class="note">Every plan includes more than fits on a card: we walk through the full scope on the call. Multi-location, ecommerce and enterprise scopes are quoted separately.</p>
   </section>
 
-  <!-- ============================================ FAQ -->
-  <section class="section faq" id="faq">
-    <div class="faq-head">
-      <p class="eyebrow">Questions</p>
+  <!-- ============================================ 07 FAQ (tabs) -->
+  <section class="sec faq2" id="faq">
+    <div class="sec-head">
+      <p class="kicker"><span>07</span>Questions</p>
       <h2 class="h2">The things people ask before signing.</h2>
     </div>
-
-    <div class="faq-list">
-      <details>
-        <summary>What is GEO and how is it different from SEO?</summary>
-        <p>SEO earns you a position in a list of links. GEO earns you a mention inside a generated answer. The inputs overlap, since models still lean heavily on indexed content, but the optimization targets are different. GEO cares about passage level retrievability, entity clarity, third party corroboration and how quotable your content is. We run both because neither works properly alone.</p>
-      </details>
-      <details>
-        <summary>Can you actually influence what ChatGPT says about my brand?</summary>
-        <p>Influence, yes. Control, no, and be skeptical of anyone promising otherwise. Models draw on indexed pages, live retrieval and the wider corpus of what the internet says about you. We work on all three: making your own content the cleanest source available, strengthening entity signals so models know who you are, and building presence on the third party sources they already pull from in your category.</p>
-      </details>
-      <details>
-        <summary>How long before I see movement?</summary>
-        <p>Technical and structural fixes register within weeks, and crawler activity is usually visible inside the first month. Meaningful citation share generally moves between month two and month four, depending on how competitive your category is and how much authority you start with. Anyone quoting you a fixed date is guessing.</p>
-      </details>
-      <details>
-        <summary>How do you report on something this new?</summary>
-        <p>You get a live dashboard tracking visibility score, share of voice against named competitors, prompt level wins and losses, citation sources and AI crawler activity on your pages. Plus a written monthly read on what moved, what did not and what we are changing next.</p>
-      </details>
-      <details>
-        <summary>Which plan should I pick?</summary>
-        <p>Beacon if you need to establish presence and fix the fundamentals. North Star if you are actively competing for the recommendation slot and want off site work, content production and faster cycles. Most teams start on Beacon and move up once the baseline report shows what the gap costs them.</p>
-      </details>
+    <div class="tabs-wrap">
+      <div class="tabs" role="tablist" aria-label="Question topics">
+        <button role="tab" id="tab-geo" aria-controls="panel-geo" aria-selected="true">About GEO</button>
+        <button role="tab" id="tab-work" aria-controls="panel-work" aria-selected="false" tabindex="-1">Working with us</button>
+        <button role="tab" id="tab-price" aria-controls="panel-price" aria-selected="false" tabindex="-1">Plans and terms</button>
+      </div>
     </div>
+    <div class="tabpanels">
+    <div class="tabpanel" role="tabpanel" id="panel-geo" aria-labelledby="tab-geo"><details class="qa"><summary>What is GEO and how is it different from SEO?</summary><p>SEO earns you a position in a list of links. GEO earns you a mention inside a generated answer. The inputs overlap, since models still lean heavily on indexed content, but the targets are different. GEO cares about how easily a passage can be retrieved, how clearly models understand who you are, whether other sources back you up and how quotable your content is. We run both because neither works properly alone.</p></details><details class="qa"><summary>Can you actually influence what ChatGPT says about my brand?</summary><p>Influence, yes. Control, no, and be skeptical of anyone promising otherwise. Models draw on indexed pages, live retrieval and the wider record of what the internet says about you. We work on all three: making your own content the cleanest source available, strengthening the signals that tell models who you are, and building presence on the third-party sources they already pull from in your category.</p></details><details class="qa"><summary>Which AI engines do you track?</summary><p>ChatGPT, Google AI Overviews and AI Mode, Gemini, Perplexity, Claude and Grok. We also watch the sources those engines lean on, such as Reddit, YouTube and review sites, because that’s often where a recommendation is won or lost.</p></details><details class="qa"><summary>Do I still need SEO?</summary><p>Yes. AI engines still pull heavily from the search index, so a site that’s hard to crawl or rank is hard to cite. Foundational SEO is part of every plan, not an extra.</p></details></div>
+    <div class="tabpanel" role="tabpanel" id="panel-work" aria-labelledby="tab-work" hidden><details class="qa"><summary>What is in the free audit?</summary><p>Send us your domain and we come back with a snapshot of your AI visibility: which engines mention you, the prompts where you’re missing and which competitors take the slot instead. It’s yours to keep, with no contract and no pitch deck.</p></details><details class="qa"><summary>How long before I see movement?</summary><p>Technical and structural fixes register within weeks, and crawler activity is usually visible inside the first month. Meaningful citation share generally moves between month two and month four, depending on how competitive your category is and how much authority you start with. Anyone quoting you a fixed date is guessing.</p></details><details class="qa"><summary>How do you report on something this new?</summary><p>Every plan gets a written read on what moved, what didn’t and what we’re changing next: once at the end of Compass, monthly on the retainers. North Star clients also get a live dashboard tracking visibility score, share of voice against named competitors, prompt-level wins and losses, citation sources and AI crawler activity on your pages.</p></details><details class="qa"><summary>How many prompts do you track?</summary><p>Up to 50 priority prompts on Compass and Beacon, and up to 300 on North Star, across every major AI engine. We pick them with you from the questions your buyers actually ask.</p></details></div>
+    <div class="tabpanel" role="tabpanel" id="panel-price" aria-labelledby="tab-price" hidden><details class="qa"><summary>Which plan should I pick?</summary><p>Compass if you want the full picture and the fundamentals fixed once, without a retainer. Beacon if you want that work to keep going every month. North Star if you’re actively competing for the recommendation slot and want off-site work, content production and faster cycles. If you’re unsure, Compass is the low-commitment way to start, and nothing in it is wasted if you move to a monthly plan later.</p></details><details class="qa"><summary>Is there a contract or setup fee?</summary><p>No setup fee and no percentage of ad spend. Compass is a single payment with nothing after it. The monthly plans start with a ninety-day term, since citation share usually takes two to four months to move, then run month to month.</p></details><details class="qa"><summary>What if no plan fits?</summary><p>Multi-location businesses, ecommerce catalogues and enterprise scopes are quoted separately. Tell us on the call and we’ll say honestly whether we’re the right partner.</p></details></div>
+    </div>
+    <p class="faq-more">Something else on your mind? <a class="route-link" href="mailto:hello@wayfindergeo.com">Ask us directly</a> and we usually reply within one business day.</p>
   </section>
 
-  <!-- ============================================ CONTACT -->
-  <section class="section contact" id="contact">
-    <div class="contact-copy">
-      <p class="eyebrow">Get started</p>
+  <!-- ============================================ 08 CONTACT: one card, the sample on a night panel, the form beside it -->
+  <section class="sec contact2" id="contact">
+    <div class="sec-head">
+      <p class="kicker"><span>08</span>Get started</p>
       <h2 class="h2">Find out where you stand.</h2>
-      <p class="lead">Tell us your domain and we will send back a free AI visibility snapshot: which models mention you, which prompts you are missing and who is taking the slot instead. No pitch deck attached.</p>
-
-      <dl class="contact-facts">
-        <div><dt>Email</dt><dd><a href="mailto:hello@wayfindergeo.com">hello@wayfindergeo.com</a></dd></div>
-        <div><dt>Response time</dt><dd>Within one business day</dd></div>
-        <div><dt>No commitment</dt><dd>The audit is free, no contract</dd></div>
-      </dl>
+      <p class="lead">Tell us your domain and we’ll send back a free AI visibility snapshot: which AI tools mention you, which questions you’re missing from, and who shows up instead. No pitch deck attached.</p>
     </div>
-
-    <!-- Swap the mailto handler in script.js for your form endpoint (Formspree, Basin, Netlify Forms) when you have one. -->
-    <form class="form" id="audit-form" novalidate>
+    <div class="cb-card">
+      <div class="cb-side">
+        <div class="cb-sky" aria-hidden="true"></div>
+        <p class="cb-label">What you get back</p>
+        <figure class="snapshot" aria-label="Example of the free AI visibility snapshot">
+          <figcaption><span class="snap-title">AI visibility snapshot</span><span class="snap-site">yourbrand.com</span><span class="snap-tag">Sample</span></figcaption>
+          <div class="snap-rows">
+            <div class="snap-row"><span>ChatGPT</span><i style="--v:.3"></i><b>3 of 10 prompts</b></div>
+            <div class="snap-row"><span>AI Overviews</span><i style="--v:.5"></i><b>5 of 10</b></div>
+            <div class="snap-row"><span>Perplexity</span><i style="--v:.2"></i><b>2 of 10</b></div>
+            <div class="snap-row"><span>Gemini</span><i style="--v:.1"></i><b>1 of 10</b></div>
+          </div>
+          <p class="snap-foot">Taking your slot most often: <span class="blur">competitor-one.com</span>, <span class="blur">competitor-two.com</span></p>
+        </figure>
+        <dl class="contact-facts">
+          <div><dt>Email</dt><dd><a class="route-link" href="mailto:hello@wayfindergeo.com">hello@wayfindergeo.com</a></dd></div>
+          <div><dt>Response time</dt><dd>Usually within one business day</dd></div>
+          <div><dt>No commitment</dt><dd>The audit is free, no contract</dd></div>
+        </dl>
+      </div>
+      <div class="form-slot"><form class="form" id="audit-form" novalidate>
       <div class="field">
         <label for="f-name">Name<span class="req" aria-hidden="true">*</span></label>
         <input id="f-name" name="name" type="text" autocomplete="name" required>
@@ -627,38 +765,38 @@
           <option>Free AI visibility audit</option>
           <option>Beacon, $500 per month</option>
           <option>North Star, $1,500 per month</option>
+          <option>Compass, $1,250 one time</option>
           <option>Not sure yet</option>
         </select>
       </div>
       <div class="field field-full">
         <label for="f-msg">What are you trying to fix <span class="opt">optional</span></label>
-        <textarea id="f-msg" name="message" rows="4"></textarea>
+        <textarea id="f-msg" name="message" rows="3"></textarea>
       </div>
       <div class="field field-full form-foot">
         <button class="btn btn-solid" type="submit">Send it over</button>
-        <p class="form-note">We reply within one business day. Your details stay with us.</p>
+        <p class="form-note">We usually reply within one business day. Your details stay with us.</p>
       </div>
-    </form>
+    </form></div>
+    </div>
   </section>
 
-</div><!-- /shell -->
-</main>
 
+</div>
+
+
+
+</main>
+<div class="night-end">
+<div class="fx-edge" aria-hidden="true"><div class="fx-rimw"><div class="fx-rim"></div></div></div>
 <footer class="footer">
+  <div class="closer"><p class="closer-line"><span class="sr-only">Be the answer.</span><span class="closer-text" aria-hidden="true"></span><span class="closer-caret" aria-hidden="true"></span></p></div>
   <div class="footer-inner">
     <div class="footer-brand">
       <a class="brand" href="#top">
-        <span class="mark" aria-hidden="true">
-          <svg viewBox="0 0 28 28" focusable="false">
-            <circle cx="14" cy="14" r="12" fill="none" stroke="currentColor" stroke-opacity=".3" stroke-width="1.4"/>
-            <circle cx="14" cy="14" r="7.6" fill="none" stroke="currentColor" stroke-opacity=".22" stroke-width="1" stroke-dasharray="2.5 3.5"/>
-            <path d="M14 2.6 18.6 14 9.4 14Z" fill="currentColor"/>
-            <path d="M14 25.4 18.6 14 9.4 14Z" fill="currentColor" fill-opacity=".32"/>
-          </svg>
-        </span>
-        <span class="brand-name">Wayfinder<span class="brand-geo">GEO</span></span>
+        <img class="brand-logo" src="brand/wayfinder-horizontal-compact-reverse.svg" width="188" height="34" alt="WayfinderGEO">
       </a>
-      <p>AI search visibility for brands that intend to be the answer. GEO, AIO and SEO run as one system, measured in citations rather than vanity rankings.</p>
+      <p>Improve AI search visibility by bringing together SEO, GEO, and AIO to get your brand cited, recommended, and discovered.</p>
       <a class="footer-mail" href="mailto:hello@wayfindergeo.com">hello@wayfindergeo.com</a>
     </div>
 
@@ -666,17 +804,17 @@
       <div>
         <h2>Services</h2>
         <ul>
-          <li><a href="#services">Generative Engine Optimization</a></li>
-          <li><a href="#services">AI optimization and readability</a></li>
-          <li><a href="#services">Technical and foundational SEO</a></li>
-          <li><a href="#services">Content and digital PR</a></li>
+          <li><a href="#services" data-open="geo">GEO</a></li>
+          <li><a href="#services" data-open="aio">AI optimization</a></li>
+          <li><a href="#services" data-open="seo">Technical SEO</a></li>
+          <li><a href="#services">Content and PR</a></li>
           <li><a href="#process">How we work</a></li>
         </ul>
       </div>
       <div>
         <h2>Company</h2>
         <ul>
-          <li><a href="#shift">The shift</a></li>
+          <li><a href="#shift">The Shift</a></li>
           <li><a href="#voices">Client results</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#faq">FAQ</a></li>
@@ -688,44 +826,35 @@
         <ul>
           <li><a href="#contact">Free AI visibility audit</a></li>
           <li><a href="mailto:hello@wayfindergeo.com">Email us</a></li>
-          <li><a href="#pricing">Beacon, $500 per month</a></li>
-          <li><a href="#pricing">North Star, $1,500 per month</a></li>
           <li><a href="mailto:support@wayfindergeo.com">Existing clients</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Plans</h2>
+        <ul>
+          <li><a href="#pricing">Beacon <span class="fp">$500 a month</span></a></li>
+          <li><a href="#pricing">North Star <span class="fp">$1,500 a month</span></a></li>
+          <li><a href="#pricing">Compass <span class="fp">$1,250 once</span></a></li>
         </ul>
       </div>
     </nav>
   </div>
-
-  <div class="footer-word" aria-hidden="true">
-    <svg viewBox="0 0 1200 139" role="presentation" focusable="false" preserveAspectRatio="xMidYMax meet">
-      <defs>
-        <linearGradient id="wmInk" gradientUnits="userSpaceOnUse" x1="0" y1="42" x2="0" y2="139">
-          <stop offset="0%" stop-color="#1c1408" stop-opacity=".18"/>
-          <stop offset="100%" stop-color="#1c1408" stop-opacity=".045"/>
-        </linearGradient>
-        <linearGradient id="wmEmber" gradientUnits="userSpaceOnUse" x1="0" y1="42" x2="0" y2="139">
-          <stop offset="0%" stop-color="#d0631c" stop-opacity=".68"/>
-          <stop offset="100%" stop-color="#d0631c" stop-opacity=".17"/>
-        </linearGradient>
-      </defs>
-      <!-- compass: scaled so the circle rests exactly on the text baseline (y=168) -->
-      <g transform="translate(-6,32) scale(5)">
-        <circle cx="14" cy="14" r="12" fill="none" stroke="url(#wmInk)" stroke-width="1.5"/>
-        <path d="M14 3.4 18.2 14 9.8 14Z" fill="url(#wmInk)"/>
-        <path d="M14 24.6 18.2 14 9.8 14Z" fill="url(#wmInk)" fill-opacity=".45"/>
-      </g>
-      <text x="150" y="162" textLength="1042" lengthAdjust="spacingAndGlyphs" xml:space="preserve"
-            font-family="Inter, system-ui, sans-serif" font-size="158" font-weight="700"
-            ><tspan fill="url(#wmInk)">Wayfinder</tspan><tspan fill="url(#wmEmber)">GEO</tspan></text>
-    </svg>
-  </div>
-
   <div class="footer-base">
     <p>&copy; 2026 WayfinderGEO. All rights reserved.</p>
     <p><a href="#top">wayfindergeo.com</a> <span aria-hidden="true">·</span> <a href="privacy.html">Privacy Policy</a></p>
   </div>
+  <div class="footer-end" aria-hidden="true">
+    <picture class="fe-photo"><source media="(max-width:700px)" srcset="assets/img/foot-iberia-phone.webp" type="image/webp"><source srcset="assets/img/foot-iberia.webp" type="image/webp"><img src="assets/img/foot-iberia.jpg" alt="" loading="lazy" width="1600" height="571"></picture>
+    <span class="fe-star"></span>
+    <p class="fe-credit">Spain and Portugal at night from the International Space Station · NASA</p>
+  </div>
 </footer>
-
-<script src="script.js"></script>
-</body>
-</html>
+<div class="fg-grain" aria-hidden="true"></div>
+</div>
+<script>window.HX={icons:{"openai": "<svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 24 24\"><path d=\"M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z\"/></svg>", "google": "<svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 24 24\"><path d=\"M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z\"/></svg>", "gemini": "<svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 24 24\"><path d=\"M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81\"/></svg>", "claude": "<svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 24 24\"><path d=\"m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z\"/></svg>", "grok": "<svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 24 24\"><path d=\"M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z\"/></svg>", "perplexity": "<svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 24 24\"><path d=\"M22.3977 7.0896h-2.3106V.0676l-7.5094 6.3542V.1577h-1.1554v6.1966L4.4904 0v7.0896H1.6023v10.3976h2.8882V24l6.932-6.3591v6.2005h1.1554v-6.0469l6.9318 6.1807v-6.4879h2.8882V7.0896zm-3.4657-4.531v4.531h-5.355l5.355-4.531zm-13.2862.0676 4.8691 4.4634H5.6458V2.6262zM2.7576 16.332V8.245h7.8476l-6.1149 6.1147v1.9723H2.7576zm2.8882 5.0404v-3.8852h.0001v-2.6488l5.7763-5.7764v7.0111l-5.7764 5.2993zm12.7086.0248-5.7766-5.1509V9.0618l5.7766 5.7766v6.5588zm2.8882-5.0652h-1.733v-1.9723L13.3948 8.245h7.8478v8.087z\"/></svg>", "reddit": "<svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 24 24\"><path d=\"M12 0C5.373 0 0 5.373 0 12c0 3.314 1.343 6.314 3.515 8.485l-2.286 2.286C.775 23.225 1.097 24 1.738 24H12c6.627 0 12-5.373 12-12S18.627 0 12 0Zm4.388 3.199c1.104 0 1.999.895 1.999 1.999 0 1.105-.895 2-1.999 2-.946 0-1.739-.657-1.947-1.539v.002c-1.147.162-2.032 1.15-2.032 2.341v.007c1.776.067 3.4.567 4.686 1.363.473-.363 1.064-.58 1.707-.58 1.547 0 2.802 1.254 2.802 2.802 0 1.117-.655 2.081-1.601 2.531-.088 3.256-3.637 5.876-7.997 5.876-4.361 0-7.905-2.617-7.998-5.87-.954-.447-1.614-1.415-1.614-2.538 0-1.548 1.255-2.802 2.803-2.802.645 0 1.239.218 1.712.585 1.275-.79 2.881-1.291 4.64-1.365v-.01c0-1.663 1.263-3.034 2.88-3.207.188-.911.993-1.595 1.959-1.595Zm-8.085 8.376c-.784 0-1.459.78-1.506 1.797-.047 1.016.64 1.429 1.426 1.429.786 0 1.371-.369 1.418-1.385.047-1.017-.553-1.841-1.338-1.841Zm7.406 0c-.786 0-1.385.824-1.338 1.841.047 1.017.634 1.385 1.418 1.385.785 0 1.473-.413 1.426-1.429-.046-1.017-.721-1.797-1.506-1.797Zm-3.703 4.013c-.974 0-1.907.048-2.77.135-.147.015-.241.168-.183.305.483 1.154 1.622 1.964 2.953 1.964 1.33 0 2.47-.81 2.953-1.964.057-.137-.037-.29-.184-.305-.863-.087-1.795-.135-2.769-.135Z\"/></svg>", "youtube": "<svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 24 24\"><path d=\"M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z\"/></svg>"},brandIcons:{"google": "<svg viewBox=\"0 0 48 48\" aria-hidden=\"true\" focusable=\"false\"><path fill=\"#EA4335\" d=\"M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z\"/><path fill=\"#4285F4\" d=\"M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z\"/><path fill=\"#FBBC05\" d=\"M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z\"/><path fill=\"#34A853\" d=\"M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z\"/></svg>", "gemini": "<svg style=\"fill:url(#wf-gem)\" aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 24 24\"><path d=\"M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81\"/></svg>"},desk:[[12,22],[88,22],[95,62],[19,84],[81,88]],phone:[[14,15],[86,15],[6,62],[94,62],[27,95]]};</script>
+<script src="assets/js/nav.js"></script><script src="assets/js/hx3.js"></script><script>(function(){var hero=document.querySelector('.hx.o5'),card=document.getElementById('card');
+function seam(){var h=hero.getBoundingClientRect(),c=card.getBoundingClientRect(),cross=innerWidth<700?100:96;
+hero.style.setProperty('--sky',Math.round(c.top-h.top+cross)+'px');}
+seam();addEventListener('resize',seam);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){seam();dispatchEvent(new Event('resize'));});})();</script><script src="assets/js/orbits5.js"></script>
+<script src="script.js"></script><script src="assets/js/globe-data.js"></script><script src="assets/js/page.js"></script>
+</body></html>

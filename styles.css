@@ -205,15 +205,9 @@ html{scroll-padding-top:6.5rem}
   box-shadow:0 6px 22px -16px rgba(28,20,8,.5);
 }
 .brand{display:flex;align-items:center;gap:.55rem;flex:none}
-.mark{display:block;width:26px;height:26px;color:var(--flame);flex:none}
-.mark svg{width:100%;height:100%}
+.brand-logo{display:block;height:28px;width:auto}
+.mark{display:block;width:26px;height:26px;flex:none}
 .mark-xs{width:17px;height:17px}
-.brand-name{
-  font-family:var(--font-display);
-  font-weight:700;font-size:1.0625rem;letter-spacing:-.03em;line-height:1;
-}
-/* flame-dark, not flame: at 17px the brighter tone lands at 4.33:1 on cream. */
-.brand-geo{color:var(--flame-dark)}
 
 .nav-links{display:flex;align-items:center;gap:clamp(.4rem,1.4vw,1.15rem)}
 .nav-links a{
@@ -753,7 +747,16 @@ html{scroll-padding-top:6.5rem}
 }
 
 /* ---------------------------------------------------------------- footer */
-.footer{background:var(--paper-2);border-top:1px solid var(--rule);overflow:hidden}
+/* The page fades into a dark footer through the site's warm tones (sampled along a smooth
+   curve so the fade shows no bands), then the footer ends in the night-sky scene. */
+.footer-fade{height:clamp(320px,48vw,680px);margin-top:-1px;background:linear-gradient(180deg, #FFFDF8 0.0%, #FFFDF8 3.1%, #FFFDF8 6.2%, #FFFDF7 9.4%, #FEFCF6 12.5%, #FEFAF3 15.6%, #FDF8EF 18.8%, #FBF5EA 21.9%, #F9F1E3 25.0%, #F8EEDD 28.1%, #F7EDDA 31.2%, #F6EBD7 34.4%, #F1E3CD 37.5%, #E6D6BC 40.6%, #DCC9AC 43.8%, #D5C1A0 46.9%, #C9B492 50.0%, #AE9A7C 53.1%, #8F7B64 56.2%, #715F4A 59.4%, #564632 62.5%, #423422 65.6%, #36291A 68.8%, #2D2114 71.9%, #261C0F 75.0%, #22190C 78.1%, #20170B 81.2%, #1E1509 84.4%, #1D1509 87.5%, #1C1408 90.6%, #1C1408 93.8%, #1C1408 96.9%, #1C1408 100.0%)}
+.footer{
+  --f-bg:#1c1408;--f-text:#e7dcc9;--f-body:#c9b492;--f-label:#a8977d;--f-quiet:#9c8a70;
+  --f-accent:#e8864a;--f-hover:#f29a55;--f-rule:rgba(236,223,201,.12);
+  position:relative;background:var(--f-bg);color:var(--f-text);overflow:hidden;
+}
+.footer-inner,.footer-base,.footer-end{position:relative;z-index:1}
+.footer-brand .brand-logo{height:34px}
 .footer-inner{
   max-width:var(--shell);margin-inline:auto;
   padding:clamp(3rem,5vw,4.5rem) var(--pad) clamp(2rem,3vw,3rem);
@@ -763,25 +766,25 @@ html{scroll-padding-top:6.5rem}
 @media (max-width:900px){.footer-inner{grid-template-columns:1fr}}
 .footer-brand p{
   margin-top:1.1rem;max-width:40ch;
-  font-size:.9rem;line-height:1.6;color:var(--muted);
+  font-size:.9rem;line-height:1.6;color:var(--f-body);
 }
 .footer-mail{
   display:inline-block;margin-top:.9rem;padding-top:.35rem;
-  font-family:var(--font-mono);font-size:.8125rem;color:var(--flame-dark);
-  border-bottom:1px solid var(--rule-strong);
+  font-family:var(--font-mono);font-size:.8125rem;color:var(--f-accent);
+  border-bottom:1px solid rgba(201,180,146,.35);
 }
-.footer-mail:hover{border-bottom-color:var(--flame)}
+.footer-mail:hover{color:var(--f-hover);border-bottom-color:var(--ember)}
 .footer-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem}
 @media (max-width:620px){.footer-nav{grid-template-columns:1fr}}
 .footer-nav h2{
-  font-size:.8125rem;font-weight:600;letter-spacing:.005em;color:var(--muted);margin-bottom:1rem;
+  font-size:.8125rem;font-weight:600;letter-spacing:.005em;color:var(--f-label);margin-bottom:1rem;
 }
 .footer-nav a{
   display:inline-block;padding:.3rem 0;
-  font-size:.9rem;color:var(--ink-2);
+  font-size:.9rem;color:var(--f-text);
   border-bottom:1px solid transparent;
 }
-.footer-nav a:hover{color:var(--flame-dark);border-bottom-color:var(--flame)}
+.footer-nav a:hover{color:var(--f-hover);border-bottom-color:var(--ember)}
 @media (hover:none), (max-width:620px){
   /* Touch: grow the hit area to the 44px minimum without changing the look. */
   .footer-nav a{padding:.8rem 0}
@@ -811,22 +814,28 @@ html{scroll-padding-top:6.5rem}
   .footer-base a{display:inline-block;min-height:44px;padding-block:.55rem}
 }
 
-.footer-word{
-  position:relative;overflow:hidden;line-height:0;
-  max-width:var(--shell);margin:clamp(.75rem,2vw,1.6rem) auto 0;
-  padding-inline:var(--pad);
-  pointer-events:none;user-select:none;
-}
-.footer-word svg{display:block;width:100%;height:auto}
+/* Night-sky ending: the north star over the horizon, the wordmark sinking past the page's
+   end. Desktop and phone art are both inline (the animation waits for scroll, see
+   script.js); only one shows. */
+.footer-end{line-height:0;margin-top:clamp(.5rem,2vw,1.5rem);pointer-events:none;user-select:none}
+.footer-end svg{display:block;width:100%;height:auto}
+.footer-end .fe-phone{display:none}
+@media (max-width:700px){.footer-end .fe-desk{display:none}.footer-end .fe-phone{display:block}}
+/* Faint stars in the lower half of the link area, placed by script.js clear of all text. */
+.footer-stars{position:absolute;inset:0;z-index:0;pointer-events:none}
+.footer-stars svg{display:block;width:100%;height:100%}
+.footer-stars .tw{animation:fs-tw 4.5s ease-in-out infinite}
+@keyframes fs-tw{0%,100%{opacity:1}50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.footer-stars .tw{animation:none}}
 .footer-base{
   max-width:var(--shell);margin-inline:auto;
   padding:1.35rem var(--pad) 2rem;
-  border-top:1px solid var(--rule);margin-top:0;
+  border-top:1px solid var(--f-rule);margin-top:0;
   display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
-  font-family:var(--font-mono);font-size:.72rem;color:var(--muted);
+  font-family:var(--font-mono);font-size:.72rem;color:var(--f-quiet);
 }
 .footer-base a{display:inline-block;padding:.45rem 0}
-.footer-base a:hover{color:var(--flame-dark)}
+.footer-base a:hover{color:var(--f-hover)}
 
 /* ---------------------------------------------------------------- reveal */
 .reveal{opacity:0;transform:translateY(16px)}

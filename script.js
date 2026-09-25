@@ -246,4 +246,74 @@
         'write to hello@wayfindergeo.com directly.';
     });
   }
+
+  /* ------------------------------------------------------- footer sky */
+  /* The night-sky ending animates in (horizon, rising star, wordmark). Hold it until
+     the footer is on screen, otherwise it plays out while people are still up top.
+     Without script or IntersectionObserver it simply plays on load. */
+  var endArt = document.querySelectorAll('.footer-end svg');
+  if (!reduce && 'IntersectionObserver' in window && endArt.length) {
+    var skyIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.remove('wf-wait');
+        skyIO.unobserve(entry.target);
+      });
+    }, { threshold: 0.3 });
+    endArt.forEach(function (svg) {
+      svg.classList.add('wf-wait');
+      skyIO.observe(svg);
+    });
+  }
+
+  /* Faint stars drift up from the sky scene into the lower half of the link area,
+     thickening toward the bottom. Every text box (plus a 12px margin) is off limits,
+     so they're placed here against the real layout and redrawn on resize. */
+  var foot = document.querySelector('.footer');
+  if (foot && foot.querySelector('.footer-inner') && foot.querySelector('.footer-end')) {
+    var layer = document.createElement('div');
+    layer.className = 'footer-stars';
+    layer.setAttribute('aria-hidden', 'true');
+    foot.insertBefore(layer, foot.firstChild);
+    var TEXT = '.footer-inner a, .footer-inner p, .footer-inner h2, .footer-inner .brand-logo, .footer-base p';
+
+    var drawStars = function () {
+      var seed = 11;
+      var rand = function () { seed = seed * 16807 % 2147483647; return (seed - 1) / 2147483646; };
+      var f = foot.getBoundingClientRect();
+      var inner = foot.querySelector('.footer-inner').getBoundingClientRect();
+      var end = foot.querySelector('.footer-end').getBoundingClientRect();
+      var top = inner.top + inner.height * 0.5 - f.top, h = end.top - f.top + 2 - top;
+      if (h < 40) { layer.innerHTML = ''; return; }
+      var blocks = Array.prototype.map.call(foot.querySelectorAll(TEXT), function (el) {
+        var r = el.getBoundingClientRect();
+        return [r.left - f.left - 12, r.top - f.top - 12, r.right - f.left + 12, r.bottom - f.top + 12];
+      });
+      var want = Math.round(f.width * h / 5200), out = '', made = 0, tries = 0;
+      while (made < want && tries < want * 30) {
+        tries++;
+        var x = 6 + rand() * (f.width - 12), depth = Math.sqrt(rand()), y = top + depth * h;
+        var hit = blocks.some(function (b) { return x > b[0] && x < b[2] && y > b[1] && y < b[3]; });
+        if (hit) continue;
+        var op = (0.18 + 0.4 * rand()) * (0.3 + 0.7 * depth);
+        var r = [0.6, 0.8, 1, 1.2, 1.5][Math.floor(rand() * 5)];
+        var col = rand() < 0.72 ? '#fffdf8' : '#f4c99e';
+        var tw = rand() < 0.3 ? ' class="tw" style="animation-duration:' + (3 + rand() * 3.5).toFixed(1) +
+          's;animation-delay:' + (rand() * 5).toFixed(1) + 's"' : '';
+        out += '<circle' + tw + ' cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r +
+          '" fill="' + col + '" fill-opacity="' + op.toFixed(2) + '"/>';
+        made++;
+      }
+      layer.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + Math.round(f.width) + ' ' +
+        Math.round(f.height) + '" preserveAspectRatio="none">' + out + '</svg>';
+    };
+
+    drawStars();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawStars);
+    var starTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(starTimer);
+      starTimer = setTimeout(drawStars, 150);
+    });
+  }
 })();
