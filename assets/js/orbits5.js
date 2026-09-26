@@ -32,10 +32,15 @@
   function ell(i, t) {
     var k = i / (N - 1), reach = Math.min(W * (W < 700 ? .62 : .5), 760);
     var rx = (W < 700 ? 70 : 100) + k * reach;
-    var ry = rx * (.19 + .012 * Math.sin(t * .12 + i * .3));              // was ±.05: read as bobbing
+    var ry = rx * ((W < 700 ? .28 : .19) + .012 * Math.sin(t * .12 + i * .3));   // phones: rounder, so the engines have room to orbit
     var tilt = (-.14 + k * .09) + .012 * Math.sin(t * .1 + i * .21);      // was ±.045
     return { rx: rx, ry: ry, tilt: tilt, k: k };
   }
+  /* where a point on ring i sits right now, in page coordinates (hx3.js puts the engines on the rings with this on phones) */
+  window.WF_orbit = function (i, a) {
+    var e = ell(Math.min(i, N - 1), (performance.now() - t0) / 1000), p = pt(e, a), r = box.getBoundingClientRect();
+    return { x: p[0] + r.left, y: p[1] + r.top };
+  };
   function pt(e, a) { var x = e.rx * Math.cos(a), y = e.ry * Math.sin(a), c = Math.cos(e.tilt), s = Math.sin(e.tilt); return [cx + x * c - y * s, cy + x * s + y * c]; }
   function frame(now) {
     if (!run) return;

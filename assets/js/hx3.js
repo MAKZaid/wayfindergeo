@@ -52,7 +52,10 @@
     var W = stage.clientWidth, H = stage.clientHeight, phone = W < 640, P = phone ? C.phone : C.desk;
     var fr = focus.getBoundingClientRect(), sr = stage.getBoundingClientRect();
     var sx = fr.left - sr.left + fr.width / 2, sy = fr.top - sr.top + fr.height / 2, out = '';
+    orbitStop();
+    if (phone && window.WF_orbit) { orbitStart(); return; }
     chips.forEach(function (b, i) {
+      b.style.transform = b.style.opacity = b.style.zIndex = '';
       var p = P[i]; if (!p) { b.hidden = true; return; } b.hidden = false;
       var x = W * p[0] / 100, y = H * p[1] / 100; b.style.left = x + 'px'; b.style.top = y + 'px';
       var bend = phone ? 18 : 40, mx = (x + sx) / 2 + (x < sx ? -bend : bend), my = Math.min(y, sy) - (phone ? 16 : 36);
@@ -60,6 +63,35 @@
     });
     svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.innerHTML = out;
     if (active >= 0) mark(active);
+  }
+  /* Phones: the engines travel along one of the drawn rings, evenly spaced, one lap about every 70s. On the far side
+     of the star they shrink, dim and pass behind it; on the near side they come in front. The dotted line follows. */
+  var RING = 7, LAP = 70000, orbitRaf = 0, orbitOn = false, paths = [], visible = true;
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible && orbitOn && !orbitRaf) orbitRaf = requestAnimationFrame(orbitFrame); }).observe(stage);
+  function orbitStart() {
+    var out = '';
+    chips.forEach(function (b, i) { b.hidden = false; out += '<path class="ln" data-k="' + E[i].k + '" data-i="' + i + '"/>'; });
+    svg.setAttribute('viewBox', '0 0 ' + stage.clientWidth + ' ' + stage.clientHeight); svg.innerHTML = out;
+    paths = [].slice.call(svg.querySelectorAll('.ln'));
+    if (active >= 0) mark(active);
+    orbitOn = true; orbitFrame(performance.now());
+  }
+  function orbitStop() { orbitOn = false; cancelAnimationFrame(orbitRaf); orbitRaf = 0; }
+  function orbitFrame(now) {
+    orbitRaf = 0; if (!orbitOn) return;
+    var sr = stage.getBoundingClientRect(), fr = focus.getBoundingClientRect();
+    var sx = fr.left - sr.left + fr.width / 2, sy = fr.top - sr.top + fr.height / 2, spin = reduce ? 0 : (now / LAP) * Math.PI * 2;
+    chips.forEach(function (b, i) {
+      var a = spin + i * Math.PI * 2 / chips.length + .35, q = window.WF_orbit(RING, a);
+      var x = q.x - sr.left, y = q.y - sr.top, near = (Math.sin(a) + 1) / 2;          /* 0 far side, 1 near side */
+      b.style.left = x.toFixed(1) + 'px'; b.style.top = y.toFixed(1) + 'px';
+      b.style.transform = 'translate(-50%,-50%) scale(' + (.8 + .2 * near).toFixed(3) + ')';
+      b.style.opacity = (.55 + .45 * near).toFixed(2);
+      b.style.zIndex = Math.sin(a) < 0 ? 0 : 3;
+      var mx = (x + sx) / 2 + (x < sx ? -18 : 18), my = Math.min(y, sy) - 16;
+      if (paths[i]) paths[i].setAttribute('d', 'M' + x.toFixed(1) + ',' + y.toFixed(1) + ' Q' + mx.toFixed(1) + ',' + my.toFixed(1) + ' ' + sx.toFixed(1) + ',' + sy.toFixed(1));
+    });
+    if (!reduce && visible) orbitRaf = requestAnimationFrame(orbitFrame);
   }
   function mark(i) {
     chips.forEach(function (b, j) { b.classList.toggle('on', j === i); });
@@ -95,6 +127,7 @@
   var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(relayout, 120); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
   window.HX_relayout = relayout;
+  addEventListener('load', relayout);                                     /* the rings (orbits5.js) load after this file */
 
   /* Starlight: track the cursor inside hero buttons */
   [].forEach.call(document.querySelectorAll('.hx .btn'), function (b) {

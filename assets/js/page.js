@@ -709,3 +709,49 @@
     if (phone()) { reel.scrollLeft = dir > 0 ? 1 : half(); pos = reel.scrollLeft; }
   });
 })();
+
+/* Adnan's window (desktop): his cursor travels to the middle card, drags its corner radius too round, too square, then
+   settles, with a live "Radius" label; then it goes back and the card resets. Runs only while his window is showing. */
+(function () {
+  'use strict';
+  var scn = document.querySelector('.scn-site'); if (!scn) return;
+  var card = scn.querySelector('.c-mid'), rad = scn.querySelector('.rad'), box = scn.querySelector('.rad-box'),
+      h = scn.querySelector('.rad-h'), txt = scn.querySelector('.rad-tag text'), cur = scn.querySelector('.svg-cur');
+  if (!card || !rad || !cur) return;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, raf = 0, t0 = 0;
+  var X = 173, Y = 262, P0 = [430, 200];
+  var ease = function (q) { return q < .5 ? 2 * q * q : 1 - Math.pow(-2 * q + 2, 2) / 2; };
+  var lerp = function (a, b, q) { return a + (b - a) * q; };
+  function handle(r) { var d = Math.max(r, 8) * .72 + 4; return [X + d, Y + d]; }
+  /* [start s, end s, radius from, radius to]: grab, too round, too square, settle, hold, let go, reset */
+  var R = [[1.3, 2.8, 0, 30], [2.8, 4.0, 30, 4], [4.0, 5.0, 4, 16], [5.0, 6.4, 16, 16]];
+  function radiusAt(t) {
+    if (t < 1.3) return 0;
+    for (var i = 0; i < R.length; i++) if (t < R[i][1]) return lerp(R[i][2], R[i][3], ease((t - R[i][0]) / (R[i][1] - R[i][0])));
+    if (t < 8) return 16;
+    return lerp(16, 0, ease(Math.min(1, (t - 8) / .8)));
+  }
+  function draw(t) {
+    var r = radiusAt(t), c;
+    if (t < 1.3) { var q = ease(t / 1.3), hh = handle(0); c = [lerp(P0[0], hh[0], q), lerp(P0[1], hh[1], q)]; }
+    else if (t < 6.4) c = handle(r);
+    else if (t < 7.8) { var q2 = ease((t - 6.4) / 1.4), h2 = handle(16); c = [lerp(h2[0], P0[0], q2), lerp(h2[1], P0[1], q2)]; }
+    else c = P0;
+    var rr = r.toFixed(1), hp = handle(r);
+    card.setAttribute('rx', rr); box.setAttribute('rx', rr);
+    h.setAttribute('cx', hp[0].toFixed(1)); h.setAttribute('cy', hp[1].toFixed(1));
+    txt.textContent = 'Radius ' + Math.round(r);
+    rad.classList.toggle('on', t > 1.1 && t < 6.8);
+    cur.setAttribute('transform', 'translate(' + c[0].toFixed(1) + ' ' + c[1].toFixed(1) + ')');
+  }
+  function frame(now) {
+    raf = 0;
+    if (!scn.classList.contains('on') || innerWidth < 901) { t0 = 0; return; }
+    if (!t0) t0 = now;
+    draw(((now - t0) / 1000) % 9);
+    raf = requestAnimationFrame(frame);
+  }
+  if (reduce) { draw(5.5); return; }
+  /* start whenever his window becomes the one showing */
+  new MutationObserver(function () { if (scn.classList.contains('on') && !raf) raf = requestAnimationFrame(frame); }).observe(scn, { attributes: true, attributeFilter: ['class'] });
+})();

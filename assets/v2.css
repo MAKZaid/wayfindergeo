@@ -1646,3 +1646,18 @@ html .night-end .fx-edge{overflow:visible}
   .night-end .footer-base{flex-direction:row;justify-content:space-between;align-items:center;gap:1rem}
   .night-end .footer-base .fb-long{display:none}
 }
+/* hero heading: always the two lines "Discovery happens / in the AI answers now." (the second line is about 8.9 font-sizes wide,
+   so the size is capped to what the screen can hold, and the heading never wraps a third time) */
+.hero-title{font-size:min(clamp(2.18rem,1.15rem + 4.53vw,4.7rem),calc((100vw - 2 * var(--pad-page)) / 10.3));white-space:nowrap}   /* about 10% smaller (Zaid) */
+/* Adnan's window: his cursor comes down to the middle card and works its corner radius (page.js drives it) */
+@media (min-width:901px){
+  .scn-site .scn-cursor{display:none}
+  .scn-site .rad{opacity:0;transition:opacity .25s ease}
+  .scn-site .rad.on{opacity:1}
+  .scn-site .rad-box{fill:none;stroke:var(--t-acc,var(--ember));stroke-width:1.5}
+  .scn-site .rad-h{fill:#fff;stroke:var(--t-acc,var(--ember));stroke-width:1.5}
+  .scn-site .rad-tag rect{fill:var(--t-ink,var(--ink))}
+  .scn-site .rad-tag text,.scn-site .svg-cur text{fill:#fff;font:500 10px 'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+  .scn-site .svg-cur path{fill:var(--t-acc,var(--ember));stroke:#fff;stroke-width:1.3;stroke-linejoin:round}
+  .scn-site .svg-cur rect{fill:var(--t-acc,var(--ember))}
+}
