@@ -84,8 +84,9 @@
     chips.forEach(function (b, i) {
       var a = spin + i * Math.PI * 2 / chips.length + .35, q = window.WF_orbit(RING, a);
       var x = q.x - sr.left, y = q.y - sr.top, near = (Math.sin(a) + 1) / 2;          /* 0 far side, 1 near side */
-      b.style.left = x.toFixed(1) + 'px'; b.style.top = y.toFixed(1) + 'px';
-      b.style.transform = 'translate(-50%,-50%) scale(' + (.8 + .2 * near).toFixed(3) + ')';
+      /* moved with a transform, not left/top, so the motion never counts as layout shift */
+      b.style.left = '0px'; b.style.top = '0px';
+      b.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) translate(-50%,-50%) scale(' + (.8 + .2 * near).toFixed(3) + ')';
       b.style.opacity = (.55 + .45 * near).toFixed(2);
       b.style.zIndex = Math.sin(a) < 0 ? 0 : 3;
       var mx = (x + sx) / 2 + (x < sx ? -18 : 18), my = Math.min(y, sy) - 16;
@@ -104,15 +105,14 @@
     var ce = card.querySelector('.c-eng'); ce.dataset.k = e.k; ce.innerHTML = ic(e.k) + e.n;
     card.querySelector('.c-q').textContent = e.q;
     if (reduce) { ans.innerHTML = full(e); return; }
-    ans.innerHTML = '<span class="thinking"><i></i><i></i><i></i></span>';
-    var t = 500; typing.push(setTimeout(function () { ans.innerHTML = ''; }, t));
-    e.a.split(' ').forEach(function (w) {
-      typing.push(setTimeout(function () {
-        var s = document.createElement('span');
-        if (w.indexOf('@') === 0) { s.innerHTML = you() + w.slice(1); } else { s.className = 'w'; s.textContent = w; }
-        ans.appendChild(s); ans.appendChild(document.createTextNode(' '));
-      }, t += 60));
-    });
+    /* The whole answer is laid out first, hidden, then revealed word by word, so the card's text never reflows while it
+       "types" (reflowing counted as layout shift). The thinking dots sit on top until the first word shows. */
+    ans.innerHTML = '<span class="thinking"><i></i><i></i><i></i></span>' + e.a.split(' ').map(function (w) {
+      return w.indexOf('@') === 0 ? '<span class="pend y">' + you() + w.slice(1) + '</span>' : '<span class="w pend">' + w + '</span>';
+    }).join(' ');
+    var pend = [].slice.call(ans.querySelectorAll('.pend')), t = 500;
+    typing.push(setTimeout(function () { var d = ans.querySelector('.thinking'); if (d) d.remove(); }, t));
+    pend.forEach(function (el) { typing.push(setTimeout(function () { el.classList.remove('pend'); }, t += 60)); });
   }
   function schedule() {
     clearTimeout(timer); if (reduce || paused) return;

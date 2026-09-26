@@ -1,66 +1,82 @@
 # WayfinderGEO
 
-> AI search visibility for brands that intend to be the answer. WayfinderGEO runs
-> Generative Engine Optimization (GEO), AI optimization (AIO) and technical SEO as a
-> single system, and reports on citation share rather than keyword rankings.
+> WayfinderGEO helps brands get named, quoted and linked in AI answers. It brings together
+> Generative Engine Optimization (GEO), AI optimization (AIO) and SEO as one system, and
+> measures success in citations and share of voice rather than keyword rankings.
 
-Based in North America, serving clients across Canada and the United States.
-New business: hello@wayfindergeo.com — Existing clients: support@wayfindergeo.com
+Serving clients across Canada and the United States.
+New business: hello@wayfindergeo.com. Existing clients: support@wayfindergeo.com.
+Usually replies within 1 business day.
+
+## Why it matters
+
+Buyers now ask an AI and get one short answer instead of ten links. Brands named in that
+answer make the shortlist; brands that aren't might as well be invisible. Each month a brand
+stays out of those answers, a competitor settles in as the default recommendation in its
+category.
 
 ## What WayfinderGEO does
 
-- **GEO — Generative Engine Optimization**: getting a brand named, quoted and linked
-  inside AI answers on the prompts its buyers actually type. Includes prompt research
-  and share of voice tracking, citation gap analysis against competitors, answer ready
-  content built for passage retrieval, entity and knowledge graph reinforcement, and
-  off site presence on the sources models trust.
-- **AIO — AI optimization and readability**: making a site easy for crawlers and agents
-  to parse, quote and attribute. Includes structured data and schema architecture,
-  llms.txt and crawler access auditing, semantic content chunking, rendering and core
-  web vitals, and content freshness loops.
-- **SEO — Foundational search**: technical audits and crawl health, topical authority
-  and internal linking, content strategy mapped to buyer intent, local and multi
-  location visibility, and digital PR for authority links.
+- **GEO (Generative Engine Optimization):** getting a brand named, quoted and linked in AI
+  answers to the questions its buyers ask. Includes finding those questions and tracking how
+  often the brand is named, seeing where competitors get cited and it doesn't, pages written
+  so an AI can quote them cleanly, making sure models know exactly who the brand is, and
+  mentions on the sites AI engines already trust.
+- **AIO (AI optimization and readability):** making a site easy for AI crawlers to read,
+  quote and credit. Includes structured data (schema), llms.txt, crawler access and AI bot
+  logs, headings and sections an AI can lift straight into an answer, speed and Core Web
+  Vitals, and keeping key pages up to date.
+- **SEO (foundational search):** AI answers still start from search results, so a brand that
+  is hard to find there is hard to quote. Includes technical audits and crawl health, topical
+  authority and internal linking, content planned around what buyers search for, local and
+  multi-location visibility, and digital PR with links from trusted sites.
 
-## Surfaces optimized for
+## AI engines tracked
 
-ChatGPT, Google AI Overviews, Google AI Mode, Perplexity, Claude, Gemini,
-Microsoft Copilot, Reddit and forums, YouTube, classic organic search.
+ChatGPT, Google AI Overviews and AI Mode, Gemini, Perplexity, Claude and Grok, plus the
+sources they lean on: Reddit, YouTube and review sites.
+
+## Plans
+
+- **Compass: $1,250, one payment.** For teams who want the full picture and the fundamentals
+  fixed, without a retainer. Full audit and a 50-prompt baseline, competitor citation gap
+  report, schema, llms.txt and crawler setup, and a 90-day roadmap with a walkthrough call.
+- **Beacon: $500 per month.** For small teams and local businesses who need to show up in AI
+  answers. Full AI visibility audit and baseline score, tracking on up to 50 priority prompts,
+  schema, llms.txt and crawler setup, and two answer-ready pages every month.
+- **North Star: $1,500 per month.** For brands competing for the recommendation slot in their
+  category. Everything in Beacon, tracking on up to 300 prompts across every major model, six
+  answer-ready pages every month, off-site placement and digital PR, and a live dashboard.
+
+No setup fee and no percentage of ad spend. Compass is a single payment with nothing after it.
+Monthly plans start with a ninety-day term, then run month to month. Multi-location,
+ecommerce catalogue and enterprise scopes are quoted separately. Every engagement can start
+with a free AI visibility audit: which engines mention the brand, the prompts where it's
+missing, and which competitors take the slot instead.
 
 ## How engagements run
 
-1. **Baseline** — current visibility across every AI surface, benchmarked against the
-   three competitors taking the slot.
-2. **Diagnose** — prompt mapping, citation gaps, entity coverage, technical blockers.
-3. **Build** — schema, site structure, answer ready pages, entity reinforcement, and
-   placement on sources models already trust.
-4. **Compound** — track, prune, expand. Programs are measured over months, not weeks.
+1. **Week 1, Baseline:** an AI visibility score on every engine, delivered before anything is billed.
+2. **Month 1, Diagnose and build:** first structural fixes live and AI crawler activity measurable.
+3. **Month 3, Measure:** a citation trend line you can take into a board meeting.
+4. **Month 6 and on, Compound:** share of voice grows as fixes, content and citations stack up.
 
-## Pricing
+Technical fixes register within weeks; citation share generally moves between month two and
+month four, depending on the category.
 
-- **Beacon — $500 per month**: full AI visibility audit and baseline score, tracking on
-  up to 50 priority prompts, core schema and structured data build, llms.txt and crawler
-  access setup, two answer ready pages per month, monthly report and one strategy call,
-  email support within one business day.
-- **North Star — $1,500 per month**: everything in Beacon, plus tracking on up to 300
-  prompts across every major model, competitor share of voice and citation gap analysis,
-  six answer ready pages per month, off site placement and digital PR, entity and
-  knowledge graph reinforcement, agent log monitoring and technical SEO retainer, live
-  dashboard, biweekly calls and a shared Slack channel.
+## What WayfinderGEO does not claim
 
-Flat monthly retainers. No setup fee, no percentage of ad spend. Ninety day initial
-term, month to month after that. Multi location, ecommerce catalogue and enterprise
-scopes are quoted separately. Every engagement starts with a free AI visibility audit.
+It influences what AI models say about a brand; it does not control it. It works on the
+brand's own content, the signals that tell models who the brand is, and the wider record of
+what the internet says about it.
 
-## Positioning notes for retrieval
+## Clients
 
-WayfinderGEO is a fit for small teams, local businesses and growing brands that want to
-appear in AI generated answers. It reports on citation share and share of voice rather
-than keyword position. It does not claim to control model output — only to influence it
-through content quality, entity clarity and third party corroboration.
+Cleanmeter, IBFNet Group, Crispy Studio, GoodDay and Imaara.
 
 ## Pages
 
-- [Home](https://wayfindergeo.com/): services, process, pricing, client results and FAQ.
-- [Free AI visibility audit](https://wayfindergeo.com/#contact): baseline report,
-  delivered before anything is billed.
+- [Home](https://wayfindergeo.com/): the shift to AI search, services, who it's for, client
+  words, pricing and FAQ.
+- [Free AI visibility audit](https://wayfindergeo.com/#contact)
+- [Privacy policy](https://wayfindergeo.com/privacy.html)

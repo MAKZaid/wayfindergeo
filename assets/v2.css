@@ -1661,3 +1661,11 @@ html .night-end .fx-edge{overflow:visible}
   .scn-site .svg-cur path{fill:var(--t-acc,var(--ember));stroke:#fff;stroke-width:1.3;stroke-linejoin:round}
   .scn-site .svg-cur rect{fill:var(--t-acc,var(--ember))}
 }
+/* contrast (Lighthouse): the Shift's small numbers and the form's "optional" note reach 4.5:1 */
+.sx-orbit .sx-n{color:var(--flame-dark)}
+.field .opt{opacity:1;color:var(--muted)}
+/* hero answer card: words wait in place, hidden, until their turn (no reflow while it types) */
+.c-a{position:relative}
+.c-a .thinking{position:absolute;left:0;top:.15em}
+.c-a .pend{visibility:hidden;animation:none}
+.c-a .pend .you{animation:none}
