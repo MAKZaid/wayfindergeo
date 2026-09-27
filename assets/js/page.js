@@ -755,3 +755,285 @@
   /* start whenever his window becomes the one showing */
   new MutationObserver(function () { if (scn.classList.contains('on') && !raf) raf = requestAnimationFrame(frame); }).observe(scn, { attributes: true, attributeFilter: ['class'] });
 })();
+
+/* ======================================================================= v35, ported: hero eyebrow, page stars, footer star, service cards */
+/* v31 hero eyebrow (v31: typing 20% faster, deleting a touch faster, the sweep and star 20% faster).
+   The three lines are typed like "Be the answer." in the footer: one letter at a time behind the same solid ember
+   caret, which fades once the line is done. Between lines the text is deleted back to nothing and the pill glides to
+   where the next line starts.
+     Generative Engine Optimization  ->  AI Optimization  ->  Search Engine Optimization
+   Then the finale: the pill runs through the last line, letting the letters go as it passes, keeps speeding up to the
+   right, stretches out and becomes a shooting star that streaks off into the sky. The line comes back every 2 to 3
+   minutes and runs again.
+   - The original words stay in the page (visually hidden) for search engines and screen readers; the moving copy is
+     aria-hidden. The eyebrow keeps its size the whole time and everything moves by transform/opacity, so the headline
+     never shifts.
+   - Reduced motion: left exactly as it is in the markup. */
+(function () {
+  var p = document.querySelector('.hx .eyebrow'); if (!p) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { p.classList.add('wf-ready'); document.dispatchEvent(new Event('wf:eyebrow-done')); return; }
+  var PH = ['Generative Engine Optimization', 'AI Optimization', 'Search Engine Optimization'];
+  var TYPE = 48, DEL = 21, HOLD = [2800, 2500, 2600], START = 700, AWAY = [110000, 170000];
+  var chip = p.querySelector('.chip'), orig = p.textContent.trim();
+  var sr = document.createElement('span'); sr.className = 'wf-sr'; sr.textContent = orig;
+  var box = document.createElement('span'); box.className = 'wf-ey wf-away'; box.setAttribute('aria-hidden', 'true');
+  var line = document.createElement('span'); line.className = 'wf-ln';
+  var text = document.createElement('span'); text.className = 'wf-tx';
+  var caret = document.createElement('span'); caret.className = 'wf-caret wf-off';
+  var comet = document.createElement('span'); comet.className = 'wf-comet'; comet.innerHTML = '<i></i><b></b>';
+  p.textContent = ''; p.appendChild(sr); p.appendChild(box);
+  box.appendChild(chip); box.appendChild(line); line.appendChild(text); line.appendChild(caret); box.appendChild(comet);
+  p.classList.add('wf-ready');
+  var gap = parseFloat(getComputedStyle(p).columnGap) || 9.6, CW = 17, widths = [], idx = 0, timers = [];
+
+  function later(f, ms) { var t = setTimeout(f, ms); timers.push(t); return t; }
+  function letters(s) { return s.split('').map(function (ch) { return '<span class="wf-c">' + ch + '</span>'; }).join(''); }
+  function measure() {
+    var m = document.createElement('span'); m.className = 'wf-meas'; box.appendChild(m);
+    widths = PH.map(function (s) { m.innerHTML = letters(s); return m.getBoundingClientRect().width; });
+    box.removeChild(m);
+    box.style.width = Math.ceil(CW + gap + Math.max.apply(null, widths) + 6) + 'px';
+    place(idx, true);
+  }
+  /* chip + gap + the whole phrase, centred as one unit; the letters then type in from the left */
+  function startX(i) { return -(CW + gap + widths[i]) / 2; }
+  function place(i, now) {
+    var x = startX(i);
+    if (now) chip.style.transition = line.style.transition = 'none';
+    chip.style.transform = 'translate(' + x.toFixed(1) + 'px,-50%)';
+    line.style.transform = 'translateX(' + (x + CW + gap).toFixed(1) + 'px)';
+    if (now) { void box.offsetWidth; chip.style.transition = line.style.transition = ''; }
+  }
+
+  function typeIn(i, done) {
+    idx = i; var s = PH[i], n = 0;
+    caret.classList.remove('wf-off');
+    (function step() {
+      text.insertAdjacentHTML('beforeend', '<span class="wf-c">' + s.charAt(n) + '</span>');
+      if (++n < s.length) later(step, TYPE);
+      else { later(function () { caret.classList.add('wf-off'); }, 1300); later(done, HOLD[i]); }
+    })();
+  }
+  function deleteOut(done) {
+    caret.classList.remove('wf-off');
+    (function step() {
+      if (text.lastChild) { text.removeChild(text.lastChild); later(step, DEL); }
+      else later(done, 160);
+    })();
+  }
+  function glideTo(i, done) { place(i); later(done, 520); }
+
+  /* the pill sweeps the line away, then leaves as a shooting star */
+  function finale(done) {
+    caret.classList.add('wf-off');
+    var cs = [].slice.call(text.children), lx = startX(idx) + CW + gap;
+    var centres = cs.map(function (c) { return lx + c.offsetLeft + c.offsetWidth / 2; });
+    var x0 = startX(idx), xEnd = lx + widths[idx] + 4, D = xEnd - x0;
+    var TA = 610, TB = 760, ANG = -8 * Math.PI / 180, t0 = performance.now(), swept = 0;
+    var v = 2.2 * D / TA;                                     /* speed at the end of the sweep (ease-in, power 2.2) */
+    chip.style.transition = 'none'; chip.classList.add('wf-run');
+    function frame(now) {
+      var t = now - t0;
+      if (t < TA) {
+        var x = x0 + D * Math.pow(t / TA, 2.2), cx = x + CW / 2;
+        while (swept < cs.length && centres[swept] <= cx + 3) cs[swept++].classList.add('wf-swept');
+        chip.style.transform = 'translate(' + x.toFixed(1) + 'px,-50%)';
+        return requestAnimationFrame(frame);
+      }
+      while (swept < cs.length) cs[swept++].classList.add('wf-swept');
+      var u = t - TA;
+      if (u < TB) {
+        var dist = v * u + .5 * (v / 260) * u * u;            /* keeps accelerating */
+        var hx = xEnd + dist * Math.cos(ANG), hy = dist * Math.sin(ANG);
+        /* the pill stretches thin and hands over to the star in the first 240ms */
+        var m = Math.min(1, u / 240);
+        var sx = 1 + m * 1.4;                                   /* its front end stays on the star's head */
+        chip.style.transform = 'translate(' + (hx - CW * sx / 2 - CW / 2).toFixed(1) + 'px,' + hy.toFixed(1) + 'px) translateY(-50%) rotate(' + ANG.toFixed(3) + 'rad) scale(' + sx.toFixed(2) + ',' + (1 - m * .72).toFixed(2) + ')';
+        chip.style.opacity = (1 - m).toFixed(2);
+        var fade = u < TB * .5 ? 1 : 1 - (u - TB * .5) / (TB * .5);
+        comet.style.opacity = (Math.min(1, u / 140) * fade).toFixed(3);
+        comet.style.transform = 'translate(' + hx.toFixed(1) + 'px,' + hy.toFixed(1) + 'px) rotate(' + ANG.toFixed(3) + 'rad)';
+        comet.firstChild.style.width = Math.min(150, 14 + dist * .55).toFixed(0) + 'px';
+        return requestAnimationFrame(frame);
+      }
+      comet.style.opacity = 0; text.innerHTML = '';
+      box.classList.add('wf-away'); chip.classList.remove('wf-run');
+      chip.style.opacity = ''; place(0, true);
+      done();
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function run() {
+    place(0, true); box.classList.remove('wf-away');
+    later(function () {
+      typeIn(0, function () { deleteOut(function () { glideTo(1, function () {
+        typeIn(1, function () { deleteOut(function () { glideTo(2, function () {
+          typeIn(2, function () { finale(function () {
+            document.dispatchEvent(new Event('wf:eyebrow-done'));   /* hx4.js waits for this before "Your brand" first shows */
+            later(run, AWAY[0] + Math.random() * (AWAY[1] - AWAY[0]));
+          }); });
+        }); }); });
+      }); }); });
+    }, 380);
+  }
+  measure();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(measure, 150); });
+  later(run, START);
+})();
+
+/* v29: a very light touch of the hero's sky on the cream page below it.
+   - A few small four-point stars and dots, placed only in empty space: the side margins and the gaps between
+     blocks. Every text, image, button and card on the page is measured and kept clear (22px margin). About 2 to 6
+     per section on desktop and 0 to 2 on phones. Some twinkle slowly.
+   - Now and then (every 20-40 seconds) a faint ember comet crosses an empty patch of whatever is on screen. Its whole
+     path, tail included, is checked against the content first; if no clear path is found, it skips that turn.
+   - Each section has its own layer behind its content, so the stars move with their section when content above
+     them changes size (FAQ answers opening, tabs switching). Placement is seeded, so a rebuild keeps the same spots.
+   - Reduced motion: stars stay, nothing twinkles, no comets. The dark "night" section and the hero are left alone. */
+(function () {
+  var main = document.getElementById('main'); if (!main) return;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var secs = [].slice.call(main.querySelectorAll('.page .sec'));
+  var TAGS = /^(H[1-6]|P|LI|A|BUTTON|IMG|PICTURE|SVG|CANVAS|VIDEO|INPUT|TEXTAREA|SELECT|LABEL|BLOCKQUOTE|FIGURE|TABLE|DT|DD)$/;
+  var COLORS = ['208,99,28', '242,154,85', '201,180,146'];
+  var PAD = 22, layers = [];
+
+  function seedRand(s) { s = s % 2147483647; if (s <= 0) s += 2147483646; return function () { s = s * 16807 % 2147483647; return (s - 1) / 2147483646; }; }
+  function boxy(cs) {
+    return (cs.backgroundColor && !/rgba\(0, 0, 0, 0\)|transparent/.test(cs.backgroundColor)) || cs.backgroundImage !== 'none' ||
+      parseFloat(cs.borderTopWidth) > 0 || parseFloat(cs.borderBottomWidth) > 0 || cs.boxShadow !== 'none';
+  }
+  function hasText(el) { for (var n = el.firstChild; n; n = n.nextSibling) if (n.nodeType === 3 && n.nodeValue.trim()) return true; return false; }
+  /* everything in the section that shows something, in section coordinates */
+  function obstacles(sec, ox, oy) {
+    var out = [];
+    [].forEach.call(sec.querySelectorAll('*'), function (el) {
+      if (el.classList.contains('wf-sky') || el.closest('.wf-sky')) return;
+      var r = el.getBoundingClientRect(); if (r.width < 1 || r.height < 1) return;
+      var cs = getComputedStyle(el); if (cs.visibility === 'hidden' || cs.opacity === '0') return;
+      if (TAGS.test(el.tagName) || !el.firstElementChild || hasText(el) || boxy(cs))
+        out.push([r.left - ox - PAD, r.top - oy - PAD, r.right - ox + PAD, r.bottom - oy + PAD]);
+    });
+    return out;
+  }
+  function free(obs, x, y) { for (var i = 0; i < obs.length; i++) { var o = obs[i]; if (x > o[0] && x < o[2] && y > o[1] && y < o[3]) return false; } return true; }
+
+  function build(si) {
+    var sec = secs[si], L = layers[si];
+    if (!L) { L = layers[si] = document.createElement('div'); L.className = 'wf-sky'; L.setAttribute('aria-hidden', 'true'); sec.appendChild(L); }
+    var mr = main.getBoundingClientRect(), sr = sec.getBoundingClientRect(), W = main.clientWidth, H = sr.height;
+    L.style.left = (mr.left - sr.left) + 'px'; L.style.width = W + 'px';
+    L.innerHTML = '';
+    var ox = mr.left, oy = sr.top, obs = obstacles(sec, ox, oy); L._obs = obs; L._W = W; L._H = H;
+    var phone = innerWidth < 700, cell = phone ? 130 : 150, prob = phone ? .09 : .16, cap = phone ? 2 : 6, n = 0, html = '';
+    var R = seedRand(1009 * (si + 1) + (phone ? 7 : 0));
+    for (var y = 0; y < H && n < cap; y += cell) for (var x = 0; x < W && n < cap; x += cell) {
+      var roll = R(), jx = R(), jy = R(), kind = R(), sz = R(), col = R(), op = R(), tw = R(), del = R();
+      if (roll > prob) continue;
+      var px = x + jx * cell, py = y + jy * cell;
+      if (px < 36 || px > W - 36 || py < 10 || py > H - 10 || !free(obs, px, py)) continue;
+      var star = kind < .62, c = COLORS[Math.floor(col * COLORS.length)];
+      var s = star ? 7 + sz * 5 : 2 + sz * 1.2, o = (c === '201,180,146' ? .55 : .3) + op * .25;
+      html += '<i class="wf-st' + (star ? '' : ' wf-dt') + (tw < .45 && !reduce ? ' wf-tw' : '') + '" style="left:' + px.toFixed(0) + 'px;top:' + py.toFixed(0) +
+        'px;--s:' + s.toFixed(1) + 'px;--c:' + c + ';--o:' + o.toFixed(2) + ';--d:' + (6 + del * 5).toFixed(1) + 's;--dl:-' + (del * 8).toFixed(1) + 's"></i>';
+      n++;
+    }
+    L.innerHTML = html;
+  }
+  function buildAll() { secs.forEach(function (s, i) { build(i); }); }
+
+  /* ---- comets ---- */
+  function comet() {
+    var vh = innerHeight, tries = 0;
+    var vis = layers.filter(function (L, i) { var r = secs[i].getBoundingClientRect(); return r.bottom > 80 && r.top < vh - 80; });
+    if (!vis.length) return;
+    while (tries++ < 40) {
+      var L = vis[Math.floor(Math.random() * vis.length)], sr = L.parentNode.getBoundingClientRect();
+      var top = Math.max(0, -sr.top + 60), bot = Math.min(L._H, vh - sr.top - 60); if (bot - top < 120) continue;
+      var dir = Math.random() < .5 ? -1 : 1, drop = (16 + Math.random() * 16) * Math.PI / 180;
+      var tail = 90 + Math.random() * 50, travel = 170 + Math.random() * 90, ux = dir * Math.cos(drop), uy = Math.sin(drop);
+      var x0 = 20 + Math.random() * (L._W - 40), y0 = top + Math.random() * (bot - top);
+      var ok = true;
+      for (var d = -tail; d <= travel && ok; d += 12) { var qx = x0 + ux * d, qy = y0 + uy * d; if (qx < 8 || qx > L._W - 8 || qy < top || qy > bot || !free(L._obs, qx, qy)) ok = false; }
+      if (!ok) continue;
+      var w = document.createElement('span'); w.className = 'wf-cm';
+      w.style.cssText = 'left:' + x0.toFixed(0) + 'px;top:' + y0.toFixed(0) + 'px;transform:rotate(' + Math.atan2(uy, ux).toFixed(3) + 'rad)';
+      var i = document.createElement('i'); i.style.width = tail.toFixed(0) + 'px'; w.appendChild(i); L.appendChild(w);
+      var a = i.animate([{ transform: 'translateX(0)', opacity: 0 }, { opacity: 1, offset: .25 }, { opacity: .9, offset: .7 }, { transform: 'translateX(' + travel.toFixed(0) + 'px)', opacity: 0 }],
+        { duration: 1300, easing: 'cubic-bezier(.25,.6,.35,1)' });
+      a.onfinish = function () { w.remove(); };
+      return;
+    }
+  }
+  function loop() { setTimeout(function () { if (!document.hidden) comet(); loop(); }, 20000 + Math.random() * 20000); }
+
+  /* placed once the browser is idle, so it never competes with the first paint (it takes about 11ms on a slow phone) */
+  (window.requestIdleCallback || function (f) { setTimeout(f, 200); })(buildAll, { timeout: 1500 });
+  var rt; function rebuild() { clearTimeout(rt); rt = setTimeout(buildAll, 250); }
+  addEventListener('resize', rebuild); addEventListener('load', rebuild);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(rebuild);
+  /* content changing size inside a section (tabs, FAQ answers) re-measures that section */
+  if ('ResizeObserver' in window) {
+    var t = {}, first = true;
+    var ro = new ResizeObserver(function (es) {
+      if (first) { first = false; return; }
+      es.forEach(function (e) { var i = secs.indexOf(e.target); clearTimeout(t[i]); t[i] = setTimeout(function () { build(i); }, 250); });
+    });
+    secs.forEach(function (s) { ro.observe(s); });
+  }
+  if (!reduce) { setTimeout(function () { if (!document.hidden) comet(); loop(); }, 8000 + Math.random() * 6000); }
+})();
+
+/* v31: one faint shooting star in the footer (as quiet as the hero's own), far right, to the right of "Be the answer.", 1.5 seconds after the line finishes typing.
+   page.js does the typing; this only watches for the full line to appear, so it follows page.js's timing whatever it
+   is. It falls down and to the right through the empty sky on the far right (on phones, where there's no room beside
+   the line, it starts just above the line's right end). Once per visit. Reduced motion: none. */
+(function () {
+  var closer = document.querySelector('.closer'), txt = closer && closer.querySelector('.closer-text');
+  if (!txt || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var FULL = 'Be the answer.', fired = false;
+  function done() { if (fired) return; fired = true; mo.disconnect(); setTimeout(launch, 1500); }
+  var mo = new MutationObserver(function () { if (txt.textContent === FULL) done(); });
+  mo.observe(txt, { childList: true, characterData: true, subtree: true });
+  if (txt.textContent === FULL) done();
+
+  function launch() {
+    var cr = closer.getBoundingClientRect(), tr = txt.getBoundingClientRect();
+    var room = cr.right - tr.right, wide = room >= 220;
+    var x0 = wide ? tr.right - cr.left + room * .6 : tr.right - cr.left - 24;
+    var y0 = (tr.top - cr.top) + (wide ? -tr.height * .1 : -30);
+    var ang = (wide ? 24 : 30) * Math.PI / 180, travel = wide ? Math.min(210, room * .34) : 110, tail = wide ? 120 : 90;
+    var w = document.createElement('span'); w.className = 'wf-fcm'; w.setAttribute('aria-hidden', 'true');
+    w.style.cssText = 'left:' + x0.toFixed(0) + 'px;top:' + y0.toFixed(0) + 'px;transform:rotate(' + ang.toFixed(3) + 'rad)';
+    var i = document.createElement('i'); i.style.width = tail + 'px'; w.appendChild(i); closer.appendChild(w);
+    var a = i.animate([
+      { transform: 'translateX(0) scaleX(.4)', opacity: 0 },
+      { opacity: .55, transform: 'translateX(' + (travel * .3).toFixed(0) + 'px) scaleX(1)', offset: .3 },
+      { opacity: .45, offset: .7 },
+      { transform: 'translateX(' + travel.toFixed(0) + 'px) scaleX(1)', opacity: 0 }
+    ], { duration: 1250, easing: 'cubic-bezier(.3,.6,.4,1)' });
+    a.onfinish = function () { w.remove(); };
+  }
+})();
+
+/* v35: the three service cards stay the same height while closed. At some widths the titles (and at narrow widths the
+   descriptions) wrap to different numbers of lines, so one card came out shorter. When the cards sit side by side, each
+   title and each description is given the height of the tallest of its kind (measured, so nothing is reserved when
+   they already match); stacked on a phone, each keeps its own height. Cards still open on their own. */
+(function () {
+  var grid = document.querySelector('.discs'); if (!grid) return;
+  var sets = ['.disc-title', '.disc-sum'].map(function (s) { return [].slice.call(grid.querySelectorAll(s)); });
+  function even() {
+    sets.forEach(function (els) { els.forEach(function (e) { e.style.minHeight = ''; }); });
+    if (getComputedStyle(grid).gridTemplateColumns.split(' ').length < 2) return;
+    sets.forEach(function (els) {
+      var max = Math.max.apply(null, els.map(function (e) { return e.getBoundingClientRect().height; }));
+      els.forEach(function (e) { e.style.minHeight = max + 'px'; });
+    });
+  }
+  var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(even, 100); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(even);
+  even();
+})();

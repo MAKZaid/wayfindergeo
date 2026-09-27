@@ -72,7 +72,7 @@ what the internet says about it.
 
 ## Clients
 
-Cleanmeter, IBFNet Group, Crispy Studio, GoodDay and Imaara.
+Cleanmeter, IBFNet Group, Crispy Studio, GoodDay, Candata and Imaara.
 
 ## Pages
 

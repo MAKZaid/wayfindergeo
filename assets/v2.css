@@ -1669,3 +1669,215 @@ html .night-end .fx-edge{overflow:visible}
 .c-a .thinking{position:absolute;left:0;top:.15em}
 .c-a .pend{visibility:hidden;animation:none}
 .c-a .pend .you{animation:none}
+
+/* ======================================================================= v35 hero, ported (from v2-iterations/v35-hero/hero.css) */
+/* v29 hero: a real star at the centre, labelled as the visitor's brand. Loaded after assets/v2.css. */
+
+/* The logo image and its CSS glow are gone from the centre; orbits6.js draws the star in the sky canvas. */
+.o5 .hx-focus img{visibility:hidden}
+.o5 .hx-focus::before{content:none}
+
+/* "Your brand" under the star. The star's box sits above the engines so the label always reads; it lets the pointer through. */
+.o5 .hx-focus{z-index:6;pointer-events:none}
+.wfb-edit{pointer-events:auto}
+.wfb{position:absolute;left:50%;width:max-content;top:calc(50% + 34px);transform:translateX(-50%);z-index:3;display:inline-grid;align-items:center;
+  padding:.36rem .72rem .38rem;border-radius:999px;white-space:nowrap;
+  font:600 .68rem/1 Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#ffe2c4;
+  background:rgba(28,20,8,.62);box-shadow:inset 0 0 0 1px rgba(255,226,196,.2),0 8px 22px -10px rgba(0,0,0,.7);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.wfb::before{content:"";position:absolute;left:50%;bottom:100%;width:1px;height:9px;margin-left:-.5px;
+  background:linear-gradient(to top,rgba(255,226,196,.45),rgba(255,226,196,0))}
+
+/* C: the label is a field. The mirror span sizes it to whatever is typed. */
+.wfb-edit{grid-template-columns:auto auto;gap:.42rem;padding-right:.6rem;cursor:text;text-transform:none;letter-spacing:.01em;font-size:.8rem;font-weight:600}
+.wfb-edit .wfb-cell{display:inline-grid}
+.wfb-edit .wfb-m,.wfb-edit input{grid-area:1/1;font:inherit;letter-spacing:inherit;min-width:4ch;padding:0;margin:0}
+.wfb-edit .wfb-m{visibility:hidden;white-space:pre}
+.wfb-edit input{width:0;min-width:100%;border:0;outline:0;background:transparent;color:#fffdf8;caret-color:#f29a55}
+.wfb-edit input::placeholder{color:#ffe2c4;opacity:1}
+.wfb-edit svg{width:12px;height:12px;flex:none;min-width:12px;fill:none;stroke:#f29a55;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.wfb-edit:hover{box-shadow:inset 0 0 0 1px rgba(255,179,107,.55),0 8px 22px -10px rgba(0,0,0,.7)}
+.wfb-edit:focus-within{box-shadow:inset 0 0 0 1px #f29a55,0 0 0 4px rgba(242,154,85,.18),0 8px 22px -10px rgba(0,0,0,.7)}
+.wfb-hint{position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);white-space:nowrap;pointer-events:none;
+  font:500 .72rem/1 Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none;color:#c9b492;opacity:0;animation:wfbHint 7s 2.4s ease forwards}
+.wfb-hint::before{content:"";display:inline-block;width:14px;height:1px;margin:0 6px 3px 0;vertical-align:middle;background:#c9b492;opacity:.6}
+@keyframes wfbHint{0%{opacity:0;transform:translate(-4px,-50%)}10%,82%{opacity:.95;transform:translate(0,-50%)}100%{opacity:0}}
+.wfb-used .wfb-hint,.wfb-edit:focus-within .wfb-hint{display:none}
+@media (max-width:640px){.wfb-hint{display:none}}
+
+/* "your brand" in the card: the same small glowing dot as the star, instead of the logo.
+   v31: the chip sits on the words' baseline (it used to take the dot's, which put the words 1.4px low), even padding
+   above and below, and 2.5px more room after the last letter. */
+.c-a .you{align-items:center;padding:.088em .58em .032em .4em}
+.c-a .you .you-t{align-self:baseline}
+.wf-dot{width:7px;height:7px;border-radius:50%;flex:none;margin:0 .1rem 0 .05rem;
+  background:radial-gradient(circle,#fff 0 28%,#ffc58f 45%,rgba(242,154,85,0) 72%);box-shadow:0 0 6px 1px rgba(242,154,85,.55)}
+
+/* Engines, lit from the star's side (--ux/--uy point from the engine towards the star; set in hx4.js) */
+.hx.o5 .eng:not(.on):not(:hover){
+  background:radial-gradient(130% 130% at calc(50% + var(--ux,0) * 55%) calc(50% + var(--uy,0) * 55%),rgba(255,206,160,.24),rgba(40,27,12,.72) 48%,rgba(18,12,5,.86));
+  box-shadow:inset calc(var(--ux,0) * 2px) calc(var(--uy,0) * 2px) 3px -1px rgba(255,214,170,.42),0 10px 24px -14px rgba(0,0,0,.75);
+  border-color:rgba(255,236,214,.16)}
+
+/* the wf-ping when the light arrives */
+.hx .eng.wf-ping::after{content:"";position:absolute;inset:-1px;border-radius:inherit;border:1.5px solid rgba(255,214,170,.85);pointer-events:none;animation:wfPing .9s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes wfPing{from{transform:scale(1);opacity:1}to{transform:scale(var(--ps,1.35));opacity:0}}
+.hv-orbiting .o5 .eng{--ps:1.9}
+
+/* the guide pulse */
+.hx-lines .wf-pl{fill:#fffdf8}
+.hx-lines .wf-plg{fill:rgba(255,197,143,.28)}
+
+/* B and C: the engines are small round bodies riding the rings. Name shows under the active or hovered one. */
+.hv-orbiting .o5 .eng{width:34px;height:34px;padding:0;justify-content:center;gap:0;transition:none;will-change:transform,opacity}
+.hv-orbiting .o5 .eng > span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hv-orbiting .o5 .eng svg{width:15px;height:15px}
+.hv-orbiting .o5 .eng[data-k="claude"] svg{width:17px;height:17px}
+.hv-orbiting .o5 .eng::before{content:attr(data-n);position:absolute;left:50%;top:calc(100% + 7px);transform:translateX(-50%);white-space:nowrap;pointer-events:none;
+  font:600 .66rem/1 Inter,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#ffe2c4;opacity:0;transition:opacity .35s ease;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.hv-orbiting .o5 .eng:is(.on,:hover)::before{opacity:.9}
+.hv-orbiting .hx-lines .ln:not(.on){opacity:.12}
+
+/* The v2.css reduced-motion rule for the old glow no longer applies; keep the new bits still too */
+@media (prefers-reduced-motion:reduce){.wfb-hint{animation:none;opacity:.95}.hx .eng.wf-ping::after{animation:none}}
+
+/* B (v29): "Your brand" is hidden until hx4.js brings it in with the light, now and then */
+[data-hv="b"] .wfb{opacity:0;transform:translate(-50%,5px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.3,1)}
+[data-hv="b"] .wfb.wfb-on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){[data-hv="b"] .wfb{opacity:1;transform:translateX(-50%)}}
+
+/* Hero eyebrow (v30, eyebrow.js): typed like the footer's "Be the answer.", then the pill sweeps the last line away
+   and leaves as a shooting star */
+.wf-js .hx .eyebrow:not(.wf-ready){visibility:hidden}
+.wf-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wf-ey{position:relative;display:block;flex:none;height:1.65em;overflow:visible}
+.wf-ey .chip{position:absolute;left:50%;top:50%;transition:transform .5s cubic-bezier(.3,.7,.2,1),opacity .5s ease,box-shadow .3s ease}
+.wf-ey.wf-away .chip{opacity:0}
+.wf-ey .chip.wf-run{box-shadow:0 0 10px 1px rgba(242,154,85,.75),0 0 3px rgba(255,226,196,.9)}
+.wf-ln,.wf-meas{position:absolute;left:50%;top:0;white-space:pre}
+.wf-ln{transition:transform .5s cubic-bezier(.3,.7,.2,1)}
+.wf-meas{visibility:hidden;left:0}
+.wf-c{display:inline-block;white-space:pre}
+/* the same caret as the footer (solid ember bar), sized for the small line */
+.wf-caret{display:inline-block;width:1.5px;height:1.05em;margin-left:2px;vertical-align:-.16em;background:#e8864a;transition:opacity .5s ease}
+.wf-caret.wf-off{opacity:0}
+/* letters let go as the pill passes: a quick warm flash, then gone */
+.wf-c.wf-swept{animation:wfSwept .34s ease-out forwards}
+@keyframes wfSwept{0%{color:#ffe2c4;text-shadow:0 0 8px rgba(255,197,143,.9)}100%{opacity:0;transform:translateY(-3px) scale(.8);filter:blur(2px);text-shadow:none}}
+/* the shooting star it becomes (same colours as the hero's meteors) */
+.wf-comet{position:absolute;left:50%;top:50%;width:0;height:0;opacity:0;pointer-events:none;transform-origin:0 0}
+.wf-comet i{position:absolute;right:0;top:-.8px;height:1.6px;width:14px;border-radius:2px;background:linear-gradient(90deg,rgba(242,154,85,0),rgba(242,154,85,.55) 55%,rgba(255,236,214,.95))}
+.wf-comet b{position:absolute;left:-2.5px;top:-2.5px;width:5px;height:5px;border-radius:50%;background:#fffdf8;box-shadow:0 0 6px 2px rgba(255,214,170,.8),0 0 14px 3px rgba(242,154,85,.45)}
+
+/* Page stars (v29, page-stars.js): a very light touch of the sky on the cream page, only in empty space */
+.wf-sky{position:absolute;top:0;bottom:0;z-index:-1;pointer-events:none;overflow:hidden}
+.wf-st{position:absolute;width:var(--s);height:var(--s);margin:calc(var(--s) / -2) 0 0 calc(var(--s) / -2);opacity:var(--o);
+  background:rgb(var(--c));clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%)}
+.wf-st.wf-dt{clip-path:none;border-radius:50%}
+.wf-st.wf-tw{animation:wfTw var(--d) ease-in-out var(--dl) infinite}
+@keyframes wfTw{0%,100%{opacity:calc(var(--o) * .35);transform:scale(.7)}50%{opacity:var(--o);transform:scale(1)}}
+.wf-cm{position:absolute;width:0;height:0;transform-origin:0 0}
+.wf-cm i{position:absolute;right:0;top:-.75px;height:1.5px;border-radius:2px;background:linear-gradient(90deg,rgba(208,99,28,0),rgba(208,99,28,.5));opacity:0}
+.wf-cm i::after{content:"";position:absolute;right:-1px;top:-1px;width:3.5px;height:3.5px;border-radius:50%;background:#e07a3a;box-shadow:0 0 5px 1px rgba(242,154,85,.55)}
+
+/* Footer shooting star (foot-star.js): once, 1.5s after "Be the answer." is typed, far to its right.
+   v31: drawn as quietly as the hero's own shooting stars (1.2px line, small soft head, peak opacity .55). */
+.wf-fcm{position:absolute;width:0;height:0;pointer-events:none;transform-origin:0 0;z-index:1}
+.wf-fcm i{position:absolute;right:0;top:-.6px;height:1.2px;border-radius:2px;opacity:0;transform-origin:100% 50%;
+  background:linear-gradient(90deg,rgba(242,154,85,0),rgba(255,236,214,.85))}
+.wf-fcm i::after{content:"";position:absolute;right:-1.3px;top:-.7px;width:2.6px;height:2.6px;border-radius:50%;background:#fffdf8;box-shadow:0 0 4px rgba(255,214,170,.6)}
+
+/* v31: the collapsed nav pill's logo mark sits 4px further from the rounded end (nav.js measures the pill from its
+   content, so the pill grows 4px rather than squeezing) */
+.wn.is-pill .wn-bar{padding-left:19px}
+
+/* v31: with the line above the headline away most of the time, the hero is laid out without it. The line takes no
+   space (zero height, drawn above the headline where it used to sit) and the headline moves up about 17px, not the
+   full 39px it used to take, so the gap under the nav stays balanced. Plain CSS, so nothing shifts after load. */
+.hx .hx-copy{padding-top:22px}
+.hx .hx-copy > .eyebrow{height:0;margin:0;position:relative;top:calc(-1.65em - 1.1rem);align-items:flex-start}
+
+/* Load fix for the hero grain (the layout shift was already on the live site).
+   It was placed with inset:-50%, so its top edge sat at minus half the sky's height and moved when the page script sets
+   that height just after first paint: a 0.15 layout shift on throttled phones. v31 set it to inset:0, which stopped the
+   shift but was wrong: the grain still drifts a few percent every 0.4s (the animation is only off for reduced motion),
+   so its bare edges flickered at the top and right. v32: oversized again, but by fixed amounts, so its top-left corner
+   never depends on the sky's height and never moves. The 3% drift (under 60px) stays well inside the 160px margin. */
+.o5 .sky .grain{inset:auto;top:-160px;left:-160px;right:-160px;height:calc(100% + 320px)}
+/* Same kind of fix for the horizon (earth + glowing rim): they sat at top:var(--sky), which the page script sets after
+   first paint, so the rim counted as a 0.09 layout shift. Placed by transform instead, they land in the same spot. */
+.o5 .earth,.o5 .rim{top:0;transform:translateY(var(--sky,640px))}
+
+/* v33: the engines are drawn as spheres. The old look (a highlight centred just outside the edge, a drop shadow
+   underneath and a blur of the rings behind) made them read as flat, lopsided buttons. Now: a soft highlight inside
+   the ball on the side facing the star (--ux/--uy from hx4.js), falling off to a dark far side, nearly opaque so the
+   rings pass behind it, no border, no drop shadow, just a faint warm glow. */
+.hv-orbiting .o5 .eng{border:0;backdrop-filter:none;-webkit-backdrop-filter:none;
+  --hx:calc(50% + var(--ux,0) * 24%);--hy:calc(50% + var(--uy,0) * 24%)}
+.hv-orbiting .o5 .eng:not(.on):not(:hover){
+  background:radial-gradient(circle at var(--hx) var(--hy),rgba(255,226,196,.44) 0,rgba(166,108,60,.6) 20%,rgba(60,39,18,.95) 52%,rgba(21,14,6,.98) 82%,#0f0a04 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,236,214,.07),0 0 12px -3px rgba(242,154,85,.22)}
+/* chosen or hovered: the engine's own colour, shaded the same way (light facing the star, darker far side), with its
+   coloured halo centred (no drop shadow) */
+.hv-orbiting .o5 .eng:is(.on,:hover){border:0;
+  background-image:radial-gradient(circle at var(--hx) var(--hy),rgba(255,255,255,.3) 0,rgba(255,255,255,0) 34%,rgba(0,0,0,0) 56%,rgba(0,0,0,.24) 100%)}
+.hv-orbiting .o5 .eng[data-k="openai"]:is(.on,:hover){background-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.14),0 0 18px rgba(255,255,255,.16)}
+.hv-orbiting .o5 .eng[data-k="perplexity"]:is(.on,:hover){background-color:#20808d;box-shadow:0 0 0 4px rgba(32,128,141,.28),0 0 18px rgba(32,128,141,.4)}
+.hv-orbiting .o5 .eng[data-k="google"]:is(.on,:hover){background-color:#fff;box-shadow:0 0 0 4px rgba(66,133,244,.22),0 0 18px rgba(66,133,244,.3)}
+.hv-orbiting .o5 .eng[data-k="claude"]:is(.on,:hover){background-color:#faf9f5;box-shadow:inset 0 0 0 1px rgba(217,119,87,.7),0 0 0 4px rgba(217,119,87,.22),0 0 18px rgba(217,119,87,.35)}
+.hv-orbiting .o5 .eng[data-k="gemini"]:is(.on,:hover){background-color:#1b2140;box-shadow:inset 0 0 0 1px rgba(145,119,199,.55),0 0 0 4px rgba(145,119,199,.26),0 0 18px rgba(145,119,199,.35)}
+
+/* ================================================================ v34 */
+/* Collapsed nav pill: the logo mark sat 32px from "The Shift" while the words sit 28px apart, and as a solid shape it
+   read as far away. It now sits 18px from the first word; the pill (measured from its content by nav.js) gets 14px
+   narrower rather than anything moving inside it. The 21px from the rounded end is unchanged. */
+.wn.is-pill .wn-logo{margin-right:-14px}
+
+/* Engines: glass spheres again (v33 made them solid). Clear, see-through body that softly blurs the rings behind it,
+   a crisp hairline edge, a small bright glint and a soft glow on the side facing the star, and shade inside the far
+   edge. What made the pre-v33 ones look lopsided stays out: no drop shadow, and every highlight sits inside the ball. */
+.hv-orbiting .o5 .eng:not(.on):not(:hover){
+  background:
+    radial-gradient(circle at calc(50% + var(--ux,0) * 27%) calc(50% + var(--uy,0) * 27%),rgba(255,250,242,.3) 0,rgba(255,250,242,0) 11%),
+    radial-gradient(circle at var(--hx) var(--hy),rgba(255,226,196,.2) 0,rgba(140,92,48,.14) 38%,rgba(30,20,9,.46) 76%,rgba(12,8,3,.66) 100%);
+  border:1px solid rgba(255,236,214,.2);
+  backdrop-filter:blur(5px) saturate(1.15);-webkit-backdrop-filter:blur(5px) saturate(1.15);
+  box-shadow:inset calc(var(--ux,0) * -4px) calc(var(--uy,0) * -4px) 8px rgba(0,0,0,.32),
+    inset calc(var(--ux,0) * 1.5px) calc(var(--uy,0) * 1.5px) 2px rgba(255,226,196,.2),0 0 12px -4px rgba(242,154,85,.25)}
+
+/* Gemini, chosen or hovered: the sparkle in Google's colours on a white ball (like the Gemini app icon), keeping the
+   purple halo outside. Colours: blue #3A8BFF, red #EE5257, yellow #D0C42E, green #4CC88B. */
+.gem-new{display:inline-block;width:15px;height:15px;
+  background:radial-gradient(circle at 56% 50%,#3a8bff 0 8%,rgba(58,139,255,0) 34%),
+    conic-gradient(from 0deg at 50% 50%,#ee5257 0deg,#3a8bff 90deg,#4cc88b 180deg,#d0c42e 270deg,#ee5257 360deg);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81'/%3E%3C/svg%3E") center/contain no-repeat}
+.c-eng .gem-new{width:14px;height:14px;margin-right:.1rem;vertical-align:-2px}
+.hv-orbiting .o5 .eng[data-k="gemini"]:is(.on,:hover){background-color:#fff;
+  box-shadow:inset 0 0 0 1px rgba(145,119,199,.45),0 0 0 4px rgba(145,119,199,.26),0 0 18px rgba(145,119,199,.35)}
+
+/* Footer on phones (700px and under): each link is a full-width row (a good tap target), so its underline, drawn as
+   the row's bottom border, ran the whole column. The underline is now drawn under the words only; the rows stay full
+   width. Desktop is unchanged. */
+@media (max-width:700px){
+  /* v35: v34 underlined the words, which on the Plans links underlined the name and the price separately. Back to the
+     desktop behaviour (one line along the bottom of the link, under the price), with the link only as wide as its own
+     text, so the line never runs past it. */
+  .night-end .footer-nav a{width:fit-content}
+}
+
+/* ================================================================ v35 */
+/* Platforms strip: correct brand colours on hover. ChatGPT is black (was a purple that isn't OpenAI's), Perplexity is
+   its brand teal #20808D (was an older cyan). Google shows its four-colour G and Gemini its 2025 four-colour sparkle;
+   both sit beside the one-colour mark and swap in on hover or keyboard focus. Claude, Grok, Reddit, YouTube unchanged. */
+.platform-logos [data-logo="openai"]{--brand:#000;--brand-ink:#000}
+.platform-logos [data-logo="perplexity"]{--brand:#20808d;--brand-ink:#17666f}
+.platform-logos [data-logo="gemini"]{--brand-ink:#1a73e8}
+.platform-logos .pl-col{display:none}
+/* the colour versions take exactly the size of the one-colour marks at every width (18px, 16px at 700 and under), so
+   nothing changes size on hover. Google's colour G is an svg, so the site's own size rules already apply to it. */
+.platform-logos .gem-new.pl-col{width:18px;height:18px;flex:none}
+@media (max-width:700px){.platform-logos .gem-new.pl-col{width:16px;height:16px}}
+.platform-logos a:is(:hover,:focus-visible) .pl-col{display:inline-block}
+.platform-logos :is([data-logo="google"],[data-logo="gemini"]) a:is(:hover,:focus-visible) svg:not(.pl-col){display:none}
+@media (max-width:700px){.platform-logos .pl-col{justify-self:center}}
