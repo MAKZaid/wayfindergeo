@@ -111,7 +111,7 @@
   /* ---- motion: one loop runs the orbits (when orbiting) and the guide pulse (always) ---- */
   var raf = 0, visible = true, last = performance.now(), speed = 1, hold = false;
   var ang = A0.slice(), ringSpin = 0, LAP = 70000;
-  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) kick(); }).observe(stage);
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[es.length - 1].isIntersecting; if (visible) kick(); }).observe(stage);
   function kick() { if (!raf) { last = performance.now(); raf = requestAnimationFrame(tick); } }
   function lap(i) { return 260 * Math.pow(FRAC[i], 1.5); }                  // seconds (54s inner to 215s outer); roughly Kepler
   function tick(now) {
@@ -253,7 +253,8 @@
 
   function relayout() { reserve(); layout(); }
   relayout(); show(0); schedule();
-  var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(relayout, 120); });
+  /* width changes only: iPhone Safari's address bar sliding in and out also fires "resize", but changes nothing here */
+  var rt, lastW = innerWidth; addEventListener('resize', function () { if (innerWidth === lastW) return; lastW = innerWidth; clearTimeout(rt); rt = setTimeout(relayout, 120); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
   window.HX_relayout = relayout;
   addEventListener('load', relayout);                                     /* the rings (orbits6.js) load after this file */

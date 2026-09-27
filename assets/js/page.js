@@ -971,8 +971,8 @@
 
   /* placed once the browser is idle, so it never competes with the first paint (it takes about 11ms on a slow phone) */
   (window.requestIdleCallback || function (f) { setTimeout(f, 200); })(buildAll, { timeout: 1500 });
-  var rt; function rebuild() { clearTimeout(rt); rt = setTimeout(buildAll, 250); }
-  addEventListener('resize', rebuild); addEventListener('load', rebuild);
+  var rt, lastW = innerWidth; function rebuild() { clearTimeout(rt); rt = setTimeout(buildAll, 250); }
+  addEventListener('resize', function () { if (innerWidth !== lastW) { lastW = innerWidth; rebuild(); } }); addEventListener('load', rebuild);   /* width changes only (iPhone address bar) */
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(rebuild);
   /* content changing size inside a section (tabs, FAQ answers) re-measures that section */
   if ('ResizeObserver' in window) {

@@ -1,4 +1,4 @@
-/* Orbits v33: the sky, the rings and the star at the centre, drawn in one canvas.
+/* Orbits v36: the sky, the rings and the star at the centre, drawn in one canvas.
    What changed from orbits5.js:
    - The logo image is gone from the centre. The star is drawn as a real one: a white-hot core, a warm bloom,
      a long soft horizontal streak and short vertical spikes, with a faint diagonal glint that only hints at
@@ -31,11 +31,18 @@
     g.fillStyle = gr; g.fillRect(0, 0, z, z); return c;
   }
   function seedRand(s) { return function () { s = s * 16807 % 2147483647; return (s - 1) / 2147483646; }; }
+  /* Only rebuild the canvas when the sky's size really changes. Resetting a canvas wipes it, and iPhone Safari sends a
+     "resize" every time its address bar slides in or out while you scroll (the sky's size doesn't change then). That
+     blanked the animation, over and over, so the orbits seemed to vanish while scrolling. Returns true when it rebuilt,
+     so the caller redraws at once. */
+  var sizeKey = '';
   function size() {
-    var r = box.getBoundingClientRect(); W = r.width; H = r.height; phone = W < 700;
-    dpr = Math.min(phone ? 1.5 : 2, devicePixelRatio || 1);
+    var r = box.getBoundingClientRect(), f = focus.getBoundingClientRect();
+    cx = f.left - r.left + f.width / 2; cy = f.top - r.top + f.height / 2;
+    var nd = Math.min(r.width < 700 ? 1.5 : 2, devicePixelRatio || 1), key = Math.round(r.width) + 'x' + Math.round(r.height) + '@' + nd;
+    if (key === sizeKey) return false;
+    sizeKey = key; W = r.width; H = r.height; phone = W < 700; dpr = nd;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var f = focus.getBoundingClientRect(); cx = f.left - r.left + f.width / 2; cy = f.top - r.top + f.height / 2;
     N = phone ? 20 : 30;
     var R = seedRand(9); sig = [];
     for (var i = 0; i < (phone ? 4 : 6); i++) sig.push({ k: 3 + Math.floor(R() * (N - 4)), p: R(), v: .03 + R() * .035 });
@@ -68,6 +75,7 @@
         spike: b > .88 && !phone });
     }
     sprites = STAR_RGB.map(sprite);
+    return true;
   }
   /* ring i at time t. Version A keeps the live geometry; B and C lay the rings a little flatter and more level, so
      engines riding the outer rings clear the buttons above and the card below. */
@@ -206,6 +214,11 @@
   }
   function frame(now) {
     if (!run) return;
+    draw(now);
+    sig.forEach(function (g) { g.p = (g.p + g.v / 60) % 1; });
+    if (!reduce) requestAnimationFrame(frame);
+  }
+  function draw(now) {
     var t = (now - t0) / 1000; ctx.clearRect(0, 0, W, H);
     px += (tx - px) * .04; py += (ty - py) * .04;
     sky(t); drawMeteor(t);
@@ -213,8 +226,6 @@
     rings(t, 0); trails(t, 0); signals(t, 0);
     star(t);
     rings(t, 1); trails(t, 1); signals(t, 1);
-    sig.forEach(function (g) { g.p = (g.p + g.v / 60) % 1; });
-    if (!reduce) requestAnimationFrame(frame);
   }
   /* Shooting star: unchanged from orbits5.js (one every 10-25s, five zones, never the same zone twice) */
   var ZONES = [
@@ -253,10 +264,10 @@
     hero.addEventListener('pointerleave', function () { tx = ty = 0; });
   }
   var pending = false;
-  function later() { if (pending) return; pending = true; requestAnimationFrame(function () { pending = false; size(); if (reduce) frame(performance.now()); }); }
+  function later() { if (pending) return; pending = true; requestAnimationFrame(function () { pending = false; if (size() || reduce) draw(performance.now()); }); }
   if ('ResizeObserver' in window) { var ro = new ResizeObserver(later); ro.observe(box); ro.observe(focus.parentElement); }
   addEventListener('resize', later);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(later);
-  new IntersectionObserver(function (es) { if (es[0].isIntersecting) start(); else run = false; }).observe(box);
+  new IntersectionObserver(function (es) { if (es[es.length - 1].isIntersecting) start(); else run = false; }).observe(box);
   document.addEventListener('visibilitychange', function () { if (document.hidden) run = false; else start(); });
 })();

@@ -1881,3 +1881,7 @@ html .night-end .fx-edge{overflow:visible}
 .platform-logos a:is(:hover,:focus-visible) .pl-col{display:inline-block}
 .platform-logos :is([data-logo="google"],[data-logo="gemini"]) a:is(:hover,:focus-visible) svg:not(.pl-col){display:none}
 @media (max-width:700px){.platform-logos .pl-col{justify-self:center}}
+
+/* v36 (phones): the hero text sits 14px higher (the gap under the nav read as too big on an iPhone). The line above the
+   headline keeps its 18px gap to it and still clears the nav bar by about 17px when it shows. */
+@media (max-width:700px){.hx .hx-copy{padding-top:8px}}
