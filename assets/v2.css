@@ -1885,3 +1885,160 @@ html .night-end .fx-edge{overflow:visible}
 /* v36 (phones): the hero text sits 14px higher (the gap under the nav read as too big on an iPhone). The line above the
    headline keeps its 18px gap to it and still clears the nav bar by about 17px when it shows. */
 @media (max-width:700px){.hx .hx-copy{padding-top:8px}}
+
+/* City reel cards: the time mirrors the city name. The name's text starts 26px in (the 12px inset plus the space kept for
+   the "selected" dot), so the time sits 26px from the right; and the two line up by the tops of their letters (not
+   their baselines), so both sit the same distance from the top of the card. */
+.reel-card .rc-meta{align-items:flex-start}
+.reel-card .rc-time{margin-right:calc(7px + .45rem);margin-top:1.7px}
+
+/* The Shift's three points: small ember four-point stars instead of 01/02/03 (they're three reasons, not steps, and the
+   section heading already carries "01"). Same star and colour as the site's existing star bullet; centred on the first
+   line of each bold heading. Decorative: hidden from screen readers. */
+.sx-orbit .sx-n{padding-top:0;height:calc(.95rem * 1.55);display:flex;align-items:center}
+.sx-orbit .sx-n svg{display:block;width:11px;height:11px;fill:var(--ember)}
+
+
+/* ---------------------------------------------------------------- v40: signature moves on the phone testimonials.
+   One move per person (data-move on the figure), played once each time their card shows. Each move has two halves: one
+   on the photo, and an echo on the card itself.
+     frame (Adnan)    the photo's corners go square inside a design-tool selection box; the card's corners sharpen with it
+     iris  (Alim)     the card becomes a viewfinder: corner brackets focus in, the photo sharpens, the aperture closes and
+                      opens, a warm flash
+     ach   (Mahroos)  an achievement toast, after the Xbox one: it drops in from the top of the card into the top-right
+                      corner, the trophy badge pops with a pulse, the words come in, a light crosses it, then it rises
+                      back out; a shine crosses the photo
+   Brand colours only. Phone only (the desktop card has its scene window). Reduced motion: nothing moves. */
+.vx-card,.vx-top,.vx-sel,.vx-iris,.vx-shine{display:none}
+@media (max-width:900px){
+  .spot3 .sp-stage{position:relative}
+  .vx-ph{position:relative;display:block;width:68px;height:68px;margin:0 auto 1.25rem}
+  .vx-ph .avatar{margin:0!important}
+  .vx-card{display:block;position:absolute;inset:0;pointer-events:none;z-index:-1}
+  .vx-card > *{position:absolute;display:block}
+  .vx-card > i,.vx-vf b{opacity:0}
+  .vx-top{display:block;position:absolute;inset:0;pointer-events:none;z-index:3}
+
+  /* frame */
+  .vx-sel{display:block;position:absolute;inset:-6px;border:1px solid var(--ember);opacity:0;pointer-events:none}
+  .vx-sel i{position:absolute;width:5px;height:5px;background:var(--paper);border:1px solid var(--ember)}
+  .vx-sel i:nth-child(1){left:-3px;top:-3px}.vx-sel i:nth-child(2){right:-3px;top:-3px}
+  .vx-sel i:nth-child(3){left:-3px;bottom:-3px}.vx-sel i:nth-child(4){right:-3px;bottom:-3px}
+
+  /* iris */
+  .vx-flash{inset:0;background:radial-gradient(circle at 50% var(--vx-y,78px),var(--paper) 0,rgba(255,226,196,.9) 22%,rgba(255,226,196,0) 75%)}
+  .vx-vf{inset:12px}
+  .vx-vf b{position:absolute;width:20px;height:20px;border:0 solid var(--ember)}
+  .vx-vf b:nth-child(1){left:0;top:0;border-width:1.5px 0 0 1.5px;--dx:-1;--dy:-1}
+  .vx-vf b:nth-child(2){right:0;top:0;border-width:1.5px 1.5px 0 0;--dx:1;--dy:-1}
+  .vx-vf b:nth-child(3){left:0;bottom:0;border-width:0 0 1.5px 1.5px;--dx:-1;--dy:1}
+  .vx-vf b:nth-child(4){right:0;bottom:0;border-width:0 1.5px 1.5px 0;--dx:1;--dy:1}
+  .vx-iris{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+  /* Safari stops clipping to the round frame while the card fades in; clip the photo and the blades themselves */
+  .sp-q[data-move="iris"] .avatar img,.vx-iris{clip-path:circle(50%)}
+
+  /* ach: the toast drops in from the top of the card into its top-right corner. Laid out like the Xbox one: a round badge
+     (hexagon, trophy, laurels) at the left, "Achievement unlocked!" in bold, then a small star and the line. The card's top
+     padding grows so the toast has room above the photo */
+  .spot3 .sp-stage{padding-top:66px}
+  .vx-ach{position:absolute;right:8px;top:8px;opacity:0}
+  .vx-bar{display:flex;flex-direction:column;justify-content:center;gap:5px;height:48px;padding:0 22px 0 55px;border-radius:24px;overflow:hidden;position:relative;
+    background:linear-gradient(180deg,#2b2014 0%,var(--ink) 100%);box-shadow:0 14px 28px -14px rgba(28,20,8,.8),inset 0 0 0 1px rgba(255,236,214,.07);
+    white-space:nowrap;text-align:left;line-height:1}
+  .vx-bar > span{display:block}
+  .vx-bar::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,226,196,.18) 48%,transparent 66%) no-repeat;
+    background-size:220% 100%;background-position:160% 0;opacity:0}
+  .vx-bar b{display:block;font:700 13.5px/1.1 Inter,system-ui,sans-serif;letter-spacing:-.01em;color:var(--paper)}
+  .vx-bar em{display:flex;align-items:center;gap:6px;font:400 12.5px/1.1 Inter,system-ui,sans-serif;font-style:normal;color:#eadfcd}
+  .vx-bar em i{flex:none;display:grid;place-items:center;width:15px;height:15px;border-radius:50%;background:var(--ember)}
+  .vx-bar em i svg{width:9px;height:9px}
+  .vx-badge{position:absolute;left:4px;top:4px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+    background:radial-gradient(circle at 35% 30%,#e57a2e,var(--ember) 55%,var(--flame-dark));box-shadow:0 0 0 1.5px rgba(255,226,196,.35) inset}
+  .vx-badge svg{width:21px;height:21px}
+  .vx-badge::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:2px solid #f29a55;opacity:0}
+  .vx-shine{position:absolute;inset:0;z-index:2;clip-path:circle(50%);opacity:0;
+    background:linear-gradient(115deg,transparent 38%,rgba(255,253,248,.65) 50%,transparent 62%) no-repeat;background-size:260% 100%;background-position:150% 0}
+  .sp-q[data-move="ach"] .vx-shine{display:block}
+}
+
+@media (max-width:900px) and (prefers-reduced-motion:no-preference){
+  /* frame (Adnan) */
+  .spot3.vx-go[data-move="frame"]{animation:vxCardR 3.4s cubic-bezier(.45,0,.2,1) .35s both}
+  .spot3.vx-go .sp-q:not([hidden])[data-move="frame"] .avatar{animation:vxSq 3.4s cubic-bezier(.45,0,.2,1) .35s both}
+  .spot3.vx-go .sp-q:not([hidden])[data-move="frame"] .vx-sel{animation:vxSel 3.4s ease .35s both}
+  @keyframes vxSq{0%,10%{border-radius:50%}36%,64%{border-radius:16%}90%,100%{border-radius:50%}}
+  @keyframes vxCardR{0%,10%{border-radius:24px}36%,64%{border-radius:6px}90%,100%{border-radius:24px}}
+  @keyframes vxSel{0%,14%{opacity:0;transform:scale(1.06)}30%,66%{opacity:1;transform:none}82%,100%{opacity:0;transform:none}}
+
+  /* iris (Alim) */
+  .spot3.vx-go[data-move="iris"] .vx-vf b{animation:vxVf 3.6s cubic-bezier(.2,.8,.2,1) .3s both}
+  .spot3.vx-go[data-move="iris"] .vx-flash{animation:vxFlash 3.6s ease-out .3s both}
+  .spot3.vx-go .sp-q:not([hidden])[data-move="iris"] .avatar img{animation:vxFocus 3.6s ease-out .3s both}
+  .spot3.vx-go .sp-q:not([hidden])[data-move="iris"] .vx-bl{animation:vxBlade 3.6s .3s both}
+  @keyframes vxVf{0%{opacity:0;transform:translate(calc(var(--dx)*10px),calc(var(--dy)*10px))}22%{opacity:1;transform:none}80%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+  @keyframes vxFocus{0%{filter:blur(3px)}24%,100%{filter:blur(0)}}
+  @keyframes vxBlade{0%,36%{transform:translateY(0);animation-timing-function:cubic-bezier(.5,0,.9,.5)}
+    43%,46%{transform:translateY(47px);animation-timing-function:cubic-bezier(.2,.7,.3,1)}62%,100%{transform:translateY(0)}}
+  @keyframes vxFlash{0%,43%{opacity:0}45%{opacity:1}70%,100%{opacity:0}}
+
+  /* ach (Mahroos): 4.4s. drops in 0-14%, badge pops 10-20%, words 16-26%, light 26-40%, hold, rises back out 82-94% */
+  .spot3.vx-go[data-move="ach"] .vx-ach{animation:vxAch 4.4s .3s both}
+  .spot3.vx-go[data-move="ach"] .vx-bar > span{animation:vxWords 4.4s .3s both}
+  .spot3.vx-go[data-move="ach"] .vx-bar::after{animation:vxLight 4.4s .3s both}
+  .spot3.vx-go[data-move="ach"] .vx-badge{animation:vxBadge 4.4s .3s both}
+  .spot3.vx-go[data-move="ach"] .vx-badge::after{animation:vxPulse 4.4s .3s both}
+  .spot3.vx-go .sp-q:not([hidden])[data-move="ach"] .vx-shine{animation:vxShine 4.4s ease .3s both}
+  @keyframes vxAch{0%{opacity:1;transform:translateY(calc(-100% - 14px));animation-timing-function:cubic-bezier(.2,.9,.25,1.08)}
+    14%,82%{opacity:1;transform:none;animation-timing-function:cubic-bezier(.55,0,.8,.35)}94%{opacity:1;transform:translateY(calc(-100% - 14px))}95%,100%{opacity:0;transform:translateY(calc(-100% - 14px))}}
+  @keyframes vxWords{0%,15%{opacity:0;transform:translateX(5px)}25%,100%{opacity:1;transform:none}}
+  @keyframes vxLight{0%,26%{opacity:1;background-position:160% 0}40%{opacity:1;background-position:-60% 0}41%,100%{opacity:0;background-position:-60% 0}}
+  @keyframes vxBadge{0%,9%{transform:scale(0) rotate(-30deg)}16%{transform:scale(1.15) rotate(4deg)}20%,100%{transform:scale(1) rotate(0)}}
+  @keyframes vxPulse{0%,15%{opacity:0;transform:scale(1)}17%{opacity:.9;transform:scale(1)}32%,100%{opacity:0;transform:scale(1.9)}}
+  @keyframes vxShine{0%,16%{opacity:1;background-position:150% 0}32%{opacity:1;background-position:-50% 0}33%,100%{opacity:0;background-position:-50% 0}}
+}
+
+
+/* ---------------------------------------------------------------- v41: design audit (28 Sep 2026)
+   One curve scale: panels 24px, cards 18px, pieces inside cards 12px; buttons, tabs and chips stay round. */
+:root{--r-panel:24px;--r-card:18px;--r-inner:12px}
+.spot3.spot3,.cb-card,.who-card{border-radius:var(--r-panel)}
+.hx .card,.disc,.plan2,.qa,.qa summary,.snapshot,.night-timeline li,.spot3[data-look="c"] .sp-win{border-radius:var(--r-card)}
+.rc-q,.disc-art,.mg-item,.mg-feature,.mg-mini,.field input,.field select,.field textarea{border-radius:var(--r-inner)}
+.c-q{border-radius:12px 12px 4px 12px}
+/* menus: panel corner = inner corner + padding, so the curves nest evenly */
+.wn-mega{border-radius:var(--r-panel);padding:12px;gap:12px}
+
+/* small uppercase labels: one style for section labels, one for tags inside cards */
+.clients-label,.cb-label,.hx-plat .platforms-label{font-size:.75rem;font-weight:600;letter-spacing:.09em}
+.disc-tag,.snap-tag{font-size:.7rem;font-weight:700;letter-spacing:.07em}
+
+/* the 4.4x stat's dots sit on the same line as the other stats' bars, so the captions line up */
+.meter.dots{height:3px;align-items:center}
+
+/* contact facts: label and value on one baseline; stacked on phones, every row the same */
+.contact-facts > div{align-items:baseline}
+@media (max-width:700px){
+  .contact-facts > div{flex-direction:column;align-items:flex-start;gap:.3rem}
+  .contact-facts dd a{min-height:0;padding-block:.15rem}
+}
+
+/* footer: the divider spans the content, like the rules above it */
+.footer-base{border-top-color:transparent}
+.footer-base::before{content:"";position:absolute;top:-1px;left:var(--pad);right:var(--pad);border-top:1px solid var(--f-rule)}
+.fe-credit{text-shadow:0 1px 3px rgba(0,0,0,.85)}
+
+/* phone nav: the menu button matches the audit button: round, same height */
+@media (max-width:900px){
+  .wn-solid{height:40px}
+  .wn-menu{border-radius:999px}
+}
+
+/* no single words stranded on a last line */
+.sec-head .lead,.stat-copy,.disc-sum,.tl-what,.note,.faq-more,.night p,.hero-lead,.plan2-for{text-wrap:balance}
+/* source links under the stats: a comfortable tap area without moving the text */
+.stat-src a{position:relative}
+.stat-src a::before{content:"";position:absolute;inset:-7px -4px}
+.field .opt{margin-left:.35em}
+.nw{white-space:nowrap}
+/* footer on laptops: the brand block above, the four link columns across the full width, so no link wraps */
+@media (min-width:901px) and (max-width:1180px){.footer-inner{grid-template-columns:1fr}}

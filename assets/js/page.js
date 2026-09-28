@@ -1037,3 +1037,57 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(even);
   even();
 })();
+
+
+/* ---------------------------------------------------------------- v40: signature moves on the phone testimonials.
+   Each testimonial names its move (data-move on the figure). This adds the pieces the moves need and replays the current
+   one whenever a card is shown, once the card has been on screen. */
+(function () {
+  var spot = document.querySelector('.spot3');
+  if (!spot || !spot.querySelector('[data-move]')) return;
+  var SEL = '<span class="vx-sel" aria-hidden="true"><i></i><i></i><i></i><i></i></span>';
+  var IRIS = (function () {
+    var s = '';
+    for (var k = 0; k < 6; k++) s += '<g transform="rotate(' + k * 60 + ')"><g class="vx-bl"><rect x="-16" y="-170" width="160" height="120" fill="' + (k % 2 ? '#2a1f10' : '#1c1408') + '"/>' +
+      '<line x1="-16" y1="-50.4" x2="144" y2="-50.4" stroke="#ffe2c4" stroke-opacity=".4" stroke-width=".8"/></g></g>';
+    return '<svg class="vx-iris" viewBox="-50 -50 100 100" aria-hidden="true">' + s + '</svg>';
+  })();
+  var TROPHY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fffdf8" d="M7 3.5h10v4.2a5 5 0 0 1-10 0z"/>' +
+    '<path fill="none" stroke="#fffdf8" stroke-width="1.6" stroke-linecap="round" d="M7 5.2H4.6v1.4a3.1 3.1 0 0 0 3 3.1M17 5.2h2.4v1.4a3.1 3.1 0 0 1-3 3.1"/>' +
+    '<path fill="#fffdf8" d="M11 12.4h2v3.4h-2zM9.2 15.8h5.6l.7 3.2H8.5zM7.6 19h8.8v1.6H7.6z"/></svg>';
+  var STAR = '<svg viewBox="0 0 10 10" aria-hidden="true"><path fill="#fffdf8" d="M5 0 6 4 10 5 6 6 5 10 4 6 0 5 4 4Z"/></svg>';
+  var ACH = { mahroos: ['Achievement unlocked!', 'Steady growth'] };   /* the second line is from Mahroos's own quote */
+
+  spot.querySelectorAll('.sp-q[data-move]').forEach(function (q) {
+    var move = q.dataset.move, av = q.querySelector('.avatar');
+    if (!av) return;
+    var w = document.createElement('span'); w.className = 'vx-ph'; w.setAttribute('aria-hidden', 'true');
+    av.parentNode.insertBefore(w, av); w.appendChild(av);
+    if (move === 'frame') w.insertAdjacentHTML('beforeend', SEL);
+    if (move === 'iris') av.insertAdjacentHTML('beforeend', IRIS);
+    if (move === 'ach') av.insertAdjacentHTML('beforeend', '<i class="vx-shine"></i>');
+  });
+  var stage = spot.querySelector('.sp-stage'), a = ACH.mahroos;
+  stage.insertAdjacentHTML('beforeend', '<div class="vx-card" aria-hidden="true"><i class="vx-flash"></i><span class="vx-vf"><b></b><b></b><b></b><b></b></span></div>' +
+    '<div class="vx-top" aria-hidden="true"><span class="vx-ach"><span class="vx-bar"><span><b>' + a[0] + '</b></span><span><em><i>' + STAR + '</i>' + a[1] + '</em></span></span>' +
+    '<span class="vx-badge">' + TROPHY + '</span></span></div>');
+
+  var live = false;
+  function play() {
+    if (!live) return;
+    var q = spot.querySelector('.sp-q:not([hidden])'), ph = q && q.querySelector('.vx-ph');
+    if (ph) {                                                           /* where the photo's centre sits, for the flash and the toast */
+      var r = ph.getBoundingClientRect(), s = stage.getBoundingClientRect();
+      stage.style.setProperty('--vx-y', Math.round(r.top - s.top + r.height / 2) + 'px');
+    }
+    spot.dataset.move = (q && q.dataset.move) || '';
+    spot.classList.remove('vx-go'); void spot.offsetWidth; spot.classList.add('vx-go');
+  }
+  spot.addEventListener('sp-show', play);
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      if (es[es.length - 1].isIntersecting && !live) { live = true; play(); io.disconnect(); }
+    }, { threshold: .4 });
+    io.observe(spot);
+  } else { live = true; play(); }
+})();
