@@ -752,12 +752,12 @@ body{overflow-x:clip}
 
 /* ---------------------------------------------------------------- why now: a night launch arcs over the sea, the words sit in the sky above it */
 .night{position:relative;isolation:isolate;overflow:hidden;margin:var(--sec-y) 0;border-radius:0;background:#0b0703;color:#e7dcc9}
-.night-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%;z-index:-2}
-/* wider screens: the whole photo height shows, and the launch pad (94.33% across the image) sits halfway between the
+.night-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:100% 50%;z-index:-2}   /* phones: the photo's right edge, so the launch pad sits about 70% across */
+/* wider screens: the whole photo height shows, and the launch pad (88.35% across the image) sits halfway between the
    last timeline card and the right edge, never more than 145px in so the photo always reaches the edge */
-@media (min-width:701px){.night-bg img{inset:0 auto 0 calc(100% - min(145px, max(20px, 25% - 282px)));width:auto;max-width:none;height:100%;object-fit:fill;transform:translateX(-94.3347%);
+@media (min-width:701px){.night-bg img{inset:0 auto 0 calc(100% - min(145px, max(20px, 25% - 282px)));width:auto;max-width:none;height:100%;object-fit:fill;transform:translateX(-88.3529%);
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 360px);mask-image:linear-gradient(90deg,transparent,#000 360px)}
-  .night{background:linear-gradient(#080b16 0%,#090d15 20%,#0a1019 40%,#0d1422 55%,#131e30 62%,#1a212f 68%,#26262c 74%,#090d11 80%,#1c1c20 90%,#111216 100%)}}  /* very wide screens run past the photo's left end: the same night sky carries on */
+  .night{background:linear-gradient(#02060f 0%,#010710 20%,#030913 40%,#060e18 55%,#09111b 62%,#0e161d 68%,#060b13 74%,#000206 80%,#000307 90%,#05090f 100%)}}  /* very wide screens run past the photo's left end: the same night sky carries on */
 .night::before{content:"";position:absolute;inset:0;z-index:-1;
   background:radial-gradient(46% 60% at 56% 36%,rgba(11,7,3,.72),rgba(11,7,3,.3) 70%,rgba(11,7,3,0)),linear-gradient(rgba(11,7,3,.35),rgba(11,7,3,0) 40%,rgba(11,7,3,.45))}
 .night::after{content:"";position:absolute;inset:-50%;z-index:-1;pointer-events:none;background:url(img/grain.png) repeat;opacity:.1}
