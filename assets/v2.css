@@ -444,7 +444,7 @@ body{overflow-x:clip}
 .sx-globe .h2{color:#fffdf8}.sx-globe .lead{color:#c9b492}
 .sx-globe .sx-points li{color:#e7dcc9}.sx-globe .sx-points b{color:#fffdf8}
 .gl-wrap{position:relative;width:min(100%,540px);aspect-ratio:1;margin-inline:auto}
-.gl-canvas{position:absolute;inset:0;width:100%;height:100%;cursor:grab}
+.gl-canvas{position:absolute;inset:0;width:100%;height:100%;cursor:grab;touch-action:pan-y}
 .gl-canvas.dragging{cursor:grabbing}
 .gl-card{position:absolute;left:0;bottom:7%;z-index:2;display:flex;align-items:center;gap:.75rem;width:min(310px,74%);margin:0;padding:.5rem .8rem .5rem .5rem;border-radius:16px;
   background:rgba(255,253,248,.97);color:var(--ink);box-shadow:0 30px 60px -28px rgba(0,0,0,.75);transition:opacity .35s ease,transform .35s ease}
@@ -587,7 +587,7 @@ body{overflow-x:clip}
 .who-tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
 .who-tabs button:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
 .who-rail{margin-inline:calc(-1 * (max(0px, (100vw - var(--shell)) / 2) + var(--pad)))}
-.who-track{--cw:min(1060px,calc(100vw - 2 * var(--pad) - 48px));display:flex;gap:clamp(14px,2vw,24px);overflow-x:auto;scroll-snap-type:x mandatory;
+.who-track{--cw:min(1060px,calc(100vw - 2 * var(--pad) - 48px));position:relative;display:flex;gap:clamp(14px,2vw,24px);overflow-x:auto;scroll-snap-type:x mandatory;
   padding:4px calc((100vw - var(--cw)) / 2) 12px;scrollbar-width:none;overscroll-behavior-x:contain}
 .who-track::-webkit-scrollbar{display:none}
 .who-card{flex:0 0 var(--cw);scroll-snap-align:center;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:clamp(1.25rem,3vw,2.5rem);align-items:center;
@@ -749,9 +749,10 @@ body{overflow-x:clip}
 .co-dd{display:inline-block;width:15px;height:21px;background:currentColor;-webkit-mask:url(img/logo-deendesk-mask.png) center/contain no-repeat;mask:url(img/logo-deendesk-mask.png) center/contain no-repeat}
 .co-type span{font-weight:600;font-size:1.05rem;letter-spacing:.01em}
 
-/* ---------------------------------------------------------------- why now: the black hole sits left, the words sit in the dark to its right */
+/* ---------------------------------------------------------------- why now: a night launch arcs over the sea, the words sit in the sky above it */
 .night{position:relative;isolation:isolate;overflow:hidden;margin:var(--sec-y) 0;border-radius:0;background:#0b0703;color:#e7dcc9}
-.night-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:0% 50%;z-index:-2}
+.night-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 76%;z-index:-2}
+@media (max-width:700px){.night-bg img{object-position:70% 50%}}
 .night::before{content:"";position:absolute;inset:0;z-index:-1;
   background:radial-gradient(46% 60% at 56% 36%,rgba(11,7,3,.72),rgba(11,7,3,.3) 70%,rgba(11,7,3,0)),linear-gradient(rgba(11,7,3,.35),rgba(11,7,3,0) 40%,rgba(11,7,3,.45))}
 .night::after{content:"";position:absolute;inset:-50%;z-index:-1;pointer-events:none;background:url(img/grain.png) repeat;opacity:.1}
@@ -1072,8 +1073,6 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
   .spot2 .sp-who b{font-size:.88rem}
 }
 
-/* why now (v17): the black hole flipped to the right, the words sit in the dark to its left */
-.night-bg img{transform:scaleX(-1)}
 .stat-src a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule-mid);transition:color .2s,border-color .2s}
 .stat-src a:hover{color:var(--flame-dark);border-color:var(--flame)}
 

@@ -228,7 +228,7 @@
       ].join('\n');
 
       var href =
-        'mailto:hello@wayfindergeo.com' +
+        'mailto:hello@wayfindergeo.co' +
         '?subject=' + encodeURIComponent('Free AI visibility audit — ' + (get('website') || get('name'))) +
         '&body=' + encodeURIComponent(body);
 
@@ -243,7 +243,7 @@
       }
       note.textContent =
         'Opening your email client with the details filled in. If nothing happens, ' +
-        'write to hello@wayfindergeo.com directly.';
+        'write to hello@wayfindergeo.co directly.';
     });
   }
 

@@ -34,4 +34,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://wayfindergeo.com/sitemap.xml
+Sitemap: https://wayfindergeo.co/sitemap.xml
