@@ -56,10 +56,10 @@ missing, and which competitors take the slot instead.
 
 ## How engagements run
 
-1. **Week 1, Baseline:** an AI visibility score on every engine, delivered before anything is billed.
-2. **Month 1, Diagnose and build:** first structural fixes live and AI crawler activity measurable.
-3. **Month 3, Measure:** a citation trend line you can take into a board meeting.
-4. **Month 6 and on, Compound:** share of voice grows as fixes, content and citations stack up.
+1. **Week 1, Where you stand:** a score for your brand on every major AI engine, free, before anything is billed.
+2. **Month 1, Groundwork:** the first fixes go live, and AI crawler visits to your site become visible.
+3. **Month 3, Proof:** citations tracked month by month, showing what is working.
+4. **Month 6 and on, Momentum:** each new page and mention adds to the last, and share of voice grows.
 
 Technical fixes register within weeks; citation share generally moves between month two and
 month four, depending on the category.

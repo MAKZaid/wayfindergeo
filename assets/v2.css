@@ -42,6 +42,7 @@
   opacity:0;transition:left .35s var(--wn-ease),width .35s var(--wn-ease),opacity .2s ease;pointer-events:none}
 
 .wn-cta{display:flex;align-items:center;gap:8px;flex:none}
+@media (min-width:901px) and (max-width:980px){.wn-cta .wn-ghost{display:none}}   /* just above the phone menu there's no room for both buttons; email stays in the footer */
 .wn-ghost,.wn-solid{position:relative;display:inline-flex;align-items:center;height:42px;padding:0 17px;border-radius:999px;
   font:600 .9rem/1 Inter,system-ui,sans-serif;text-decoration:none;white-space:nowrap;transition:background .25s,border-color .25s,color .25s}
 .wn-ghost{color:var(--ink);border:1px solid var(--rule-mid);background:rgba(255,253,248,.5)}
@@ -751,8 +752,12 @@ body{overflow-x:clip}
 
 /* ---------------------------------------------------------------- why now: a night launch arcs over the sea, the words sit in the sky above it */
 .night{position:relative;isolation:isolate;overflow:hidden;margin:var(--sec-y) 0;border-radius:0;background:#0b0703;color:#e7dcc9}
-.night-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 76%;z-index:-2}
-@media (max-width:700px){.night-bg img{object-position:70% 50%}}
+.night-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%;z-index:-2}
+/* wider screens: the whole photo height shows, and the launch pad (94.33% across the image) sits halfway between the
+   last timeline card and the right edge, never more than 145px in so the photo always reaches the edge */
+@media (min-width:701px){.night-bg img{inset:0 auto 0 calc(100% - min(145px, max(20px, 25% - 282px)));width:auto;max-width:none;height:100%;object-fit:fill;transform:translateX(-94.3347%);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 360px);mask-image:linear-gradient(90deg,transparent,#000 360px)}
+  .night{background:linear-gradient(#080b16 0%,#090d15 20%,#0a1019 40%,#0d1422 55%,#131e30 62%,#1a212f 68%,#26262c 74%,#090d11 80%,#1c1c20 90%,#111216 100%)}}  /* very wide screens run past the photo's left end: the same night sky carries on */
 .night::before{content:"";position:absolute;inset:0;z-index:-1;
   background:radial-gradient(46% 60% at 56% 36%,rgba(11,7,3,.72),rgba(11,7,3,.3) 70%,rgba(11,7,3,0)),linear-gradient(rgba(11,7,3,.35),rgba(11,7,3,0) 40%,rgba(11,7,3,.45))}
 .night::after{content:"";position:absolute;inset:-50%;z-index:-1;pointer-events:none;background:url(img/grain.png) repeat;opacity:.1}
@@ -760,8 +765,11 @@ body{overflow-x:clip}
 .night-copy{max-width:44rem;margin:0 auto;text-align:center}
 .night .h2-invert{color:#fffdf8}
 .night-copy .h2{margin:0 auto 1.2rem;max-width:22ch}
+.night-copy .h2 .q{display:block;color:#f29a55}   /* the question gets its own line, in the hero's orange */
+.night-copy .kicker{margin-bottom:1.25rem}
+@media (max-width:900px){.night-copy p .d-br{display:none}}   /* narrow screens wrap the paragraph naturally */
 .night-copy p{max-width:50ch;margin-inline:auto;line-height:1.65}
-.night-copy .btn{margin-top:1.4rem}
+.night-copy .btn{margin-top:2rem}
 .night-timeline{position:relative;margin:clamp(3rem,7vw,5.5rem) 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;text-align:center}
 .night-timeline::before{content:"";position:absolute;left:12.5%;right:12.5%;top:-18px;height:2px;
   background:radial-gradient(circle,rgba(242,154,85,.8) 1px,transparent 1.4px) 0 50%/7px 2px repeat-x}
@@ -1028,7 +1036,7 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
   .night-end .footer-base{padding-top:1.1rem}
 }
 /* desktop: four link groups instead of three */
-@media (min-width:701px){.night-end .footer-nav{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem}}
+@media (min-width:701px){.night-end .footer-nav{grid-template-columns:repeat(4,auto);justify-content:space-between;gap:1.5rem}}   /* columns sized to their links, equal space between them */
 .footer-nav .fp{display:block;margin-top:.1rem;color:var(--f-quiet);font-size:.8rem}   /* the price sits under the plan name */
 
 /* footer bottom line (v16): the copyright and the links share one centre line (the links carry tap padding, the text did not) */
@@ -1600,8 +1608,8 @@ html .night-end .fx-edge{overflow:visible}
 /* v25: why-now band: the heading and the sentence under it each on two lines on desktop */
 @media (min-width:901px){
   .night-copy{max-width:min(100%,64rem)}
-  .night-copy .h2{max-width:none;font-size:clamp(2.2rem,1.1rem + 2.6vw,3.35rem);text-wrap:balance}
-  .night-copy p{max-width:74ch;text-wrap:balance}
+  .night-copy .h2{max-width:none;margin-bottom:1.75rem;font-size:clamp(2rem,.9rem + 2.2vw,2.9rem);line-height:1.08;text-wrap:balance}
+  .night-copy p{max-width:none;text-wrap:wrap}   /* one thought per line (the breaks are in the HTML), each line shorter than the last */
 }
 /* v26 review only: hero copy switch, pinned bottom-left */
 .iter-hero{position:fixed;left:12px;bottom:12px;z-index:120;display:flex;align-items:center;gap:6px;padding:6px;border:1.5px dashed #9fb3d9;border-radius:14px;background:#f4f7fd;

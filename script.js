@@ -203,47 +203,41 @@
   }
 
   /* --------------------------------------------------------------- form */
-  /* No backend on a static host. This composes a pre-filled email so the
-     form works out of the box. Swap for a real endpoint (Formspree, Basin,
-     Netlify Forms) by giving the <form> an action + method and deleting this. */
+  /* Posts to Formspree, which emails each enquiry to us. Without JavaScript the form still posts
+     there (action + method on the <form>); with it, the page stays put and says how it went. */
   var form = document.getElementById('audit-form');
 
   if (form) {
+    var btn = form.querySelector('button[type="submit"]'), btnText = btn ? btn.textContent : '';
+    var note = document.createElement('p');                                  // live region exists before anything is announced
+    note.className = 'form-sent';
+    note.setAttribute('role', 'status');
+    form.appendChild(note);
+    function say(t) {                                                         // the box only shows when it has something to say,
+      note.textContent = t;                                                   // whichever version of the stylesheet the browser has
+      note.style.cssText = t ? '' : 'padding:0;border:0;background:none;margin:0';
+    }
+    say('');
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-
       if (!form.reportValidity()) return;
 
       var data = new FormData(form);
-      var get = function (k) { return (data.get(k) || '').toString().trim(); };
+      data.append('_subject', 'Free audit request: ' + ((data.get('website') || data.get('name') || '').toString().trim()));
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+      say('');
 
-      var body = [
-        'Name: ' + get('name'),
-        'Work email: ' + get('email'),
-        'Website: ' + get('website'),
-        'Interested in: ' + get('plan'),
-        '',
-        'What they want to fix:',
-        get('message') || '(not specified)'
-      ].join('\n');
-
-      var href =
-        'mailto:hello@wayfindergeo.co' +
-        '?subject=' + encodeURIComponent('Free AI visibility audit — ' + (get('website') || get('name'))) +
-        '&body=' + encodeURIComponent(body);
-
-      window.location.href = href;
-
-      var note = form.querySelector('.form-sent');
-      if (!note) {
-        note = document.createElement('p');
-        note.className = 'form-sent';
-        note.setAttribute('role', 'status');
-        form.appendChild(note);
-      }
-      note.textContent =
-        'Opening your email client with the details filled in. If nothing happens, ' +
-        'write to hello@wayfindergeo.co directly.';
+      fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+        .then(function (res) {
+          if (!res.ok) throw new Error('Formspree ' + res.status);
+          form.reset();
+          say('Thanks. We have your details and usually reply within one business day.');
+        })
+        .catch(function () {
+          say('That didn’t go through. Please try again, or email hello@wayfindergeo.co.');
+        })
+        .then(function () { if (btn) { btn.disabled = false; btn.textContent = btnText; } });
     });
   }
 

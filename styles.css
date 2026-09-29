@@ -745,6 +745,7 @@ html{scroll-padding-top:6.5rem}
   grid-column:1 / -1;font-size:.875rem;color:var(--flame-dark);
   background:#fff6ea;border:1px solid var(--rule-mid);border-radius:3px;padding:.75rem .9rem;
 }
+.form-sent:empty{padding:0;border:0;background:none}  /* stays in the page as a live region, takes no space until it has something to say */
 
 /* ---------------------------------------------------------------- footer */
 /* The page fades into a dark footer through the site's warm tones (sampled along a smooth
