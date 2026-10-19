@@ -2167,3 +2167,20 @@ html[data-faq="group"] .faq2 .tabpanel[hidden]{visibility:visible}
 html.menu-lock{scrollbar-gutter:stable}
 /* (v51, Zaid) the hero's paragraph a size smaller on phones: 18px -> 16px */
 @media (max-width:700px){.hero-lead{font-size:1rem;line-height:1.6}}
+
+/* (v51) Instagram and X under the footer email: small glass chips like the site's light buttons, in the footer's colours.
+   X is written "Twitter" struck through, then X (screen readers hear "WayfinderGEO on X, formerly Twitter") */
+.footer-social{display:flex;flex-wrap:wrap;gap:8px;margin:1.1rem 0 0;padding:0;list-style:none}
+.footer-social a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 15px 0 13px;border-radius:12px;
+  border:1px solid rgba(255,253,248,.16);background:linear-gradient(180deg,rgba(255,253,248,.1) 0%,rgba(255,253,248,.03) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,253,248,.14);color:var(--f-text);font-size:.875rem;font-weight:500;text-decoration:none;
+  transition:color .25s ease,border-color .25s ease,transform .18s cubic-bezier(.2,.8,.2,1)}
+.footer-social a:hover{color:var(--f-hover);border-color:rgba(242,154,85,.45)}
+.footer-social a:active{transform:translateY(1px)}
+.footer-social a:focus-visible{outline:2px solid var(--f-hover);outline-offset:2px}
+.footer-social svg{width:16px;height:16px;flex:none}
+.footer-social s{opacity:.55;text-decoration-thickness:1.5px;margin-right:.2em}
+/* (v51) on phones the footer email is 44px tall to tap, which pushed its underline (a bottom border) well below the text;
+   the underline is drawn under the words instead, the same colour */
+@media (hover:none), (max-width:620px){.footer-mail{border-bottom:0;text-decoration:underline;text-decoration-color:rgba(201,180,146,.35);text-decoration-thickness:1px;text-underline-offset:6px}
+  .footer-mail:hover{text-decoration-color:var(--ember)}}
