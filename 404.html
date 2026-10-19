@@ -10,8 +10,8 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#16100a">
 <style>
-/* The 404 page: the hero's night sky, the FAQ's folded map redrawn in light ink, the route wandering off into a question mark,
-   and a compass that hunts for north and settles. Self-contained; paths are from the site root because this page is served at
+/* The 404 page: the hero's night sky and the round-four telescope in light ink, sweeping the sky for the page, its sight line ending in a question mark;
+   one button home. Self-contained; paths are from the site root because this page is served at
    any address. Reduced motion: nothing moves. */
 @font-face{font-family:'Inter';font-style:normal;font-weight:300 700;font-display:swap;src:url(/assets/fonts/inter-var.woff2) format('woff2')}
 @font-face{font-family:'Fraunces';font-style:normal;font-weight:300;font-display:swap;src:url(/assets/fonts/fraunces-300.woff2) format('woff2')}
@@ -36,7 +36,8 @@ main{flex:1;display:grid;justify-items:center;align-content:center;gap:0;padding
 .eyebrow::before{content:"";width:7px;height:7px;background:var(--ember);border-radius:1px}
 h1{margin:0;font:300 clamp(2.4rem,1.4rem + 4.2vw,4.2rem)/1.04 Fraunces,Georgia,serif;letter-spacing:-.02em;text-wrap:balance;max-width:14ch}
 h1 em{font-style:italic;color:var(--glow)}
-.lead{margin:18px 0 0;max-width:34rem;color:#e7dcc9;text-wrap:pretty}
+.lead{margin:18px 0 0;max-width:34rem;color:#e7dcc9;text-wrap:balance}
+.nw{white-space:nowrap}
 .acts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:12px;font:600 1rem/1 Inter,system-ui,sans-serif;text-decoration:none;
   transition:transform .18s cubic-bezier(.2,.8,.2,1),background .25s ease,border-color .25s ease}
@@ -51,14 +52,18 @@ h1 em{font-style:italic;color:var(--glow)}
 .links a{display:inline-block;padding:10px 2px;color:var(--muted);text-decoration:none;font-size:.95rem}
 .links a:hover{color:var(--paper)}
 footer{padding:0 0 max(22px,env(safe-area-inset-bottom,0px));text-align:center;font-size:.8rem;color:#8f7d63}
-/* the doodle */
-.route{stroke-dasharray:1 7;animation:walk 2.2s linear infinite}
+/* the doodle: the telescope sweeps slowly round its mount, the sight line flows, the ? bobs, the stars twinkle */
+.scope{transform-origin:162px 166px;animation:sweep 7s cubic-bezier(.45,0,.25,1) infinite}
+@keyframes sweep{0%,100%{transform:rotate(0)}30%{transform:rotate(-14deg)}38%{transform:rotate(-14deg)}68%{transform:rotate(9deg)}76%{transform:rotate(9deg)}}
+.sight{animation:walk 1.6s linear infinite}
 @keyframes walk{to{stroke-dashoffset:-16}}
-.needle{transform-origin:292px 236px;animation:hunt 5.5s cubic-bezier(.45,0,.2,1) infinite}
-@keyframes hunt{0%{transform:rotate(0)}14%{transform:rotate(-70deg)}28%{transform:rotate(55deg)}40%{transform:rotate(-25deg)}52%,100%{transform:rotate(18deg)}}
-.qm{animation:bob 3.2s ease-in-out infinite}
-@keyframes bob{50%{transform:translateY(-4px)}}
-@media (prefers-reduced-motion:reduce){.sky i,.route,.needle,.qm{animation:none}}
+.qm{transform-box:fill-box;transform-origin:center;animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px) rotate(6deg)}}
+.t1,.t2,.t3{animation:tw2 3.6s ease-in-out infinite}.t2{animation-delay:-1.2s}.t3{animation-delay:-2.4s}
+@keyframes tw2{50%{opacity:.25}}
+.planet{transform-origin:72px 92px;animation:drift 9s ease-in-out infinite}
+@keyframes drift{50%{transform:translate(3px,-3px)}}
+@media (prefers-reduced-motion:reduce){.sky i,.scope,.sight,.qm,.t1,.t2,.t3,.planet{animation:none}}
 @media (max-width:480px){.acts{display:grid;width:100%;max-width:330px}}
 @media (max-height:640px){.art{width:min(250px,60vw);margin-bottom:8px}}
 </style>
@@ -74,28 +79,30 @@ footer{padding:0 0 max(22px,env(safe-area-inset-bottom,0px));text-align:center;f
 <header><a href="/" aria-label="WayfinderGEO home"><img src="/brand/wayfinder-horizontal-compact-reverse.svg" width="188" height="34" alt="WayfinderGEO"></a></header>
 <main>
   <svg class="art" viewBox="0 0 340 280" fill="none" stroke="#f4e8d3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M34 78 116 62v170l-82 16Z" fill="rgba(255,253,248,.06)"/><path d="M116 62l86 18v170l-86-18Z" fill="rgba(255,253,248,.1)"/><path d="M202 80l84-16v170l-84 16Z" fill="rgba(255,253,248,.06)"/>
-    <path d="M44 132c22-8 40 6 62-4s38-2 56 10 46 6 62-6 40-8 54 0" stroke-width="1.3" opacity=".4"/>
-    <path d="M222 196c10-12 26-12 36-4M226 208c12-10 24-8 32-2" stroke-width="1.2" opacity=".35"/>
-    <path d="M58 206l10 10M68 206l-10 10" stroke-width="2"/>
-    <!-- the route sets off from the X, then loses its way and wanders off the map -->
-    <path class="route" d="M68 200c18-26 40-30 54-10s40 18 52-6 22-40 46-34 26 18 14 36-34 4-20-24 44-58 68-74 30-24 44-34" stroke="#f29a55" stroke-width="2.4"/>
-    <g class="qm"><text x="296" y="36" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="44" fill="#f29a55" stroke="none">?</text></g>
-    <circle cx="292" cy="236" r="22" fill="#1c1408"/><circle cx="292" cy="236" r="16" stroke-width="1.2" opacity=".5"/>
-    <g class="needle"><path d="M292 222l5 14-5 14-5-14Z" fill="rgba(255,253,248,.15)"/><path d="M292 222l5 14h-10Z" fill="#d0631c" stroke="#d0631c" stroke-width="1"/></g>
-    <path d="M292 207v-5" stroke-width="1.6"/>
-    <g stroke-width="1.4" opacity=".7"><path d="M70 29v10M65 34h10"/><path d="M160 22v8M156 26h8"/></g>
+    <path d="M24 246c40-3 78 2 118-1s84-4 120-1 40 2 56 0"/>
+    <path d="M70 256c22-2 44 1 64-1M196 254c18-1 34 1 50-1" stroke-width="1.4" opacity=".5"/>
+    <path d="M162 168 121 244M162 168l40 76M162 168l1 78"/>
+    <path d="M141 210c14 3 28 3 42 0" stroke-width="1.4"/>
+    <!-- the telescope sweeps the sky, looking for the page; its sight line ends in a question mark where our star should be -->
+    <g class="scope">
+      <path d="M104 200c-3-6-5-11-7-16l121-74c4 4 8 10 10 16Z" fill="rgba(255,253,248,.1)"/>
+      <path d="M218 110c5-3 13 9 10 16" stroke-width="1.6"/>
+      <path d="M146 168l-6-9M178 148l-6-9" stroke-width="1.4"/>
+      <path d="M100 192l-14 7c-3 1-5-3-3-5l13-9"/>
+      <path class="sight" d="M232 106c12-14 24-28 34-42" stroke="#f29a55" stroke-dasharray="1 7" stroke-width="2.2"/>
+      <g class="qm"><text x="268" y="58" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="44" fill="#f29a55" stroke="none">?</text></g>
+    </g>
+    <circle cx="162" cy="166" r="6.5" fill="#1c1408"/>
+    <g class="planet"><circle cx="72" cy="92" r="15" fill="rgba(255,253,248,.08)"/><path d="M50 99c10 6 40-1 46-16" stroke-width="1.5"/></g>
+    <g stroke-width="1.4"><path class="t1" d="M128 47v10M123 52h10"/><path class="t2" d="M36 164v8M32 168h8"/><path class="t3" d="M214 30v8M210 34h8"/><path class="t1" d="M312 135v10M307 140h10"/></g>
+    <g fill="#f4e8d3" stroke="none"><circle class="t2" cx="176" cy="74" r="1.6"/><circle class="t3" cx="250" cy="150" r="1.4"/><circle class="t1" cx="40" cy="44" r="1.4"/><circle class="t2" cx="300" cy="202" r="1.6"/></g>
   </svg>
   <p class="eyebrow">Error 404</p>
   <h1>This page isn’t <em>on the map.</em></h1>
-  <p class="lead">The link may be old, or there’s a typo in it. Either way, the way back is right here.</p>
+  <p class="lead">The link may be old, or there’s a typo in it. <span class="nw">Either way, the way back is right here.</span></p>
   <div class="acts">
     <a class="btn solid" href="/">Back to the homepage <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
-    <a class="btn ghost" href="/#contact">Get a free audit</a>
   </div>
-  <ul class="links" aria-label="Popular pages">
-    <li><a href="/#services">What we do</a></li><li><a href="/#pricing">Pricing</a></li><li><a href="/#faq">FAQ</a></li><li><a href="mailto:hello@wayfindergeo.co">hello@wayfindergeo.co</a></li>
-  </ul>
 </main>
 <footer>© 2026 WayfinderGEO</footer>
 </body>
