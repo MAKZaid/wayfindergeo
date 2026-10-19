@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Page not found | WayfinderGEO</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="This page isn't on the map. Head back to WayfinderGEO.">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#16100a">
+<style>
+/* The 404 page: the hero's night sky, the FAQ's folded map redrawn in light ink, the route wandering off into a question mark,
+   and a compass that hunts for north and settles. Self-contained; paths are from the site root because this page is served at
+   any address. Reduced motion: nothing moves. */
+@font-face{font-family:'Inter';font-style:normal;font-weight:300 700;font-display:swap;src:url(/assets/fonts/inter-var.woff2) format('woff2')}
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:300;font-display:swap;src:url(/assets/fonts/fraunces-300.woff2) format('woff2')}
+@font-face{font-family:'Fraunces';font-style:italic;font-weight:300;font-display:swap;src:url(/assets/fonts/fraunces-300-italic.woff2) format('woff2')}
+:root{--ink:#1c1408;--paper:#fffdf8;--sand:#f4e8d3;--muted:#c9b492;--ember:#d0631c;--flame:#c2521a;--glow:#f29a55;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;min-height:100svh;display:flex;flex-direction:column;background:radial-gradient(120% 80% at 50% 0%,#2b2013 0%,#1c1408 45%,#120d07 100%);
+  color:var(--paper);font:400 17px/1.6 Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:-50%;background:url(/assets/img/grain.png) repeat;opacity:.1;pointer-events:none;z-index:0}
+.sky{position:fixed;inset:0;pointer-events:none;z-index:0}
+.sky i{position:absolute;width:var(--s);height:var(--s);border-radius:50%;background:#fff5e6;opacity:var(--o);animation:tw var(--d) ease-in-out infinite var(--dl)}
+@keyframes tw{50%{opacity:calc(var(--o) * .25)}}
+header,main,footer{position:relative;z-index:1;width:100%;max-width:1120px;margin:0 auto}
+header{padding-top:max(24px,env(safe-area-inset-top,0px))}
+header a{display:inline-flex;padding:8px 0}
+header img{display:block;height:30px;width:auto}
+main{flex:1;display:grid;justify-items:center;align-content:center;gap:0;padding:24px 0 40px;text-align:center}
+.art{width:min(360px,82vw);height:auto;margin-bottom:18px;overflow:visible}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;margin:0 0 14px;font:600 .8rem/1 Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--glow)}
+.eyebrow::before{content:"";width:7px;height:7px;background:var(--ember);border-radius:1px}
+h1{margin:0;font:300 clamp(2.4rem,1.4rem + 4.2vw,4.2rem)/1.04 Fraunces,Georgia,serif;letter-spacing:-.02em;text-wrap:balance;max-width:14ch}
+h1 em{font-style:italic;color:var(--glow)}
+.lead{margin:18px 0 0;max-width:34rem;color:#e7dcc9;text-wrap:pretty}
+.acts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:12px;font:600 1rem/1 Inter,system-ui,sans-serif;text-decoration:none;
+  transition:transform .18s cubic-bezier(.2,.8,.2,1),background .25s ease,border-color .25s ease}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+.solid{color:#fff;background:linear-gradient(180deg,#d4632b 0%,#c2521a 55%,#b5480f 100%);border:1px solid #a3400e;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 6px 16px -8px rgba(194,82,26,.8)}
+.solid:hover{background:linear-gradient(180deg,#db6d34 0%,#c85920 55%,#b84b12 100%)}
+.ghost{color:var(--paper);background:linear-gradient(180deg,rgba(255,253,248,.13) 0%,rgba(255,253,248,.04) 100%);border:1px solid rgba(255,253,248,.2);box-shadow:inset 0 1px 0 rgba(255,253,248,.18)}
+.ghost:hover{border-color:rgba(255,253,248,.34)}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.links{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 22px;margin:26px 0 0;padding:0;list-style:none}
+.links a{display:inline-block;padding:10px 2px;color:var(--muted);text-decoration:none;font-size:.95rem}
+.links a:hover{color:var(--paper)}
+footer{padding:0 0 max(22px,env(safe-area-inset-bottom,0px));text-align:center;font-size:.8rem;color:#8f7d63}
+/* the doodle */
+.route{stroke-dasharray:1 7;animation:walk 2.2s linear infinite}
+@keyframes walk{to{stroke-dashoffset:-16}}
+.needle{transform-origin:292px 236px;animation:hunt 5.5s cubic-bezier(.45,0,.2,1) infinite}
+@keyframes hunt{0%{transform:rotate(0)}14%{transform:rotate(-70deg)}28%{transform:rotate(55deg)}40%{transform:rotate(-25deg)}52%,100%{transform:rotate(18deg)}}
+.qm{animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){.sky i,.route,.needle,.qm{animation:none}}
+@media (max-width:480px){.acts{display:grid;width:100%;max-width:330px}}
+@media (max-height:640px){.art{width:min(250px,60vw);margin-bottom:8px}}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true">
+  <i style="left:8%;top:14%;--s:2px;--o:.7;--d:5s;--dl:-1s"></i><i style="left:22%;top:32%;--s:1.5px;--o:.5;--d:7s;--dl:-3s"></i>
+  <i style="left:84%;top:18%;--s:2px;--o:.6;--d:6s;--dl:-2s"></i><i style="left:70%;top:8%;--s:1.5px;--o:.45;--d:8s;--dl:-5s"></i>
+  <i style="left:92%;top:52%;--s:1.5px;--o:.5;--d:6.5s;--dl:-4s"></i><i style="left:5%;top:66%;--s:2px;--o:.55;--d:7.5s;--dl:-2.5s"></i>
+  <i style="left:36%;top:9%;--s:1.2px;--o:.4;--d:9s;--dl:-6s"></i><i style="left:58%;top:84%;--s:1.5px;--o:.35;--d:6s;--dl:-1.5s"></i>
+  <i style="left:15%;top:88%;--s:1.2px;--o:.4;--d:8s;--dl:-3.5s"></i><i style="left:78%;top:72%;--s:2px;--o:.45;--d:7s;--dl:-.5s"></i>
+</div>
+<header><a href="/" aria-label="WayfinderGEO home"><img src="/brand/wayfinder-horizontal-compact-reverse.svg" width="188" height="34" alt="WayfinderGEO"></a></header>
+<main>
+  <svg class="art" viewBox="0 0 340 280" fill="none" stroke="#f4e8d3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M34 78 116 62v170l-82 16Z" fill="rgba(255,253,248,.06)"/><path d="M116 62l86 18v170l-86-18Z" fill="rgba(255,253,248,.1)"/><path d="M202 80l84-16v170l-84 16Z" fill="rgba(255,253,248,.06)"/>
+    <path d="M44 132c22-8 40 6 62-4s38-2 56 10 46 6 62-6 40-8 54 0" stroke-width="1.3" opacity=".4"/>
+    <path d="M222 196c10-12 26-12 36-4M226 208c12-10 24-8 32-2" stroke-width="1.2" opacity=".35"/>
+    <path d="M58 206l10 10M68 206l-10 10" stroke-width="2"/>
+    <!-- the route sets off from the X, then loses its way and wanders off the map -->
+    <path class="route" d="M68 200c18-26 40-30 54-10s40 18 52-6 22-40 46-34 26 18 14 36-34 4-20-24 44-58 68-74 30-24 44-34" stroke="#f29a55" stroke-width="2.4"/>
+    <g class="qm"><text x="296" y="36" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="44" fill="#f29a55" stroke="none">?</text></g>
+    <circle cx="292" cy="236" r="22" fill="#1c1408"/><circle cx="292" cy="236" r="16" stroke-width="1.2" opacity=".5"/>
+    <g class="needle"><path d="M292 222l5 14-5 14-5-14Z" fill="rgba(255,253,248,.15)"/><path d="M292 222l5 14h-10Z" fill="#d0631c" stroke="#d0631c" stroke-width="1"/></g>
+    <path d="M292 207v-5" stroke-width="1.6"/>
+    <g stroke-width="1.4" opacity=".7"><path d="M70 29v10M65 34h10"/><path d="M160 22v8M156 26h8"/></g>
+  </svg>
+  <p class="eyebrow">Error 404</p>
+  <h1>This page isn’t <em>on the map.</em></h1>
+  <p class="lead">The link may be old, or there’s a typo in it. Either way, the way back is right here.</p>
+  <div class="acts">
+    <a class="btn solid" href="/">Back to the homepage <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
+    <a class="btn ghost" href="/#contact">Get a free audit</a>
+  </div>
+  <ul class="links" aria-label="Popular pages">
+    <li><a href="/#services">What we do</a></li><li><a href="/#pricing">Pricing</a></li><li><a href="/#faq">FAQ</a></li><li><a href="mailto:hello@wayfindergeo.co">hello@wayfindergeo.co</a></li>
+  </ul>
+</main>
+<footer>© 2026 WayfinderGEO</footer>
+</body>
+</html>
