@@ -45,7 +45,7 @@
   E.forEach(function (e, i) {
     var b = document.createElement('button');
     b.type = 'button'; b.className = 'eng'; b.dataset.k = e.k; b.dataset.n = e.n;
-    b.innerHTML = ic(e.k) + '<span>' + e.n + '</span>';
+    b.innerHTML = ic(e.k) + '<span>' + e.n + '</span><i class="eng-hit" aria-hidden="true"></i>';   // (v51) a 44px tap area, however small the chip
     b.setAttribute('aria-label', 'Show an example ' + e.n + ' answer');
     b.addEventListener('mouseenter', function () { paused = true; hold = true; show(i); });
     b.addEventListener('mouseleave', function () { paused = false; hold = false; schedule(); });
@@ -88,7 +88,7 @@
 
   function layout() {
     var W = stage.clientWidth, H = stage.clientHeight, phone = W < 640, P = phone ? C.phone : C.desk;
-    starXY();
+    starXY(); stale = true;
     mode = phone && window.WF_orbit ? 'ring' : (HV !== 'a' && window.WF_orbit ? 'orbit' : 'fixed');
     document.documentElement.classList.toggle('hv-orbiting', mode !== 'fixed');
     if (mode === 'orbit') RINGS = FRAC.map(function (f) { return window.WF_ringAt(f); });
@@ -114,11 +114,22 @@
   if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[es.length - 1].isIntersecting; if (visible) kick(); }).observe(stage);
   function kick() { if (!raf) { last = performance.now(); raf = requestAnimationFrame(tick); } }
   function lap(i) { return 260 * Math.pow(FRAC[i], 1.5); }                  // seconds (54s inner to 215s outer); roughly Kepler
+  /* (v51) the star's place and the sky's offset, measured only when the hero changes size (and every 90 frames, to be safe),
+     not every frame: measuring in the loop made the browser recompute the page's styles and layout an extra time per frame */
+  var ox = 0, oy = 0, stale = true, sinceM = 0;
+  function measure() {
+    if (!stale && ++sinceM < 90) return;
+    stale = false; sinceM = 0;
+    var sr = starXY(), br = window.WF_orbitBox ? window.WF_orbitBox.getBoundingClientRect() : sr;
+    ox = br.left - sr.left; oy = br.top - sr.top;
+  }
+  if ('ResizeObserver' in window) { var mro = new ResizeObserver(function () { stale = true; }); mro.observe(stage); mro.observe(focus); if (window.WF_orbitBox) mro.observe(window.WF_orbitBox); }
+  addEventListener('resize', function () { stale = true; });
   function tick(now) {
     raf = 0;
     var dt = Math.min(.05, (now - last) / 1000); last = now;
     speed += ((hold ? 0 : 1) - speed) * Math.min(1, dt * 3);                   // ease to a stop while an engine is hovered
-    starXY();
+    measure();
     if (mode === 'ring') ringFrame(dt);
     else if (mode === 'orbit') orbitFrame(dt);
     pulseFrame(now);
@@ -141,21 +152,20 @@
   }
   /* phones: evenly spaced on ring 7, one lap about every 70s (unchanged from hx3.js) */
   function ringFrame(dt) {
-    var sr = stage.getBoundingClientRect();
     if (!reduce) ringSpin += dt * speed * Math.PI * 2 / (LAP / 1000);
     chips.forEach(function (b, i) {
-      var a = ringSpin + i * Math.PI * 2 / chips.length + .35, q = window.WF_orbit(7, a);
-      var x = q.x - sr.left, y = q.y - sr.top;
+      var a = ringSpin + i * Math.PI * 2 / chips.length + .35, q = window.WF_orbitIn(7, a);
+      var x = q.x + ox, y = q.y + oy;
       place(b, i, x, y, a, .8);
       paths[i].setAttribute('d', curve(i, x, y, 18, 16));
     });
   }
   /* B and C, desktop: each engine on its own ring */
   function orbitFrame(dt) {
-    var sr = stage.getBoundingClientRect(), bodies = [];
+    var bodies = [];
     chips.forEach(function (b, i) {
       if (!reduce) ang[i] += dt * speed * Math.PI * 2 / lap(i);
-      var q = window.WF_orbit(RINGS[i], ang[i]), x = q.x - sr.left, y = q.y - sr.top;
+      var q = window.WF_orbitIn(RINGS[i], ang[i]), x = q.x + ox, y = q.y + oy;
       place(b, i, x, y, ang[i], .74);
       paths[i].setAttribute('d', curve(i, x, y, 30, 28));
       bodies.push({ ring: RINGS[i], a: ang[i], dir: 1 });
@@ -259,11 +269,5 @@
   window.HX_relayout = relayout;
   addEventListener('load', relayout);                                     /* the rings (orbits6.js) load after this file */
 
-  /* Starlight: track the cursor inside hero buttons */
-  [].forEach.call(document.querySelectorAll('.hx .btn'), function (b) {
-    b.insertAdjacentHTML('afterbegin', '<i class="sp"></i><i class="sp"></i><i class="sp"></i>');
-    b.addEventListener('pointermove', function (ev) {
-      var r = b.getBoundingClientRect(); b.style.setProperty('--mx', (ev.clientX - r.left) + 'px'); b.style.setProperty('--my', (ev.clientY - r.top) + 'px');
-    });
-  });
+  /* (v45) the hero buttons take the same label roll as every other button, from page.js */
 })();

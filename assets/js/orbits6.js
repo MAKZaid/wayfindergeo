@@ -93,6 +93,10 @@
     var e = ell(Math.min(i, N - 1), (performance.now() - t0) / 1000), p = pt(e, a), r = box.getBoundingClientRect();
     return { x: p[0] + r.left, y: p[1] + r.top };
   };
+  /* (v51) the same point in the sky's own coordinates, with no page measuring: hx4.js measures once per frame and adds the
+     offset itself. Measuring here, between its style writes, made the browser redo the page layout up to nine times a frame */
+  window.WF_orbitIn = function (i, a) { var p = pt(ell(Math.min(i, N - 1), (performance.now() - t0) / 1000), a); return { x: p[0], y: p[1] }; };
+  window.WF_orbitBox = box;
   window.WF_bodies = null;           // [{ring, a, dir}] from hx4.js
   window.WF_hi = null;               // rings (fractional indices) to draw a touch brighter: the engines' own orbits
 
@@ -169,8 +173,21 @@
     ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(0, -w); ctx.quadraticCurveTo(len * .25, -w * .35, len, 0); ctx.quadraticCurveTo(len * .25, w * .35, 0, w); ctx.closePath(); ctx.fill();
     ctx.restore();
   }
+  /* (v51) the star never changes, so it's drawn once (per size) into its own small canvas and copied in, additively, each
+     frame: the same light, without building a dozen gradients 120 times a second */
+  var starC = null, starKey = '';
   function star(t) {
-    var s = phone ? .72 : Math.min(1, W / 1300) * .95 + .1;
+    var s = phone ? .72 : Math.min(1, W / 1300) * .95 + .1, R1 = Math.ceil(150 * s) + 2, k = s + ':' + dpr + ':' + HV;
+    if (k !== starKey) {
+      starKey = k; starC = document.createElement('canvas'); starC.width = starC.height = Math.ceil(2 * R1 * dpr);
+      var main = ctx, mcx = cx, mcy = cy; ctx = starC.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); cx = cy = R1;
+      starDraw(s); ctx = main; cx = mcx; cy = mcy;
+    }
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.drawImage(starC, cx - R1, cy - R1, starC.width / dpr, starC.height / dpr);
+    ctx.globalCompositeOperation = 'source-over';
+  }
+  function starDraw(s) {
     var I = 1;                                     /* steady: the star's light never changes (v29) */
     ctx.globalCompositeOperation = 'lighter';
     /* wide warm bloom */
@@ -212,15 +229,19 @@
     }
     ctx.globalAlpha = 1;
   }
+  /* (v51) the signals move by elapsed time, not by frame: at 120Hz they were running twice their designed speed */
+  var lastF = 0;
   function frame(now) {
     if (!run) return;
-    draw(now);
-    sig.forEach(function (g) { g.p = (g.p + g.v / 60) % 1; });
+    var fdt = lastF ? Math.min(.05, (now - lastF) / 1000) : 1 / 60; lastF = now;
+    draw(now, fdt);
+    sig.forEach(function (g) { g.p = (g.p + g.v * fdt) % 1; });
     if (!reduce) requestAnimationFrame(frame);
   }
-  function draw(now) {
+  function draw(now, fdt) {
     var t = (now - t0) / 1000; ctx.clearRect(0, 0, W, H);
-    px += (tx - px) * .04; py += (ty - py) * .04;
+    var ease = 1 - Math.pow(1 - .04, (fdt || 1 / 60) * 60);   // (v51) the pointer drift eases by time: the same feel at 60 or 120Hz
+    px += (tx - px) * ease; py += (ty - py) * ease;
     sky(t); drawMeteor(t);
     ringGrads(t);
     rings(t, 0); trails(t, 0); signals(t, 0);

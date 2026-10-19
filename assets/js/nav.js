@@ -7,11 +7,21 @@
 
   /* Widths are numbers (not auto) so the bar can animate between them. */
   function measure() {
-    var pad = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad')) || 24;
-    var full = Math.min(1240, innerWidth - 2 * Math.max(16, Math.min(56, innerWidth * .04)));
+    /* (v46) the full bar is exactly as wide as the page's content (+ its own 1px borders), so the logo and the audit button sit on the
+       same left and right edges as every section */
+    var pg = document.querySelector('.page'), full;
+    if (pg) { var ps = getComputedStyle(pg); full = pg.clientWidth - parseFloat(ps.paddingLeft) - parseFloat(ps.paddingRight) + 2; }
+    else full = Math.min(1240, innerWidth - 2 * Math.max(16, Math.min(56, innerWidth * .04)));
     wn.style.setProperty('--wn-w', full + 'px');
-    // natural pill width: logo mark + links + cta, with the word collapsed
     var was = wn.classList.contains('is-pill');
+    /* (v46) at the top, the links sit in the middle of the page, over the centred hero. The audit side is wider than the logo, so
+       the links are nudged right by half the difference */
+    wn.classList.remove('is-pill');
+    var lw = wn.querySelector('.wn-logo').getBoundingClientRect().width, cw = wn.querySelector('.wn-cta').getBoundingClientRect().width;
+    var room = (full - 2 - lw - links.getBoundingClientRect().width - cw) / 2 - 32;     // never closer than 32px to either side
+    var shift = Math.max(-room, Math.min(room, (cw - lw) / 2));
+    wn.style.setProperty('--wn-shift', (room > 0 ? shift : 0).toFixed(1) + 'px');
+    // natural pill width: logo mark + links + cta, with the word collapsed
     wn.classList.add('is-pill', 'wn-measure');
     bar.style.transition = 'none'; bar.style.width = 'max-content';
     var w = Math.ceil(bar.getBoundingClientRect().width);
@@ -31,6 +41,7 @@
   addEventListener('scroll', onScroll, { passive: true });
   var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(remeasure, 120); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
+  addEventListener('load', remeasure);   /* (v46) the wordmark image has no set width, so measure again once it's in */
 
   /* one highlight that slides between items */
   [].forEach.call(links.querySelectorAll('a,button'), function (el) {

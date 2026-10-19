@@ -224,7 +224,8 @@
       if (!form.reportValidity()) return;
 
       var data = new FormData(form);
-      data.append('_subject', 'Free audit request: ' + ((data.get('website') || data.get('name') || '').toString().trim()));
+      var plan = /^(Beacon|North Star|Compass)/.exec((data.get('plan') || '').toString());   // a plan picked from Pricing names the email
+      data.append('_subject', (plan ? plan[1] + ' enquiry: ' : 'Free audit request: ') + ((data.get('website') || data.get('name') || '').toString().trim()));
       if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
       say('');
 

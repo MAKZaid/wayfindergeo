@@ -1,3 +1,20 @@
+/* (v51) the loops' repeats are made here, not written into the page: the client logos (5 more sets) and the city reel (a second
+   run of the 8 cards). Same markup as before, built before anything below measures them. The page is about 110KB lighter, and
+   search engines and AI tools read each name and city once instead of six times and twice. */
+(function () {
+  function copies(parent, items, n, fix) {
+    for (var k = 0; k < n; k++) items.forEach(function (el) { var c = el.cloneNode(true); c.setAttribute('aria-hidden', 'true'); if (fix) fix(c); parent.appendChild(c); });
+  }
+  var row = document.querySelector('.clients-row');
+  if (row) copies(row, [].slice.call(row.children), 5);
+  [].forEach.call(document.querySelectorAll('.reel-track'), function (track) {
+    copies(track, [].slice.call(track.children), 1, function (c) {
+      c.removeAttribute('role'); c.setAttribute('tabindex', '-1');
+      var sr = c.querySelector('.sr-only'); if (sr) sr.remove();
+    });
+  });
+})();
+
 /* v19 page behaviour below the hero. Everything degrades to a readable, static page without script,
    and respects "reduce motion". */
 (function () {
@@ -32,14 +49,15 @@
     if (so && !reduce) { figs.forEach(function (b) { b.textContent = '0'; }); so.observe(stats); } else go();
   }
 
-  /* ------------------------------------------------------------ services: each card opens on its own; a click anywhere outside
-     the cards closes them (a click on another card only toggles that card). Open cards share one height. */
+  /* ------------------------------------------------------------ services: "What's included" opens its own card (v51); a click anywhere
+     outside the cards closes them. Open cards share one height. */
   var discs = [].slice.call(document.querySelectorAll('.disc')), wrap = document.querySelector('.discs');
   function setDisc(d, open) {
     var btn = d.querySelector('.disc-head'), body = d.querySelector('.disc-body');
     btn.setAttribute('aria-expanded', String(open)); d.classList.toggle('open', open);
     if (open) body.removeAttribute('inert'); else body.setAttribute('inert', '');
   }
+  /* (v51, Zaid) each card opens and closes on its own, on phones and desktops (v48 opened all three together) */
   discs.forEach(function (d) {
     d.querySelector('.disc-head').addEventListener('click', function () { setDisc(d, !d.classList.contains('open')); });
   });
@@ -123,7 +141,7 @@
   tabs.forEach(function (t, i) {
     t.addEventListener('click', function () { select(t); });
     t.addEventListener('keydown', function (e) {
-      var k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!k) return;
+      var k = /^Arrow(Right|Down)$/.test(e.key) ? 1 : /^Arrow(Left|Up)$/.test(e.key) ? -1 : 0; if (!k) return;   /* the topics now stack, so up/down work too */
       var n = tabs[(i + k + tabs.length) % tabs.length]; select(n); n.focus(); e.preventDefault();
     });
   });
@@ -140,23 +158,8 @@
     if (cl) cl.observe(closer); else type();
   }
 
-  /* ------------------------------------------------------------ Starlight on the tabs (v24): testimonials, who it's for, FAQ topics and questions */
-  if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
-    document.querySelectorAll('.sp-tab, .who-tabs [role="tab"], .faq2 .tabs [role="tab"], .faq2 .qa > summary').forEach(function (b) {
-      if (b.querySelector('.sl')) return;
-      b.insertAdjacentHTML('afterbegin', '<span class="sl soft" aria-hidden="true"><i class="sp"></i><i class="sp"></i><i class="sp"></i></span>');
-      b.addEventListener('pointermove', function (ev) { var r = b.getBoundingClientRect();
-        b.style.setProperty('--mx', (ev.clientX - r.left) + 'px'); b.style.setProperty('--my', (ev.clientY - r.top) + 'px'); });
-    });
-  }
 
-  /* ------------------------------------------------------------ Starlight on every button (hero buttons already carry it from hx.js) */
-  document.querySelectorAll('.btn, .wn-ghost, .wn-solid').forEach(function (b) {
-    if (b.closest('.hx') || b.querySelector('.sl')) return;
-    b.insertAdjacentHTML('afterbegin', '<span class="sl" aria-hidden="true"><i class="sp"></i><i class="sp"></i><i class="sp"></i></span>');
-    b.addEventListener('pointermove', function (ev) { var r = b.getBoundingClientRect();
-      b.style.setProperty('--mx', (ev.clientX - r.left) + 'px'); b.style.setProperty('--my', (ev.clientY - r.top) + 'px'); });
-  });
+
   /* ------------------------------------------------------------ review-only layout switchers (?shift=b&words=c&contact=a&why=nile&foot=earth) */
   var q = new URLSearchParams(location.search), onSwitch = {};
   function pick(box, v) {
@@ -560,29 +563,26 @@
     }
     function vec(la, lo) { var p = la * Math.PI / 180, l = lo * Math.PI / 180; return [Math.cos(p) * Math.sin(l), Math.sin(p), Math.cos(p) * Math.cos(l)]; }
     var CV = CITIES.map(function (c) { return vec(c.lat, c.lon); });
+    var lastG = 0;
     function frame(t) {
-      if (!gRun) return;
+      if (!gRun) { lastG = 0; return; }
       if (!drag) {
         if (t - idleAt > 5200 && !reduce) { idleAt = t; go(active + 1); }
-        lon0 += (tLon - lon0) * .045; lat0 += (tLat - lat0) * .045;
+        var ge = 1 - Math.pow(1 - .045, Math.min(3, (t - (lastG || t - 16.7)) / 16.7));   // (v51) eases by time, not by frame: 120Hz turned it twice as fast
+        lon0 += (tLon - lon0) * ge; lat0 += (tLat - lat0) * ge;
       }
       var W = gcan.width, R = W * .39, cx = W / 2, cy = W * .5;       // the halo reaches 1.22R, so R leaves it room inside the canvas (it was being cut flat at the top)
       ctx.clearRect(0, 0, W, W);
-      var g = ctx.createRadialGradient(cx, cy, R * .92, cx, cy, R * 1.22);          // a warm halo on the cream page
-      g.addColorStop(0, 'rgba(242,154,85,.28)'); g.addColorStop(.4, 'rgba(242,154,85,.08)'); g.addColorStop(1, 'rgba(242,154,85,0)');
-      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, R * 1.22, 0, 6.2832); ctx.fill();
-      var d = ctx.createRadialGradient(cx - R * .38, cy - R * .42, R * .08, cx, cy, R);  // a paper sphere, lit from the upper left
-      d.addColorStop(0, '#fffdf8'); d.addColorStop(.7, '#fbf3e6'); d.addColorStop(1, '#f1e3cd');
-      ctx.fillStyle = d; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.2832); ctx.fill();
-      ctx.strokeStyle = 'rgba(208,99,28,.3)'; ctx.lineWidth = 1 * dpr; ctx.stroke();
       var l0 = lon0 * Math.PI / 180, p0 = lat0 * Math.PI / 180, sl0 = Math.sin(l0), cl0 = Math.cos(l0), sp0 = Math.sin(p0), cp0 = Math.cos(p0);
-      var s1 = 1.35 * dpr;
-      for (var i = 0; i < N; i++) {
-        var q = proj(P[i * 3], P[i * 3 + 1], P[i * 3 + 2], sl0, cl0, sp0, cp0); if (q[2] <= 0.02) continue;
-        var x = cx + q[0] * R, y = cy - q[1] * R, L = Lt[i], e = .35 + .65 * q[2];
-        if (L) { var a = (.45 + L / 15 * .55) * e, sz = s1 * (1.05 + L / 15 * 1.2); ctx.fillStyle = 'rgba(' + (208 - L * 2) + ',' + (104 - L * 2) + ',' + (40 - L) + ',' + a.toFixed(3) + ')'; ctx.fillRect(x - sz / 2, y - sz / 2, sz, sz); }
-        else { ctx.fillStyle = 'rgba(106,88,68,' + (.34 * e).toFixed(3) + ')'; ctx.fillRect(x - s1 / 2, y - s1 / 2, s1, s1); }
+      var vk = W + ':' + lon0.toFixed(2) + ':' + lat0.toFixed(2);               // the globe at rest (most of the time; 0.01° is a tenth of a pixel): reuse the last picture
+      if (vk !== viewKey) {
+        if (!viewC || viewC.width !== W) { viewC = document.createElement('canvas'); viewC.width = viewC.height = W; }
+        var main = ctx; ctx = viewC.getContext('2d'); ctx.clearRect(0, 0, W, W);
+        ctx.drawImage(ball(W, R, cx, cy), 0, 0);                                  // the halo and the paper sphere never change: drawn once per size
+        dots(cx, cy, R, sl0, cl0, sp0, cp0, 1.35 * dpr);
+        ctx = main; viewKey = vk;
       }
+      ctx.drawImage(viewC, 0, 0);
       ctx.font = '600 ' + (11 * dpr) + 'px Inter, system-ui, sans-serif'; ctx.textBaseline = 'middle';
       CITIES.forEach(function (c, j) {                                           // pins; the three key cities always carry a label
         var q = proj(CV[j][0], CV[j][1], CV[j][2], sl0, cl0, sp0, cp0); if (q[2] <= 0.05) return;
@@ -590,14 +590,64 @@
         if (on) { var ph = (t / 1400) % 1; ctx.strokeStyle = 'rgba(194,82,26,' + (1 - ph).toFixed(2) + ')'; ctx.lineWidth = 1.5 * dpr; ctx.beginPath(); ctx.arc(x, y, r + ph * 16 * dpr, 0, 6.2832); ctx.stroke(); }
         ctx.fillStyle = on ? '#c2521a' : (c.key ? '#d0631c' : 'rgba(208,99,28,.7)'); ctx.beginPath(); ctx.arc(x, y, on ? r * 1.3 : r, 0, 6.2832); ctx.fill();
         if (on) {                                                                  // the city and its local time, in an ink pill
-          var tm = ''; try { tm = new Intl.DateTimeFormat('en-GB', { timeZone: c.tz, hour: '2-digit', minute: '2-digit' }).format(new Date()); } catch (e) {}
+          var tm = clockAt(c, t);
           var tx = c.n + '  ' + tm, tw = ctx.measureText(tx).width, px = x + 16 * dpr, py = y - 1 * dpr;
           ctx.fillStyle = '#1c1408'; roundRect(px - 7 * dpr, py - 10 * dpr, tw + 14 * dpr, 20 * dpr, 10 * dpr); ctx.fill();
           ctx.fillStyle = '#fffdf8'; ctx.fillText(c.n, px, py + .5 * dpr);
           ctx.fillStyle = '#c9b492'; ctx.fillText(tm, px + ctx.measureText(c.n + '  ').width, py + .5 * dpr);
         }
       });
-      requestAnimationFrame(frame);
+      lastG = t; requestAnimationFrame(frame);
+    }
+    /* (v51) the speed work. Same picture as before, a lot less work per frame (it was 6.5ms, too slow for a 120Hz screen):
+       - the halo and sphere gradients are drawn once per canvas size and copied in (ball)
+       - the 7,212 dots are sorted by colour first, so the colour is set about 100 times a frame instead of 7,212 times, and no
+         colour text is built per dot. Each dot's shade is rounded to one of 24 steps (from 1,000), too fine to see
+       - each city's local time is worked out once a second, not every frame (clockAt)
+       - while the globe isn't turning, the sphere and dots are copied from the last frame and only the pins are drawn (viewC) */
+    var ballC = null, ballKey = '', viewC = null, viewKey = '';
+    function ball(W, R, cx, cy) {
+      var k = W + ':' + dpr; if (ballKey === k) return ballC;
+      ballKey = k; ballC = document.createElement('canvas'); ballC.width = ballC.height = W;
+      var b = ballC.getContext('2d');
+      var g = b.createRadialGradient(cx, cy, R * .92, cx, cy, R * 1.22);          // a warm halo on the cream page
+      g.addColorStop(0, 'rgba(242,154,85,.28)'); g.addColorStop(.4, 'rgba(242,154,85,.08)'); g.addColorStop(1, 'rgba(242,154,85,0)');
+      b.fillStyle = g; b.beginPath(); b.arc(cx, cy, R * 1.22, 0, 6.2832); b.fill();
+      var d = b.createRadialGradient(cx - R * .38, cy - R * .42, R * .08, cx, cy, R);  // a paper sphere, lit from the upper left
+      d.addColorStop(0, '#fffdf8'); d.addColorStop(.7, '#fbf3e6'); d.addColorStop(1, '#f1e3cd');
+      b.fillStyle = d; b.beginPath(); b.arc(cx, cy, R, 0, 6.2832); b.fill();
+      b.strokeStyle = 'rgba(208,99,28,.3)'; b.lineWidth = 1 * dpr; b.stroke();
+      return ballC;
+    }
+    var ES = 24, NB = 16 * ES, DX = new Float32Array(N), DY = new Float32Array(N), DB = new Uint16Array(N), ORD = new Uint32Array(N),
+      CNT = new Uint32Array(NB + 1), FILL = [], SZ = [];
+    for (var bk = 0; bk < NB; bk++) {                                          // bucket = brightness L (0-15) x shade step
+      var L = bk / ES | 0, e = .35 + .65 * ((bk % ES + .5) / ES);
+      FILL[bk] = L ? 'rgba(' + (208 - L * 2) + ',' + (104 - L * 2) + ',' + (40 - L) + ',' + ((.45 + L / 15 * .55) * e).toFixed(3) + ')' : 'rgba(106,88,68,' + (.34 * e).toFixed(3) + ')';
+      SZ[bk] = L ? 1.05 + L / 15 * 1.2 : 1;
+    }
+    function dots(cx, cy, R, sl0, cl0, sp0, cp0, s1) {
+      var n = 0, i, b; CNT.fill(0);
+      for (i = 0; i < N; i++) {
+        var x = P[i * 3], y = P[i * 3 + 1], z = P[i * 3 + 2];
+        var x1 = x * cl0 - z * sl0, z1 = x * sl0 + z * cl0, y2 = y * cp0 - z1 * sp0, z2 = y * sp0 + z1 * cp0;   // proj(), inline
+        if (z2 <= 0.02) continue;
+        b = Lt[i] * ES + Math.min(ES - 1, z2 * ES | 0);
+        DX[n] = cx + x1 * R; DY[n] = cy - y2 * R; DB[n] = b; CNT[b + 1]++; n++;
+      }
+      for (b = 0; b < NB; b++) CNT[b + 1] += CNT[b];                            // counting sort by bucket
+      var at = CNT.slice(0, NB); for (i = 0; i < n; i++) ORD[at[DB[i]]++] = i;
+      for (b = 0; b < NB; b++) {
+        var from = CNT[b], to = CNT[b + 1]; if (from === to) continue;
+        var sz = s1 * SZ[b], h = sz / 2; ctx.fillStyle = FILL[b];
+        for (var k = from; k < to; k++) { var j = ORD[k]; ctx.fillRect(DX[j] - h, DY[j] - h, sz, sz); }
+      }
+    }
+    var clocks = {};
+    function clockAt(c, t) {
+      var k = clocks[c.k]; if (k && t - k.t < 1000) return k.s;
+      var s = ''; try { k = k || {}; k.f = k.f || new Intl.DateTimeFormat('en-GB', { timeZone: c.tz, hour: '2-digit', minute: '2-digit' }); s = k.f.format(new Date()); } catch (e) {}
+      k.t = t; k.s = s; clocks[c.k] = k; return s;
     }
     function roundRect(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
     function go(j, now) {
@@ -665,21 +715,37 @@
   });
 })();
 
-/* post-launch fixes (25 Sep 2026), phones only */
+/* post-launch fixes (25 Sep 2026), phones only (since v46 the nav hiding also runs on desktop, on long scrolls) */
 (function () {
   'use strict';
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var phone = function () { return innerWidth <= 900; };
 
-  /* the nav bar hides while you keep scrolling down, and returns as soon as you scroll up or stop */
-  var wn = document.getElementById('wn'), sheet = document.getElementById('wn-sheet'), lastY = scrollY, idle = 0;
+  /* the nav bar hides while you keep scrolling down, and returns as soon as you scroll up or stop.
+     (v46) Desktop too, but only on a long scroll: after about a screen of steady scrolling down. Short reading scrolls leave it
+     alone. It stays put while the pointer is on it, a menu is open or the keyboard is in it, and comes back if the pointer goes to the top. */
+  var wn = document.getElementById('wn'), sheet = document.getElementById('wn-sheet'), mega = document.getElementById('wn-mega');
+  var lastY = scrollY, idle = 0, run = 0;
+  var show = function () { wn.classList.remove('wn-hide'); };
+  var held = function () {
+    var a = document.activeElement;
+    return (sheet && !sheet.hidden) || (mega && mega.classList.contains('open')) || wn.matches(':hover') ||
+      (a && wn.contains(a) && a.matches(':focus-visible'));
+  };
   if (wn) addEventListener('scroll', function () {
     var y = scrollY, dy = y - lastY; lastY = y;
     clearTimeout(idle);
-    if (!phone() || (sheet && !sheet.hidden) || y < 120) { wn.classList.remove('wn-hide'); return; }
-    if (dy > 2) wn.classList.add('wn-hide'); else if (dy < -2) wn.classList.remove('wn-hide');
-    idle = setTimeout(function () { wn.classList.remove('wn-hide'); }, 260);
+    if (y < 120 || held()) { run = 0; show(); return; }
+    if (phone()) {
+      if (dy > 2) wn.classList.add('wn-hide'); else if (dy < -2) show();
+      idle = setTimeout(show, 260); return;
+    }
+    if (reduce) return;
+    if (dy > 0) run += dy; else if (dy < -4) { run = 0; show(); }
+    if (run > innerHeight * .9) wn.classList.add('wn-hide');
+    idle = setTimeout(function () { run = 0; show(); }, 420);
   }, { passive: true });
+  if (wn) addEventListener('mousemove', function (e) { if (e.clientY < 72 && wn.classList.contains('wn-hide')) { run = 0; show(); } }, { passive: true });
 
   /* the city reel: swipe it by hand; when nobody's touching it, it keeps drifting (and wraps round, like before) */
   document.querySelectorAll('.reel').forEach(function (reel) {
@@ -1090,4 +1156,74 @@
     }, { threshold: .4 });
     io.observe(spot);
   } else { live = true; play(); }
+})();
+
+/* pricing: "Start with Beacon" and the rest fill in the form. The link still scrolls to it as before; on the way, "Interested in"
+   is set to that plan and its price, and the field glows for a moment so you can see it's been done. "Get a free audit" sets it
+   back to the free audit. */
+(function () {
+  var sel = document.getElementById('f-plan'); if (!sel) return;
+  var t;
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-plan]'); if (!a) return;
+    var want = a.getAttribute('data-plan'), opt = [].filter.call(sel.options, function (o) { return o.text === want; })[0];
+    if (!opt) return;
+    sel.value = opt.value;
+    sel.dispatchEvent(new Event('change', { bubbles: true }));
+    var field = sel.closest('.field'); if (!field) return;
+    field.classList.remove('is-set'); void field.offsetWidth; field.classList.add('is-set');
+    clearTimeout(t); t = setTimeout(function () { field.classList.remove('is-set'); }, 2600);
+  });
+})();
+
+/* (v51) animations only run while their part of the page is on screen (with 150px to spare, so nothing is caught
+   starting up). Below the hero, the testimonial scenes, the stars, the marquees and the footer kept animating while
+   off screen, and the browser restyled all of them every frame: with them paused, the visible part gets the whole frame.
+   Nothing visible changes. The canvas loops (hero, globe) already stop off screen on their own. */
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  var parts = document.querySelectorAll('#main > .hx, #main .page > .sec, #main > .night, .night-end');
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { e.target.toggleAttribute('data-off', !e.isIntersecting); });
+  }, { rootMargin: '150px 0px' });
+  [].forEach.call(parts, function (el) { io.observe(el); });
+})();
+
+/* (v51) the phone's business tabs: fade an edge only while there are more tabs past it (see v2.css) */
+(function () {
+  var row = document.querySelector('.who-pill .who-tabs'); if (!row) return;
+  function edges() {
+    var max = row.scrollWidth - row.clientWidth;
+    row.style.setProperty('--fl', row.scrollLeft > 2 ? '22px' : '0px');
+    row.style.setProperty('--fr', row.scrollLeft < max - 2 ? '22px' : '0px');
+  }
+  row.addEventListener('scroll', edges, { passive: true }); addEventListener('resize', edges);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(edges);
+  edges();
+})();
+
+/* (v51, Zaid) FAQ answers slide open and closed on the site's soft curve, and the +/x turns in step (v2.css, .is-open).
+   Without script, or with reduced motion, they open at once as before */
+(function () {
+  var qs = [].slice.call(document.querySelectorAll('.faq2 .faq-qs .qa')); if (!qs.length) return;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, EASE = 'cubic-bezier(.16,1,.3,1)', DUR = 600;
+  qs.forEach(function (d) {
+    var s = d.querySelector('summary'), a = document.createElement('div'); a.className = 'qa-a';
+    [].slice.call(d.children).forEach(function (c) { if (c !== s) a.appendChild(c); }); d.appendChild(a);
+    d.classList.add('js-qa'); d.classList.toggle('is-open', d.open);
+    var anim = null;
+    s.addEventListener('click', function (e) {
+      e.preventDefault();
+      var opening = !d.classList.contains('is-open');
+      d.classList.toggle('is-open', opening);
+      if (reduce || !a.animate) { d.open = opening; return; }
+      var from = anim ? a.getBoundingClientRect().height : (opening ? 0 : a.offsetHeight);
+      if (anim) { anim.cancel(); anim = null; }
+      if (opening) d.open = true;
+      var to = opening ? a.scrollHeight : 0;
+      a.classList.add('is-moving');
+      anim = a.animate([{ height: from + 'px', opacity: opening ? (from ? 1 : 0) : 1 }, { height: to + 'px', opacity: opening ? 1 : 0 }], { duration: DUR, easing: EASE });
+      anim.onfinish = function () { anim = null; a.classList.remove('is-moving'); if (!opening) d.open = false; };
+    });
+  });
 })();

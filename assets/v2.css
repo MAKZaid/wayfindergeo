@@ -51,10 +51,6 @@
 .wn-solid:hover{background:var(--flame-dark);border-color:var(--flame-dark)}
 .wn-solid .l-short{display:none}
 /* the north star pops out of the corner on hover */
-.wn-pop{position:absolute;right:-9px;top:-11px;width:20px;height:20px;pointer-events:none;opacity:0;
-  transform:translate(-5px,6px) scale(.3) rotate(-60deg);transition:opacity .25s ease,transform .45s cubic-bezier(.175,.885,.32,1.275)}
-.wn-pop img{width:100%;height:100%;display:block;filter:drop-shadow(0 2px 4px rgba(194,82,26,.45))}
-.wn-solid:hover .wn-pop,.wn-solid:focus-visible .wn-pop{opacity:1;transform:none}
 
 .wn-menu{display:none;width:42px;height:42px;border-radius:999px;border:1px solid var(--rule-mid);background:rgba(255,253,248,.6);cursor:pointer;align-items:center;justify-content:center}
 .wn-menu i{display:block;width:16px;height:1.6px;background:var(--ink);border-radius:2px;margin:2px 0;transition:transform .3s var(--wn-ease)}
@@ -122,7 +118,6 @@
 /* ---- ../v3/hx.css */
 /* ---- v3 hero shell: copy, a stage where AI engines point to the north star, the answer card ---- */
 .hx{position:relative;isolation:isolate;overflow:hidden;padding:clamp(8.5rem,12vw,10.5rem) var(--pad) 0;text-align:center;background:var(--paper)}
-.hx-bg{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
 .hx-copy{position:relative;z-index:2;max-width:980px;margin:0 auto}
 .hx .hero-title{margin-inline:auto}
 .hx .hero-lead{margin-inline:auto}
@@ -170,19 +165,9 @@
   background:radial-gradient(150px circle at var(--mx,50%) var(--my,50%),rgba(255,226,180,.55),rgba(255,226,180,0) 60%)}
 .hx .btn-ghost::after{background:radial-gradient(150px circle at var(--mx,50%) var(--my,50%),rgba(242,154,85,.28),rgba(242,154,85,0) 60%)}
 .hx .btn:hover::after{opacity:1}
-.hx .btn .sp{position:absolute;width:7px;height:7px;left:var(--mx,50%);top:var(--my,50%);pointer-events:none;opacity:0;
-  background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M5 0 6 4 10 5 6 6 5 10 4 6 0 5 4 4Z' fill='%23fff3e0'/%3E%3C/svg%3E")}
-.hx .btn-ghost .sp{filter:brightness(.7) sepia(1) saturate(4) hue-rotate(-12deg)}
-.hx .btn:hover .sp{animation:tw 1.4s ease-in-out infinite}
-.hx .btn .sp:nth-of-type(1){margin:-14px 0 0 -18px}.hx .btn .sp:nth-of-type(2){margin:8px 0 0 14px;animation-delay:.35s}
-.hx .btn .sp:nth-of-type(3){margin:-4px 0 0 26px;width:5px;height:5px;animation-delay:.7s}
 @keyframes tw{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
 
 /* evaluation-only switcher (not part of the design) */
-.pv{position:absolute;right:16px;top:92px;z-index:5;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:60%}
-.pv button{font:500 12px Inter,sans-serif;padding:6px 10px;border-radius:999px;border:1px solid rgba(221,203,174,.9);background:rgba(255,253,248,.85);color:var(--ink-2);cursor:pointer}
-.pv button[aria-pressed="true"]{background:var(--ink);color:#fffdf8;border-color:var(--ink)}
-.pv span{font:600 11px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);align-self:center;margin-right:2px}
 
 /* dark heroes */
 .hx.dark{background:#0b0703}
@@ -196,16 +181,12 @@
 .hx.dark .eng:hover,.hx.dark .eng.on{color:#fff;border-color:rgba(255,179,107,.8);background:rgba(194,82,26,.45)}
 .hx.dark .hx-lines{--ln:#ffc58f}
 .hx.dark .hx-focus::before{background:radial-gradient(circle,rgba(255,226,190,.7),rgba(242,154,85,.24) 34%,rgba(242,154,85,0) 66%)}
-.hx.dark .pv button{background:rgba(28,20,8,.6);color:#f4e8d3;border-color:rgba(255,236,214,.3)}
-.hx.dark .pv button[aria-pressed="true"]{background:#fffdf8;color:#1c1408}
-.hx.dark .pv span{color:#c9b492}
 
-@media (max-width:700px){.hx{padding-top:7.5rem}.hx-stage{height:230px}.pv{position:relative;top:auto;right:auto;max-width:none;justify-content:center;margin:-1.5rem auto 1.25rem}}
+@media (max-width:700px){.hx{padding-top:7.5rem}.hx-stage{height:230px}}
 @media (prefers-reduced-motion:reduce){.hx-lines .ln.on,.hx-focus::before,.w,.you{animation:none!important;opacity:1}}
 
 /* ---- ../v4/o.css */
 /* ---- v4 orbits heroes: compact, with a dark night-sky zone behind the orbits ---- */
-.hx.o1,.hx.o2{padding-top:clamp(6.75rem,9vw,8rem)}
 .hx .hx-stage{height:clamp(200px,18vw,262px);margin-top:0}
 .hx .hx-cardwrap{margin-top:-30px}
 .grain{position:absolute;inset:-50%;background:url(img/grain.png) repeat;opacity:.12;mix-blend-mode:overlay;pointer-events:none;
@@ -215,25 +196,13 @@
 
 /* O1: light headline, then the page fades into a dark band holding the orbits, then back to cream.
    The band's background is generated (build.py) from the site tokens along a smooth curve. */
-.o1 .zone{position:relative;isolation:isolate;overflow:hidden;margin:clamp(.5rem,2vw,1.25rem) calc(var(--pad) * -1) 0;padding:var(--ft) var(--pad) 0;background:var(--zone-bg)}
-.o1 .zone #orbits,.o1 .zone .grain-wrap{-webkit-mask-image:var(--zone-mask);mask-image:var(--zone-mask)}
-.o1 .zone .grain-wrap{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.o1 .zone .hx-stage{margin-top:calc(var(--ft) * -.62)}
-.o1 .zone .hx-cardwrap{padding-bottom:calc(var(--fb) * .45)}
 
 /* O2: the whole hero is night sky, fading into the page at the bottom, like the footer */
-.o2{background:var(--zone-bg)!important}
-.o2 #orbits,.o2 .grain-wrap{-webkit-mask-image:var(--zone-mask);mask-image:var(--zone-mask)}
-.o2 .grain-wrap{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.o2 .hx-cardwrap{padding-bottom:calc(var(--fb) * .6)}
 
 /* dark-zone engine chips, lines and star glow (O1's band and all of O2) */
-.zone .eng,.o2 .eng{color:#f4e8d3;background:rgba(28,20,8,.55);border-color:rgba(255,236,214,.22)}
-.zone .hx-lines,.o2 .hx-lines{--ln:#f29a55}
-.zone .hx-focus::before,.o2 .hx-focus::before{background:radial-gradient(circle,rgba(255,226,196,.72),rgba(242,154,85,.24) 34%,rgba(242,154,85,0) 66%)}
-.o2 .eyebrow{color:#e8864a}.o2 .hero-title{color:#fffdf8}.o2 .hero-title em{color:#f29a55}.o2 .hero-lead{color:#e7dcc9}
-.o2 .btn-ghost{--btn-bg:rgba(255,253,248,.06);--btn-fg:#fffdf8;--btn-bd:rgba(255,236,214,.45)}
-.o2 .btn-ghost:hover{--btn-bg:rgba(255,253,248,.14);--btn-fg:#fff;--btn-bd:#ffb36b}
+.zone .eng{color:#f4e8d3;background:rgba(28,20,8,.55);border-color:rgba(255,236,214,.22)}
+.zone .hx-lines{--ln:#f29a55}
+.zone .hx-focus::before{background:radial-gradient(circle,rgba(255,226,196,.72),rgba(242,154,85,.24) 34%,rgba(242,154,85,0) 66%)}
 
 /* ---- each engine in its own brand colours when hovered or selected ----
    (prefixed with .hx so they beat the generic dark-hero chip style from v3) */
@@ -259,7 +228,7 @@
 .c-eng[data-k="google"]{color:#3c4043}
 .c-eng[data-k="gemini"]{color:#5f5bbd}
 
-@media (max-width:700px){.hx.o1,.hx.o2{padding-top:6.75rem}.hx .hx-stage{height:200px}}
+@media (max-width:700px){.hx .hx-stage{height:200px}}
 @media (max-width:480px){.hx .hx-cardwrap{padding-left:0;padding-right:0}}
 @media (prefers-reduced-motion:reduce){.grain{animation:none}}
 
@@ -293,8 +262,6 @@
 .o5 .rim{background:transparent;box-shadow:0 0 0 1.5px rgba(242,154,85,.95),0 -3px 14px rgba(255,200,150,.6),0 -22px 70px rgba(208,99,28,.5),0 -60px 160px rgba(208,99,28,.22)}
 
 /* B. Clean seam: a straight edge with a glowing hairline */
-.o5 .seam-line{position:absolute;left:0;right:0;top:var(--sky,640px);height:1px;z-index:-1;pointer-events:none;
-  background:linear-gradient(90deg,rgba(242,154,85,0) 4%,rgba(242,154,85,.85) 32%,#ffd9b3 50%,rgba(242,154,85,.85) 68%,rgba(242,154,85,0) 96%)}
 .o5.seam .sky::after{content:"";position:absolute;left:15%;right:15%;bottom:-90px;height:180px;pointer-events:none;
   background:radial-gradient(closest-side,rgba(242,154,85,.3),rgba(242,154,85,0))}
 
@@ -319,7 +286,6 @@
 /* Film grain, as in the earlier dark version: drawn at 12% over the sky rather than blended into it,
    which also lifts the blacks slightly to a softer, filmic dark. The "clean" page drops it. */
 .o5 .sky .grain{mix-blend-mode:normal;opacity:.12}
-.o5.clean .sky .grain-wrap{display:none}
 
 /* Claude in its own colours (Anthropic's palette: orange #D97757, dark #141413, light #FAF9F5) */
 .hx .eng[data-k="claude"]:is(:hover,.on){background:#faf9f5;color:#141413;border-color:#d97757;box-shadow:0 0 0 4px rgba(217,119,87,.22),0 14px 30px -14px rgba(217,119,87,.6)}
@@ -346,11 +312,6 @@
 }
 
 /* Copy switcher (evaluation only, not part of the design) */
-.o5 .pv{top:90px}
-.o5 .pv button{background:rgba(28,20,8,.6);color:#f4e8d3;border-color:rgba(255,236,214,.3)}
-.o5 .pv button[aria-pressed="true"]{background:#fffdf8;color:#1c1408;border-color:#fffdf8}
-.o5 .pv span{color:#c9b492}
-@media (max-width:700px){.o5 .pv{position:relative;top:auto;right:auto;margin:-1.25rem auto 1.1rem;justify-content:center}}
 
 /* ---- ../v7/v7.css */
 /* ---- v7 ---- */
@@ -413,11 +374,7 @@ body{overflow-x:clip}
 .sx-points li::before{content:"";position:absolute;left:0;top:.3em;width:13px;height:13px;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M5 0 6 4 10 5 6 6 5 10 4 6 0 5 4 4Z' fill='%23d0631c'/%3E%3C/svg%3E")}
 .sx-points b{font-weight:600;color:var(--ink)}
 .sx-art{position:relative;min-width:0}
-.sx-copy-center{max-width:62rem;margin:0 auto;text-align:center}
-.sx-copy-center .kicker{justify-content:center}
-.sx-copy-center .lead{margin-inline:auto;max-width:56ch}
-.sx-copy-center .sx-points{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2.5vw,2rem);margin-top:1.75rem;text-align:left}
-.city-img img,.gl-photo img,.reel-card img,.bt img{display:block;width:100%;height:100%;object-fit:cover}
+.reel-card img{display:block;width:100%;height:100%;object-fit:cover}
 
 /* The Shift (v13): text on the left, a light globe on the right, the city reel underneath. The globe and the reel stay in step. */
 .sx-orbit{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}
@@ -435,42 +392,13 @@ body{overflow-x:clip}
 .reel-card.on .rc-meta b::before{opacity:1}
 
 /* (v12) A: night globe. A dark card; the globe glows where the city lights are and turns from city to city */
-.sx-globe{position:relative;isolation:isolate;overflow:hidden;padding:clamp(1.5rem,4vw,3.25rem);border-radius:28px;background:#140e07;color:#e7dcc9}
-.sx-sky{position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(1px 1px at 8% 14%,#fffdf8,transparent),radial-gradient(1px 1px at 30% 82%,#f4e8d3,transparent),radial-gradient(1.2px 1.2px at 44% 10%,#fffdf8,transparent),
-    radial-gradient(1px 1px at 18% 46%,#fffdf8,transparent),radial-gradient(1px 1px at 52% 92%,#f4e8d3,transparent),radial-gradient(1px 1px at 4% 90%,#fffdf8,transparent),
-    radial-gradient(45% 60% at 78% 50%,rgba(242,154,85,.12),rgba(242,154,85,0))}
-.sx-globe::after{content:"";position:absolute;inset:-50%;z-index:-1;pointer-events:none;background:url(img/grain.png) repeat;opacity:.1}
-.sx-globe .kicker{color:#f29a55}.sx-globe .kicker span{color:#a8977d}
-.sx-globe .h2{color:#fffdf8}.sx-globe .lead{color:#c9b492}
-.sx-globe .sx-points li{color:#e7dcc9}.sx-globe .sx-points b{color:#fffdf8}
 .gl-wrap{position:relative;width:min(100%,540px);aspect-ratio:1;margin-inline:auto}
 .gl-canvas{position:absolute;inset:0;width:100%;height:100%;cursor:grab;touch-action:pan-y}
 .gl-canvas.dragging{cursor:grabbing}
-.gl-card{position:absolute;left:0;bottom:7%;z-index:2;display:flex;align-items:center;gap:.75rem;width:min(310px,74%);margin:0;padding:.5rem .8rem .5rem .5rem;border-radius:16px;
-  background:rgba(255,253,248,.97);color:var(--ink);box-shadow:0 30px 60px -28px rgba(0,0,0,.75);transition:opacity .35s ease,transform .35s ease}
-.gl-card.swap{opacity:0;transform:translateY(8px)}
-.gl-photo{flex:none;width:70px;height:70px;border-radius:11px;overflow:hidden;background:#0b0703}
-.gl-card figcaption{display:grid;gap:.2rem;min-width:0}
-.gl-meta{display:flex;align-items:baseline;gap:.5rem}
-.gl-city{font-size:.93rem;font-weight:700}
-.gl-time{font-size:.74rem;color:var(--muted);font-variant-numeric:tabular-nums}
-.gl-q{font-size:.84rem;line-height:1.35;color:var(--ink-2)}
-.gl-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:1.1rem}
-.gl-chip{height:30px;padding:0 .75rem;border-radius:999px;border:1px solid rgba(255,236,214,.16);background:rgba(255,253,248,.04);color:#a8977d;font:600 .76rem Inter,system-ui,sans-serif;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
-.gl-chip.key{color:#f4e8d3;border-color:rgba(242,154,85,.4)}
-.gl-chip:hover{color:#fffdf8;border-color:rgba(242,154,85,.6)}
-.gl-chip[aria-pressed="true"]{background:#f29a55;border-color:#f29a55;color:#1c1408}
-.gl-chip:focus-visible{outline:2px solid #f29a55;outline-offset:2px}
 
 /* B: departures board. Split-flap rows; one row flips to a new question every few seconds */
-.sx-board{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
 .board{padding:1.1rem 1.1rem 1.15rem;border-radius:20px;background:#15100a;border:1px solid #2a2014;box-shadow:0 40px 80px -42px rgba(28,20,8,.75),inset 0 1px 0 rgba(255,236,214,.06)}
-.board-top{display:flex;justify-content:space-between;align-items:center;margin:0 .3rem .95rem}
-.board-title{font:700 .76rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;text-transform:uppercase;color:#f29a55}
-.board-note{font-size:.72rem;color:#8f7d64}
-.board-head,.board-row{display:grid;grid-template-columns:4.3rem 7.4rem minmax(0,1fr);gap:.55rem;align-items:center}
-.board-head{padding:0 .4rem .5rem;font:600 .62rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.13em;text-transform:uppercase;color:#6e5e49}
+.board-row{display:grid;grid-template-columns:4.3rem 7.4rem minmax(0,1fr);gap:.55rem;align-items:center}
 .board-rows{display:grid;gap:5px;margin:0;padding:0;list-style:none}
 .board-row{padding:.32rem .4rem;border-radius:8px;background:#0d0905;font:600 13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:#ffd2a6;white-space:nowrap;overflow:hidden}
 .board-row.key .bd-city{color:#f29a55}
@@ -488,45 +416,19 @@ body{overflow-x:clip}
 .reel:hover .reel-track{animation-play-state:paused}
 @keyframes reel{to{transform:translateX(calc(-50% - 7px))}}
 .reel-card{position:relative;flex:none;width:clamp(200px,18vw,262px);aspect-ratio:4/5;margin:0;border-radius:18px;overflow:hidden;background:#0b0703}
-.reel-card::after,.bt::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(11,7,3,.35),rgba(11,7,3,0) 30%,rgba(11,7,3,0) 45%,rgba(11,7,3,.8))}
-.reel-card.key::before,.bt.key::before{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;box-shadow:inset 0 0 0 1.5px rgba(242,154,85,.85);pointer-events:none}
-.reel-card figcaption,.bt figcaption{position:absolute;inset:12px;z-index:1;display:flex;flex-direction:column;justify-content:space-between;color:#fffdf8}
-.rc-meta,.bt-meta{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
-.rc-meta b,.bt-meta b{font-size:.95rem;font-weight:700;letter-spacing:-.01em}
-.rc-time,.bt-time{font-size:.72rem;color:#e7dcc9;font-variant-numeric:tabular-nums}
-.rc-q,.bt-q{align-self:flex-start;padding:.42rem .6rem;border-radius:10px;font-size:.8rem;line-height:1.35;color:#fffdf8;background:rgba(28,20,8,.6);border:1px solid rgba(255,236,214,.16);
+.reel-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(11,7,3,.35),rgba(11,7,3,0) 30%,rgba(11,7,3,0) 45%,rgba(11,7,3,.8))}
+.reel-card.key::before{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;box-shadow:inset 0 0 0 1.5px rgba(242,154,85,.85);pointer-events:none}
+.reel-card figcaption{position:absolute;inset:12px;z-index:1;display:flex;flex-direction:column;justify-content:space-between;color:#fffdf8}
+.rc-meta{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+.rc-meta b{font-size:.95rem;font-weight:700;letter-spacing:-.01em}
+.rc-time{font-size:.72rem;color:#e7dcc9;font-variant-numeric:tabular-nums}
+.rc-q{align-self:flex-start;padding:.42rem .6rem;border-radius:10px;font-size:.8rem;line-height:1.35;color:#fffdf8;background:rgba(28,20,8,.6);border:1px solid rgba(255,236,214,.16);
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 
 /* D: bento. Chicago largest, Toronto and Jeddah beside it; live local times; questions show on the key tiles and on hover */
-.bento8{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:clamp(150px,15vw,205px);gap:12px;margin-top:clamp(2rem,4vw,2.75rem)}
-.bt{position:relative;margin:0;border-radius:18px;overflow:hidden;background:#0b0703}
-.bt img{transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
-.bt:hover img{transform:scale(1.05)}
-.bt-chicago{grid-column:1/4;grid-row:1/3}
-.bt-toronto{grid-column:4/6;grid-row:1}
-.bt-jeddah{grid-column:4/6;grid-row:2}
-.bt-newyork{grid-column:6;grid-row:1}
-.bt-dubai{grid-column:6;grid-row:2}
-.bt-raleigh{grid-column:1/3;grid-row:3}
-.bt-cleveland{grid-column:3/5;grid-row:3}
-.bt-hyderabad{grid-column:5/7;grid-row:3}
-.bt:not(.key) .bt-q{opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease}
-.bt:not(.key):hover .bt-q{opacity:1;transform:none}
-.bt-chicago .bt-meta b{font-size:1.15rem}
-.bt-chicago .bt-q{font-size:.9rem}
-.bt-newyork .bt-q,.bt-dubai .bt-q{font-size:.72rem}
 
 @media (max-width:900px){
-  .sx,.sx-board{grid-template-columns:1fr}
-  .sx-copy-center .sx-points{grid-template-columns:1fr;max-width:32rem;margin-inline:auto}
-  .bento8{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(140px,40vw,190px)}
-  .bento8 .bt{grid-column:auto;grid-row:auto}
-  .bento8 .bt-chicago{grid-column:1/3;grid-row:span 2}
-  .bt:not(.key) .bt-q{display:none}
-  .gl-card{left:50%;transform:translateX(-50%);bottom:0}
-  .gl-card.swap{transform:translate(-50%,8px)}
-  .board-head{display:none}
-  .board-top{flex-direction:column;align-items:flex-start;gap:.4rem}
+  .sx{grid-template-columns:1fr}
   .board-row{grid-template-columns:auto minmax(0,1fr);row-gap:.3rem;font-size:10px;padding:.45rem .4rem}
   .board-row .bd-q{grid-column:1/-1}
 }
@@ -614,18 +516,8 @@ body{overflow-x:clip}
 
 /* ---------------------------------------------------------------- 05 process: list and constellation share one height */
 .process-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.25rem,3vw,2.5rem);align-items:stretch;max-width:1080px;margin-inline:auto}
-.process-art{position:relative;display:flex;align-items:center;border-radius:22px;overflow:hidden;background:#1c1408;isolation:isolate;
-  box-shadow:0 40px 80px -48px rgba(28,20,8,.7)}
 /* a few extra stars so the panel reads as sky edge to edge, whatever its shape */
-.process-art{background:
-  radial-gradient(1px 1px at 8% 14%,rgba(255,253,248,.55),transparent),radial-gradient(1px 1px at 22% 88%,rgba(255,253,248,.4),transparent),
-  radial-gradient(1.2px 1.2px at 91% 80%,rgba(244,232,211,.5),transparent),radial-gradient(1px 1px at 4% 60%,rgba(255,253,248,.35),transparent),
-  radial-gradient(1px 1px at 96% 30%,rgba(255,253,248,.4),transparent),radial-gradient(1px 1px at 60% 94%,rgba(255,253,248,.35),transparent),#1c1408}
-.process-art::before{content:"";position:absolute;inset:-50%;z-index:1;pointer-events:none;background:url(img/grain.png) repeat;opacity:.12}
-.process-art::after{content:"";position:absolute;right:-20%;top:-30%;width:70%;height:80%;z-index:0;pointer-events:none;
-  background:radial-gradient(closest-side,rgba(242,154,85,.28),rgba(242,154,85,0))}
 .constellation{position:absolute;inset:0;z-index:0;display:block;width:100%;height:100%;padding:4% 3%;box-sizing:border-box}
-.c-bg circle{fill:#fffdf8}
 .c-path{fill:none;stroke:#f29a55;stroke-width:1.4;stroke-dasharray:3 6;opacity:.9}
 .c-node .halo{opacity:.45;transition:opacity .5s ease}
 .c-node .core{fill:#5a3113;stroke:#f29a55;stroke-width:1.2;transition:fill .5s ease}
@@ -638,26 +530,7 @@ body{overflow-x:clip}
 .c-node.hot .halo{opacity:1}
 .c-node .name{font-weight:500;letter-spacing:.01em;fill:#c9b492}
 .c-node.lit .name{fill:#f4e8d3}
-.pw-sky{position:relative;isolation:isolate;overflow:hidden;border-radius:22px;box-shadow:0 40px 80px -48px rgba(28,20,8,.7);
-  background:radial-gradient(1px 1px at 6% 20%,rgba(255,253,248,.5),transparent),radial-gradient(1px 1px at 48% 86%,rgba(255,253,248,.35),transparent),radial-gradient(1px 1px at 97% 70%,rgba(255,253,248,.4),transparent),
-    radial-gradient(40% 90% at 88% 0%,rgba(242,154,85,.24),rgba(242,154,85,0)),#1c1408}
-.pw-sky::before{content:"";position:absolute;inset:-50%;z-index:1;pointer-events:none;background:url(img/grain.png) repeat;opacity:.12}
-.pw-sky .constellation{position:relative;inset:auto;height:auto;padding:0;aspect-ratio:1000/250}
-.pw-head{position:absolute;left:clamp(1.4rem,3.4vw,2.75rem);top:clamp(1.3rem,3vw,2.4rem);z-index:2;max-width:min(560px,52%);text-align:left}
-.pw-head .kicker{justify-content:flex-start;margin-bottom:.8rem}
-.pw-head .kicker span{color:#a8977d}
-.pw-head .h2{margin:0;color:#fffdf8;font-size:clamp(1.6rem,1.1rem + 1.9vw,2.6rem)}
-.pw-moves{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:1.1rem 0 0;padding:0;list-style:none;text-align:center}
-.pw-moves li{padding:.6rem 1rem .7rem;border-radius:14px;transition:background .3s}
-.pw-moves li:hover{background:var(--paper-2)}
-.pw-moves .move-num{display:block;padding:0;margin-bottom:.35rem}
-.pw-moves h3{margin:0 0 .3rem}
-.pw-moves p{margin:0 auto;max-width:25ch;font-size:.9rem;line-height:1.5;color:var(--ink-2)}
 .pr-step{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.25rem,3vw,2.5rem);align-items:stretch;max-width:1080px;margin-inline:auto}
-.pr-step .process-art{min-height:300px}
-.ps-panel{display:flex;flex-direction:column;justify-content:center}
-.ps-panel .kicker{justify-content:flex-start}
-.ps-panel .h2{margin:0 0 1.5rem;font-size:clamp(1.6rem,1.1rem + 1.9vw,2.6rem)}
 .ps-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.4rem}
 .ps-pills button{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:.45rem;height:38px;padding:0 .9rem;border-radius:999px;border:1px solid var(--rule-mid);background:#fff;
   font:600 .84rem Inter,system-ui,sans-serif;color:var(--ink-2);cursor:pointer;transition:background .3s,color .3s,border-color .3s}
@@ -668,28 +541,16 @@ body{overflow-x:clip}
 .ps-pills button:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
 .ps-pills button::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:#f29a55;transform:scaleX(0);transform-origin:0 50%}
 .pr-step.auto .ps-pills button[aria-selected="true"]::after{animation:sp-fill 4.2s linear both}
-.ps-stage{display:grid}
-.ps-p{grid-area:1/1;transition:opacity .4s ease}
-.ps-p[hidden]{display:block;visibility:hidden;opacity:0}
-.ps-num{margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(2.4rem,1.8rem + 2vw,3.4rem);line-height:1;letter-spacing:-.05em;color:var(--ember)}
-.ps-t{margin:.7rem 0 .5rem;font-family:var(--font-display);font-weight:600;font-size:clamp(1.4rem,1.1rem + 1vw,1.9rem);line-height:1.15;letter-spacing:-.03em;color:var(--ink)}
-.ps-l{margin:0;max-width:44ch;font-size:1.02rem;line-height:1.6;color:var(--ink-2)}
 @media (max-width:900px){
-  .pw-moves{grid-template-columns:1fr 1fr;row-gap:.5rem}
-  .pw-head{position:relative;left:auto;top:auto;max-width:none;padding:1.4rem 1.4rem 0}
-  .pw-sky .constellation{aspect-ratio:1000/300}
   .pr-step{grid-template-columns:1fr;max-width:560px}
-  .pr-step .process-art{min-height:0;aspect-ratio:520/330}
 }
 .moves{margin:0;padding:0;list-style:none;border-top:1px solid var(--rule)}
 .moves li{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:.5rem;padding:.85rem .5rem;border-bottom:1px solid var(--rule);border-radius:10px;transition:background .3s}
 .moves li:hover{background:var(--paper-2)}
-.move-num{font-size:.78rem;font-weight:700;letter-spacing:.06em;color:var(--ember);padding-top:.15rem}
 .moves h3{margin:0 0 .2rem}
 .moves p{margin:0;font-size:.9rem;line-height:1.5;color:var(--ink-2)}
 @media (max-width:900px){
   .process-grid{grid-template-columns:1fr;max-width:560px}
-  .process-art{order:2;aspect-ratio:520/330}
 }
 
 /* ---------------------------------------------------------------- 06 client words: the spotlight, then the wider client strip */
@@ -745,9 +606,6 @@ body{overflow-x:clip}
 /* optical sizing: each logo gets the height that makes it read at the same weight as its neighbours */
 .cl-goodday svg{height:26px}
 .cl-candata svg{height:28px}
-.cl-chatbase svg{height:16px}
-.cl-chatbase .co-logo{opacity:.85}
-.co-dd{display:inline-block;width:15px;height:21px;background:currentColor;-webkit-mask:url(img/logo-deendesk-mask.png) center/contain no-repeat;mask:url(img/logo-deendesk-mask.png) center/contain no-repeat}
 .co-type span{font-weight:600;font-size:1.05rem;letter-spacing:.01em}
 
 /* ---------------------------------------------------------------- why now: a night launch arcs over the sea, the words sit in the sky above it */
@@ -819,13 +677,11 @@ body{overflow-x:clip}
 
 /* ---------------------------------------------------------------- 08 FAQ: roomier cards; the panels share one height so switching topics never jumps */
 .faq2 .sec-head{margin-bottom:clamp(1.75rem,3.9vw,3.5rem)}
-.tabs-wrap{text-align:center}
 .tabs{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;margin-bottom:clamp(2rem,4.4vw,4rem);border-radius:999px;background:var(--paper-2);border:1px solid var(--rule)}
 .tabs button{height:40px;padding:0 1.1rem;border:0;border-radius:999px;background:none;font:600 .88rem Inter,system-ui,sans-serif;color:var(--ink-2);cursor:pointer;transition:background .3s,color .3s}
 .tabs button:hover{color:var(--ink)}
 .tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
 .tabs button:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
-.tabpanels{display:grid;max-width:840px;margin-inline:auto}
 .tabpanel{grid-area:1/1;display:grid;gap:10px;align-content:start}
 .tabpanel[hidden]{display:grid;visibility:hidden}
 .qa{border:1px solid var(--rule);border-radius:16px;background:#fff;transition:border-color .3s,box-shadow .4s ease}
@@ -860,9 +716,6 @@ body{overflow-x:clip}
 .contact2 .contact-facts{margin-top:0}
 
 /* A: balanced. Two columns that end on the same line; the message box takes up the difference */
-.contact-a{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(1.25rem,3vw,2.5rem);align-items:stretch;max-width:1080px;margin-inline:auto}
-.ca-side{display:flex;flex-direction:column;gap:1.5rem}
-.ca-side .contact-facts{margin-top:auto}
 
 /* B: one card. A night panel with the sample on the left, the form on the right */
 .cb-card{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);max-width:1120px;margin-inline:auto;border-radius:26px;overflow:hidden;background:#fff;border:1px solid var(--rule);
@@ -886,21 +739,16 @@ body{overflow-x:clip}
 .cb-card .form-slot > .form{border:0;border-radius:0;box-shadow:none;padding:clamp(1.5rem,3vw,2.4rem)}
 
 /* C: domain first. One field and one button; the rest opens after */
-.contact-c{max-width:780px;margin-inline:auto;text-align:center}
 .domain-bar{display:flex;gap:6px;max-width:620px;margin:0 auto;padding:6px;border-radius:999px;background:#fff;border:1px solid var(--rule-mid);
   box-shadow:0 24px 50px -36px rgba(28,20,8,.45);transition:border-color .2s,box-shadow .2s}
 .domain-bar:focus-within{border-color:var(--flame);box-shadow:0 0 0 3px rgba(194,82,26,.14),0 24px 50px -36px rgba(28,20,8,.45)}
 .domain-bar input{flex:1;min-width:0;height:52px;padding:0 1.2rem;border:0;background:none;font-size:1.05rem;outline:none}
 .domain-bar input::placeholder{color:#7a6650}
 .domain-bar .btn{flex:none;white-space:nowrap}
-.domain-note{margin:.85rem 0 0;font-size:.84rem;color:var(--muted)}
 .cc-rest{margin:1.75rem auto 0;text-align:left}
-.cc-step{margin:0 0 .9rem;text-align:center;font-weight:600;color:var(--ink)}
-.cc-below{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(1.25rem,3vw,2rem);align-items:center;margin-top:clamp(2rem,4vw,3rem);text-align:left}
 
 @media (max-width:900px){
-  .contact-a,.cb-card,.cc-below{grid-template-columns:1fr}
-  .contact-a{max-width:600px}
+  .cb-card{grid-template-columns:1fr}
 }
 @media (max-width:560px){
   .domain-bar{flex-direction:column;border-radius:20px}
@@ -930,24 +778,11 @@ body{overflow-x:clip}
 /* ---------------------------------------------------------------- Starlight: one hover for every button, nav included. The glow and sparkles sit in an inner layer (.sl) that
    clips itself, so buttons with things that pop outside them (the nav's star) are not clipped */
 .btn,.wn-ghost,.wn-solid{position:relative;isolation:isolate}
-.sl{position:absolute;inset:0;z-index:-1;border-radius:inherit;overflow:hidden;pointer-events:none}
-.sl::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .35s ease;
-  background:radial-gradient(150px circle at var(--mx,50%) var(--my,50%),rgba(255,226,180,.55),rgba(255,226,180,0) 60%)}
-.btn-ghost > .sl::before,.wn-ghost > .sl::before{background:radial-gradient(150px circle at var(--mx,50%) var(--my,50%),rgba(242,154,85,.28),rgba(242,154,85,0) 60%)}
-:hover > .sl::before{opacity:1}
-.sl .sp{position:absolute;width:7px;height:7px;left:var(--mx,50%);top:var(--my,50%);opacity:0;
-  background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M5 0 6 4 10 5 6 6 5 10 4 6 0 5 4 4Z' fill='%23fff3e0'/%3E%3C/svg%3E")}
-.btn-ghost > .sl .sp,.wn-ghost > .sl .sp{filter:brightness(.7) sepia(1) saturate(4) hue-rotate(-12deg)}
-:hover > .sl .sp{animation:tw 1.4s ease-in-out infinite}
-.sl .sp:nth-child(1){margin:-14px 0 0 -18px}
-.sl .sp:nth-child(2){margin:8px 0 0 14px;animation-delay:.35s}
-.sl .sp:nth-child(3){margin:-4px 0 0 26px;width:5px;height:5px;animation-delay:.7s}
 @keyframes tw{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
 
 /* ---------------------------------------------------------------- the way into the footer: A horizon (default), B curtain, C night card, or the old gradient for comparison.
    "Be the answer." now opens the footer itself. */
-.footer-fade,.fx-edge{display:none}
-html[data-foot="old"] .footer-fade{display:block}
+.fx-edge{display:none}
 .footer > .closer{position:relative;z-index:1;padding:clamp(3rem,6vw,5rem) var(--pad) 0;text-align:center;pointer-events:none}
 .closer-line{margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(2.6rem,1.4rem + 5vw,5.4rem);line-height:1;letter-spacing:-.05em;color:#fffdf8}
 .closer-caret{display:inline-block;width:.08em;height:.82em;margin-left:.06em;vertical-align:-.04em;background:#e8864a;animation:closer-blink 1s step-end infinite}
@@ -967,7 +802,6 @@ html[data-foot="b"] .footer{margin-top:-64px;padding-top:64px}
 html[data-foot="b"] .footer > *{transform:translate3d(0,var(--fy,0px),0)}
 /* C: the footer is an inset night card, like the why-now band and the contact card */
 html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) clamp(8px,1vw,14px);border-radius:28px}
-.iter-foot-pick{padding-bottom:clamp(1rem,2vw,1.5rem)}
 /* the hero's film grain (same tile, 12%, same three-step jitter) over the night: the footer and the dark under the curve */
 .fg-grain{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .fg-grain::before{content:"";position:absolute;inset:-50%;background:url(img/grain.png) repeat;opacity:.12;animation:fg-grain 1.2s steps(3) infinite}
@@ -981,7 +815,6 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
   -webkit-mask-image:radial-gradient(circle 200vw at 50% calc(var(--fx-h) - var(--fx-b) - 200vw),transparent calc(200vw - 1px),#000 200vw);
           mask-image:radial-gradient(circle 200vw at 50% calc(var(--fx-h) - var(--fx-b) - 200vw),transparent calc(200vw - 1px),#000 200vw)}
 @media (prefers-reduced-motion:reduce){.fg-grain::before{animation:none}}
-.iter-foot-pick .iter-bar{margin-bottom:0}
 
 /* ---------------------------------------------------------------- footer: the Earth at night and one plain star, drawn the way stars glow everywhere else on the site
    (warm white core, the same ember halo as the lit constellation stars, the footer's own 4.5s twinkle) */
@@ -1006,15 +839,12 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
 .iter-bar span{padding:0 .45rem;text-transform:uppercase;letter-spacing:.06em}
 .iter-bar button{height:32px;padding:0 .75rem;border:1px solid #c9d5ee;border-radius:9px;background:#fff;color:#2b4a8a;font:inherit;cursor:pointer}
 .iter-bar button[aria-pressed="true"]{background:#2b4a8a;border-color:#2b4a8a;color:#fff}
-.iter-flat{padding:clamp(1rem,2vw,1.5rem) var(--pad) 0}
-.iter-flat .iter-bar{margin-bottom:0}
-.iter-foot{background:#1c1408;margin-top:-1px;padding-bottom:.5rem}
 
 @media (max-width:480px){.tabs{display:flex;width:100%}.tabs button{flex:1;padding:0 .5rem;font-size:.8rem}}
 
 @media (prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none;transition:none}
-  .meter i,.meter.dots i,.tile,.disc-body{transition:none!important}
+  .meter i,.meter.dots i,.disc-body{transition:none!important}
   .closer-caret{animation:none}
   .fe-star{animation:none}
   .who-card{transition:none}
@@ -1054,32 +884,6 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
 
 /* ---------------------------------------------------------------- client words (v17): anchored like the Shift, no cards.
    Left: the heading and the three clients as a ruled list (the active one carries the ember progress line). Right: the quote. */
-.spot2{max-width:none;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(2rem,5vw,4.5rem);align-items:start;text-align:left}
-.sp-head{margin:0 0 1.6rem}
-.sp-head .kicker{justify-content:flex-start}
-.sp-head .h2{margin:0}
-.spot2 .sp-tabs{display:flex;flex-direction:column;gap:0;margin:0;border-top:1px solid var(--rule)}
-.spot2 .sp-tab{display:flex;align-items:center;gap:.9rem;width:100%;padding:1rem .25rem;border-bottom:1px solid var(--rule);opacity:.5;text-align:left;border-radius:0}
-.spot2 .sp-tab:hover,.spot2 .sp-tab[aria-selected="true"]{opacity:1}
-.spot2 .sp-tab .avatar{width:44px;height:44px;flex:none}
-.sp-who{display:flex;flex-direction:column;gap:.3rem;min-width:0}
-.sp-who b{font-size:1rem;font-weight:600;color:var(--ink)}
-.sp-who .co-logo{font-size:.82rem;color:var(--muted)}
-.sp-who .co-logo svg{height:14px}.sp-who .co-cm svg{height:11px}
-.spot2 .sp-bar{left:0;right:0;bottom:-1px;height:2px;background:none}
-.spot2 .sp-stage{padding-top:.2rem}
-.sp-mark{display:block;height:.5em;margin:0 0 .6rem;font-family:Georgia,'Times New Roman',serif;font-size:4.2rem;line-height:1;color:var(--ember)}
-.spot2 .sp-q blockquote p{font-size:clamp(1.3rem,.95rem + 1.25vw,1.95rem);line-height:1.4;letter-spacing:-.022em;text-align:left}
-.spot2 .sp-q figcaption{justify-content:flex-start;gap:1rem;margin-top:1.6rem}
-.sp-by{font-size:.9rem;font-weight:600;color:var(--ink-2)}
-@media (max-width:900px){
-  .spot2{grid-template-columns:1fr;gap:1.5rem}
-  .spot2 .sp-tabs{flex-direction:row;border-top:0;border-bottom:1px solid var(--rule)}
-  .spot2 .sp-tab{flex:1;flex-direction:column;gap:.45rem;padding:.6rem .25rem .8rem;border-bottom:0;text-align:center}
-  .spot2 .sp-who{align-items:center}
-  .spot2 .sp-who .co-logo span{display:none}
-  .spot2 .sp-who b{font-size:.88rem}
-}
 
 .stat-src a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule-mid);transition:color .2s,border-color .2s}
 .stat-src a:hover{color:var(--flame-dark);border-color:var(--flame)}
@@ -1087,10 +891,6 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
 /* ---------------------------------------------------------------- client words (v18): one dark panel, after the Amini reference, in our
    colours. Photo, quote, name and role centred; the company logos run along the bottom as tabs. Square corners, like the why-now band. */
 .spot3{position:relative;isolation:isolate;overflow:hidden;max-width:none;margin:0;display:block;text-align:center;background:#1c1408;color:#e7dcc9}
-.sp-sky{position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(1px 1px at 8% 16%,#fffdf8,transparent),radial-gradient(1px 1px at 92% 22%,#f4e8d3,transparent),radial-gradient(1.2px 1.2px at 18% 70%,#fffdf8,transparent),
-    radial-gradient(1px 1px at 84% 64%,#fffdf8,transparent),radial-gradient(1px 1px at 50% 8%,#f4e8d3,transparent),
-    radial-gradient(60% 55% at 50% 0%,rgba(242,154,85,.16),rgba(242,154,85,0))}
 .spot3::after{content:"";position:absolute;inset:-50%;z-index:-1;pointer-events:none;background:url(img/grain.png) repeat;opacity:.1}
 .spot3 .sp-stage{display:grid;padding:clamp(2.75rem,6vw,4.5rem) clamp(1.25rem,6vw,5rem) clamp(2.5rem,5vw,3.75rem)}
 .spot3 .sp-q .avatar{width:84px;height:84px;margin:0 auto 1.75rem;font-size:1.1rem;box-shadow:0 0 0 1px rgba(255,236,214,.18)}
@@ -1119,7 +919,7 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
 
 /* client words (v19): the same panel in light, with slimmer tabs */
 .spot3{background:var(--paper-2);color:var(--ink);border:1px solid var(--rule)}
-.spot3 .sp-sky,.spot3::after{display:none}
+.spot3::after{display:none}
 .spot3 .sp-q .avatar{box-shadow:0 0 0 1px var(--rule-mid)}
 .spot3 .sp-q blockquote p{color:var(--ink)}
 .spot3 .sp-q mark{background:linear-gradient(transparent 62%,rgba(242,154,85,.34) 62%)}
@@ -1140,15 +940,10 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
 
 /* ---------------------------------------------------------------- v20: each client's world behind their words (desktop only).
    Three looks, picked with the review switch: A line drawings in the corners, B dot pictures, C a live window. */
-.sp-scenes,.sp-win,.iter-look{display:none}
+.sp-win{display:none}
 @media (min-width:901px){
-  .iter-look{display:flex}
   .spot3 .sp-stage{position:relative}
   .spot3 .sp-q{position:relative;z-index:1}
-  .spot3[data-look="a"] .sp-scenes,.spot3[data-look="b"] .sp-scenes{display:block;position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  .look-a,.look-b{display:none}
-  .spot3[data-look="a"] .look-a,.spot3[data-look="b"] .look-b{display:block}
-  .look-a{position:absolute;inset:0}
   .sp-dots{position:absolute;inset:0;width:100%;height:100%}
   .spot3[data-look="a"] .sp-q blockquote,.spot3[data-look="b"] .sp-q blockquote{max-width:42rem}
 
@@ -1158,77 +953,29 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
   .spot3[data-cur="0"] [data-i="0"].scn,.spot3[data-cur="1"] [data-i="1"].scn,.spot3[data-cur="2"] [data-i="2"].scn{opacity:1;visibility:visible;transition:opacity .6s ease .1s}
 
   /* A: shared pieces */
-  .look-a{--ln:var(--rule-strong);text-align:left;font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.02em;color:var(--muted)}
-  .look-a svg{display:block;overflow:visible}
-  .look-a .ln{fill:none;stroke:var(--ln);stroke-width:1.25}
-  .look-a .dim{opacity:.6}
-  .look-a .em-s{fill:none;stroke:var(--ember);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-  .look-a .em-f{fill:var(--ember)}
-  .look-a .ink-f{fill:var(--ink-2)}
-  .p-tl,.p-tr,.p-bl,.p-br{position:absolute}
-  .p-tl{top:44px;left:44px}.p-tr{top:40px;right:44px}.p-bl{bottom:40px;left:44px}.p-br{bottom:44px;right:44px}
   .spot3[data-cur] .sc .draw{stroke-dasharray:1;stroke-dashoffset:1}
-  .spot3[data-cur="1"] .sc-ibf .draw,.spot3[data-cur="2"] .sc-cr .draw{animation:sc-draw 1.8s cubic-bezier(.65,0,.35,1) .25s forwards}
   @keyframes sc-draw{to{stroke-dashoffset:0}}
 
   /* A · Cleanmeter: a game screen with its overlay */
-  .hud-c{position:absolute;width:24px;height:24px;border:0 solid var(--rule-strong)}
-  .hud-c.tl{top:16px;left:16px;border-top-width:1.5px;border-left-width:1.5px}
-  .hud-c.tr{top:16px;right:16px;border-top-width:1.5px;border-right-width:1.5px}
-  .hud-c.bl{bottom:16px;left:16px;border-bottom-width:1.5px;border-left-width:1.5px}
-  .hud-c.br{bottom:16px;right:16px;border-bottom-width:1.5px;border-right-width:1.5px}
-  .cm-ov{display:flex;gap:14px;padding:8px 12px;border:1px solid var(--rule-mid);border-radius:8px;background:rgba(255,253,248,.75);color:var(--ink-2)}
-  .cm-ov i,.scn-ov i{font-style:normal;margin-right:5px;opacity:.6}
-  .cm-ov b,.scn-ov b{font-weight:600;font-variant-numeric:tabular-nums}
-  .cm-ov span:first-child b{color:var(--ember)}
   .map{width:112px;height:112px}
-  .map .swp{fill:var(--ember);opacity:.1}
   .map .sweep{transform-box:view-box;transform-origin:60px 60px;animation:sc-spin 6s linear infinite}
   @keyframes sc-spin{to{transform:rotate(360deg)}}
-  .map .blip{animation:sc-blip 3s ease-in-out infinite}.map .b2{animation-delay:-1.5s}
   @keyframes sc-blip{0%,100%{opacity:.25}50%{opacity:1}}
-  .ft{width:230px}.ft .lbl{display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.12em;font-size:9.5px}
-  .ft svg{width:230px;height:46px;overflow:hidden}
-  .ft .scroll{animation:sc-scroll 7s linear infinite}
-  @keyframes sc-scroll{to{transform:translateX(-240px)}}
   .keys{display:grid;grid-template-columns:repeat(3,30px);gap:5px}
   .keys kbd{display:grid;place-items:center;height:30px;border:1px solid var(--rule-mid);border-bottom-width:3px;border-radius:7px;background:var(--paper);font:inherit;color:var(--muted)}
-  .keys .k-w{grid-column:2;animation:sc-key 2.4s ease-in-out infinite}
   .keys kbd:nth-child(2){grid-column:1}
-  @keyframes sc-key{0%,55%,100%{transform:none;border-bottom-width:3px;color:var(--muted);background:var(--paper)}62%,90%{transform:translateY(2px);border-bottom-width:1px;color:var(--ember);background:var(--sand)}}
 
   /* A · IBFNet: graph paper, a trend line, candles and a split */
-  .grid-paper{position:absolute;inset:0;background-image:linear-gradient(var(--rule) 1px,transparent 1px),linear-gradient(90deg,var(--rule) 1px,transparent 1px);background-size:32px 32px;background-position:-1px -1px;opacity:.8;
-    -webkit-mask-image:radial-gradient(ellipse 64% 70% at 50% 50%,transparent 60%,#000 100%);mask-image:radial-gradient(ellipse 64% 70% at 50% 50%,transparent 60%,#000 100%)}
   .candles{width:200px;height:96px}
-  .candles .wk{stroke:var(--rule-strong);stroke-width:1.2}
   .candles .up{fill:var(--paper-2);stroke:var(--ember);stroke-width:1.2}
-  .candles .dn{fill:var(--rule-strong)}
-  .chart{width:270px;height:100px}
-  .chart .end{animation:sc-blip 2.4s ease-in-out infinite}
-  .donut{width:84px;height:84px;transform:rotate(-90deg)}
-  .donut .ring{fill:none;stroke-width:9}
-  .donut .bg{stroke:var(--rule);stroke-width:9}
-  .donut .r1{stroke:var(--ember);stroke-dasharray:46 100}
-  .donut .r2{stroke:var(--rule-strong);stroke-dasharray:30 100;stroke-dashoffset:-47}
-  .donut .r3{stroke:var(--ink-2);stroke-dasharray:21 100;stroke-dashoffset:-78}
 
   /* A · Crispy Studio: a browser window, a layout grid, a pen path, a teammate's cursor */
   .cols{position:absolute;inset:40px 32px 0;background:repeating-linear-gradient(90deg,rgba(208,99,28,.028) 0 calc((100% - 176px)/12),transparent calc((100% - 176px)/12) calc((100% - 176px)/12 + 16px))}
-  .chrome{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;gap:7px;height:40px;padding:0 18px;border-bottom:1px solid var(--rule);background:var(--paper-2)}
-  .chrome i{width:9px;height:9px;border-radius:50%;background:var(--rule-mid)}
-  .chrome .url{position:absolute;left:50%;top:9px;transform:translateX(-50%);height:22px;padding:0 16px;border:1px solid var(--rule);border-radius:999px;background:var(--paper);line-height:21px;color:var(--muted)}
-  .pen{width:240px;height:106px}
-  .pen .anc{fill:var(--paper);stroke:var(--ember);stroke-width:1.5}
-  .pen .hdl{fill:var(--paper);stroke:var(--rule-strong);stroke-width:1.25}
   .cursor{top:74px;right:96px;animation:sc-cur 9s ease-in-out infinite}
   .cursor svg,.scn-cursor svg{width:15px;height:19px;overflow:visible}
   .cursor path,.scn-cursor path{fill:var(--ember);stroke:var(--paper);stroke-width:1.3;stroke-linejoin:round}
   .cursor span,.scn-cursor span{position:absolute;left:13px;top:17px;padding:4px 7px;border-radius:5px 5px 5px 2px;background:var(--ember);color:#fff;font:600 11px/1 var(--font-body);letter-spacing:0;white-space:nowrap}
   @keyframes sc-cur{0%,100%{transform:translate(0,0)}30%{transform:translate(-58px,36px)}55%{transform:translate(-18px,70px)}80%{transform:translate(20px,22px)}}
-  .swatches{display:flex;gap:10px;font-size:9.5px;letter-spacing:.04em}
-  .swatches span{display:flex;flex-direction:column;align-items:center;gap:6px}
-  .swatches i{width:30px;height:30px;border-radius:8px;box-shadow:inset 0 0 0 1px rgba(28,20,8,.12)}
 
   /* C: quote on the left, a window into their world on the right */
   .spot3[data-look="c"] .sp-stage{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);column-gap:clamp(2rem,4vw,3.75rem);align-items:center;text-align:left;
@@ -1240,55 +987,25 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
   .spot3[data-look="c"] .sp-q figcaption{align-items:flex-start;margin-top:1.5rem}
   .spot3[data-look="c"] .sp-win{display:block;grid-area:1/2;align-self:stretch;position:relative;min-height:440px;border:1px solid var(--rule);border-radius:14px;overflow:hidden;background:var(--paper)}
   .scn > svg{position:absolute;inset:0;width:100%;height:100%;display:block}
-  .scn .em-s{fill:none;stroke:var(--ember);stroke-width:2.25;stroke-linecap:round}
-  .scn .em-f{fill:var(--ember)}
-  .spot3[data-cur="1"] .scn-ibf .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:sc-draw 1.8s cubic-bezier(.65,0,.35,1) .2s forwards}
-  .spot3[data-cur="1"] .scn-ibf .w-area{animation:sc-fade 1s ease .9s both}
-  .spot3[data-cur="1"] .scn-ibf .guide{animation:sc-fade .5s ease 1.7s both}
   @keyframes sc-fade{from{opacity:0}}
-  .scn-ibf .sk rect{fill:var(--rule)}
-  .scn-ibf .sk .pill{fill:none;stroke:var(--rule-mid)}.scn-ibf .sk .pill.on{fill:var(--ink);stroke:none}
-  .scn-ibf .pulse{fill:none;stroke:var(--ember);stroke-width:1.5;transform-box:fill-box;transform-origin:center;animation:sc-pulse 2s ease-out infinite}
   @keyframes sc-pulse{from{transform:scale(.5);opacity:.9}to{transform:scale(1.6);opacity:0}}
-  .scn-ibf .bars .b{fill:var(--rule-mid)}.scn-ibf .bars .b-em{fill:var(--ember)}
-  .spot3[data-cur="1"] .scn-ibf .bars rect{transform-box:fill-box;transform-origin:50% 100%;animation:sc-grow .6s cubic-bezier(.2,.8,.2,1) calc(var(--d) + .4s) both}
   @keyframes sc-grow{from{transform:scaleY(0)}}
-  .scn-ov{position:absolute;top:16px;left:16px;display:flex;gap:12px;padding:7px 11px;border-radius:8px;background:rgba(10,7,3,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
-    font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:#fffdf8}
-  .scn-ov span:first-child b{color:#f29a55}
-  .scn-cm .stars circle{animation:sc-blip 4s ease-in-out infinite}
-  .scn-cm .stars circle:nth-child(3n){animation-delay:-1.3s}.scn-cm .stars circle:nth-child(3n+1){animation-delay:-2.6s}
   .scn-chrome{position:absolute;top:0;left:0;right:0;z-index:1;display:flex;align-items:center;gap:7px;height:36px;padding:0 14px;border-bottom:1px solid var(--rule);background:var(--paper-2)}
   .scn-chrome i{width:9px;height:9px;border-radius:50%;background:var(--rule-mid)}
   .scn-chrome span{position:absolute;left:50%;transform:translateX(-50%);height:20px;padding:0 14px;border:1px solid var(--rule);border-radius:999px;background:var(--paper);font:600 10.5px/19px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
-  .scn-cr > svg{top:36px;height:calc(100% - 36px)}
-  .scn-cr .cols2 rect{fill:rgba(208,99,28,.045)}
-  .scn-cr .sk rect{fill:var(--rule)}
-  .scn-cr .sk .ink{fill:var(--ink-2);opacity:.85}.scn-cr .sk .ember{fill:var(--ember)}
-  .scn-cr .sk .line{fill:none;stroke:var(--rule-strong)}
-  .scn-cr .sk .ph{fill:var(--paper-3);stroke:var(--rule-mid)}.scn-cr .sk .x{stroke:var(--rule-mid);stroke-width:1}
-  .scn-cr .sk .card{fill:var(--paper-2);stroke:var(--rule)}
-  .spot3[data-cur="2"] .scn-cr .blk{animation:sc-rise .6s cubic-bezier(.2,.8,.2,1) calc(var(--d) + .15s) both}
   @keyframes sc-rise{from{opacity:0;transform:translateY(10px)}}
-  .scn-cr .sel .h{fill:#fff;stroke:#d0631c;stroke-width:1.5}
-  .scn-cr .sel text{fill:#fff;font:600 10.5px ui-monospace,SFMono-Regular,Menlo,monospace}
-  .spot3[data-cur="2"] .scn-cr .sel{animation:sc-fade .4s ease 1.1s both}
   .scn-cursor{position:absolute;left:62%;top:74%;animation:wn-cur 8s ease-in-out infinite}
   @keyframes wn-cur{0%,100%{transform:translate(0,0)}35%{transform:translate(38px,-150px)}60%{transform:translate(40px,-140px)}82%{transform:translate(-120px,-40px)}}
 }
 @media (min-width:901px) and (prefers-reduced-motion:reduce){
-  .look-a *,.sp-win *{animation:none!important}
+  .sp-win *{animation:none!important}
   .spot3[data-cur] .sc .draw{stroke-dashoffset:0}
 }
 @media (min-width:901px) and (prefers-reduced-motion:reduce){.spot3[data-cur] .scn .draw{stroke-dashoffset:0!important}}
 
 /* ---------------------------------------------------------------- v21: two frames (a rounded card like the contact and pricing cards, or open with
    lines at the edges), and photo versions of C. Desktop only; the phone keeps v19 until a look is picked. */
-.sp-photo,.sp-edges{display:none}
-.iter-picks{display:none}
 @media (min-width:901px){
-  .iter-picks{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:clamp(1.25rem,2.5vw,1.75rem)}
-  .iter-picks .iter-bar{margin:0}
 
   /* frame: rounded card, the same corners, fill and shadow as the contact and pricing cards */
   .spot3[data-frame="round"]{border-radius:26px;background:#fff;border-color:var(--rule);box-shadow:0 30px 60px -48px rgba(28,20,8,.5)}
@@ -1297,17 +1014,8 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
 
   /* frame: open, marked by lines at its edges: a rule above and below, and corner marks */
   .spot3[data-frame="edge"]{background:transparent;border:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);overflow:visible}
-  .spot3[data-frame="edge"] .sp-edges{display:block;position:absolute;inset:-1px 0;pointer-events:none;z-index:2}
-  .sp-edges b{position:absolute;width:22px;height:22px;border:0 solid var(--rule-strong)}
-  .sp-edges b:nth-child(1){top:0;left:0;border-top-width:1.5px;border-left-width:1.5px}
-  .sp-edges b:nth-child(2){top:0;right:0;border-top-width:1.5px;border-right-width:1.5px}
-  .sp-edges b:nth-child(3){bottom:0;left:0;border-bottom-width:1.5px;border-left-width:1.5px}
-  .sp-edges b:nth-child(4){bottom:0;right:0;border-bottom-width:1.5px;border-right-width:1.5px}
   .spot3[data-frame="edge"] .sp-tab[aria-selected="true"]{background:transparent}
-  .spot3[data-frame="edge"] .sp-tab + .sp-tab{border-left-color:transparent}
-  .spot3[data-frame="edge"] .hud-c{display:none}                 /* the frame's own corner marks do this job */
-  .spot3[data-frame="edge"] .chrome{background:transparent}
-  .spot3[data-frame="edge"] .sp-scenes{overflow:visible}
+  .spot3[data-frame="edge"] .sp-tab + .sp-tab{border-left-color:transparent}                 /* the frame's own corner marks do this job */
 
   /* C with photos: the same split as C; the picture sits in a window, or runs the full height of the panel */
   .spot3:is([data-look="cp"],[data-look="cf"]) .sp-stage{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);column-gap:clamp(2rem,4vw,3.75rem);align-items:center;text-align:left;
@@ -1318,34 +1026,22 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
   .spot3:is([data-look="cp"],[data-look="cf"]) .sp-q blockquote p{text-align:left;font-size:clamp(1.15rem,.85rem + .75vw,1.5rem)}
   .spot3:is([data-look="cp"],[data-look="cf"]) .sp-q figcaption{align-items:flex-start;margin-top:1.5rem}
   .spot3:is([data-look="cp"],[data-look="cf"]) .sp-photo{display:block;grid-area:1/2;align-self:stretch;position:relative;min-height:440px;overflow:hidden;background:#1c1408}
-  .spot3[data-look="cp"] .sp-photo{border-radius:14px;box-shadow:0 0 0 1px rgba(28,20,8,.06),0 30px 60px -44px rgba(28,20,8,.55)}
   .spot3[data-look="cf"] .sp-stage{padding-top:0;padding-right:0;padding-bottom:0}
   .spot3[data-look="cf"] .sp-q{padding:clamp(3rem,5vw,4.5rem) 0}
-  .spot3[data-look="cf"] .sp-photo{min-height:520px}
   .spot3[data-frame="edge"][data-look="cf"] .sp-stage{padding-left:clamp(1.5rem,3vw,2.5rem)}   /* open frame: the words line up with the section, not an inset card */
   .ph{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .6s ease,visibility 0s linear .6s}
   .spot3[data-cur="0"] .ph[data-i="0"],.spot3[data-cur="1"] .ph[data-i="1"],.spot3[data-cur="2"] .ph[data-i="2"]{opacity:1;visibility:visible;transition:opacity .6s ease .05s}
   .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 6s cubic-bezier(.2,.7,.2,1)}
   .spot3[data-cur="0"] .ph[data-i="0"] img,.spot3[data-cur="1"] .ph[data-i="1"] img,.spot3[data-cur="2"] .ph[data-i="2"] img{transform:none}
-  .ph-cm img{object-position:50% 70%}.ph-ibf img{object-position:58% 50%}.ph-cr img{object-position:74% 55%}
   .ph::after{content:"";position:absolute;inset:0;pointer-events:none;background:url(img/grain.png) repeat;opacity:.08;mix-blend-mode:overlay}
-  .ph .scn-ov{z-index:1}
-  .ph-chip{position:absolute;left:16px;bottom:16px;z-index:1;padding:8px 12px;border-radius:10px;background:rgba(10,7,3,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-  .ph-chip svg{display:block;width:96px;height:30px;overflow:visible}
-  .ph-chip .spark{fill:none;stroke:#f29a55;stroke-width:2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
-  .ph-chip circle{fill:#fffdf8}
-  .spot3[data-cur="1"] .ph-chip .spark{animation:sc-draw 1.6s cubic-bezier(.65,0,.35,1) .4s forwards}
-  .ph-cr .scn-cursor{left:44%;top:38%}
 }
 @media (min-width:901px) and (prefers-reduced-motion:reduce){
   .ph img{transition:none;transform:none}
-  .ph-chip .spark{stroke-dashoffset:0!important;animation:none!important}
   .ph .scn-cursor{animation:none}
 }
 
 /* ---------------------------------------------------------------- v21 footer: the hero's curve. Same oval (280vw by 70vw; 360vw by 110vw on phones),
    same glowing edge that fades out towards the sides. "dome" bows up like the hero; "bowl" is the hero's curve flipped. */
-.iter-curve{display:block;background:var(--paper);padding-bottom:clamp(1rem,2vw,1.5rem)}
 html[data-curve="dome"],html[data-curve="bowl"]{--ew:280vw;--eh:70vw}
 @media (max-width:700px){html[data-curve="dome"],html[data-curve="bowl"]{--ew:360vw;--eh:110vw}}
 .fx-rimw{display:none}
@@ -1367,94 +1063,25 @@ html[data-curve="dome"] .fx-edge::before{top:var(--fx-t);bottom:auto;width:var(-
 html[data-curve="dome"] .fx-rim{top:calc(var(--fx-t) + 120px);box-shadow:0 0 0 1.5px rgba(242,154,85,.95),0 -4px 22px rgba(242,154,85,.22),inset 0 3px 14px rgba(255,200,150,.6),inset 0 22px 70px rgba(208,99,28,.5),inset 0 60px 160px rgba(208,99,28,.22)}
 html[data-curve="dome"] .night-end .fg-grain{
   -webkit-mask-image:radial-gradient(calc(var(--ew) / 2) calc(var(--eh) / 2) at 50% calc(var(--fx-t) + var(--eh) / 2),#000 99.7%,transparent 100%),linear-gradient(transparent var(--fx-h),#000 var(--fx-h));
-          mask-image:radial-gradient(calc(var(--ew) / 2) calc(var(--eh) / 2) at 50% calc(var(--fx-t) + var(--eh) / 2),#000 99.7%,transparent 100%),linear-gradient(transparent var(--fx-h),#000 var(--fx-h))}
-@media (min-width:901px){.spot3[data-frame="edge"][data-look="cf"] .sp-edges b:nth-child(2){display:none}}   /* the photo runs to that corner */
+          mask-image:radial-gradient(calc(var(--ew) / 2) calc(var(--eh) / 2) at 50% calc(var(--fx-t) + var(--eh) / 2),#000 99.7%,transparent 100%),linear-gradient(transparent var(--fx-h),#000 var(--fx-h))}   /* the photo runs to that corner */
 html[data-curve="dome"] .footer > .closer{top:-1.15vw}   /* the dome peaks 2.3vw higher in the middle; half that keeps the words centred under it */
 
 /* ---------------------------------------------------------------- v22: each window shows the client's own design (desktop only) */
 @media (min-width:901px){
   /* Cleanmeter: its overlay card, rebuilt from the app's own screenshots: dark glass, one tile per sensor, spaced capital
      labels, ring gauges (red and yellow for temperature, green for load) and an FPS tile with its frame-time line */
-  .cmo{position:absolute;top:18px;left:18px;z-index:1;width:min(252px,66%);display:flex;flex-direction:column;gap:5px;padding:6px;border-radius:17px;
-    background:rgba(8,8,10,.5);box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 24px 44px -22px rgba(0,0,0,.7);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);
-    font-family:Inter,var(--font-body);color:#fff;text-align:left}
-  .cmo-t{display:flex;align-items:center;gap:7px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,.075)}
   .cmo-l{min-width:36px;font-size:10.5px;font-weight:500;letter-spacing:.14em;line-height:1;color:rgba(255,255,255,.72)}
   .cmo-v{font-size:19px;font-weight:400;line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:#fff;white-space:nowrap}
   .cmo-v small{margin-left:1px;font-size:.6em;font-weight:500;letter-spacing:0}
-  .cmo-t .cmo-v + .rg{margin-left:6px}
   .rg{width:19px;height:19px;flex:none;transform:rotate(-90deg);overflow:visible}
   .rg .rt{fill:none;stroke:rgba(255,255,255,.14);stroke-width:2.6}
-  .rg .ra{fill:none;stroke-width:2.6;stroke-linecap:round}
-  .cmo-fps{flex-wrap:wrap;row-gap:8px}
-  .cmo-fps .cmo-v{font-size:21px}
   .cmo-ms{margin-left:auto;font-size:11.5px;line-height:1;color:rgba(255,255,255,.72);font-variant-numeric:tabular-nums;white-space:nowrap}
-  .cmo-g{display:block;overflow:hidden}
-  .cmo-fps .cmo-g{flex-basis:100%;height:16px}
-  .cmo-g path{fill:none;stroke:rgba(255,255,255,.55);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round}
-  .cmo-scroll{animation:cmo-scroll 5s linear infinite}
-  @keyframes cmo-scroll{to{transform:translateX(-200px)}}
-  .ph .cmo{top:16px;left:16px}
   /* the same overlay as pills (its horizontal layout), for the line-drawing look */
-  .cmp{display:flex;flex-direction:column;align-items:flex-start;gap:6px;top:36px;left:36px}
-  .cmp-p{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 15px;border-radius:999px;background:rgba(30,16,12,.86);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 12px 24px -16px rgba(28,20,8,.6);
-    font:400 13px/1 Inter,var(--font-body);color:#fff}
-  .cmp .cmo-l{min-width:0;font-size:9.5px}
-  .cmp .cmo-v{font-size:16px}
-  .cmp .rg{width:16px;height:16px}
-  .cmp .cmo-g{width:72px;height:14px;overflow:hidden}
-  .cmp .cmo-ms{margin-left:0;font-size:10px}
 
   /* IBFNet: its site's hero in the window: the grainy orange-to-blue light, a light headline with bold words, its three companies, the white pill */
-  .scn-ibf{background:#0b120c}
-  .ibf-hero{position:absolute;inset:36px 0 0;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:0 26px;text-align:center;color:#fff}
-  .ibf-mesh{position:absolute;inset:-22%;background:
-      radial-gradient(55% 45% at 6% 94%,#ffcf93,rgba(255,207,147,0) 70%),
-      radial-gradient(45% 35% at 96% 4%,#3f8577,rgba(63,133,119,0) 70%),
-      linear-gradient(128deg,#ff7a3d 0%,#ff5b2b 20%,#ff8a62 31%,#f5cfc4 41%,#ff86ad 50%,#d59bf0 56%,#2f89ff 64%,#1a4a8a 70%,#10261b 79%,#070f09 100%);
-    filter:blur(10px);animation:ibf-drift 18s ease-in-out infinite alternate}
-  @keyframes ibf-drift{to{transform:translate(-4%,3%) rotate(2deg)}}
-  .ibf-grain{position:absolute;inset:0;background:url(img/grain.png) repeat;opacity:.24;mix-blend-mode:overlay}
-  .ibf-h{position:relative;margin:0;font:300 clamp(17px,1.5vw,21px)/1.24 Inter,var(--font-body);letter-spacing:-.02em;text-shadow:0 1px 2px rgba(90,30,10,.18),0 2px 24px rgba(90,30,10,.28)}
-  .ibf-h b{font-weight:500}
-  .ibf-subs{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;margin:0;padding:0;list-style:none;font:500 10.5px/1.2 Inter,var(--font-body);color:rgba(255,255,255,.92)}
-  .ibf-subs li::before{content:"›";margin-right:6px;opacity:.55}
-  .ibf-btn{position:relative;display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 15px;border-radius:999px;background:#fff;color:#111;font:500 11.5px/1 Inter,var(--font-body)}
-  .ibf-btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 
   /* Crispy Studio: its site's hero in the window: stone white, Geist and Geist Mono, the red mark, [BRACKETED] links, square buttons,
      the pink pixel dither, dashed column lines; the headline is selected, and Adnan's cursor is on it */
-  .scn-cr{background:#fafaf9}
-  .cs-site{position:absolute;inset:36px 0 0;display:flex;flex-direction:column;background:#fafaf9;color:#0c0a09;font-family:Geist,var(--font-body);text-align:left}
-  .cs-top{display:flex;align-items:center;justify-content:space-between;height:32px;flex:none;padding:0 12px;border-bottom:1px solid #e7e5e4;font:400 8.5px/1 'Geist Mono',ui-monospace,monospace;letter-spacing:.02em;color:#79716b}
-  .cs-top .cs-logo{position:absolute;left:50%;transform:translateX(-50%)}
-  .cs-logo svg{display:block;width:15px;height:15px;color:#ec003f}
-  .cs-body{position:relative;flex:1;margin:0 18px;border-left:1px solid #e7e5e4;border-right:1px solid #e7e5e4;overflow:hidden}
-  .cs-grid{position:absolute;inset:0;pointer-events:none;
-    background-image:linear-gradient(rgba(12,10,9,.09) 55%,transparent 55%),linear-gradient(rgba(12,10,9,.09) 55%,transparent 55%),linear-gradient(rgba(12,10,9,.09) 55%,transparent 55%),linear-gradient(rgba(12,10,9,.09) 55%,transparent 55%);
-    background-size:1px 7px;background-repeat:repeat-y;background-position:20% 0,40% 0,60% 0,80% 0}
-  .cs-dither{position:relative;height:46%;background:url(img/crispy-dither.png?v=3) center top/cover no-repeat;image-rendering:pixelated}
-  .cs-copy{position:absolute;left:16px;right:16px;bottom:18px}
-  .cs-eyebrow{display:flex;align-items:center;gap:6px;margin:0 0 10px;font:400 8.5px/1 'Geist Mono',ui-monospace,monospace;letter-spacing:.03em;color:#ec003f}
-  .cs-eyebrow i{width:4px;height:4px;background:#ec003f}
-  .cs-h{margin:0;font:500 clamp(19px,1.75vw,25px)/1.08 Geist,var(--font-body);letter-spacing:-.045em;color:#0c0a09}
-  .cs-h em{font-style:normal;color:#ec003f}
-  .cs-sel{position:relative;display:inline-block;padding:3px 6px;margin:-3px -6px}
-  .cs-sel::after{content:"";position:absolute;inset:0;border:1.5px solid var(--ember);opacity:0}
-  .cs-sel .h{position:absolute;width:7px;height:7px;background:#fff;border:1.5px solid var(--ember);opacity:0}
-  .cs-sel .tl{left:-3px;top:-3px}.cs-sel .tr{right:-3px;top:-3px}.cs-sel .bl{left:-3px;bottom:-3px}.cs-sel .br{right:-3px;bottom:-3px}
-  .spot3[data-cur="2"] .cs-sel::after,.spot3[data-cur="2"] .cs-sel .h{animation:cs-on .35s ease 1.1s forwards}
-  @keyframes cs-on{to{opacity:1}}
-  .cs-lede{margin:10px 0 0;max-width:24em;font:400 10.5px/1.45 Geist,var(--font-body);color:#79716b}
-  .cs-btns{display:flex;gap:6px;margin-top:14px}
-  .cs-btns span{display:inline-flex;align-items:center;height:24px;padding:0 10px;border:1px solid #0c0a09;font:400 8.5px/1 'Geist Mono',ui-monospace,monospace;letter-spacing:.03em;color:#0c0a09}
-  .cs-btns .solid{background:#0c0a09;color:#fafaf9}
-  .scn-cr .scn-cursor{left:auto;right:18%;top:auto;bottom:34%;z-index:2;animation:cs-cur 7s ease-in-out infinite}
-  @keyframes cs-cur{0%,100%{transform:translate(0,0)}40%{transform:translate(-26px,14px)}55%{transform:translate(-24px,12px)}80%{transform:translate(18px,-10px)}}
-}
-@media (min-width:901px) and (prefers-reduced-motion:reduce){
-  .cmo-scroll,.ibf-mesh,.scn-cr .scn-cursor{animation:none}
-  .cs-sel::after,.cs-sel .h{opacity:1}
 }
 
 /* ---------------------------------------------------------------- v23: scene kinds for the testimonial window (scenes.py). Each kind is drawn
@@ -1534,10 +1161,6 @@ html .night-end .fx-edge{overflow:visible}
 /* Starlight on the testimonial tabs, the who-it's-for tabs and the FAQ (topics and questions): the glow follows the cursor
    and the small stars twinkle beside it, as on the buttons. Pointer devices only. */
 .sp-tab,.who-tabs [role="tab"],.faq2 .tabs [role="tab"],.faq2 .qa > summary{position:relative;isolation:isolate}
-.sl.soft::before{background:radial-gradient(160px circle at var(--mx,50%) var(--my,50%),rgba(242,154,85,.2),rgba(242,154,85,0) 62%)}
-.sl.soft .sp{filter:brightness(.72) sepia(1) saturate(4) hue-rotate(-12deg)}
-.faq2 .qa > summary > .sl{border-radius:14px}
-@media (hover:none){.sl.soft{display:none}}
 
 /* ---------------------------------------------------------------- v24 phone nav, after Primer, Mintlify, Invertase, Frankli and Table22.
    Closed: a flush bar across the top (not a floating pill): mark and wordmark, a compact audit button, a square menu button.
@@ -1612,11 +1235,6 @@ html .night-end .fx-edge{overflow:visible}
   .night-copy p{max-width:none;text-wrap:wrap}   /* one thought per line (the breaks are in the HTML), each line shorter than the last */
 }
 /* v26 review only: hero copy switch, pinned bottom-left */
-.iter-hero{position:fixed;left:12px;bottom:12px;z-index:120;display:flex;align-items:center;gap:6px;padding:6px;border:1.5px dashed #9fb3d9;border-radius:14px;background:#f4f7fd;
-  font:600 .74rem/1 ui-monospace,Menlo,monospace;color:#2b4a8a;box-shadow:0 8px 24px -12px rgba(0,0,0,.35)}
-.iter-hero span{padding:0 .45rem;text-transform:uppercase;letter-spacing:.06em}
-.iter-hero button{height:32px;min-width:40px;padding:0 .75rem;border:1px solid #c9d5ee;border-radius:9px;background:#fff;color:#2b4a8a;font:inherit;cursor:pointer}
-.iter-hero button[aria-pressed="true"]{background:#2b4a8a;border-color:#2b4a8a;color:#fff}
 
 /* ---------------------------------------------------------------- post-launch fixes (25 Sep 2026) */
 /* business tabs: the pill is the outer box; the row inside scrolls, so words never run into its rounded ends */
@@ -1628,8 +1246,8 @@ html .night-end .fx-edge{overflow:visible}
 
   /* film grain: on phones the same tile reads much heavier, so every grain layer is about 40% lighter */
   .grain,.o5 .sky .grain{opacity:.07}
-  .sx-globe::after,.night::after,.spot3::after{opacity:.06}
-  .process-art::before,.pw-sky::before,.fg-grain::before{opacity:.07}
+  .night::after,.spot3::after{opacity:.06}
+  .fg-grain::before{opacity:.07}
 
   /* hero star: its glow 15% softer (the glow's opacity pulses, so the colours are softened instead) */
   .o5 .hx-focus::before{background:radial-gradient(circle,rgba(255,226,196,.61),rgba(242,154,85,.2) 34%,rgba(242,154,85,0) 66%)}
@@ -1686,7 +1304,6 @@ html .night-end .fx-edge{overflow:visible}
 
 /* "Your brand" under the star. The star's box sits above the engines so the label always reads; it lets the pointer through. */
 .o5 .hx-focus{z-index:6;pointer-events:none}
-.wfb-edit{pointer-events:auto}
 .wfb{position:absolute;left:50%;width:max-content;top:calc(50% + 34px);transform:translateX(-50%);z-index:3;display:inline-grid;align-items:center;
   padding:.36rem .72rem .38rem;border-radius:999px;white-space:nowrap;
   font:600 .68rem/1 Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#ffe2c4;
@@ -1696,21 +1313,6 @@ html .night-end .fx-edge{overflow:visible}
   background:linear-gradient(to top,rgba(255,226,196,.45),rgba(255,226,196,0))}
 
 /* C: the label is a field. The mirror span sizes it to whatever is typed. */
-.wfb-edit{grid-template-columns:auto auto;gap:.42rem;padding-right:.6rem;cursor:text;text-transform:none;letter-spacing:.01em;font-size:.8rem;font-weight:600}
-.wfb-edit .wfb-cell{display:inline-grid}
-.wfb-edit .wfb-m,.wfb-edit input{grid-area:1/1;font:inherit;letter-spacing:inherit;min-width:4ch;padding:0;margin:0}
-.wfb-edit .wfb-m{visibility:hidden;white-space:pre}
-.wfb-edit input{width:0;min-width:100%;border:0;outline:0;background:transparent;color:#fffdf8;caret-color:#f29a55}
-.wfb-edit input::placeholder{color:#ffe2c4;opacity:1}
-.wfb-edit svg{width:12px;height:12px;flex:none;min-width:12px;fill:none;stroke:#f29a55;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
-.wfb-edit:hover{box-shadow:inset 0 0 0 1px rgba(255,179,107,.55),0 8px 22px -10px rgba(0,0,0,.7)}
-.wfb-edit:focus-within{box-shadow:inset 0 0 0 1px #f29a55,0 0 0 4px rgba(242,154,85,.18),0 8px 22px -10px rgba(0,0,0,.7)}
-.wfb-hint{position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);white-space:nowrap;pointer-events:none;
-  font:500 .72rem/1 Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none;color:#c9b492;opacity:0;animation:wfbHint 7s 2.4s ease forwards}
-.wfb-hint::before{content:"";display:inline-block;width:14px;height:1px;margin:0 6px 3px 0;vertical-align:middle;background:#c9b492;opacity:.6}
-@keyframes wfbHint{0%{opacity:0;transform:translate(-4px,-50%)}10%,82%{opacity:.95;transform:translate(0,-50%)}100%{opacity:0}}
-.wfb-used .wfb-hint,.wfb-edit:focus-within .wfb-hint{display:none}
-@media (max-width:640px){.wfb-hint{display:none}}
 
 /* "your brand" in the card: the same small glowing dot as the star, instead of the logo.
    v31: the chip sits on the words' baseline (it used to take the dot's, which put the words 1.4px low), even padding
@@ -1746,7 +1348,7 @@ html .night-end .fx-edge{overflow:visible}
 .hv-orbiting .hx-lines .ln:not(.on){opacity:.12}
 
 /* The v2.css reduced-motion rule for the old glow no longer applies; keep the new bits still too */
-@media (prefers-reduced-motion:reduce){.wfb-hint{animation:none;opacity:.95}.hx .eng.wf-ping::after{animation:none}}
+@media (prefers-reduced-motion:reduce){.hx .eng.wf-ping::after{animation:none}}
 
 /* B (v29): "Your brand" is hidden until hx4.js brings it in with the light, now and then */
 [data-hv="b"] .wfb{opacity:0;transform:translate(-50%,5px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.3,1)}
@@ -2049,3 +1651,513 @@ html .night-end .fx-edge{overflow:visible}
 .nw{white-space:nowrap}
 /* footer on laptops: the brand block above, the four link columns across the full width, so no link wraps */
 @media (min-width:901px) and (max-width:1180px){.footer-inner{grid-template-columns:1fr}}
+
+
+/* ---------------------------------------------------------------- v45: Website 2.5 (17 Oct 2026)
+   One shape for every button (12px corners, on the site's corner scale), no pills left, a new hover,
+   Fraunces Light for the hero headline only, fewer section labels, section 3 and the FAQ on a 12-column grid. */
+
+/* --- the hero face: Fraunces Light, self-hosted (Latin only, optical size 72, ~18 KB + ~23 KB italic) --- */
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:300;font-display:swap;src:url(fonts/fraunces-300.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:'Fraunces';font-style:italic;font-weight:300;font-display:swap;src:url(fonts/fraunces-300-italic.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212}
+/* Georgia, resized to Fraunces' width, stands in for the split second before it arrives, so the headline paints at once and doesn't jump.
+   (Measured 17 Oct on a throttled phone: preloading the fonts made the headline appear ~0.6s later; this way it paints first.) */
+@font-face{font-family:'Fraunces Fallback';font-style:normal;src:local('Georgia');size-adjust:92.1%;ascent-override:106.4%;descent-override:28.2%;line-gap-override:0%}
+@font-face{font-family:'Fraunces Fallback';font-style:italic;src:local('Georgia Italic'),local('Georgia-Italic');size-adjust:83.7%;ascent-override:117.1%;descent-override:31.1%;line-gap-override:0%}
+:root{--font-hero:'Fraunces','Fraunces Fallback',Georgia,serif}
+
+.hero-title,.o5 .hero-title{font-family:var(--font-hero);font-weight:300;letter-spacing:-.02em;line-height:1.02}
+/* the highlighted words: italic, lit with the Horizon gradient */
+.o5 .hero-title em{font-style:italic;color:#f29a55;padding-inline:.02em .08em;margin-inline:-.02em -.08em;
+  background:linear-gradient(100deg,#ffe2c4 0%,#f9b47c 30%,#f29a55 58%,#e0742f 100%);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+/* --- the grid: 12 columns inside the page width; left-aligned sections hang off it --- */
+:root{--g12:clamp(16px,2vw,24px)}
+
+/* --- buttons: one shape. 12px corners (the inner corner on the scale), 48px tall, no lift, no glow --- */
+.btn{border-radius:12px;min-height:48px;padding:0 1.5rem;box-shadow:none;
+  transition:background-color .25s ease,border-color .25s ease,color .25s ease}
+.btn:hover,.btn:active{transform:none}
+.btn-solid:hover,.btn-ghost:hover{box-shadow:none}
+.btn-ghost:hover{--btn-bd:var(--ink);--btn-fg:var(--ink);--btn-bg:transparent}
+.o5 .btn-ghost:hover,.hx.dark .btn-ghost:hover{--btn-bg:rgba(255,253,248,.08);--btn-fg:#fff;--btn-bd:rgba(255,253,248,.85)}
+
+/* (v48) the letter-roll hover was replaced by Orbit, at the end of this file */
+
+/* the old Starlight pieces are no longer added (any left in cached pages stay hidden), and the hero buttons' cursor glow is off */
+.hx .btn::after{content:none}
+
+/* --- nav: the bar and everything in it share the same corners. Buttons 44px tall sit 8px in from the bar's edge,
+   so the bar's corner is 12 + 8 = 20px and the curves nest --- */
+.wn-bar,.wn.is-pill .wn-bar{border-radius:20px}
+.wn.is-pill .wn-bar{padding:0 7px 0 15px}
+.wn-links a,.wn-links button{height:44px;border-radius:12px}
+.wn-hl{height:44px;margin-top:-22px;border-radius:12px}
+.wn-solid{height:44px;padding:0 18px;border-radius:12px}
+.wn-menu{width:44px;height:44px;border-radius:12px}
+@media (max-width:900px){.wn-solid{height:44px}.wn-menu{border-radius:12px}}
+.wn-sheet{padding:8px}
+.wn-sheet .ms-ghost,.wn-sheet .ms-solid{border-radius:12px}
+/* "Email us": a plain underlined link. On hover the line runs off to the right and draws back in from the left */
+.wn-ghost.wn-link,.wn.on-dark:not(.is-pill) .wn-ghost.wn-link{height:44px;padding:0 10px;border:0;border-radius:12px;background:none}
+.wn-ghost.wn-link{color:var(--ink)}
+.wn-ghost.wn-link:hover{color:var(--ink)}
+.wn.on-dark:not(.is-pill) .wn-ghost.wn-link{color:#fffdf8}
+.wn-link span{background:linear-gradient(currentColor,currentColor) no-repeat 100% 100%/100% 1px;padding-bottom:3px}
+.wn-link:hover span,.wn-link:focus-visible span{animation:wf-wipe .7s cubic-bezier(.65,0,.35,1)}
+@keyframes wf-wipe{0%{background-size:100% 1px;background-position:100% 100%}50%{background-size:0 1px;background-position:100% 100%}
+  50.01%{background-size:0 1px;background-position:0 100%}100%{background-size:100% 1px;background-position:0 100%}}
+@media (prefers-reduced-motion:reduce){.wn-link:hover span{animation:none}}
+
+/* --- no pills: chips and tags get small square-ish corners, tab sets follow the button corner --- */
+.disc-tag,.snap-tag,.plan2-flag,.wfb{border-radius:6px}
+.chip{width:8px;height:8px;border-radius:2px}
+.disc-head{border-radius:12px}
+.li{border-radius:8px}
+.who-pill{border-radius:16px}
+.who-pill .who-tabs,.who-tabs button,.ps-pills button{border-radius:12px}
+.domain-bar{border-radius:16px}
+
+/* --- hovers elsewhere: no lifts, no glows; a firmer edge instead --- */
+.disc:hover,.disc.open{box-shadow:none;border-color:var(--rule-strong)}
+.plan2:hover{transform:none;box-shadow:none}
+.wn-mega .mg-item:hover .mg-ic,.wn-mega .mg-item:focus-visible .mg-ic{box-shadow:none;transform:none;border-color:var(--rule-strong)}
+.hx .eng:is(:hover,.on){box-shadow:0 0 0 4px rgba(255,253,248,.12)!important}
+/* links: the dotted route still draws underneath; a small dot rides its tip instead of the sparkle */
+.route-link::after{width:6px;height:6px;bottom:-4.5px;border-radius:50%;background:var(--ember);transform:translateX(-3px) scale(.4)}
+.route-link:hover::after{transform:translateX(-3px) scale(1)}
+
+/* --- section 3: the headline on the left, its paragraph on the right, lined up with the third card --- */
+.sec-head.split{max-width:none;margin-left:0;margin-right:0;text-align:left;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));
+  column-gap:var(--g12);align-items:end}
+.sec-head.split .h2{grid-column:1 / 9;margin:0}
+.sec-head.split .lead{grid-column:9 / 13;margin:0;max-width:34ch;text-wrap:pretty}
+#services .discs{gap:var(--g12)}
+#services .disc{align-items:flex-start;text-align:left}
+#services .disc-head{margin-left:-.8rem}
+@media (max-width:860px){
+  .sec-head.split{grid-template-columns:minmax(0,1fr)}
+  .sec-head.split .h2,.sec-head.split .lead{grid-column:1}
+  .sec-head.split .lead{margin-top:1rem}
+  #services .discs{max-width:none}
+}
+
+/* --- FAQ: heading and topics on the left (4 columns), the questions on the right (7 columns), plain ruled rows --- */
+.faq-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g12);align-items:start}
+.faq-side{grid-column:1 / 5;position:sticky;top:112px;display:grid;gap:clamp(1.5rem,2.4vw,2.25rem);align-content:start}
+.faq-side .h2{margin:0;text-align:left}
+.faq2 .tabs{display:grid;gap:0;padding:0;margin:0;border:0;border-radius:0;background:none;border-top:1px solid var(--rule)}
+.faq2 .tabs button{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:auto;min-height:52px;padding:0;border-radius:0;
+  border-bottom:1px solid var(--rule);background:none;color:var(--muted);font:600 .98rem/1.3 Inter,system-ui,sans-serif;text-align:left;transition:color .25s}
+.faq2 .tabs button:hover{color:var(--ink)}
+.faq2 .tabs button[aria-selected="true"]{background:none;color:var(--ink)}
+.faq2 .tabs button:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
+.faq-side .faq-more{margin:0;text-align:left}
+.faq2 .tabpanel{gap:0}
+.faq2 .qa{border:0;border-bottom:1px solid var(--rule);border-radius:0;background:none;box-shadow:none}
+.faq2 .qa:first-of-type{border-top:1px solid var(--rule)}
+.faq2 .qa[open]{box-shadow:none}
+.faq2 .qa summary{padding:1.35rem 3rem 1.35rem 0;border-radius:0}
+.faq2 .qa summary:hover{color:var(--ink)}
+.faq2 .qa summary::after{right:.2rem;width:14px;height:14px;margin-top:-7px;border:0;transform:none;
+  background:linear-gradient(var(--ink-2),var(--ink-2)) center/14px 1.6px no-repeat,linear-gradient(var(--ink-2),var(--ink-2)) center/1.6px 14px no-repeat}
+.faq2 .qa[open] summary::after{transform:rotate(45deg);margin-top:-7px}
+.faq2 .qa p{padding:0 3rem 1.5rem 0}
+@media (max-width:900px){
+  .faq-side{grid-column:1 / -1;position:static}
+}
+/* option B: no choosing; every question shows, grouped under its topic */
+html[data-faq="group"] .faq2 .tabs{display:none}
+html[data-faq="group"] .faq2 .tabpanel{grid-area:auto}
+html[data-faq="group"] .faq2 .tabpanel[hidden]{visibility:visible}
+
+/* --- the planet's edge: the glow stays (v47; the dotted version was dropped) --- */
+
+/* --- why it matters now: the new launch photo. Its launch pad sits 80.54% across; the sky colours carry on past its left edge --- */
+@media (min-width:701px){
+  .night-bg img{transform:translateX(-80.54%)}
+  .night{background:linear-gradient(#040a0f 0%,#070c13 20%,#091017 40%,#0d141c 55%,#0d0f15 62%,#13161b 68%,#0f1218 74%,#02060b 80%,#171b22 90%,#0b0d12 100%)}
+}
+
+/* ---------------------------------------------------------------- v46: polish (17 Oct 2026)
+   The page grid, checked by measurement: the nav now starts and ends exactly where the sections do, nested corners follow
+   outer = inner + gap, and the nav steps out of the way on long scrolls. The footer line is back in Inter (v45's Fraunces rule removed). */
+
+/* --- nav, at the top of the page (desktop): the bar is the width of the page content and has no inside padding, so the logo
+   lines up with every section's left edge and the audit button with their right edge (nav.js sets --wn-w from the page).
+   The compact bar keeps its 8px inset all round: 7px padding + the 1px border, the same as top and bottom. --- */
+@media (min-width:901px){
+  .wn:not(.is-pill) .wn-bar{padding:0}
+  .wn-bar{transition:width .6s var(--wn-ease),padding .6s var(--wn-ease),background .35s ease,border-color .35s ease,box-shadow .45s ease,
+    border-radius .6s var(--wn-ease),transform .5s var(--wn-ease)}
+  /* long scroll down: the bar slides up out of view; it comes back when you stop or scroll up (page.js adds .wn-hide) */
+  .wn.wn-hide .wn-bar{transform:translateY(calc(-100% - 22px))}
+  .wn.wn-hide .wn-blur{opacity:0}
+}
+@media (min-width:901px) and (prefers-reduced-motion:reduce){.wn-bar{transition:none}}
+
+/* "Email us" lives only in the full bar at the top. In the compact bar it folds away (its 8px gap with it), and it can't be tabbed to */
+.wn-ghost.wn-link{max-width:140px;overflow:hidden;transition:opacity .3s ease .15s,max-width .6s var(--wn-ease),padding .6s var(--wn-ease),margin .6s var(--wn-ease),visibility 0s}
+.wn.is-pill .wn-ghost.wn-link{max-width:0;padding-inline:0;margin-right:-8px;opacity:0;visibility:hidden;
+  transition:opacity .15s ease,max-width .6s var(--wn-ease),padding .6s var(--wn-ease),margin .6s var(--wn-ease),visibility 0s linear .6s}
+
+/* the nav's audit button on the button scale: 48px tall buttons take 24px sides, 44px take 20px, 40px take 16px */
+@media (min-width:901px){.wn-solid{padding:0 20px}}
+
+/* phones: the flush bar's logo and menu button sit on the page's side margin, like the text below them
+   (below 375px wide there isn't room, so it keeps the old 16/12) */
+@media (max-width:900px){.wn-bar,.wn.is-pill .wn-bar{padding:0 var(--pad)}}
+@media (max-width:374px){.wn-bar,.wn.is-pill .wn-bar{padding:0 12px 0 16px}}
+
+/* --- corners that sit in a corner: inner radius = outer radius minus the gap --- */
+/* "What's included": 6px from the card's edge on both sides, so its 12px corner nests in the card's 18px one; its words still line up
+   with the card's text, and the + sits 6px from its own edges */
+#services .disc{--dpx:clamp(1.1rem,2vw,1.5rem);padding-bottom:5px}
+#services .disc-head{margin-left:calc(5px - var(--dpx));padding:0 6px 0 calc(var(--dpx) - 5px)}
+#services .disc.open{padding-bottom:1rem}
+/* the city cards' question bubble: 12px in from an 18px corner, so 6px */
+.rc-q{border-radius:6px}
+/* phones: the business photo sits 17px inside the card's 24px corner */
+@media (max-width:900px){.who-photo{border-radius:8px}}
+
+/* --- grid --- */
+/* the contact card was 8px narrower than the page grid (1120 vs 1128); it now spans it */
+.cb-card{max-width:none}
+/* FAQ: 5 columns for the heading and topics (the heading now breaks into two lines, not three), 6 for the answers
+   (about 65 characters a line, the comfortable reading length) */
+.faq-side{grid-column:1 / 6}
+@media (max-width:900px){.faq-side{grid-column:1 / -1}}
+/* section 3: the paragraph sits on the headline's last baseline, not just the bottom of its box */
+.sec-head.split{align-items:end;align-items:last baseline}
+/* the nav links, centred on the page at the top (nav.js measures the nudge); in the compact bar they sit in its flow as before */
+@media (min-width:901px){
+  .wn-links{transition:transform .6s var(--wn-ease)}
+  .wn:not(.is-pill) .wn-links{transform:translateX(var(--wn-shift,0px))}
+}
+
+/* ---------------------------------------------------------------- v47: the Soft look, everywhere (18 Oct 2026)
+   Zaid picked "Soft": every pressable or raised thing is lit from above (a fine bright top edge), sits on a soft warm contact shadow,
+   and a button sinks 1px when pressed. Trays (the nav bar, the business tabs, the Services menu) all share one recipe: 8px from their
+   edge to what's inside, 20px outer corners, 12px inner ones. Cards share one shadow. Form fields are the opposite: pressed into the page. */
+:root{
+  --sf-edge:inset 0 1px 0 rgba(255,255,255,.95);
+  --sf-card:0 1px 1px rgba(60,36,10,.04),0 2px 4px -1px rgba(60,36,10,.06),0 16px 30px -18px rgba(60,36,10,.26);
+  --sf-card-dark:0 2px 4px -1px rgba(28,20,8,.22),0 24px 44px -24px rgba(28,20,8,.6);
+  --sf-bd:rgba(60,36,10,.11);
+}
+
+/* --- buttons --- */
+.btn-solid,.wn-solid,.ms-solid{background:linear-gradient(180deg,#d4632b 0%,#c2521a 55%,#b5480f 100%);border-color:#a3400e;color:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,222,190,.42),inset 0 -1px 0 rgba(110,36,0,.25),0 1px 1px rgba(80,26,0,.2),0 4px 10px -4px rgba(168,65,13,.55);
+  transition:background .25s ease,border-color .25s ease,color .25s ease,box-shadow .22s ease,transform .18s cubic-bezier(.2,.8,.2,1)}
+.btn-solid:hover,.wn-solid:hover,.ms-solid:hover{background:linear-gradient(180deg,#db6d34 0%,#c85920 55%,#b84b12 100%);border-color:#a3400e;
+  box-shadow:inset 0 1px 0 rgba(255,222,190,.5),inset 0 -1px 0 rgba(110,36,0,.25),0 1px 1px rgba(80,26,0,.2),0 7px 16px -6px rgba(168,65,13,.6)}
+.btn-ghost{--btn-bg:linear-gradient(180deg,#fff 0%,#faf3e7 100%);background:var(--btn-bg);border-color:rgba(60,36,10,.15);
+  box-shadow:inset 0 1px 0 #fff,0 1px 1px rgba(60,36,10,.06),0 3px 8px -4px rgba(60,36,10,.22);
+  transition:background .25s ease,border-color .25s ease,color .25s ease,box-shadow .22s ease,transform .18s cubic-bezier(.2,.8,.2,1)}
+.btn-ghost:hover{--btn-bg:linear-gradient(180deg,#fff 0%,#f6ecdc 100%);border-color:rgba(60,36,10,.26)}
+:is(.o5,.hx.dark,.night,.plan2-lead,.cb-side) .btn-ghost{--btn-bg:linear-gradient(180deg,rgba(255,253,248,.15) 0%,rgba(255,253,248,.05) 100%);
+  border-color:rgba(255,253,248,.2);box-shadow:inset 0 1px 0 rgba(255,253,248,.2),0 1px 2px rgba(0,0,0,.35),0 6px 14px -6px rgba(0,0,0,.6)}
+:is(.o5,.hx.dark,.night,.plan2-lead,.cb-side) .btn-ghost:hover{--btn-bg:linear-gradient(180deg,rgba(255,253,248,.2) 0%,rgba(255,253,248,.08) 100%);border-color:rgba(255,253,248,.34)}
+/* pressed: in by 1px, the light now from inside */
+.btn-solid:active,.wn-solid:active,.ms-solid:active{transform:translateY(1px);background:linear-gradient(180deg,#b04913 0%,#bd4f17 100%);
+  box-shadow:inset 0 2px 4px rgba(90,28,0,.4);transition-duration:.06s}
+.btn-ghost:active{transform:translateY(1px);--btn-bg:#f3e8d6;box-shadow:inset 0 1px 3px rgba(60,36,10,.16);transition-duration:.06s}
+:is(.o5,.hx.dark,.night,.plan2-lead,.cb-side) .btn-ghost:active{--btn-bg:rgba(255,253,248,.04);box-shadow:inset 0 2px 4px rgba(0,0,0,.45)}
+@media (prefers-reduced-motion:reduce){:is(.btn,.wn-solid,.ms-solid):active{transform:none}}
+/* the small round buttons: the arrow on "See where you stand", the + on "What's included" and "And more" */
+.who-go{box-shadow:inset 0 1px 0 rgba(255,253,248,.18),0 1px 2px rgba(28,20,8,.3),0 3px 6px -3px rgba(28,20,8,.4)}
+.disc-plus{background:linear-gradient(180deg,#fff 0%,#faf3e7 100%);border-color:rgba(60,36,10,.16);box-shadow:inset 0 1px 0 #fff,0 1px 2px rgba(60,36,10,.12)}
+
+/* --- trays: the business tabs now match the nav bar exactly (60px tall, 44px tabs, 8px all round, 20px / 12px corners) --- */
+.who-pill{padding:7px;border-radius:20px;background:linear-gradient(180deg,#f2e9d8 0%,#f8f1e4 100%);border:1px solid rgba(60,36,10,.07);
+  box-shadow:inset 0 1px 2px rgba(60,36,10,.12),0 1px 0 #fff}
+.who-pill .who-tabs{gap:4px}
+.who-tabs button{height:44px;padding:0 1.1rem;border-radius:12px}
+.who-tabs button[aria-selected="true"]{background:linear-gradient(180deg,#36291a 0%,#1c1408 100%);
+  box-shadow:inset 0 1px 0 rgba(255,253,248,.16),0 1px 2px rgba(28,20,8,.35),0 3px 8px -3px rgba(28,20,8,.45)}
+.wn-hl{background:linear-gradient(180deg,#fff 0%,#f7efe2 100%);box-shadow:inset 0 1px 0 #fff,0 0 0 1px rgba(60,36,10,.07),0 2px 5px -2px rgba(60,36,10,.2)}
+.wn.on-dark:not(.is-pill) .wn-hl{background:linear-gradient(180deg,rgba(255,236,214,.18),rgba(255,236,214,.07));box-shadow:inset 0 1px 0 rgba(255,236,214,.16)}
+.wn-mega{padding:8px;gap:8px;border-radius:20px}
+.wn-mega .mg-item{border-radius:12px}
+/* the testimonial client tabs: the chosen one is raised, the others sit slightly lower */
+.spot3 .sp-tab{background:linear-gradient(180deg,#f6ecdb 0%,#fbf4e8 100%);box-shadow:inset 0 2px 3px -2px rgba(60,36,10,.14)}
+.spot3 .sp-tab[aria-selected="true"]{background:linear-gradient(180deg,#fff 0%,#fffaf3 100%);box-shadow:inset 0 1px 0 #fff}
+
+/* --- cards: one recipe --- */
+.disc,.plan2,.cb-card,.spot3,.who-card,.o5 .card{border-color:var(--sf-bd);box-shadow:var(--sf-edge),var(--sf-card)}
+.disc,.plan2:not(.plan2-lead),.cb-card{background:linear-gradient(180deg,#fff 0%,#fffcf6 100%)}
+.plan2-lead{border-color:#1c1408;box-shadow:inset 0 1px 0 rgba(255,236,214,.1),var(--sf-card-dark)}
+.disc:hover,.disc.open{border-color:rgba(60,36,10,.18);box-shadow:var(--sf-edge),var(--sf-card)}
+.cb-side .snapshot{box-shadow:inset 0 1px 0 rgba(255,236,214,.09),0 10px 24px -14px rgba(0,0,0,.6)}
+/* the business cards scroll sideways, which used to cut their shadow off flat underneath; the row now has room for it */
+.who-track{padding-bottom:40px;margin-bottom:-28px}
+
+/* --- chips and tags: one size, one corner --- */
+.disc-tag,.plan2-flag,.snap-tag{display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:6px;font-size:.7rem;line-height:1;letter-spacing:.07em;
+  border:1px solid rgba(60,36,10,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 1px 1px rgba(60,36,10,.06)}
+.plan2-flag{border-color:rgba(110,36,0,.25);box-shadow:inset 0 1px 0 rgba(255,236,214,.6),0 1px 2px rgba(0,0,0,.25)}
+.plan2-flag-soft{border-color:rgba(60,36,10,.12);box-shadow:inset 0 1px 0 #fff,0 1px 1px rgba(60,36,10,.06)}
+.cb-side .snap-tag{box-shadow:none}
+/* pricing: the plan name and its flag share one row, centred on each other; the flag ends on the card's padding like everything else */
+.plan2-top{display:flex;align-items:center;justify-content:space-between;gap:.75rem;min-height:24px}
+.plan2-top .tag{margin:0}
+.plan2-top .plan2-flag{position:static;margin:0}
+
+/* --- form fields: pressed into the card --- */
+.field input,.field select,.field textarea{background-color:#fffefb;border:1px solid rgba(60,36,10,.16);
+  box-shadow:inset 0 1px 2px rgba(60,36,10,.09),0 1px 0 rgba(255,255,255,.9)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--flame);box-shadow:inset 0 1px 2px rgba(60,36,10,.09),0 0 0 3px rgba(242,154,85,.22);outline:0}
+
+/* --- "What we do" cards: a proper footer. A hairline across the card, and "What's included" is the full-width row under it
+   (6px in from the card's edge, so its 12px corners nest in the card's 18px ones), with the + at the far end --- */
+#services .disc-sum{margin-bottom:1.1rem}
+#services .disc-head{position:relative;align-self:stretch;justify-content:space-between;margin:auto calc(5px - var(--dpx)) 0;
+  padding:0 calc(var(--dpx) - 5px)}
+#services .disc-head::before{content:"";position:absolute;left:calc(var(--dpx) - 5px);right:calc(var(--dpx) - 5px);top:-6px;height:1px;background:var(--rule)}
+#services .disc-title{letter-spacing:-.015em}
+
+/* --- type: the paragraph under every section headline is a step smaller (19px -> 17px); the hero's 19px -> 18px --- */
+.sec-head .lead,.sx-copy .lead{font-size:1.0625rem;line-height:1.62}
+.sec-head:not(.split) .lead{max-width:56ch}
+.hero-lead{font-size:1.125rem}
+/* the small notes under the stats and the plans: smaller, and on one line where there's room */
+.note{max-width:none;font-size:.8rem;text-wrap:balance}
+/* The Shift's three points: the text sits closer to its star */
+.sx-orbit .sx-points li{grid-template-columns:1.5rem minmax(0,1fr)}
+
+/* --- two-sentence headlines: the second sentence in the logo grey, on its own line --- */
+.h2-2{display:block;color:var(--logo)}
+.h2-invert .h2-2{color:#a99a86}
+
+/* --- FAQ: every question shows, grouped under its topic, in tighter rows. The left column holds the headline and the artwork --- */
+.faq-side{gap:clamp(1.25rem,2vw,1.75rem)}
+.faq-qs{grid-column:7 / 13;display:grid;gap:clamp(1.75rem,3vw,2.25rem)}
+.faq-art:empty{display:none}
+@media (max-width:900px){.faq-qs{grid-column:1 / -1;margin-top:2rem}}
+
+/* ---------------------------------------------------------------- v48: round four (18 Oct 2026) */
+
+/* --- hover: Orbit. A small light circles the button's edge while you point at it, like the engines round the star in the hero.
+   (Browsers without @property show the light still; nothing breaks.) --- */
+@property --orb{syntax:'<angle>';inherits:false;initial-value:-90deg}
+:is(.btn,.wn-solid,.ms-solid){--oc:255,236,214}
+.btn-ghost{--oc:194,82,26}
+:is(.o5,.hx.dark,.night,.plan2-lead,.cb-side) .btn-ghost{--oc:255,214,170}
+.ms-solid{position:relative;isolation:isolate}
+:is(.btn,.wn-solid,.ms-solid)::after,.hx .btn::after{content:"";position:absolute;inset:-1px;z-index:2;border-radius:inherit;padding:2px;pointer-events:none;
+  background:conic-gradient(from var(--orb),rgba(var(--oc),0) 0deg,rgba(var(--oc),0) 200deg,rgba(var(--oc),.5) 320deg,rgba(var(--oc),1) 354deg,rgba(var(--oc),0) 358deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);opacity:0;transition:opacity .3s ease}
+:is(.btn,.wn-solid,.ms-solid):is(:hover,:focus-visible)::after,.hx .btn:is(:hover,:focus-visible)::after{opacity:1;animation:wf-orbit 2.4s linear infinite}
+@keyframes wf-orbit{from{--orb:-90deg}to{--orb:270deg}}
+@media (prefers-reduced-motion:reduce){:is(.btn,.wn-solid,.ms-solid)::after,.hx .btn::after{animation:none!important}}
+
+/* --- the press, everywhere you can press: buttons already sink 1px; now the tabs, the round buttons, the card footers, the menu
+   button, the nav links and the LinkedIn chips do too, so every control feels like the same material --- */
+:is(.who-tabs button,.disc-head,.wn-menu,.li,.wn-links a,.wn-links button,.mg-item,.wn-sheet a,.sp-tab,.faq-rest > summary,.who-link):active{transform:translateY(1px);transition-duration:.06s}
+.who-tabs button:not([aria-selected="true"]):active{background:rgba(60,36,10,.06);box-shadow:inset 0 1px 3px rgba(60,36,10,.14)}
+.who-tabs button[aria-selected="true"]:active{box-shadow:inset 0 2px 4px rgba(0,0,0,.5)}
+.disc-head:active .disc-plus,.who-link:active .who-go{box-shadow:inset 0 1px 3px rgba(60,36,10,.3)}
+.spot3 .sp-tab:active{box-shadow:inset 0 3px 6px rgba(60,36,10,.16)}
+.wn-menu:active{box-shadow:inset 0 1px 3px rgba(60,36,10,.18)}
+.li:active{box-shadow:inset 0 1px 3px rgba(60,36,10,.18)}
+@media (prefers-reduced-motion:reduce){:is(.who-tabs button,.disc-head,.wn-menu,.li,.wn-links a,.wn-links button,.mg-item,.wn-sheet a,.sp-tab,.faq-rest > summary,.who-link):active{transform:none}}
+
+/* --- hero: "Learn why" is frosted glass, lighter than before; "AI answers" takes the Ember gradient --- */
+.o5 .btn-ghost{--btn-bg:linear-gradient(180deg,rgba(255,253,248,.11) 0%,rgba(255,253,248,.03) 100%);border-color:rgba(255,253,248,.16);
+  -webkit-backdrop-filter:blur(10px) saturate(1.4);backdrop-filter:blur(10px) saturate(1.4);
+  box-shadow:inset 0 1px 0 rgba(255,253,248,.24),inset 0 -10px 16px -14px rgba(255,226,196,.3),0 8px 22px -12px rgba(0,0,0,.6)}
+.o5 .btn-ghost:hover{--btn-bg:linear-gradient(180deg,rgba(255,253,248,.16) 0%,rgba(255,253,248,.05) 100%);border-color:rgba(255,253,248,.28)}
+.o5 .hero-title em{background-image:linear-gradient(100deg,#ffc08a 0%,#f58a45 35%,#e2622a 70%,#c8471c 100%)}
+
+/* --- pricing flags: one quiet chip, coloured for the card it sits on. On the dark card: orange words on a faint orange glass,
+   with a small star --- */
+.plan2-flag{font-weight:600;letter-spacing:.04em}
+.plan2-lead .plan2-flag{gap:6px;color:#ffb98a;background:linear-gradient(180deg,rgba(242,154,85,.2),rgba(242,154,85,.08));border-color:rgba(242,154,85,.38);
+  box-shadow:inset 0 1px 0 rgba(255,214,170,.18)}
+.plan2-lead .plan2-flag::before{content:"";width:9px;height:9px;flex:none;background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M5 0 6 4 10 5 6 6 5 10 4 6 0 5 4 4Z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M5 0 6 4 10 5 6 6 5 10 4 6 0 5 4 4Z'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* --- "What we do": the + turns into an x by turning its lines, not the whole circle (turning the circle also turned its shadow).
+   "What's included" opens all three together (page.js), so the row stays even --- */
+.disc-head[aria-expanded="true"] .disc-plus{transform:none}
+.disc-plus::before,.disc-plus::after{transition:transform .45s cubic-bezier(.22,1,.36,1),background .3s}
+.disc-head[aria-expanded="true"] .disc-plus::before{transform:rotate(45deg)}
+.disc-head[aria-expanded="true"] .disc-plus::after{transform:rotate(135deg)}
+
+/* --- the paragraphs under headlines: never more than two lines on a laptop or desktop --- */
+.sec-head:not(.split) .lead{max-width:64ch}
+.sx-copy .lead{font-size:1rem}
+/* "What we do": the paragraph's first line lines up with the top of the headline's first line (cap height to cap height) */
+.sec-head.split{align-items:start}
+.sec-head.split .lead{padding-top:1px}
+
+/* --- FAQ: six questions, no topic groups; the other five wait behind "5 more questions" (still on the page, so search engines and
+   AI tools read all eleven, and they still match the page's FAQ data) --- */
+.faq-qs{display:block}
+.faq2 .faq-qs > .qa:first-child{border-top:1px solid var(--rule)}
+.faq2 .faq-qs .qa summary{padding:.9rem 2.5rem .9rem 0;font-size:1rem;line-height:1.4}
+.faq2 .faq-qs .qa p{padding:0 2.5rem 1.1rem 0;font-size:.95rem;line-height:1.6}
+
+/* ---------------------------------------------------------------- v49: round five (18 Oct 2026) */
+
+/* --- the paragraphs under headlines: your wording, set smaller so each one fits in two lines on a laptop or desktop.
+   One size for all of them (16px), with a little more room to run --- */
+.sec-head .lead,.sx-copy .lead{font-size:1rem;line-height:1.6}
+.sec-head:not(.split) .lead{max-width:47rem}
+.sx-copy .lead{max-width:none}
+@media (min-width:1000px){
+  .sec-head.split .h2{grid-column:1 / 8}
+  .sec-head.split .lead{grid-column:8 / 13;max-width:none;justify-self:end;width:min(100%,25.5rem)}
+}
+
+/* --- "What we do" cards. No picture until you open one. "What's included" is now a soft button the width of the card's text:
+   it starts where the words start and ends at the +, 44px tall, 12px corners with the + 6px in (6px corners). Opening the cards
+   presses it in, and it stays pressed while they're open. The x is no longer black: the same light button, its lines in our
+   orange --- */
+#services .disc{padding-bottom:var(--dpx)}
+#services .disc.open{padding-bottom:var(--dpx)}
+#services .disc-sum{margin-bottom:1.25rem}
+#services .disc-head{align-self:stretch;justify-content:space-between;margin:auto 0 0;min-height:44px;padding:0 6px 0 14px;border-radius:12px;
+  font-size:.86rem;color:var(--ink);background:linear-gradient(180deg,#fff 0%,#faf3e7 100%);border:1px solid rgba(60,36,10,.14);
+  box-shadow:inset 0 1px 0 #fff,0 1px 1px rgba(60,36,10,.05),0 3px 8px -4px rgba(60,36,10,.2);transition:border-color .2s,box-shadow .2s,background .2s,transform .12s}
+#services .disc-head::before{content:none}
+#services .disc-head:hover{border-color:rgba(60,36,10,.26)}
+#services .disc-head .disc-plus{width:30px;height:30px;border-radius:6px}
+#services .disc-head[aria-expanded="true"]{background:linear-gradient(180deg,#f3e9d8 0%,#f8f0e3 100%);border-color:rgba(60,36,10,.16);
+  box-shadow:inset 0 1px 3px rgba(60,36,10,.16),0 1px 0 #fff}
+#services .disc-head[aria-expanded="true"] .disc-plus{background:linear-gradient(180deg,#fff 0%,#fdf6ea 100%);border-color:rgba(194,82,26,.3);
+  box-shadow:inset 0 1px 0 #fff,0 1px 2px rgba(60,36,10,.14)}
+#services .disc-head[aria-expanded="true"] .disc-plus::before,#services .disc-head[aria-expanded="true"] .disc-plus::after{background:var(--flame-dark)}
+#services .disc-inner{padding:1.1rem 0 .2rem}
+#services .disc-art{margin-bottom:1.1rem}
+/* the closed card: its tag and a small doodle share the top row (like a plan's name and flag), and the summary runs the card's width */
+#services .disc-top{display:flex;align-items:center;justify-content:space-between;align-self:stretch;min-height:44px;margin-top:-4px}
+#services .disc-ico{width:44px;height:44px;flex:none}
+#services .disc-title{margin-top:.7rem}
+#services .disc-sum{align-self:stretch;max-width:none;text-wrap:pretty}
+
+/* --- FAQ: the folded-map doodle (a still line drawing: a dotted path from an X to our star, and a compass) --- */
+.faq-art{width:100%;max-width:380px}
+.faq-art svg{display:block;width:100%;height:auto}
+@media (max-width:900px){.faq-art{display:none}}
+
+/* --- the testimonial card, compact (your pick): the quote a size smaller, a shorter scene, tighter padding. 630px -> 536px tall --- */
+@media (min-width:901px){.spot3.spot3[data-look] .sp-stage{padding:22px 22px 22px 52px}}
+.spot3.spot3[data-look] .sp-q blockquote p{font-size:clamp(1.1rem,.9rem + .6vw,1.3rem);line-height:1.5}
+.spot3.spot3[data-look] .sp-q .avatar{width:48px;height:48px}
+.spot3[data-look="c"] .sp-win{min-height:360px}
+.spot3 .sp-tab{min-height:52px}
+
+/* --- the form: when a pricing button fills in "Interested in", the field glows orange for a moment --- */
+.field.is-set select{border-color:var(--flame);box-shadow:inset 0 1px 2px rgba(60,36,10,.09),0 0 0 4px rgba(242,154,85,.28);transition:box-shadow .5s ease,border-color .5s ease}
+.field select{transition:box-shadow .6s ease,border-color .6s ease}
+/* "Interested in" was too narrow for "North Star, $1,500 per month" (it showed "per mont"), so it and Website now take a full row each;
+   the message box gives up the height, so the form stays the same size */
+.contact2 .form{grid-template-rows:auto auto auto 1fr auto}
+
+/* ---------------------------------------------------------------- v50: round six (19 Oct 2026) */
+/* City photos: glass. Still edge to edge, with a bevel (a light top edge, a dark lower one) and a real shadow, so each sits on the
+   page like a pane of glass; the question bubble gets the same glass. The reel makes room for the shadow so it isn't cut off */
+.reel{padding-block:4px 30px;margin-bottom:-26px}
+.reel-card{overflow:visible;box-shadow:0 1px 1px rgba(28,20,8,.12),0 4px 8px -3px rgba(28,20,8,.2),0 18px 28px -16px rgba(28,20,8,.5)}
+.reel-card picture{display:block;height:100%;border-radius:inherit;overflow:hidden}
+.reel-card::after{border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.32),inset 0 -1px 0 rgba(0,0,0,.4),inset 0 0 0 1px rgba(255,255,255,.07)}
+.reel-card .rc-q{background:linear-gradient(180deg,rgba(255,236,214,.16),rgba(28,20,8,.55) 60%);border-color:rgba(255,236,214,.2);
+  box-shadow:inset 0 1px 0 rgba(255,236,214,.22),0 4px 10px -4px rgba(0,0,0,.5)}
+
+/* FAQ, after the hilos reference: all eight questions showing, numbered rows on hairlines, a bigger question, the answer lined up
+   under the question, and a thin + that turns into an orange x. The paragraph sits under the heading like every other section's,
+   the map below it */
+.faq2{--fqs:clamp(1.06rem,.92rem + .45vw,1.28rem);--fqn:3.2rem;--fqy:1.45rem}
+.faq-side{gap:0}
+.faq-side .faq-more{margin:1rem 0 0;max-width:26rem;font-size:1rem;line-height:1.6;color:var(--muted);text-align:left}
+.faq-side .faq-art{margin-top:clamp(2rem,3.5vw,3rem)}
+.faq2 .faq-qs{counter-reset:fq;border-top:1px solid var(--rule)}
+.faq2 .faq-qs > .qa:first-child{border-top:0}
+.faq2 .faq-qs .qa{counter-increment:fq}
+.faq2 .faq-qs .qa summary{padding:var(--fqy) 2.75rem var(--fqy) var(--fqn);font-family:var(--font-display);font-weight:600;font-size:var(--fqs);
+  line-height:1.35;letter-spacing:-.018em;color:var(--ink);text-wrap:pretty}
+.faq2 .faq-qs .qa summary::before{content:counter(fq,decimal-leading-zero);position:absolute;left:0;top:var(--fqy);
+  font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-weight:500;font-size:.78rem;line-height:calc(var(--fqs) * 1.35);letter-spacing:.02em;
+  color:var(--muted);transition:color .3s ease}
+.faq2 .faq-qs .qa summary:hover::before,.faq2 .faq-qs .qa[open] summary::before{color:var(--flame-dark)}
+.faq2 .faq-qs .qa summary::after{right:.25rem;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.faq2 .faq-qs .qa[open] summary::after{background:linear-gradient(var(--flame-dark),var(--flame-dark)) center/14px 1.6px no-repeat,
+  linear-gradient(var(--flame-dark),var(--flame-dark)) center/1.6px 14px no-repeat}
+.faq2 .faq-qs .qa p{padding:0 2.75rem var(--fqy) var(--fqn);margin-top:-.35rem;font-size:1rem;line-height:1.65;color:var(--muted)}
+.faq2 .faq-qs .qa p + p{margin-top:calc(-1 * var(--fqy) + .75rem)}
+@media (max-width:600px){.faq2{--fqn:2.5rem;--fqy:1.2rem}.faq2 .faq-qs .qa summary,.faq2 .faq-qs .qa p{padding-right:2.25rem}}
+/* one more column for the questions (they start where the empty gutter column was), so fewer of them wrap */
+@media (min-width:901px){.faq-qs{grid-column:6 / 13}}
+/* the Shift's three points match the paragraph above them: 16px, the same line spacing and the same brown; the bold first sentence stays dark */
+.sx-orbit .sx-points li{font-size:1rem;line-height:1.6;color:var(--muted)}
+
+/* (v51) see page.js: a part of the page that's off screen holds its animations still until it's back */
+[data-off] *,[data-off] *::before,[data-off] *::after{animation-play-state:paused!important}
+
+/* (v51) tap areas of at least 44px (Apple's guideline), all invisible: nothing moves or changes size on screen.
+   The hero's engines get a 56px square inside them (hx4.js; 44px or more after the far ones are scaled down to 80%), the LinkedIn chip a 44px band, the nav logo padding that its
+   negative margin cancels out, and the phone's platform logos a 44px minimum width (still centred in their columns) */
+.eng-hit{position:absolute;left:50%;top:50%;width:56px;height:56px;transform:translate(-50%,-50%);border-radius:50%}
+.li{position:relative}
+.li::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
+.wn-logo{padding-block:8px;margin-block:-8px}
+@media (max-width:700px){.hx-plat .platform-logos a{min-width:44px}}
+.stat-src a::before{inset:-15px -4px}   /* (v51) the source links' tap area, 29px -> 44px tall */
+
+/* (v51) the testimonial quotes that aren't showing stay in place (invisible), so their box is always as
+   tall as the tallest one. Anything that adds a blanket "[hidden]{display:none!important}" (the claude.ai preview frame does)
+   removed them, and the testimonial card jumped 31px between tabs. This wins over such a rule; nothing changes on the site itself */
+.sp-q[hidden]{display:block!important}
+
+/* (v51, Zaid: "is this properly spaced?") the logo strip sat close under its line with a band 2-3x as tall below it (151px vs
+   72px at 1440): the testimonials section's own bottom padding stacked on the page's gap. Without it, the space under the logos
+   roughly matches the space above the line at every width (59/48 phone, 63/60 at 1000, 83/72 at 1440) */
+#voices{padding-bottom:0}
+
+/* (v51, Zaid: "it needs to be visually centre aligned") "Be the answer." sat 3-4px left of centre, and looked further off: the
+   typing caret keeps its width after it fades, and the light full stop at the end leaves the right side looking empty.
+   The caret now takes no room (it hangs past the text), and the full stop hangs too (padding on the left equal to its width),
+   so "Be the answer" itself sits on the centre line, the way designers centre a headline by eye */
+.closer-caret{margin-right:-.14em}
+.closer-line{padding-left:.124em}
+
+/* (v51, Zaid's phone recording) the phone menu's first row, "The Shift", slid up under the top bar. Since v45 a general
+   ".wn-sheet{padding:8px}" (meant for the desktop dropdown) also replaced the phone menu's 60px top padding. Phones get it back */
+@media (max-width:900px){.wn-sheet{padding:60px 0 0}}
+
+/* (v51, Zaid) "Email us" in the phone menu is a button again, on the audit button's left: the light button recipe
+   ("Start with Beacon"), same height and corners as its neighbour, and it presses in like the rest */
+.wn-sheet .ms-ghost{background:linear-gradient(180deg,#fff 0%,#faf3e7 100%);border:1px solid rgba(60,36,10,.15);color:var(--ink);
+  box-shadow:inset 0 1px 0 #fff,0 1px 1px rgba(60,36,10,.06),0 3px 8px -4px rgba(60,36,10,.22);transition:transform .18s cubic-bezier(.2,.8,.2,1)}
+.wn-sheet .ms-ghost:active{transform:translateY(1px);box-shadow:inset 0 1px 3px rgba(60,36,10,.18)}
+
+/* (v51, Zaid: "weird padding here on the mobile") the phone's business tabs sat 8px from the tray top and bottom but 20px from
+   its ends: the scrolling row kept a 12px inset from the old fully round pill. No inset now, so the end tabs sit 8px in like the rest;
+   the edge fade that hints "this scrolls" only shows on a side that has more tabs past it (page.js sets --fl / --fr) */
+@media (max-width:900px){
+  .who-pill .who-tabs{padding:0;scroll-padding-inline:0;--fl:0px;--fr:0px;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 var(--fl),#000 calc(100% - var(--fr)),transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 var(--fl),#000 calc(100% - var(--fr)),transparent)}
+}
+
+/* (v51, Zaid: "something wrong with Adnan's testimonial animation on mobile") the compact card (v49) made the photos 48px, but on
+   phones the photo still sat in a 68px holder, top-left. Everything the three moves draw is sized to that holder: Adnan's selection
+   box came out too big and off-centre, Alim's iris and Mahroos's shine overhung the photo. The holder is the photo's size again */
+@media (max-width:900px){.spot3.spot3[data-look] .vx-ph{width:48px;height:48px}}
+
+/* (v51, Zaid) FAQ answers slide open and closed (page.js), and the + turns into the x on exactly the same curve and timing.
+   The x follows .is-open, which page.js sets the moment you click, so on closing it turns back while the answer slides shut
+   (it used to wait for the answer to be gone) */
+.faq2 .faq-qs .qa summary::after{transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.faq2 .faq-qs .qa.js-qa summary::after{transform:none;background:linear-gradient(var(--ink-2),var(--ink-2)) center/14px 1.6px no-repeat,linear-gradient(var(--ink-2),var(--ink-2)) center/1.6px 14px no-repeat}
+.faq2 .faq-qs .qa.js-qa.is-open summary::after{transform:rotate(45deg);background:linear-gradient(var(--flame-dark),var(--flame-dark)) center/14px 1.6px no-repeat,linear-gradient(var(--flame-dark),var(--flame-dark)) center/1.6px 14px no-repeat}
+.faq2 .faq-qs .qa.js-qa summary::before{color:var(--muted)}
+.faq2 .faq-qs .qa.js-qa:is(.is-open,:hover) summary::before{color:var(--flame-dark)}
+.qa-a.is-moving{overflow:hidden}
