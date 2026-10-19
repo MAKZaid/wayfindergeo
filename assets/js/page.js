@@ -1202,11 +1202,11 @@
   edges();
 })();
 
-/* (v51, Zaid) FAQ answers slide open and closed on the site's soft curve, and the +/x turns in step (v2.css, .is-open).
+/* (v51, Zaid; quicker 20 Oct: it felt slow on iPhone) FAQ answers slide open and closed on the site's soft curve, and the +/x turns in step (v2.css, .is-open).
    Without script, or with reduced motion, they open at once as before */
 (function () {
   var qs = [].slice.call(document.querySelectorAll('.faq2 .faq-qs .qa')); if (!qs.length) return;
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, EASE = 'cubic-bezier(.16,1,.3,1)', DUR = 600;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, EASE = 'cubic-bezier(.22,1,.36,1)', OPEN = 420, CLOSE = 320;
   qs.forEach(function (d) {
     var s = d.querySelector('summary'), a = document.createElement('div'); a.className = 'qa-a';
     [].slice.call(d.children).forEach(function (c) { if (c !== s) a.appendChild(c); }); d.appendChild(a);
@@ -1222,7 +1222,7 @@
       if (opening) d.open = true;
       var to = opening ? a.scrollHeight : 0;
       a.classList.add('is-moving');
-      anim = a.animate([{ height: from + 'px', opacity: opening ? (from ? 1 : 0) : 1 }, { height: to + 'px', opacity: opening ? 1 : 0 }], { duration: DUR, easing: EASE });
+      anim = a.animate([{ height: from + 'px', opacity: opening ? (from ? 1 : 0) : 1 }, { height: to + 'px', opacity: opening ? 1 : 0 }], { duration: opening ? OPEN : CLOSE, easing: EASE });
       anim.onfinish = function () { anim = null; a.classList.remove('is-moving'); if (!opening) d.open = false; };
     });
   });

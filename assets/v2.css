@@ -2191,3 +2191,11 @@ html.menu-lock{scrollbar-gutter:stable}
 @media (max-width:900px){.wn-word img{height:28.6px}}
 @media (max-width:380px){.wn-word img{height:25.8px}}
 .footer-brand .brand-logo{height:44px}
+
+/* 20 Oct 2026: phone bar shows only the logo and the menu button (the audit button lives inside the open menu) */
+@media (max-width:900px){.wn-cta .wn-solid{display:none}}
+/* the word image is centred on its box, which now matches the middle of the lowercase letters, so no nudge */
+.wn-word{transform:none}
+/* FAQ: quicker open (.42s) and close (.32s), the x turns in step */
+.faq2 .faq-qs .qa.js-qa summary::after{transition:transform .32s cubic-bezier(.22,1,.36,1)}
+.faq2 .faq-qs .qa.js-qa.is-open summary::after{transition-duration:.42s}
