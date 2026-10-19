@@ -2184,3 +2184,10 @@ html.menu-lock{scrollbar-gutter:stable}
    the underline is drawn under the words instead, the same colour */
 @media (hover:none), (max-width:620px){.footer-mail{border-bottom:0;text-decoration:underline;text-decoration-color:rgba(201,180,146,.35);text-decoration-thickness:1px;text-underline-offset:6px}
   .footer-mail:hover{text-decoration-color:var(--ember)}}
+
+/* 19 Oct 2026: new logo (polished needles, gold sparkle, serif wordmark with a stronger GEO). The word image now carries the "y" descender and GEO below the baseline */
+.wn-word{transform:translateY(4%);max-width:170px}
+.wn-word img{height:33.2px}
+@media (max-width:900px){.wn-word img{height:28.6px}}
+@media (max-width:380px){.wn-word img{height:25.8px}}
+.footer-brand .brand-logo{height:44px}
