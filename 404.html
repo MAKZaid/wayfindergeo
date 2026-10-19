@@ -27,18 +27,22 @@ body::before{content:"";position:fixed;inset:-50%;background:url(/assets/img/gra
 .sky i{position:absolute;width:var(--s);height:var(--s);border-radius:50%;background:#fff5e6;opacity:var(--o);animation:tw var(--d) ease-in-out infinite var(--dl)}
 @keyframes tw{50%{opacity:calc(var(--o) * .25)}}
 header,main,footer{position:relative;z-index:1;width:100%;max-width:1120px;margin:0 auto}
-header{padding-top:max(24px,env(safe-area-inset-top,0px))}
+header{padding-top:max(28px,env(safe-area-inset-top,0px))}
 header a{display:inline-flex;padding:8px 0}
 header img{display:block;height:30px;width:auto}
-main{flex:1;display:grid;justify-items:center;align-content:center;gap:0;padding:24px 0 40px;text-align:center}
-.art{width:min(360px,82vw);height:auto;margin-bottom:18px;overflow:visible}
+main{flex:1;display:grid;justify-items:center;align-content:center;gap:0;padding:clamp(32px,5vh,64px) 0 clamp(40px,6vh,72px);text-align:center}
+.art{width:min(280px,72vw);height:auto;margin-bottom:clamp(28px,4.5vh,48px);overflow:visible}
+.big{margin:0 0 clamp(18px,2.5vw,28px);font:300 clamp(6rem,3.4rem + 7vw,9rem)/.85 Fraunces,Georgia,serif;letter-spacing:-.03em;
+  background:linear-gradient(100deg,#ffc08a 0%,#f58a45 35%,#e2622a 70%,#c8471c 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  padding:0 .06em .04em}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;margin:0 0 14px;font:600 .8rem/1 Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--glow)}
 .eyebrow::before{content:"";width:7px;height:7px;background:var(--ember);border-radius:1px}
-h1{margin:0;font:300 clamp(2.4rem,1.4rem + 4.2vw,4.2rem)/1.04 Fraunces,Georgia,serif;letter-spacing:-.02em;text-wrap:balance;max-width:14ch}
+h1{margin:0;font:300 clamp(2.3rem,1.4rem + 3.2vw,3.6rem)/1.06 Fraunces,Georgia,serif;letter-spacing:-.02em;text-wrap:balance;max-width:14ch}
 h1 em{font-style:italic;color:var(--glow)}
-.lead{margin:18px 0 0;max-width:34rem;color:#e7dcc9;text-wrap:balance}
-.nw{white-space:nowrap}
-.acts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
+.lead{margin:clamp(20px,2.6vh,28px) 0 0;max-width:34rem;color:#e7dcc9;text-wrap:balance}
+@media (min-width:480px){.nw{white-space:nowrap}}
+@media (min-width:900px){.lead{max-width:none}}
+.acts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:clamp(32px,4.5vh,48px)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:12px;font:600 1rem/1 Inter,system-ui,sans-serif;text-decoration:none;
   transition:transform .18s cubic-bezier(.2,.8,.2,1),background .25s ease,border-color .25s ease}
 .btn:active{transform:translateY(1px)}
@@ -51,7 +55,7 @@ h1 em{font-style:italic;color:var(--glow)}
 .links{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 22px;margin:26px 0 0;padding:0;list-style:none}
 .links a{display:inline-block;padding:10px 2px;color:var(--muted);text-decoration:none;font-size:.95rem}
 .links a:hover{color:var(--paper)}
-footer{padding:0 0 max(22px,env(safe-area-inset-bottom,0px));text-align:center;font-size:.8rem;color:#8f7d63}
+footer{padding:0 0 max(28px,env(safe-area-inset-bottom,0px));text-align:center;font-size:.8rem;color:#8f7d63}
 /* the doodle: the telescope sweeps slowly round its mount, the sight line flows, the ? bobs, the stars twinkle */
 .scope{transform-origin:162px 166px;animation:sweep 7s cubic-bezier(.45,0,.25,1) infinite}
 @keyframes sweep{0%,100%{transform:rotate(0)}30%{transform:rotate(-14deg)}38%{transform:rotate(-14deg)}68%{transform:rotate(9deg)}76%{transform:rotate(9deg)}}
@@ -65,7 +69,7 @@ footer{padding:0 0 max(22px,env(safe-area-inset-bottom,0px));text-align:center;f
 @keyframes drift{50%{transform:translate(3px,-3px)}}
 @media (prefers-reduced-motion:reduce){.sky i,.scope,.sight,.qm,.t1,.t2,.t3,.planet{animation:none}}
 @media (max-width:480px){.acts{display:grid;width:100%;max-width:330px}}
-@media (max-height:640px){.art{width:min(250px,60vw);margin-bottom:8px}}
+@media (max-height:700px) and (min-width:600px){main{padding:12px 0 28px}.art{width:190px;margin-bottom:18px}.big{font-size:5.5rem;margin-bottom:14px}h1{font-size:2.6rem}.acts{margin-top:28px}}
 </style>
 </head>
 <body>
@@ -97,9 +101,9 @@ footer{padding:0 0 max(22px,env(safe-area-inset-bottom,0px));text-align:center;f
     <g stroke-width="1.4"><path class="t1" d="M128 47v10M123 52h10"/><path class="t2" d="M36 164v8M32 168h8"/><path class="t3" d="M214 30v8M210 34h8"/><path class="t1" d="M312 135v10M307 140h10"/></g>
     <g fill="#f4e8d3" stroke="none"><circle class="t2" cx="176" cy="74" r="1.6"/><circle class="t3" cx="250" cy="150" r="1.4"/><circle class="t1" cx="40" cy="44" r="1.4"/><circle class="t2" cx="300" cy="202" r="1.6"/></g>
   </svg>
-  <p class="eyebrow">Error 404</p>
+  <p class="big" aria-label="Error 404">404</p>
   <h1>This page isn’t <em>on the map.</em></h1>
-  <p class="lead">The link may be old, or there’s a typo in it. <span class="nw">Either way, the way back is right here.</span></p>
+  <p class="lead"><span class="nw">The link may be old, or there’s a typo <span style="white-space:nowrap">in it.</span></span> <span class="nw">Either way, the way back is right here.</span></p>
   <div class="acts">
     <a class="btn solid" href="/">Back to the homepage <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
   </div>
