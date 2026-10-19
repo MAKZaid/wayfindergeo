@@ -31,8 +31,8 @@ header{padding-top:max(28px,env(safe-area-inset-top,0px))}
 header a{display:inline-flex;padding:8px 0}
 header img{display:block;height:30px;width:auto}
 main{flex:1;display:grid;justify-items:center;align-content:center;gap:0;padding:clamp(32px,5vh,64px) 0 clamp(40px,6vh,72px);text-align:center}
-.art{width:min(280px,72vw);height:auto;margin-bottom:clamp(28px,4.5vh,48px);overflow:visible}
-.big{margin:0 0 clamp(18px,2.5vw,28px);font:300 clamp(6rem,3.4rem + 7vw,9rem)/.85 Fraunces,Georgia,serif;letter-spacing:-.03em;
+.art{width:min(300px,74vw);height:auto;margin-bottom:clamp(28px,4.5vh,44px);overflow:visible}
+.big{margin:0 0 clamp(14px,2vh,22px);font:700 clamp(3rem,2.2rem + 2.6vw,4.5rem)/1 Inter,system-ui,sans-serif;letter-spacing:-.05em;
   background:linear-gradient(100deg,#ffc08a 0%,#f58a45 35%,#e2622a 70%,#c8471c 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
   padding:0 .06em .04em}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;margin:0 0 14px;font:600 .8rem/1 Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--glow)}
@@ -69,7 +69,7 @@ footer{padding:0 0 max(28px,env(safe-area-inset-bottom,0px));text-align:center;f
 @keyframes drift{50%{transform:translate(3px,-3px)}}
 @media (prefers-reduced-motion:reduce){.sky i,.scope,.sight,.qm,.t1,.t2,.t3,.planet{animation:none}}
 @media (max-width:480px){.acts{display:grid;width:100%;max-width:330px}}
-@media (max-height:700px) and (min-width:600px){main{padding:12px 0 28px}.art{width:190px;margin-bottom:18px}.big{font-size:5.5rem;margin-bottom:14px}h1{font-size:2.6rem}.acts{margin-top:28px}}
+@media (max-height:700px) and (min-width:600px){main{padding:12px 0 28px}.art{width:190px;margin-bottom:18px}.big{font-size:3rem;margin-bottom:10px}h1{font-size:2.6rem}.acts{margin-top:28px}}
 </style>
 </head>
 <body>
@@ -82,6 +82,7 @@ footer{padding:0 0 max(28px,env(safe-area-inset-bottom,0px));text-align:center;f
 </div>
 <header><a href="/" aria-label="WayfinderGEO home"><img src="/brand/wayfinder-horizontal-compact-reverse.svg" width="188" height="34" alt="WayfinderGEO"></a></header>
 <main>
+  <p class="big" aria-label="Error 404">404</p>
   <svg class="art" viewBox="0 0 340 280" fill="none" stroke="#f4e8d3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M24 246c40-3 78 2 118-1s84-4 120-1 40 2 56 0"/>
     <path d="M70 256c22-2 44 1 64-1M196 254c18-1 34 1 50-1" stroke-width="1.4" opacity=".5"/>
@@ -101,7 +102,6 @@ footer{padding:0 0 max(28px,env(safe-area-inset-bottom,0px));text-align:center;f
     <g stroke-width="1.4"><path class="t1" d="M128 47v10M123 52h10"/><path class="t2" d="M36 164v8M32 168h8"/><path class="t3" d="M214 30v8M210 34h8"/><path class="t1" d="M312 135v10M307 140h10"/></g>
     <g fill="#f4e8d3" stroke="none"><circle class="t2" cx="176" cy="74" r="1.6"/><circle class="t3" cx="250" cy="150" r="1.4"/><circle class="t1" cx="40" cy="44" r="1.4"/><circle class="t2" cx="300" cy="202" r="1.6"/></g>
   </svg>
-  <p class="big" aria-label="Error 404">404</p>
   <h1>This page isn’t <em>on the map.</em></h1>
   <p class="lead"><span class="nw">The link may be old, or there’s a typo <span style="white-space:nowrap">in it.</span></span> <span class="nw">Either way, the way back is right here.</span></p>
   <div class="acts">

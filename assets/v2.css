@@ -2161,3 +2161,9 @@ html[data-faq="group"] .faq2 .tabpanel[hidden]{visibility:visible}
 .faq2 .faq-qs .qa.js-qa summary::before{color:var(--muted)}
 .faq2 .faq-qs .qa.js-qa:is(.is-open,:hover) summary::before{color:var(--flame-dark)}
 .qa-a.is-moving{overflow:hidden}
+
+/* (v51, Zaid's recording) opening the phone menu locks the page, which took away a classic scrollbar (narrow desktop windows,
+   Windows) and shifted the whole bar, menu button included, sideways. The scrollbar's space is kept while the menu is open */
+html.menu-lock{scrollbar-gutter:stable}
+/* (v51, Zaid) the hero's paragraph a size smaller on phones: 18px -> 16px */
+@media (max-width:700px){.hero-lead{font-size:1rem;line-height:1.6}}
