@@ -14,13 +14,8 @@
     else full = Math.min(1240, innerWidth - 2 * Math.max(16, Math.min(56, innerWidth * .04)));
     wn.style.setProperty('--wn-w', full + 'px');
     var was = wn.classList.contains('is-pill');
-    /* (v46) at the top, the links sit in the middle of the page, over the centred hero. The audit side is wider than the logo, so
-       the links are nudged right by half the difference */
-    wn.classList.remove('is-pill');
-    var lw = wn.querySelector('.wn-logo').getBoundingClientRect().width, cw = wn.querySelector('.wn-cta').getBoundingClientRect().width;
-    var room = (full - 2 - lw - links.getBoundingClientRect().width - cw) / 2 - 32;     // never closer than 32px to either side
-    var shift = Math.max(-room, Math.min(room, (cw - lw) / 2));
-    wn.style.setProperty('--wn-shift', (room > 0 ? shift : 0).toFixed(1) + 'px');
+    /* (20 Oct) the links used to be nudged onto the page's centre; that left uneven gaps (201px by the logo, 123px by the
+       audit side, at 1440). They now sit in the bar's flow, with equal space either side. */
     // natural pill width: logo mark + links + cta, with the word collapsed
     wn.classList.add('is-pill', 'wn-measure');
     bar.style.transition = 'none'; bar.style.width = 'max-content';

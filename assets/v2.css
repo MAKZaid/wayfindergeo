@@ -1832,11 +1832,6 @@ html[data-faq="group"] .faq2 .tabpanel[hidden]{visibility:visible}
 @media (max-width:900px){.faq-side{grid-column:1 / -1}}
 /* section 3: the paragraph sits on the headline's last baseline, not just the bottom of its box */
 .sec-head.split{align-items:end;align-items:last baseline}
-/* the nav links, centred on the page at the top (nav.js measures the nudge); in the compact bar they sit in its flow as before */
-@media (min-width:901px){
-  .wn-links{transition:transform .6s var(--wn-ease)}
-  .wn:not(.is-pill) .wn-links{transform:translateX(var(--wn-shift,0px))}
-}
 
 /* ---------------------------------------------------------------- v47: the Soft look, everywhere (18 Oct 2026)
    Zaid picked "Soft": every pressable or raised thing is lit from above (a fine bright top edge), sits on a soft warm contact shadow,
