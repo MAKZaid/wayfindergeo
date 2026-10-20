@@ -67,9 +67,20 @@
 
   /* phones */
   if (menuBtn && sheet) {
-    menuBtn.addEventListener('click', function () {
-      var open = sheet.hidden; sheet.hidden = !open; menuBtn.setAttribute('aria-expanded', String(open));
-    });
-    [].forEach.call(sheet.querySelectorAll('a'), function (a) { a.addEventListener('click', function () { sheet.hidden = true; menuBtn.setAttribute('aria-expanded', 'false'); }); });
+    /* 20 Oct (Zaid): opens and closes like clay.global's phone menu. The sheet wipes down from the top (1s) and back up (.5s),
+       the rows drop in one after another, and the two lines meet before they turn into a cross (v2.css). */
+    var still = matchMedia('(prefers-reduced-motion: reduce)'), shutT = 0;
+    function openSheet() {
+      clearTimeout(shutT); sheet.hidden = false; menuBtn.setAttribute('aria-expanded', 'true');
+      if (still.matches) { sheet.classList.add('is-open'); return; }
+      void sheet.offsetHeight; requestAnimationFrame(function () { sheet.classList.add('is-open'); });
+    }
+    function closeSheet() {
+      menuBtn.setAttribute('aria-expanded', 'false'); sheet.classList.remove('is-open');
+      document.documentElement.classList.remove('menu-lock');                    // the page can scroll (and follow a link) while the sheet wipes away
+      clearTimeout(shutT); shutT = setTimeout(function () { sheet.hidden = true; }, still.matches ? 0 : 500);
+    }
+    menuBtn.addEventListener('click', function () { if (sheet.hidden || !sheet.classList.contains('is-open')) openSheet(); else closeSheet(); });
+    [].forEach.call(sheet.querySelectorAll('a'), function (a) { a.addEventListener('click', closeSheet); });
   }
 })();

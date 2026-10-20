@@ -420,10 +420,13 @@
       var row = wTabs[i].parentNode, t = wTabs[i];                               // keep the selected tab in view when the row scrolls
       if (row.scrollWidth > row.clientWidth) row.scrollTo({ left: t.offsetLeft - (row.clientWidth - t.offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' });
     }
+    var steer = false, steerT = 0;                                              // a tapped tab glides the cards; the swipe-follow below stands down until it lands
     function go(i, smooth) {
       var c = cards[i], left = c.offsetLeft - (track.clientWidth - c.offsetWidth) / 2;
+      if (smooth && !reduce) { steer = true; clearTimeout(steerT); steerT = setTimeout(function () { steer = false; }, 900); }
       track.scrollTo({ left: left, behavior: smooth && !reduce ? 'smooth' : 'auto' }); mark(i);
     }
+    track.addEventListener('touchstart', function () { steer = false; }, { passive: true });
     wTabs.forEach(function (t, i) {
       t.addEventListener('click', function () { go(i, true); });
       t.addEventListener('keydown', function (e) {
@@ -431,13 +434,15 @@
         var n = (i + k + wTabs.length) % wTabs.length; go(n, true); wTabs[n].focus(); e.preventDefault();
       });
     });
-    var st;
-    track.addEventListener('scroll', function () {                           // a swipe changes the tab too
-      clearTimeout(st); st = setTimeout(function () {
+    var st = 0;
+    track.addEventListener('scroll', function () {                           // a swipe changes the tab too, live (20 Oct: it used to wait for the swipe to stop, so the tabs lagged behind)
+      if (steer) { clearTimeout(steerT); steerT = setTimeout(function () { steer = false; }, 150); return; }
+      if (st) return; st = requestAnimationFrame(function () {
+        st = 0;
         var mid = track.scrollLeft + track.clientWidth / 2, best = 0, bd = 1e9;
         cards.forEach(function (c, j) { var d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = j; } });
         if (best !== on) mark(best);
-      }, 90);
+      });
     }, { passive: true });
     cards.forEach(function (c, i) { c.addEventListener('click', function () { if (i !== on) go(i, true); }); });
     /* start on cafés and restaurants, so the clinic card peeks in from the left */
@@ -685,6 +690,7 @@
       wn.classList.toggle('menu-open', open);
       document.documentElement.classList.toggle('menu-lock', open);
       if (!open) {
+        sheet.classList.remove('is-open');
         if (acc) { acc.setAttribute('aria-expanded', 'false'); sub.hidden = true; }
         if (sheet.contains(document.activeElement)) btn.focus({ preventScroll: true });
       }
@@ -1202,11 +1208,11 @@
   edges();
 })();
 
-/* (v51, Zaid; quicker 20 Oct: it felt slow on iPhone) FAQ answers slide open and closed on the site's soft curve, and the +/x turns in step (v2.css, .is-open).
+/* (v51, Zaid; 20 Oct: clay.global's timing) FAQ answers slide open and closed on the site's soft curve, and the +/x turns in step (v2.css, .is-open).
    Without script, or with reduced motion, they open at once as before */
 (function () {
   var qs = [].slice.call(document.querySelectorAll('.faq2 .faq-qs .qa')); if (!qs.length) return;
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, EASE = 'cubic-bezier(.22,1,.36,1)', OPEN = 420, CLOSE = 320;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, EASE = 'cubic-bezier(.19,1,.22,1)', DUR = 700, FADE = 250;   // clay.global's accordion: height .7s on their ease-out, the text fades on its own in .25s
   qs.forEach(function (d) {
     var s = d.querySelector('summary'), a = document.createElement('div'); a.className = 'qa-a';
     [].slice.call(d.children).forEach(function (c) { if (c !== s) a.appendChild(c); }); d.appendChild(a);
@@ -1218,12 +1224,13 @@
       d.classList.toggle('is-open', opening);
       if (reduce || !a.animate) { d.open = opening; return; }
       var from = anim ? a.getBoundingClientRect().height : (opening ? 0 : a.offsetHeight);
-      if (anim) { anim.cancel(); anim = null; }
+      if (anim) { a.getAnimations().forEach(function (x) { x.cancel(); }); anim = null; }
       if (opening) d.open = true;
       var to = opening ? a.scrollHeight : 0;
       a.classList.add('is-moving');
-      anim = a.animate([{ height: from + 'px', opacity: opening ? (from ? 1 : 0) : 1 }, { height: to + 'px', opacity: opening ? 1 : 0 }], { duration: opening ? OPEN : CLOSE, easing: EASE });
-      anim.onfinish = function () { anim = null; a.classList.remove('is-moving'); if (!opening) d.open = false; };
+      anim = a.animate([{ height: from + 'px' }, { height: to + 'px' }], { duration: DUR, easing: EASE });
+      a.animate([{ opacity: opening ? 0 : 1 }, { opacity: opening ? 1 : 0 }], { duration: FADE, easing: 'cubic-bezier(.16,1,.3,1)', fill: opening ? 'none' : 'forwards' });
+      anim.onfinish = function () { anim = null; a.classList.remove('is-moving'); if (!opening) d.open = false; a.getAnimations().forEach(function (x) { x.cancel(); }); };
     });
   });
 })();
