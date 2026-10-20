@@ -2199,3 +2199,17 @@ html.menu-lock{scrollbar-gutter:stable}
 /* FAQ: quicker open (.42s) and close (.32s), the x turns in step */
 .faq2 .faq-qs .qa.js-qa summary::after{transition:transform .32s cubic-bezier(.22,1,.36,1)}
 .faq2 .faq-qs .qa.js-qa.is-open summary::after{transition-duration:.42s}
+
+/* 20 Oct 2026 (Zaid): phone hero heading 40px on three set lines, "Discovery / happens in the / AI answers now.", subtext 15px. Tablets and desktop keep two lines (they are already bigger) */
+.hb-m{display:none}
+@media (max-width:480px){
+  .hero-title{font-size:2.5rem;line-height:1.04;white-space:nowrap}
+  .hero-title .hb-d{display:none}
+  .hero-title .hb-m{display:inline}
+  .hero-lead{font-size:.94rem;line-height:1.6}
+}
+/* footer socials: same place, no boxes, just icon + name (tap area kept at 44px) */
+.footer-social{gap:4px 22px;margin-top:.7rem}
+.footer-social a{min-height:44px;padding:0;border:0;border-radius:0;background:none;box-shadow:none;color:var(--f-text)}
+.footer-social a:hover{color:var(--f-hover)}
+.footer-social a:active{transform:none}
