@@ -1208,29 +1208,54 @@
   edges();
 })();
 
-/* (v51, Zaid; 20 Oct: clay.global's timing) FAQ answers slide open and closed on the site's soft curve, and the +/x turns in step (v2.css, .is-open).
-   Without script, or with reduced motion, they open at once as before */
+/* (v51, Zaid; 20 Oct: clay.global's timing, rebuilt so it runs on the graphics chip)
+   FAQ answers open and close on clay.global's curve and the +/x turns in step (v2.css, .is-open).
+   The answer's height is not animated (that is drawn by the page at 60fps and judders next to 120Hz motion on iPhones).
+   The page jumps to its new layout at once, and everything below the question slides from where it was with transform
+   only: answer, rows below, the contact section and the footer. Without script, or with reduced motion, it opens at once */
 (function () {
   var qs = [].slice.call(document.querySelectorAll('.faq2 .faq-qs .qa')); if (!qs.length) return;
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, EASE = 'cubic-bezier(.19,1,.22,1)', DUR = 700, FADE = 250;   // clay.global's accordion: height .7s on their ease-out, the text fades on its own in .25s
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, EASE = 'cubic-bezier(.19,1,.22,1)', DUR = 700, FADE = 250;
+  function below(d) {                                   // everything that sits after this question: later rows, then later sections
+    var out = [], el = d;
+    while (el && el !== document.body) {
+      for (var s = el.nextElementSibling; s; s = s.nextElementSibling) {
+        var cs = getComputedStyle(s);
+        if (cs.display !== 'none' && cs.position !== 'fixed' && cs.position !== 'absolute' && s.tagName !== 'SCRIPT') out.push(s);
+      }
+      el = el.parentElement;
+    }
+    return out;
+  }
   qs.forEach(function (d) {
     var s = d.querySelector('summary'), a = document.createElement('div'); a.className = 'qa-a';
     [].slice.call(d.children).forEach(function (c) { if (c !== s) a.appendChild(c); }); d.appendChild(a);
     d.classList.add('js-qa'); d.classList.toggle('is-open', d.open);
-    var anim = null;
+    var running = [], done = null;
+    function stop() { running.forEach(function (x) { x.cancel(); }); running = []; if (done) { var f = done; done = null; f(); } [].forEach.call(d.parentNode.querySelectorAll('.qa-line'), function (l) { l.remove(); }); d.classList.remove('qa-gliding'); }
     s.addEventListener('click', function (e) {
       e.preventDefault();
+      stop();
       var opening = !d.classList.contains('is-open');
       d.classList.toggle('is-open', opening);
       if (reduce || !a.animate) { d.open = opening; return; }
-      var from = anim ? a.getBoundingClientRect().height : (opening ? 0 : a.offsetHeight);
-      if (anim) { a.getAnimations().forEach(function (x) { x.cancel(); }); anim = null; }
-      if (opening) d.open = true;
-      var to = opening ? a.scrollHeight : 0;
-      a.classList.add('is-moving');
-      anim = a.animate([{ height: from + 'px' }, { height: to + 'px' }], { duration: DUR, easing: EASE });
-      a.animate([{ opacity: opening ? 0 : 1 }, { opacity: opening ? 1 : 0 }], { duration: FADE, easing: 'cubic-bezier(.16,1,.3,1)', fill: opening ? 'none' : 'forwards' });
-      anim.onfinish = function () { anim = null; a.classList.remove('is-moving'); if (!opening) d.open = false; a.getAnimations().forEach(function (x) { x.cancel(); }); };
+      var line = document.createElement('i'); line.className = 'qa-line'; d.after(line); d.classList.add('qa-gliding');   // the question's bottom line rides with the rows below
+      var movers = below(d), h;
+      var root = document.documentElement; root.style.overflowAnchor = 'none';   // browsers must not scroll the page to "keep its place" while we move it
+      if (opening) {
+        var h0 = d.offsetHeight; d.open = true; h = d.offsetHeight - h0;   // new layout now; the rows below start h higher and glide down
+        movers.forEach(function (m) { running.push(m.animate([{ transform: 'translateY(' + -h + 'px)' }, { transform: 'none' }], { duration: DUR, easing: EASE })); });
+        running.push(a.animate([{ opacity: 0, transform: 'translateY(-10px)' }, { opacity: 1, transform: 'none' }], { duration: FADE + 150, delay: 40, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' }));
+      } else {
+        var h1 = d.offsetHeight; d.open = false; h = h1 - d.offsetHeight; d.open = true;   // measure the closed height, then keep it open while it glides
+        running.push(a.animate([{ opacity: 1 }, { opacity: 0 }], { duration: FADE, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'forwards' }));
+        movers.forEach(function (m) { running.push(m.animate([{ transform: 'none' }, { transform: 'translateY(' + -h + 'px)' }], { duration: Math.round(DUR * .75), easing: EASE, fill: 'forwards' })); });
+        done = function () { d.open = false; };
+      }
+      Promise.all(running.map(function (x) { return x.finished; })).then(function () {
+        if (done) { var f = done; done = null; f(); }
+        running.forEach(function (x) { x.cancel(); }); running = []; root.style.overflowAnchor = ''; line.remove(); d.classList.remove('qa-gliding');
+      }, function () {});
     });
   });
 })();

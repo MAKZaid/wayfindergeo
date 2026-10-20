@@ -67,18 +67,21 @@
 
   /* phones */
   if (menuBtn && sheet) {
-    /* 20 Oct (Zaid): opens and closes like clay.global's phone menu. The sheet wipes down from the top (1s) and back up (.5s),
-       the rows drop in one after another, and the two lines meet before they turn into a cross (v2.css). */
+    /* 20 Oct (Zaid), option A: the sheet and the bar's white fade in and out together (opacity only, so iPhones run it on the
+       graphics chip at full speed). The rows still drop in one after another and the two lines meet before they cross (v2.css). */
     var still = matchMedia('(prefers-reduced-motion: reduce)'), shutT = 0;
     function openSheet() {
-      clearTimeout(shutT); sheet.hidden = false; menuBtn.setAttribute('aria-expanded', 'true');
+      clearTimeout(shutT); sheet.hidden = false; menuBtn.setAttribute('aria-expanded', 'true'); wn.classList.add('menu-open');
       if (still.matches) { sheet.classList.add('is-open'); return; }
       void sheet.offsetHeight; requestAnimationFrame(function () { sheet.classList.add('is-open'); });
     }
     function closeSheet() {
       menuBtn.setAttribute('aria-expanded', 'false'); sheet.classList.remove('is-open');
-      document.documentElement.classList.remove('menu-lock');                    // the page can scroll (and follow a link) while the sheet wipes away
-      clearTimeout(shutT); shutT = setTimeout(function () { sheet.hidden = true; }, still.matches ? 0 : 500);
+      wn.classList.remove('menu-open');                                             // the bar fades back in the same moment the sheet fades out
+      document.documentElement.classList.remove('menu-lock');                    // the page can scroll (and follow a link) while it fades
+      clearTimeout(shutT);
+      if (still.matches) { sheet.hidden = true; return; }
+      shutT = setTimeout(function () { sheet.hidden = true; }, 240);
     }
     menuBtn.addEventListener('click', function () { if (sheet.hidden || !sheet.classList.contains('is-open')) openSheet(); else closeSheet(); });
     [].forEach.call(sheet.querySelectorAll('a'), function (a) { a.addEventListener('click', closeSheet); });
