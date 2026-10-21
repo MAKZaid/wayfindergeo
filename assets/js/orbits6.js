@@ -64,9 +64,10 @@
     /* v32: stars as a real sky has them. Brightness follows a steep curve (most are faint, a handful bright), each is a
        soft point of light rather than a dot, and they are a touch fewer and dimmer than v28-v31. Every star takes the same
        number of random draws, so the sky is identical on every load. */
-    var n = Math.round(W * H / (phone ? 6000 : 7600));
+    var n = Math.round(W * H / (phone ? 6000 : (window.WF_starDiv || 7600)));   // (20 Oct) sky.js asks for about a third more stars on desktop
+    var even = !phone && window.WF_starDiv, gcols = Math.max(1, Math.round(Math.sqrt(n * W / H))), grows = Math.ceil(n / gcols), cw = W / gcols, ch = H / grows;
     for (var j = 0; j < n; j++) {
-      var sx = R() * W, sy = R() * H, m = R(), b = Math.pow(R(), 2.6), cc = R(), tw = R(), ph = R() * 6.28, f1 = R(), f2 = R();
+      var sx = even ? (j % gcols + R()) * cw : R() * W, sy = even ? (Math.floor(j / gcols) + R()) * ch : R() * H, m = R(), b = Math.pow(R(), 2.6), cc = R(), tw = R(), ph = R() * 6.28, f1 = R(), f2 = R();
       if (!clear(sx, sy)) continue;
       stars.push({ x: sx, y: sy, l: m < .62 ? 0 : m < .9 ? 1 : 2, b: b,
         o: Math.min(.58, .1 + b * .52), s: .5 + b * 1.05,               // peak opacity; size of the point (CSS px)
@@ -74,6 +75,34 @@
         tw: tw < .55, ph: ph, f1: .5 + f1 * 1.3, f2: 1.9 + f2 * 2.3, amp: .18 + b * .3,
         spike: b > .88 && !phone });
     }
+    /* (20 Oct, desktop with sky.js) stars sit one per grid cell (above), and the brightest are handed out along a Halton
+       sequence (an evenly spread, non-grid pattern) so the bright ones don't bunch; everything else about each star stays random */
+    function halton(i, b) { var f = 1, r = 0; while (i > 0) { f /= b; r += f * (i % b); i = Math.floor(i / b); } return r; }
+    if (even) {
+    var bs = stars.map(function (st) { return st.b; }).sort(function (p, q) { return q - p; }), pool = stars.slice();
+    for (var hk = 0; hk < bs.length && pool.length; hk++) {
+      var hx = halton(hk + 1, 2) * W, hy = halton(hk + 1, 3) * H, bi = 0, bd = 1e18;
+      for (var pi = 0; pi < pool.length; pi++) { var dd = Math.pow(pool[pi].x - hx, 2) + Math.pow(pool[pi].y - hy, 2); if (dd < bd) { bd = dd; bi = pi; } }
+      var sx2 = pool.splice(bi, 1)[0], bb = bs[hk];
+      sx2.b = bb; sx2.o = Math.min(.58, .1 + bb * .52); sx2.s = .5 + bb * 1.05; sx2.amp = .18 + bb * .3; sx2.spike = bb > .88 && !phone;
+    }
+    }
+    /* (20 Oct) no star on a galaxy (sky.js), and no bright one on the Milky Way */
+    var gal = window.WF_galaxies || [];
+    if (gal.length || window.WF_bandDens) stars = stars.filter(function (st) {
+      var on = gal.some(function (g) { return Math.hypot(st.x - g[0], st.y - g[1]) < 26; })
+        || (st.b > .45 && window.WF_bandDens && window.WF_bandDens(st.x, st.y) > .04);   // no bright star on the Milky Way
+      return !on;
+    });
+    /* (20 Oct) placed by hand (sky.js): stars taken out, and bright stars put in */
+    var hide = window.WF_starHide || [], add = window.WF_starAdd || [];
+    if (hide.length) stars = stars.filter(function (st) { return !hide.some(function (h) { return Math.hypot(st.x - h[0] * W, st.y - h[1] * H) < 18; }); });
+    add.forEach(function (a, ai) {
+      var bb = .92, st = {l: 1, c: 0, tw: true, ph: 1.3 + ai, f1: 1 + ai * .13, f2: 2.6, x: a[0] * W, y: a[1] * H, b: bb,
+        o: Math.min(.58, .1 + bb * .52), s: .5 + bb * 1.05, amp: .18 + bb * .3, spike: !phone, added: true};
+      stars.push(st);
+    });
+    if (window.WF_skyWait) stars = [];               // wait for sky.js, so the stars are placed once and never hop
     sprites = STAR_RGB.map(sprite);
     return true;
   }
@@ -285,6 +314,7 @@
     hero.addEventListener('pointerleave', function () { tx = ty = 0; });
   }
   var pending = false;
+  window.WF_restars = function () { sizeKey = ''; later(); };   // sky.js calls this when it redraws the Milky Way and galaxies
   function later() { if (pending) return; pending = true; requestAnimationFrame(function () { pending = false; if (size() || reduce) draw(performance.now()); }); }
   if ('ResizeObserver' in window) { var ro = new ResizeObserver(later); ro.observe(box); ro.observe(focus.parentElement); }
   addEventListener('resize', later);

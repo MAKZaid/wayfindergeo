@@ -295,6 +295,11 @@
         var col = rand() < 0.72 ? '#fffdf8' : '#f4c99e';
         var tw = rand() < 0.3 ? ' class="tw" style="animation-duration:' + (3 + rand() * 3.5).toFixed(1) +
           's;animation-delay:' + (rand() * 5).toFixed(1) + 's"' : '';
+        /* (20 Oct) stars taken out by hand, and none on a footer galaxy (assets/js/footsky.js). Checked after every random
+           draw, so taking one star out leaves all the others exactly where they were */
+        var FC = window.WF_footCfg;
+        if (FC && (FC.hide.some(function (p) { return Math.hypot(x - p[0] * f.width, y - p[1] * f.height) < 10; }) ||
+            FC.galaxies.some(function (g) { return Math.hypot(x - g[0] * f.width, y - g[1] * f.height) < 22; }))) { made++; continue; }
         out += '<circle' + tw + ' cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r +
           '" fill="' + col + '" fill-opacity="' + op.toFixed(2) + '"/>';
         made++;
