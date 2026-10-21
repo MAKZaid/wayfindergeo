@@ -1,4 +1,4 @@
-/* Hero deep sky (20 Oct 2026, built with Zaid over v59 rounds 1-10). Desktop widths only; phones keep today's sky.
+/* Hero deep sky (20 Oct 2026, built with Zaid over v59 rounds 1-10). Desktop and phones each have their own layout (phones added 21 Oct).
    - The Milky Way: a bent band of glow and ~9,000 specks in the site's orange fading to warm white, with knotty star clouds,
      a dark rift and thin dust lanes. It's the back-most layer, and only appears once the hero has been on screen for
      2 minutes in total (paused while scrolled away or on another tab), filling in from the top down along its path.
@@ -7,11 +7,18 @@
    - About a third more stars, spread evenly (orbits6.js), none on a galaxy and no bright one on the Milky Way.
    Everything is drawn once, after fonts load and the hero is at its final size, so nothing hops. */
 (function () {
-  var sky = document.querySelector('.hx .sky'); if (!sky || innerWidth <= 900) return;
-  var CFG = {galaxies: [[.201, .181], [.792, .199], [.946, .725]],
+  var sky = document.querySelector('.hx .sky'); if (!sky) return;
+  var DESK = {galaxies: [[.201, .181], [.792, .199], [.946, .725]],
     add: [[.109, .256], [.211, .113], [.069, .144], [.033, .303], [.162, .514], [.866, .348]],
     hide: [[.107, .152], [.072, .321], [.109, .477], [.392, .366], [.454, .424], [.548, .389], [.517, .369], [.614, .383],
       [.283, .286], [.75, .126], [.889, .168], [.784, .394], [.64, .761], [.344, .771], [.822, .76]]};
+  /* phones (21 Oct): their own layout, placed by Zaid with the v63 editor */
+  var PHONE = innerWidth <= 900;
+  var MOB = {galaxies: [[.92, .143], [.059, .379]],                // Zaid, 21 Oct
+    add: [[.2, .15], [.056, .196], [.938, .344], [.315, .094], [.695, .099], [.938, .703], [.967, .772], [.018, .727]],
+    hide: [[.503, .146], [.423, .23], [.619, .32]]};
+  var CFG = PHONE ? MOB : DESK;
+  window.WF_skyCfg = CFG;
   var REVEAL = 120;                                               // seconds of the hero on screen before the Milky Way appears
   window.WF_starDiv = 5600;                                       // orbits6.js: one star per 5600px² (was 7600)
   function rnd(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
@@ -142,7 +149,7 @@
   function build() {
     [].slice.call(sky.querySelectorAll('.sp-layer')).forEach(function (e) { e.remove(); });
     var S = sky.getBoundingClientRect(); W = S.width; H = S.height;
-    var cb = layer('sp-band'), step = milkyWay(ctxFor(cb, W, H), [.36, -.06], [.176, .459], [-.045, .6], .5), job = ++jobs;
+    var cb = layer('sp-band'), step = (PHONE ? milkyWay(ctxFor(cb, W, H), [.98, -.04], [.62, .36], [-.06, .62], .5) : milkyWay(ctxFor(cb, W, H), [.36, -.06], [.176, .459], [-.045, .6], .5)), job = ++jobs;
     (function slice() {                                             // ~8ms at a time, in idle time where the browser offers it
       if (job !== jobs) return;                                     // a newer build (resize) took over
       if (step(performance.now() + 8)) return;

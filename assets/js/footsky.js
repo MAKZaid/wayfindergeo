@@ -1,13 +1,15 @@
 /* Footer sky (20 Oct 2026): hand-placed galaxies and bright stars, the same look as the hero's, placed by Zaid with the
    v59 editor. Positions are fractions of the footer box (0,0 top-left, 1,1 bottom-right). script.js keeps its faint stars
-   off the galaxies and leaves out the ones in 'hide'. Desktop widths only; phones keep today's footer. */
+   off the galaxies and leaves out the ones in 'hide'. Desktop and phones each have their own layout (phones added 21 Oct). */
 (function () {
-  var foot = document.querySelector('.footer'); if (!foot || innerWidth <= 900) return;
-  var FC = {galaxies: [[.046, .287], [.091, .62], [.933, .597], [.017, .833]],
+  var foot = document.querySelector('.footer'); if (!foot) return;
+  var PHONE = innerWidth <= 900;
+  var FDESK = {galaxies: [[.046, .287], [.091, .62], [.933, .597], [.017, .833]],
     add: [[.8, .619], [.044, .516], [.079, .717], [.166, .659], [.92, .707], [.702, .589], [.023, .217], [.768, .545], [.786, .298],
       [.306, .714], [.714, .749], [.392, .58], [.908, .2], [.941, .048], [.026, .114], [.093, .053], [.353, .521]],
     hide: [[.924, .531], [.501, .439], [.352, .469], [.441, .516], [.578, .495], [.592, .499], [.682, .44], [.246, .414], [.407, .415],
       [.387, .397], [.56, .402], [.693, .386], [.898, .323]]};
+  var FC = PHONE ? {galaxies: [], add: [[.097, .06], [.905, .102], [.362, .094], [.136, .809], [.864, .817]], hide: []} : FDESK;   // phone: Zaid, 21 Oct
   window.WF_footCfg = FC;
   function rnd(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
   var cv = document.createElement('canvas'); cv.className = 'foot-sky'; cv.setAttribute('aria-hidden', 'true');
@@ -22,6 +24,9 @@
     }
     x.fillStyle = 'rgba(255,248,236,.6)'; x.beginPath(); x.arc(0, 0, .8, 0, 6.2832); x.fill();
     x.restore();
+  }
+  function small(x, sx, sy) {                           // phone, top half of the footer: a small faint star, not a bright one
+    x.fillStyle = 'rgba(255,250,242,.55)'; x.beginPath(); x.arc(sx, sy, 1, 0, 6.2832); x.fill();
   }
   function star(x, sx, sy) {                            // a bright star like the hero's brightest: soft point + hair-thin spikes (21 Oct: smaller)
     var g = x.createRadialGradient(sx, sy, 0, sx, sy, 4); g.addColorStop(0, 'rgba(255,250,242,.9)'); g.addColorStop(.3, 'rgba(255,236,214,.35)'); g.addColorStop(1, 'rgba(255,226,196,0)');
@@ -47,7 +52,7 @@
     cv.width = Math.round(W * d); cv.height = Math.round(H * d); cv.style.width = W + 'px'; cv.style.height = H + 'px';
     var x = cv.getContext('2d'); x.setTransform(d, 0, 0, d, 0, 0); x.clearRect(0, 0, W, H);
     FC.galaxies.forEach(function (g, i) { galaxy(x, g[0] * W, g[1] * H, i); });
-    FC.add.forEach(function (a) { star(x, a[0] * W, a[1] * H); });
+    FC.add.forEach(function (a) { if (PHONE && a[1] < .5) small(x, a[0] * W, a[1] * H); else star(x, a[0] * W, a[1] * H); });
     smallStars(x, W, H);
   }
   var go = function () { draw(); };
