@@ -37,8 +37,8 @@ main{flex:1;display:grid;justify-items:center;align-content:center;gap:0;padding
   padding:0 .06em .04em}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;margin:0 0 14px;font:600 .8rem/1 Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--glow)}
 .eyebrow::before{content:"";width:7px;height:7px;background:var(--ember);border-radius:1px}
-h1{margin:0;font:300 clamp(2.3rem,1.4rem + 3.2vw,3.6rem)/1.06 Fraunces,Georgia,serif;letter-spacing:-.02em;text-wrap:balance;max-width:14ch}
-h1 em{font-style:italic;color:var(--glow)}
+h1{margin:0;font:300 min(clamp(2.3rem,1.4rem + 3.2vw,3.6rem),calc((100vw - 48px) / 10.6))/1.06 Fraunces,Georgia,serif;letter-spacing:-.02em;white-space:nowrap}
+h1 em{font-style:normal;color:var(--glow)}
 .lead{margin:clamp(20px,2.6vh,28px) 0 0;max-width:34rem;color:#e7dcc9;text-wrap:balance}
 @media (min-width:480px){.nw{white-space:nowrap}}
 @media (min-width:900px){.lead{max-width:none}}
@@ -80,6 +80,18 @@ footer{padding:0 0 max(28px,env(safe-area-inset-bottom,0px));text-align:center;f
 @media (prefers-reduced-motion:reduce){.sky i,.scope,.sight,.qm,.t1,.t2,.t3,.planet,.btn::after{animation:none!important}}
 @media (max-width:480px){.acts{display:grid;width:100%;max-width:330px}}
 @media (max-height:700px) and (min-width:600px){main{padding:12px 0 28px}.art{width:190px;margin-bottom:18px}.big{font-size:3rem;margin-bottom:10px}h1{font-size:2.6rem}.acts{margin-top:28px}}
+
+/* the Milky Way (sky404.js): rises from the bottom after 90 seconds, a soft edge sweeping up its mask */
+.sky .mw{position:absolute;left:0;top:0;width:100%;height:max(100%,100lvh);
+  -webkit-mask-image:linear-gradient(0deg,#000 0,#000 33.3%,transparent 50%,transparent 100%);mask-image:linear-gradient(0deg,#000 0,#000 33.3%,transparent 50%,transparent 100%);
+  -webkit-mask-size:100% 300%;mask-size:100% 300%;-webkit-mask-position:0 0;mask-position:0 0;
+  transition:-webkit-mask-position 24s cubic-bezier(.45,0,.25,1),mask-position 24s cubic-bezier(.45,0,.25,1)}
+.sky .mw.in{-webkit-mask-position:0 100%;mask-position:0 100%}
+/* a soft dark pool behind the words, so they stay easy to read when the Milky Way is behind them */
+main::before{content:"";position:absolute;left:50%;top:50%;width:min(980px,100%);height:78%;transform:translate(-50%,-50%);z-index:-1;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(18,13,7,.62),rgba(18,13,7,.38) 55%,rgba(18,13,7,0))}
+@media (prefers-reduced-motion:reduce){.sky .mw{transition:none}}
+.sky .stars-bright{position:absolute;left:0;top:0;width:100%;height:max(100%,100lvh)}   /* the bright stars: there from the start */
 </style>
 </head>
 <body>
@@ -112,12 +124,13 @@ footer{padding:0 0 max(28px,env(safe-area-inset-bottom,0px));text-align:center;f
     <g stroke-width="1.4"><path class="t1" d="M128 47v10M123 52h10"/><path class="t2" d="M36 164v8M32 168h8"/><path class="t3" d="M214 30v8M210 34h8"/><path class="t1" d="M312 135v10M307 140h10"/></g>
     <g fill="#f4e8d3" stroke="none"><circle class="t2" cx="176" cy="74" r="1.6"/><circle class="t3" cx="250" cy="150" r="1.4"/><circle class="t1" cx="40" cy="44" r="1.4"/><circle class="t2" cx="300" cy="202" r="1.6"/></g>
   </svg>
-  <h1>This page isn’t <em>on the map.</em></h1>
+  <h1>This page isn’t on the <em>map</em>.</h1>
   <p class="lead"><span class="nw">The link may be old, or there’s a typo <span style="white-space:nowrap">in it.</span></span> <span class="nw">Either way, the way back is right here.</span></p>
   <div class="acts">
     <a class="btn solid" href="/">Back to the homepage <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
   </div>
 </main>
 <footer>© 2026 WayfinderGEO</footer>
+<script src="/assets/js/sky404.js?v=20261021a"></script>
 </body>
 </html>
