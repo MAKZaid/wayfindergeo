@@ -91,7 +91,7 @@
     var parts=(C.parts||[]).map(function(t,i){ return '<div><b>'+(i+1)+'</b>'+esc(t)+'</div>'; }).join('');
     card.innerHTML=(C.greeting?'<div class="f-meta"><p class="f-eyebrow">'+esc(C.greeting)+'</p></div>':'')+'<h1 class="f-title">'+esc(C.title)+'</h1>'+
       '<p class="f-lead">'+esc(C.intro)+'</p>'+(parts?'<div class="f-parts">'+parts+'</div>':'')+
-      '<div class="f-okrow"><button class="f-btn big" type="button" data-start>'+(resumed?'Carry on':'Start')+I.arrow+'</button><span class="f-time">'+I.clock+'About '+(C.minutes||5)+' minutes</span></div>'+
+      '<div class="f-okrow f-startrow"><button class="f-btn big" type="button" data-start>'+(resumed?'Carry on':'Start')+I.arrow+'</button><span class="f-time">'+I.clock+'About '+(C.minutes||5)+' minutes</span></div>'+
       (resumed?'<p class="f-resume">Your earlier answers are saved. <button type="button" data-restart>Start over</button></p>':'')+
       (C.note?'<p class="f-resume">'+esc(C.note)+'</p>':'');
     card.querySelector('[data-start]').addEventListener('click',function(){
@@ -113,7 +113,7 @@
     if(q.help) card.appendChild(h('p','f-help',esc(q.help)));
     var body=h('div','f-body'); card.appendChild(body);
 
-    function refresh(){ var d=done(q); if(ok){ ok.disabled=!d; ok.innerHTML=(q.optional&&!(S.a[q.id]&&S.a[q.id].text)?'Skip':'OK')+I.tick; } down.disabled=!d; }
+    function refresh(){ var d=done(q); if(ok){ ok.disabled=!d; ok.innerHTML=(q.optional&&!(S.a[q.id]&&S.a[q.id].text)?'Skip':'OK'); } down.disabled=!d; }
     // a tap saves the answer and shows it as chosen; only OK (or Enter) moves on
     function picked(b){ var k=b&&b.dataset.key, inCal=b&&b.closest('.f-cal-alt'); rerender();
       var f=root.querySelector((inCal?'.f-cal-alt ':'')+'.f-choice[data-key="'+k+'"]'); if(f) f.focus(); }
@@ -214,7 +214,7 @@
     // OK: glass until the question is answered, orange once it is
     var row=h('div','f-okrow'); ok=btn('f-btn',''); ok.addEventListener('click',next);
     row.appendChild(ok); row.appendChild(h('span','f-enter','press <b>Enter &crarr;</b>'));
-    if(num>1){ var bk=btn('f-back',I.left+'Back'); bk.addEventListener('click',prev); row.appendChild(bk); }
+    if(num>1){ var bk=btn('f-back',I.left+'<span class="sr-only">Back</span>'); bk.addEventListener('click',prev); row.appendChild(bk); }
     body.appendChild(row);
     refresh();
     live.textContent='Question '+num+' of '+total+': '+q.title;
@@ -276,7 +276,7 @@
     var sw=h('div','f-switch','<span>Closed all day</span>'), tg=btn('f-toggle',''); tg.setAttribute('role','switch'); tg.setAttribute('aria-checked',isClosed); tg.setAttribute('aria-label','Closed all day');
     tg.addEventListener('click',function(){ isClosed=!isClosed; tg.setAttribute('aria-checked',isClosed); wheels.classList.toggle('off',isClosed); });
     sw.appendChild(tg); sheet.appendChild(sw);
-    var doneB=btn('f-btn','Done'+I.tick); sheet.appendChild(doneB);
+    var doneB=btn('f-btn','Done'); sheet.appendChild(doneB);
     document.body.appendChild(scrim); document.body.appendChild(sheet);
     requestAnimationFrame(function(){ requestAnimationFrame(function(){ scrim.classList.add('on'); sheet.classList.add('on'); }); });
     function close_(keep){ if(keep) commit(isClosed?null:[Math.min(open,close),Math.max(open,close)]);
@@ -336,7 +336,7 @@
     L.forEach(function(q,k){ var a=S.a[q.id], d=h('div',a&&!a.unsure?'':'skipped','<span>'+esc(q.title)+'</span><b>'+esc(answerText(q))+'</b>');
       var c=btn(null,'Change'); c.addEventListener('click',function(){ show(k,true); }); d.appendChild(c); r.appendChild(d); });
     card.appendChild(r);
-    var row=h('div','f-okrow'), b=btn('f-btn big','Send to '+esc(C.sendTo||'us')+I.arrow); row.appendChild(b); card.appendChild(row);
+    var row=h('div','f-okrow f-startrow'), b=btn('f-btn big','Send to '+esc(C.sendTo||'us')+I.arrow); row.appendChild(b); card.appendChild(row);
     var err=h('p','f-err'); err.hidden=true; card.appendChild(err);
     b.addEventListener('click',function(){
       b.disabled=true; b.innerHTML='Sending...';
