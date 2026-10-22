@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>A few questions for CLE Auto Service</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../form.css">
+</head>
+<body>
+<div class="f-progress" aria-hidden="true"><i></i></div>
+<div class="f-top"><img src="../../brand/wayfinder-horizontal-compact.svg" alt="WayfinderGEO"><span class="f-client">CLE Auto Service</span></div>
+<main class="f-stage" id="form"></main>
+<p class="f-saved">Your answers save as you go.</p>
+<div class="f-nav"><button type="button" data-up aria-label="Previous question"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3.5 10 8 5.5 12.5 10"/></svg></button><button type="button" data-down aria-label="Next question"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3.5 6 8 10.5 12.5 6"/></svg></button></div>
+<p class="sr-only" aria-live="polite" id="live"></p>
+
+<script type="application/json" id="form-config">
+{
+  "slug": "cle-auto-sxbruj",
+  "client": "CLE Auto Service",
+  "endpoint": "https://formspree.io/f/mzezyvvv",
+  "subject": "CLE Auto: Mo's answers",
+  "sendTo": "Zaid",
+  "greeting": "For Mo",
+  "title": "A few quick questions for your new website",
+  "intro": "Most answers are one tap. If you don't know one, tap \"Not sure\" and we'll work it out together.",
+  "parts": [
+    "Hours and the basics",
+    "The work you do",
+    "Your website and logo",
+    "Reviews and paying"
+  ],
+  "minutes": 5,
+  "note": "Logins and access we'll do in person at the shop, so nothing like that here.",
+  "thanks": {
+    "title": "Sent. Thanks, Mo.",
+    "body": "Zaid has your answers. Next step is about 10 minutes at the shop to set up access."
+  },
+  "questions": [
+    {
+      "id": "hours",
+      "group": "Hours and the basics",
+      "type": "hours",
+      "title": "Are these your hours?",
+      "help": "This is what your website says. Google shows something different, so we want the real ones.",
+      "prefill": {
+        "Mon": [
+          10,
+          18
+        ],
+        "Tue": [
+          10,
+          18
+        ],
+        "Wed": [
+          10,
+          18
+        ],
+        "Thu": [
+          10,
+          18
+        ],
+        "Fri": [
+          10,
+          18
+        ],
+        "Sat": [
+          10,
+          17
+        ],
+        "Sun": null
+      },
+      "prefillRows": [
+        [
+          "Monday to Friday",
+          "10 am to 6 pm"
+        ],
+        [
+          "Saturday",
+          "10 am to 5 pm"
+        ],
+        [
+          "Sunday",
+          "Closed"
+        ]
+      ],
+      "noUnsure": true
+    },
+    {
+      "id": "name",
+      "group": "Hours and the basics",
+      "type": "choice",
+      "title": "Which name should we use everywhere?",
+      "help": "Google, maps and other sites show a few different versions right now.",
+      "options": [
+        "CLE Auto Service",
+        "CLE Auto Service LLC",
+        "CLE Auto Service & Wash"
+      ],
+      "other": "Something else"
+    },
+    {
+      "id": "pullup",
+      "group": "Hours and the basics",
+      "type": "choice",
+      "title": "When a new customer arrives, where should they pull up?",
+      "options": [
+        "Into the open bay",
+        "On the street out front",
+        "In a lot nearby"
+      ],
+      "other": "Somewhere else"
+    },
+    {
+      "id": "pay",
+      "group": "Hours and the basics",
+      "type": "multi",
+      "title": "How can customers pay?",
+      "options": [
+        "Cash",
+        "Card",
+        "Zelle",
+        "Cash App",
+        "Check"
+      ],
+      "other": "Something else"
+    },
+    {
+      "id": "warranty",
+      "group": "Hours and the basics",
+      "type": "choice",
+      "title": "Do you give a warranty on parts or labor?",
+      "options": [
+        "Yes",
+        "No",
+        "Depends on the job"
+      ]
+    },
+    {
+      "id": "warrantylong",
+      "group": "Hours and the basics",
+      "type": "text",
+      "title": "How long is the warranty?",
+      "placeholder": "For example: 12 months on parts",
+      "optional": true,
+      "when": {
+        "q": "warranty",
+        "is": [
+          "Yes"
+        ]
+      }
+    },
+    {
+      "id": "lang",
+      "group": "Hours and the basics",
+      "type": "multi",
+      "title": "Which languages can customers speak with you in?",
+      "options": [
+        "English",
+        "Arabic",
+        "Spanish"
+      ],
+      "other": "Another language"
+    },
+    {
+      "id": "more",
+      "group": "Your work",
+      "type": "multi",
+      "title": "Which jobs do you want more of?",
+      "options": [
+        "Tires",
+        "Flat repair",
+        "Brakes",
+        "Batteries, starters, alternators",
+        "Suspension",
+        "Radiators and cooling",
+        "Oil changes",
+        "Warning lights",
+        "AC",
+        "Exhaust",
+        "Alignment"
+      ],
+      "other": "Something else"
+    },
+    {
+      "id": "dont",
+      "group": "Your work",
+      "type": "multi",
+      "title": "Anything you don't do?",
+      "options": [
+        "I do all of it",
+        "AC",
+        "Alignment",
+        "Transmissions",
+        "Body work",
+        "Engine rebuilds"
+      ],
+      "other": "Something else",
+      "exclusive": [
+        "I do all of it"
+      ]
+    },
+    {
+      "id": "makes",
+      "group": "Your work",
+      "type": "multi",
+      "title": "Any cars you don't work on?",
+      "options": [
+        "I work on everything",
+        "European (BMW, Mercedes, Audi)",
+        "Electric or hybrid",
+        "Big trucks or diesel"
+      ],
+      "other": "Something else",
+      "exclusive": [
+        "I work on everything"
+      ]
+    },
+    {
+      "id": "flats",
+      "group": "Your work",
+      "type": "choice",
+      "title": "Do you fix flats while people wait?",
+      "options": [
+        "Yes",
+        "No",
+        "Sometimes"
+      ]
+    },
+    {
+      "id": "pickup",
+      "group": "Your work",
+      "type": "choice",
+      "title": "Do you pick up and drop off cars?",
+      "options": [
+        "Yes",
+        "No",
+        "Sometimes"
+      ]
+    },
+    {
+      "id": "wash",
+      "group": "Your work",
+      "type": "choice",
+      "title": "Do you do car washes?",
+      "options": [
+        "Yes",
+        "No",
+        "Not anymore"
+      ]
+    },
+    {
+      "id": "videos",
+      "group": "Your work",
+      "type": "choice",
+      "title": "How often do you send customers a video of the problem?",
+      "options": [
+        "Most jobs",
+        "Some jobs",
+        "Rarely"
+      ]
+    },
+    {
+      "id": "videohow",
+      "group": "Your work",
+      "type": "multi",
+      "title": "How do you send them?",
+      "options": [
+        "Text message",
+        "WhatsApp"
+      ],
+      "other": "Another way",
+      "when": {
+        "q": "videos",
+        "not": [
+          "Rarely"
+        ]
+      }
+    },
+    {
+      "id": "paymonthly",
+      "group": "Your website and logo",
+      "type": "choice",
+      "title": "Do you pay XWeb Pros every month for your website?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "help": "The bottom of your current site says they built it."
+    },
+    {
+      "id": "paymuch",
+      "group": "Your website and logo",
+      "type": "text",
+      "title": "Roughly how much a month?",
+      "placeholder": "For example: $30",
+      "optional": true,
+      "when": {
+        "q": "paymonthly",
+        "is": [
+          "Yes"
+        ]
+      }
+    },
+    {
+      "id": "logo",
+      "group": "Your website and logo",
+      "type": "choice",
+      "title": "Your logo",
+      "options": [
+        "Keep my current badge",
+        "Try the cleaner version",
+        "Show me both first"
+      ]
+    },
+    {
+      "id": "quotes",
+      "group": "Your website and logo",
+      "type": "choice",
+      "title": "Can we quote your Google reviews on the new site?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "cols": true
+    },
+    {
+      "id": "card",
+      "group": "Reviews and paying",
+      "type": "choice",
+      "title": "OK to put a small card at the counter asking for a Google review?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "cols": true
+    },
+    {
+      "id": "replies",
+      "group": "Reviews and paying",
+      "type": "choice",
+      "title": "Who should answer your Google reviews?",
+      "options": [
+        "Me",
+        "You write it, I approve it",
+        "You handle it"
+      ]
+    },
+    {
+      "id": "monthly",
+      "group": "Reviews and paying",
+      "type": "choice",
+      "title": "How would you like to pay each month?",
+      "options": [
+        "Zelle",
+        "Card",
+        "Check",
+        "Cash"
+      ]
+    },
+    {
+      "id": "email",
+      "group": "Reviews and paying",
+      "type": "confirm",
+      "title": "Send invoices to this email?",
+      "prefill": "cleautoservice216@gmail.com",
+      "inputType": "email"
+    },
+    {
+      "id": "else",
+      "group": "Last one",
+      "type": "longtext",
+      "title": "Anything else we should know?",
+      "help": "Optional. Or just tell Zaid next time you see him.",
+      "optional": true
+    }
+  ]
+}
+</script>
+<script src="../form.js"></script>
+</body>
+</html>
