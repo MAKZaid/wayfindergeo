@@ -217,7 +217,7 @@
   function mix(c0, c1, f) { return Math.round(c0[0] + (c1[0] - c0[0]) * f) + ',' + Math.round(c0[1] + (c1[1] - c0[1]) * f) + ',' + Math.round(c0[2] + (c1[2] - c0[2]) * f); }
   var HALO = [255, 226, 196], EMB = [242, 154, 85];
   function tail(e, a0, span, w0, amul, half, t, seed) {
-    var ws = Math.min(1.15, .55 + .45 * S / .84);
+    var ws = wScale();
     if (TM === 3) {
       for (var j = 0; j < 64; j++) {
         var dr = dustR[(j + seed * 7) % 64], f = (j + dr[0]) / 64, a = a0 - f * span;
@@ -245,14 +245,17 @@
       p0 = p1;
     }
   }
+  /* how thick trails and heads are drawn: with the orbit's scale on desktop; (26 Oct) phones, whose rings are drawn at their
+     own small size, get a fixed thinner size so the trails stay as fine as they look on desktop */
+  function wScale() { return phone ? .72 : Math.min(1.15, .55 + .45 * S / .84); }
   /* the head of a signal: a soft point of light with a bright core */
   function head(q, a, al) {
-    var ws = Math.min(1.15, .55 + .45 * S / .84), D = (TM === 2 ? 16 : 10) * ws;
+    var ws = wScale(), D = (TM === 2 ? 16 : 10) * ws;
     ctx.globalAlpha = Math.min(1, al * (TM === 2 ? .85 : .7)); ctx.drawImage(sprites[1] || sprite(STAR_RGB[1]), q[0] - D / 2, q[1] - D / 2, D, D); ctx.globalAlpha = 1;
     ctx.fillStyle = 'rgba(255,250,242,' + al.toFixed(3) + ')'; ctx.beginPath(); ctx.arc(q[0], q[1], 1.15 * ws, 0, Math.PI * 2); ctx.fill();
   }
   function signals(t, half) {
-    if (TM && !phone) {
+    if (TM) {                                                       // (26 Oct) phones too: the same smooth trails as desktop
       ctx.globalCompositeOperation = 'lighter';
       sig.forEach(function (g, gi) {
         var e = ell(g.k, t), a = g.p * Math.PI * 2;
