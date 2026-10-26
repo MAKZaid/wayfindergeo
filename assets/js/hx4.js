@@ -35,6 +35,10 @@
   /* sizes are shares of half the sky's width, so the outer one never leaves the screen at any desktop width */
   var FRAC = [.88, .74, .6, .47, .35], RINGS = [], A0 = [Math.PI + .3, -.35, .6, Math.PI - .75, 1.25];
   var chips = [], active = -1, timer = null, typing = [], paused = false, name = '';
+  /* (v64) line style from html data-line: 0 = the dotted line from before, 1 light beam, 2 flowing dots, 3 curved arc */
+  var LM = +(document.documentElement.dataset.line || 0), BRAND = { openai: '#ffffff', perplexity: '#2fa3b2', claude: '#d97757', google: '#4285f4', gemini: '#9177c7' };
+  var STOPS = { 1: [[0, .95], [.45, .2], [1, .85]], 2: [[0, 1], [.55, .6], [1, .35]], 3: [[0, .95], [.5, .04], [1, .7]] }[LM];
+  var grads = [], glints = [], sparks = [];
 
   function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function ic(k) { return '<i class="ic"><b class="mono">' + ICON[k] + '</b>' + (C.brandIcons[k] ? '<b class="col">' + C.brandIcons[k] + '</b>' : '') + '</i>'; }
@@ -68,8 +72,13 @@
     sx = fr.left - sr.left + fr.width / 2; sy = fr.top - sr.top + fr.height / 2; return sr;
   }
   function curve(i, x, y, bend, lift) {
+    if (LM === 3) { bend *= 1.6; lift = lift * 2.6 + 30 * (window.WF_fit ? Math.min(1, window.WF_fit.S / .84) : 1); }
     var mx = (x + sx) / 2 + (x < sx ? -bend : bend), my = Math.min(y, sy) - lift;
     geo[i] = { x: x, y: y, mx: mx, my: my };
+    var gr = grads[i]; if (gr) { gr.setAttribute('x1', x.toFixed(1)); gr.setAttribute('y1', y.toFixed(1)); gr.setAttribute('x2', sx.toFixed(1)); gr.setAttribute('y2', sy.toFixed(1)); }
+    var d = 'M' + x.toFixed(1) + ',' + y.toFixed(1) + ' Q' + mx.toFixed(1) + ',' + my.toFixed(1) + ' ' + sx.toFixed(1) + ',' + sy.toFixed(1);
+    if (glints[i]) { glints[i][0].setAttribute('d', d); glints[i][1].setAttribute('d', d); }
+    if (sparks[i] && i === active) { var q = bez(geo[i], 1 - Math.min(.4, 24 / Math.max(40, Math.hypot(x - sx, y - sy)))); sparks[i].setAttribute('transform', 'translate(' + q[0].toFixed(1) + ',' + q[1].toFixed(1) + ')'); }
     return 'M' + x.toFixed(1) + ',' + y.toFixed(1) + ' Q' + mx.toFixed(1) + ',' + my.toFixed(1) + ' ' + sx.toFixed(1) + ',' + sy.toFixed(1);
   }
   /* the star lights the side of each engine that faces it */
@@ -79,10 +88,24 @@
   }
   function lines() {
     var out = '';
-    chips.forEach(function (b, i) { out += '<path class="ln" data-k="' + E[i].k + '" data-i="' + i + '"/>'; });
+    if (LM) {
+      out += '<defs>';
+      chips.forEach(function (b, i) {
+        out += '<linearGradient id="wfg' + i + '" gradientUnits="userSpaceOnUse">' + STOPS.map(function (st, j) {
+          return '<stop offset="' + st[0] + '" stop-color="' + (j === STOPS.length - 1 ? '#ffe2c4' : '#ffc58f') + '" stop-opacity="' + st[1] + '"/>'; }).join('') + '</linearGradient>';
+      });
+      out += '</defs>';
+    }
+    chips.forEach(function (b, i) { out += '<path class="ln" data-k="' + E[i].k + '" data-i="' + i + '"' + (LM ? ' style="stroke:url(#wfg' + i + ')"' : '') + '/>'; });
+    if (LM === 1) chips.forEach(function (b, i) { out += '<path class="gl glw" pathLength="100" data-i="' + i + '"/><path class="gl" pathLength="100" data-i="' + i + '"/>'; });
+    if (LM === 3) chips.forEach(function (b, i) { out += '<path class="spk" data-i="' + i + '" d="M0,-4.2 Q.6,-.6 4.2,0 Q.6,.6 0,4.2 Q-.6,.6 -4.2,0 Q-.6,-.6 0,-4.2Z"/>'; });
     out += '<g class="wf-pls"></g>';
-    svg.setAttribute('viewBox', '0 0 ' + stage.clientWidth + ' ' + stage.clientHeight); svg.innerHTML = out;
+    /* (v64) no viewBox: the svg's units are the stage's own pixels, so a stage that changes height mid-resize can't stretch the lines */
+    svg.removeAttribute('viewBox'); svg.innerHTML = out;
     paths = [].slice.call(svg.querySelectorAll('.ln')); plsEl = svg.querySelector('.wf-pls');
+    grads = [].slice.call(svg.querySelectorAll('linearGradient'));
+    var gl = [].slice.call(svg.querySelectorAll('.gl')); glints = []; for (var gi = 0; gi < gl.length; gi += 2) glints.push([gl[gi], gl[gi + 1]]);
+    sparks = [].slice.call(svg.querySelectorAll('.spk'));
   }
   var paths = [], plsEl = null;
 
@@ -138,7 +161,7 @@
   }
   function place(b, i, x, y, a, s0) {
     var near = (Math.sin(a) + 1) / 2, far = Math.sin(a) < 0, on = i === active;
-    var sc = (s0 + (1 - s0) * near) * (on ? 1.1 : 1);
+    var sc = (s0 + (1 - s0) * near) * (on ? 1.1 : 1) * (window.WF_fit ? Math.max(.72, Math.sqrt(window.WF_fit.r)) : 1);
     b.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) translate(-50%,-50%) scale(' + sc.toFixed(3) + ')';
     /* behind the star: fade and soften as it passes through the glare */
     var occ = far ? Math.max(0, 1 - Math.hypot(x - sx, y - sy) / 80) : 0;
@@ -201,11 +224,18 @@
     if (!pulse) { if (plsEl.firstChild) plsEl.innerHTML = ''; return; }
     var p = (now - pulse.t0) / DUR, g = geo[pulse.i];
     if (p >= 1 || !g) {
-      var b = chips[pulse.i]; pulse = null; plsEl.innerHTML = '';
+      var b = chips[pulse.i]; if (glints[pulse.i]) glints[pulse.i].forEach(function (g) { g.classList.remove('run'); });
+      pulse = null; plsEl.innerHTML = '';
       if (b) { b.classList.remove('wf-ping'); void b.offsetWidth; b.classList.add('wf-ping'); setTimeout(function () { b.classList.remove('wf-ping'); }, 950); }
       return;
     }
     var e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2, out = '';
+    /* (v64) L1: the signal is the glint itself, running once from the star down the line to the engine */
+    if (LM === 1 && glints[pulse.i]) {
+      var off = (-(1 - e) * 100 + 2.5).toFixed(2);
+      glints[pulse.i].forEach(function (g) { g.classList.add('run'); g.style.strokeDashoffset = off; });
+      return;
+    }
     for (var j = 5; j >= 0; j--) {
       var q = bez(g, Math.max(0, e - j * .035)), f = 1 - j / 6;
       if (j === 0) out += '<circle class="wf-plg" cx="' + q[0].toFixed(1) + '" cy="' + q[1].toFixed(1) + '" r="7"/>';
@@ -217,9 +247,14 @@
   function mark(i) {
     chips.forEach(function (b, j) { b.classList.toggle('on', j === i); });
     paths.forEach(function (l) { l.classList.toggle('on', +l.getAttribute('data-i') === i); });
+    /* (v64) the active line starts in its engine's own colour; the others stay warm */
+    grads.forEach(function (g, j) { g.firstChild.setAttribute('stop-color', j === i ? BRAND[E[j].k] : '#ffc58f'); });
+    glints.forEach(function (g, j) { g[0].classList.toggle('on', j === i); g[1].classList.toggle('on', j === i); });
+    sparks.forEach(function (s, j) { s.classList.toggle('on', j === i); });
   }
   function show(i, force) {
     if (i === active && card.dataset.ready && !force) return;
+    if (pulse && glints[pulse.i]) glints[pulse.i].forEach(function (g) { g.classList.remove('run'); });
     active = i; mark(i); typing.forEach(clearTimeout); typing = []; pulse = null;
     var e = E[i]; card.dataset.ready = 1;
     var ce = card.querySelector('.c-eng'); ce.dataset.k = e.k; ce.innerHTML = ic(e.k) + e.n;
@@ -261,7 +296,7 @@
     input.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === 'Escape') input.blur(); });
   }
 
-  function relayout() { reserve(); layout(); }
+  function relayout() { reserve(); if (window.WF_refit) window.WF_refit(); layout(); }
   relayout(); show(0); schedule();
   /* width changes only: iPhone Safari's address bar sliding in and out also fires "resize", but changes nothing here */
   var rt, lastW = innerWidth; addEventListener('resize', function () { if (innerWidth === lastW) return; lastW = innerWidth; clearTimeout(rt); rt = setTimeout(relayout, 120); });

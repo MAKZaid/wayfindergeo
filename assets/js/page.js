@@ -1165,7 +1165,7 @@
 })();
 
 /* pricing: "Start with Beacon" and the rest fill in the form. The link still scrolls to it as before; on the way, "Interested in"
-   is set to that plan and its price, and the field glows for a moment so you can see it's been done. "Get a free audit" sets it
+   is set to that plan and its price, and the field glows for a moment so you can see it's been done. "Check your AI visibility" sets it
    back to the free audit. */
 (function () {
   var sel = document.getElementById('f-plan'); if (!sel) return;
