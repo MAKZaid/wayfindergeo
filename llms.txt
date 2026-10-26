@@ -44,13 +44,16 @@ sources they lean on: Reddit, YouTube and review sites.
 
 - **Compass: $1,250, one payment.** For teams who want the full picture and the fundamentals
   fixed, without a retainer. Full audit and a 50-prompt baseline, competitor citation gap
-  report, schema, llms.txt and crawler setup, and a 90-day roadmap with a walkthrough call.
+  report, schema, llms.txt and crawler setup, a 90-day roadmap with a walkthrough call, and a written read at
+  the end on what moved. Nothing in it is wasted if the client moves to a monthly plan later.
 - **Beacon: $500 per month.** For small teams and local businesses who need to show up in AI
   answers. Full AI visibility audit and baseline score, tracking on up to 50 priority prompts,
-  schema, llms.txt and crawler setup, and two answer-ready pages every month.
+  schema, llms.txt and crawler setup, two answer-ready pages every month, foundational SEO, and a
+  written report every month on what moved.
 - **North Star: $1,500 per month.** For brands competing for the recommendation slot in their
   category. Everything in Beacon, tracking on up to 300 prompts across every major model, six
-  answer-ready pages every month, off-site placement and digital PR, and a live dashboard.
+  answer-ready pages every month, off-site placement and digital PR, entity work and AI crawler
+  monitoring, and a live dashboard of share of voice against named competitors.
 
 No setup fee and no percentage of ad spend. Compass is a single payment with nothing after it.
 Monthly plans start with a 90-day term, then run month to month. Multi-location,

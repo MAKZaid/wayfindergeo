@@ -30,6 +30,9 @@
   }
   window.WF_refit = fit;
   fit();
+  /* (26 Oct) the stage and card stay hidden until the first frame after sizing (hx4.js refits in the same task), so they
+     don't visibly jump into place on load: that jump was the page's main layout shift. hero-remake.css shows them anyway after 2s */
+  requestAnimationFrame(function () { hero.classList.add('fit-ready'); });
   addEventListener('resize', fit);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 })();
