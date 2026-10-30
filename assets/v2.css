@@ -2311,3 +2311,118 @@ html:not([data-foot]) .footer > .closer,html[data-foot="a"] .footer > .closer{pa
 .footer .foot-sky{position:absolute;left:0;top:0;z-index:1;pointer-events:none}   /* above the Earth scene's dark background, so stars placed there show */
 /* the blur strip under the floating nav: cream over light sections, dark over the hero, why-it-matters and the footer (navfade.js) */
 .wn.over-dark .wn-blur{background:linear-gradient(rgba(28,20,8,.72),rgba(28,20,8,0))}
+
+/* (v66) pricing: room under the list, and the website add-on card (same surface as the price cards, icon box from the Services menu) */
+.plan2 .ticks{margin-bottom:1.4rem}
+.plan-web{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.9rem 1.25rem;margin-top:clamp(1.25rem,2.4vw,1.75rem);
+  padding:1.1rem clamp(1.1rem,2.2vw,1.6rem);border:1px solid var(--sf-bd);border-radius:var(--r-card);background:linear-gradient(180deg,#fff 0%,#fffcf6 100%);box-shadow:var(--sf-edge),var(--sf-card)}
+.pw-ic{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--paper-2);border:1px solid var(--rule)}
+.pw-ic svg{width:22px;height:22px}
+.pw-tx{display:grid;gap:.2rem;margin:0}
+.pw-tx strong{font-family:var(--font-display);font-weight:600;font-size:1.04rem;letter-spacing:-.01em;color:var(--ink)}
+.pw-tx span{font-size:.92rem;line-height:1.5;color:var(--muted)}
+.plan-web .pw-go{margin-right:.25rem;font-weight:600;font-size:.95rem;color:var(--flame-dark);white-space:nowrap}
+@media (max-width:980px){.plan-web{max-width:560px;margin-inline:auto}}
+@media (max-width:600px){.plan-web{grid-template-columns:auto minmax(0,1fr);align-items:start}.plan-web .pw-go{grid-column:2;justify-self:start}}
+
+/* (v66) links: a faint line sits under the text; on hover a solid line wipes in from the left and leaves to the right
+   (transform only, so it stays sharp). Replaces the dotted route + star, and the email's own grey border */
+.route-link{position:relative;text-decoration:none}
+.route-link::before,.route-link::after{content:"";position:absolute;left:0;right:auto;bottom:-2px;width:100%;height:1px;margin:0;border-radius:0;background:currentColor;opacity:1}
+.route-link::before{opacity:.28;transition:none}
+.route-link::after{transform:scaleX(0);transform-origin:right center;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.route-link:hover::before{width:100%}
+.route-link:is(:hover,:focus-visible)::after{left:0;opacity:1;transform:scaleX(1);transform-origin:left center}
+.contact-facts a.route-link,.contact-facts a.route-link:hover{border-bottom:0}
+@media (prefers-reduced-motion:reduce){.route-link::after{transition:none}}
+
+/* (v66) FAQ, rebuilt: the answer's row grows open (grid 0fr -> 1fr), so only the list reflows and nothing else on the page is
+   moved by hand. The text fades down into place; the + loses its upright bar and becomes a minus, in the same colour change */
+.faq2 .faq-qs .qa.js-qa summary::after{content:none}
+.qa-ic{position:absolute;right:.25rem;top:50%;width:16px;height:16px;margin-top:-8px;color:var(--ink-2);transition:color .3s ease}
+.qa-ic svg{display:block;width:16px;height:16px}
+.qa-ic path{transform-box:fill-box;transform-origin:center;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.qa.js-qa.is-open .qa-ic{color:var(--flame-dark)}
+.qa.js-qa.is-open .qa-ic .qa-v{transform:rotate(90deg)}
+.faq2 .faq-qs .qa.js-qa summary:hover .qa-ic{color:var(--flame-dark)}
+.faq2 .faq-qs .qa.js-qa .qa-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.22,1,.36,1)}
+.faq2 .faq-qs .qa.js-qa.is-open .qa-a{grid-template-rows:1fr}
+.qa-in{min-height:0;-webkit-clip-path:inset(-.6rem -1rem 0 -1rem);clip-path:inset(-.6rem -1rem 0 -1rem)}
+.qa-in > *{opacity:0;transform:translateY(-6px);transition:opacity .2s ease,transform .5s cubic-bezier(.22,1,.36,1)}
+.qa.js-qa.is-open .qa-in > *{opacity:1;transform:none;transition:opacity .35s ease .08s,transform .5s cubic-bezier(.22,1,.36,1)}
+@media (prefers-reduced-motion:reduce){.faq2 .faq-qs .qa.js-qa .qa-a,.qa-in > *,.qa-ic path{transition:none}}
+
+/* (v66) Services "What's included": the + is a drawn icon (crisp at every size) whose upright bar turns flat into a minus,
+   like the FAQ. Colours and the pressed look fade (shadow + border only; the background no longer swaps gradients mid-click),
+   and the contents fade down into place */
+.disc-plus{display:grid;place-items:center;color:var(--ink);transition:border-color .3s ease,color .3s ease,box-shadow .3s ease}
+.disc-plus::before,.disc-plus::after{content:none}
+.disc-plus svg{display:block;width:12px;height:12px}
+.disc-plus path{transform-box:fill-box;transform-origin:center;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.disc-head[aria-expanded="true"] .disc-plus{transform:none;color:var(--flame-dark)}
+.disc-head[aria-expanded="true"] .dp-v{transform:rotate(90deg)}
+#services .disc-head{transition:border-color .3s ease,box-shadow .3s ease,transform .12s}
+#services .disc-head[aria-expanded="true"]{background:linear-gradient(180deg,#fff 0%,#faf3e7 100%)}
+#services .disc-head[aria-expanded="true"] .disc-plus{background:linear-gradient(180deg,#fff 0%,#faf3e7 100%)}
+.disc-inner{transition:opacity .35s ease .1s,transform .55s cubic-bezier(.22,1,.36,1) .05s}
+.disc:not(.open) .disc-inner{opacity:0;transform:translateY(-6px);transition:opacity .18s ease,transform .3s ease}
+@media (prefers-reduced-motion:reduce){.disc-plus path,.disc-inner{transition:none!important}}
+
+/* (v66) "Send it over" a little wider on desktop (24px -> 34px each side); phones already fill the card */
+@media (min-width:601px){.form-foot .btn{padding-inline:34px}}
+
+/* (v66) Google, hovered: the same G as the grey one (the light letter shape Zaid prefers), filled with Google's four colours
+   through a mask, so only the colour changes. Colours from Google's logo: red #EA4335, blue #4285F4, green #34A853, yellow #FBBC05 */
+.g-new{display:inline-block;width:18px;height:18px;flex:none;
+  background:conic-gradient(from 0deg at 52% 50%,#ea4335 0deg 58deg,#4285f4 58deg 140deg,#34a853 140deg 228deg,#fbbc05 228deg 296deg,#ea4335 296deg 360deg);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M12.48%2010.92v3.28h7.84c-.24%201.84-.853%203.187-1.787%204.133-1.147%201.147-2.933%202.4-6.053%202.4-4.827%200-8.6-3.893-8.6-8.72s3.773-8.72%208.6-8.72c2.6%200%204.507%201.027%205.907%202.347l2.307-2.307C18.747%201.44%2016.133%200%2012.48%200%205.867%200%20.307%205.387.307%2012s5.56%2012%2012.173%2012c3.573%200%206.267-1.173%208.373-3.36%202.16-2.16%202.84-5.213%202.84-7.667%200-.76-.053-1.467-.173-2.053H12.48z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M12.48%2010.92v3.28h7.84c-.24%201.84-.853%203.187-1.787%204.133-1.147%201.147-2.933%202.4-6.053%202.4-4.827%200-8.6-3.893-8.6-8.72s3.773-8.72%208.6-8.72c2.6%200%204.507%201.027%205.907%202.347l2.307-2.307C18.747%201.44%2016.133%200%2012.48%200%205.867%200%20.307%205.387.307%2012s5.56%2012%2012.173%2012c3.573%200%206.267-1.173%208.373-3.36%202.16-2.16%202.84-5.213%202.84-7.667%200-.76-.053-1.467-.173-2.053H12.48z'/%3E%3C/svg%3E") center/contain no-repeat}
+@media (max-width:700px){.platform-logos .g-new.pl-col{width:16px;height:16px}}
+.platform-logos [data-logo="google"] a:is(:hover,:focus-visible) svg{display:none}
+
+/* (v66) links to Crispy Studio, our partners, in their own rose (#EC003F, from crispy.studio) */
+.crispy-link{font-weight:600;color:#ec003f}
+
+/* (v66, Zaid) the website card, slimmer: no icon, the question runs into the sentence, less padding (about 110px -> 70px tall at 1440) */
+.plan-web{grid-template-columns:minmax(0,1fr) auto;gap:.6rem 2rem;padding:.85rem clamp(1.1rem,2.2vw,1.5rem)}
+.pw-tx{display:block;font-size:.92rem;line-height:1.55;color:var(--muted)}
+.pw-tx strong{font-family:inherit;font-size:inherit;letter-spacing:0;margin-right:.15rem}
+@media (max-width:600px){.plan-web{grid-template-columns:minmax(0,1fr)}.plan-web .pw-go{grid-column:1}}
+
+/* (v66, Zaid) the website card on one line at desktop widths: 14px type, ~50px tall; it wraps onto two lines on narrower screens */
+.plan-web{padding:.7rem clamp(1.1rem,2.2vw,1.5rem);gap:.5rem 1.5rem}
+.pw-tx{font-size:.875rem}
+.plan-web .pw-go{font-size:.875rem}
+.pw-tx .nw{font-size:inherit;line-height:inherit;color:inherit}
+/* (v66, Zaid picked A) the slim card, a little taller: 47px -> about 58px at 1440 */
+.plan-web{padding-block:1.05rem}
+/* (v66) link underline sits under the words even when the link has extra tap padding (phones: "Ask us directly" has
+   .7rem above and below, the email .15rem), so it no longer floats ~11px under the text */
+.route-link::before,.route-link::after{bottom:calc(var(--rl-pb,0px) - 2px)}
+@media (hover:none),(max-width:700px){.faq-more a.route-link{--rl-pb:.7rem}}
+@media (max-width:700px){.contact-facts dd a.route-link{--rl-pb:.15rem}}
+/* (v66, Zaid picked M1) website card on phones: the question on its own line, the sentence under it, and a full-width
+   "Ask about it" button in the same style as the plan cards' buttons */
+@media (max-width:600px){
+  .pw-tx strong{display:block;margin:0 0 .3rem;font-size:1rem;color:var(--ink)}
+  .plan-web{gap:.95rem;padding:1.1rem 1.15rem 1.15rem}
+  .plan-web .pw-go{display:flex;align-items:center;justify-content:center;width:100%;min-height:46px;margin:0;border-radius:12px;border:1px solid rgba(60,36,10,.14);
+    background:linear-gradient(180deg,#fff 0%,#faf3e7 100%);box-shadow:inset 0 1px 0 #fff,0 1px 1px rgba(60,36,10,.05),0 3px 8px -4px rgba(60,36,10,.2);color:var(--ink);font-size:.95rem}
+  .plan-web .pw-go::before,.plan-web .pw-go::after{content:none}
+}
+/* (v66, Zaid) footer bottom row: "Based in Cleveland, Ohio" with a small pin, next to Privacy Policy (replaces the
+   wayfindergeo.co link, which only pointed back to the top of this page) */
+.fb-right{display:flex;align-items:center;flex-wrap:wrap;gap:0 .5rem}
+.fb-loc{display:inline-flex;align-items:center;gap:.4rem;white-space:nowrap}
+.fb-loc svg{width:14px;height:14px;flex:none;opacity:.75}
+/* (v66, Zaid) the note beside "Send it over" on one line (it was capped at 28ch, so it wrapped) */
+@media (min-width:601px){.form-foot .form-note{max-width:none;white-space:nowrap}}
+@media (max-width:600px){.form-foot .form-note{font-size:.75rem;white-space:nowrap}}   /* phones: 12px keeps it on one line down to 320px wide */
+/* (v66, Zaid) phones: the footer's bottom row on one line: "© 2026 WayfinderGEO" left, "Cleveland, USA" right. Privacy Policy
+   moves from that row into the Company links, so it is still one tap away */
+.fb-narrow{display:none}
+@media (max-width:700px){
+  .night-end .footer-base{flex-direction:row;justify-content:space-between;align-items:center;gap:1rem}
+  .fb-wide,.night-end .footer-base a.fb-wide{display:none}
+  .fb-narrow{display:inline}
+  li.fb-narrow{display:list-item}
+}

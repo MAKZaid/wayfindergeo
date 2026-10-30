@@ -25,7 +25,7 @@
     { k: 'perplexity', n: 'Perplexity', q: 'Which dentist in Toronto is best for anxious patients?',
       a: '@ is the most recommended for nervous patients, with sedation options and reviews that mention a calm, unhurried team.' },
     { k: 'claude', n: 'Claude', q: 'Who should we hire to rebuild our B2B website?',
-      a: 'Teams in your position often shortlist @ for its B2B focus and case studies with measurable results.' },
+      a: 'Teams in your position often shortlist @ for its clean, design-first B2B sites and long-term partnerships.', b: 'Crispy Studio' },   // (v66) a nod to Crispy Studio, our partners
     { k: 'google', n: 'AI Overviews', q: 'Best running shoes for flat feet under $150?',
       a: 'Most expert roundups put @ first for flat feet under $150, citing a stable midsole and a wide toe box.' },
     { k: 'gemini', n: 'Gemini', q: 'Which accounting firm is best for a small e-commerce brand?',
@@ -43,8 +43,9 @@
   function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function ic(k) { return '<i class="ic"><b class="mono">' + ICON[k] + '</b>' + (C.brandIcons[k] ? '<b class="col">' + C.brandIcons[k] + '</b>' : '') + '</i>'; }
   /* the name has its own span so the chip lines up on the words' baseline, not the dot's (v31) */
-  function you() { return '<span class="you"><i class="wf-dot"></i><span class="you-t">' + (name ? esc(name) : 'your brand') + '</span></span>'; }
-  function full(e) { return e.a.split(' ').map(function (w) { return w.indexOf('@') === 0 ? you() + w.slice(1) : w; }).join(' '); }
+  /* (v66) an answer can name a real company instead (e.b); typing a brand under the star doesn't replace it */
+  function you(e) { return '<span class="you"><i class="wf-dot"></i><span class="you-t">' + (e && e.b ? esc(e.b) : name ? esc(name) : 'your brand') + '</span></span>'; }
+  function full(e) { return e.a.split(' ').map(function (w) { return w.indexOf('@') === 0 ? you(e) + w.slice(1) : w; }).join(' '); }
 
   E.forEach(function (e, i) {
     var b = document.createElement('button');
@@ -262,7 +263,7 @@
     if (reduce) { ans.innerHTML = full(e); return; }
     /* The whole answer is laid out first, hidden, then revealed word by word, so the card never reflows while it types. */
     ans.innerHTML = '<span class="thinking"><i></i><i></i><i></i></span>' + e.a.split(' ').map(function (w) {
-      return w.indexOf('@') === 0 ? '<span class="pend y">' + you() + w.slice(1) + '</span>' : '<span class="w pend">' + w + '</span>';
+      return w.indexOf('@') === 0 ? '<span class="pend y">' + you(e) + w.slice(1) + '</span>' : '<span class="w pend">' + w + '</span>';
     }).join(' ');
     var pend = [].slice.call(ans.querySelectorAll('.pend')), youIdx = pend.findIndex(function (el) { return el.classList.contains('y'); });
     /* keep "thinking" a little longer when the brand comes early, so the light always lands as the brand is named */

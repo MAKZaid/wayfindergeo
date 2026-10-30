@@ -31,7 +31,17 @@
   }
   function onScrollQuiet() { wn.classList.toggle('is-pill', scrollY > 24); }
   var openY = 0;
-  function onScroll() { wn.classList.toggle('is-pill', scrollY > 24); if (mega.classList.contains('open') && Math.abs(scrollY - openY) > 60) closeMega(); }
+  /* (v66) bar <-> pill: the links' place is worked out by the layout, which jumped ~30px in one frame when the class flipped
+     (before the bar had even started to shrink). Here they start from where they were and glide on the bar's own curve */
+  function setPill(on) {
+    if (wn.classList.contains('is-pill') === on) return;
+    if (!links || !links.animate || !wn.classList.contains('wn-ready') || matchMedia('(prefers-reduced-motion: reduce)').matches || innerWidth <= 900) { wn.classList.toggle('is-pill', on); return; }
+    var x0 = links.getBoundingClientRect().left;
+    wn.classList.toggle('is-pill', on);
+    var dx = x0 - links.getBoundingClientRect().left;
+    if (Math.abs(dx) > .5) links.animate([{ transform: 'translateX(' + dx + 'px)' }, { transform: 'none' }], { duration: 600, easing: 'cubic-bezier(.22,1,.36,1)' });
+  }
+  function onScroll() { setPill(scrollY > 24); if (mega.classList.contains('open') && Math.abs(scrollY - openY) > 60) closeMega(); }
   remeasure();
   addEventListener('scroll', onScroll, { passive: true });
   var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(remeasure, 120); });

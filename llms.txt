@@ -4,7 +4,7 @@
 > Generative Engine Optimization (GEO), AI optimization (AIO) and SEO as one system, and
 > measures success in citations and share of voice rather than keyword rankings.
 
-Serving clients across Canada and the United States.
+Based in Cleveland, Ohio. Serving clients across Canada and the United States.
 Email: hello@wayfindergeo.co.
 Instagram: https://www.instagram.com/wayfindergeo/
 X (formerly Twitter): https://x.com/WayfinderGEO
@@ -42,24 +42,30 @@ sources they lean on: Reddit, YouTube and review sites.
 
 ## Plans
 
-- **Compass: $1,250, one payment.** For teams who want the full picture and the fundamentals
-  fixed, without a retainer. Full audit and a 50-prompt baseline, competitor citation gap
-  report, schema, llms.txt and crawler setup, a 90-day roadmap with a walkthrough call, and a written read at
-  the end on what moved. Nothing in it is wasted if the client moves to a monthly plan later.
-- **Beacon: $500 per month.** For small teams and local businesses who need to show up in AI
-  answers. Full AI visibility audit and baseline score, tracking on up to 50 priority prompts,
-  schema, llms.txt and crawler setup, two answer-ready pages every month, foundational SEO, and a
-  written report every month on what moved.
-- **North Star: $1,500 per month.** For brands competing for the recommendation slot in their
-  category. Everything in Beacon, tracking on up to 300 prompts across every major model, six
-  answer-ready pages every month, off-site placement and digital PR, entity work and AI crawler
-  monitoring, and a live dashboard of share of voice against named competitors.
+- **Beacon: $500 per month.** For small and local businesses that want someone handling this
+  every month. A full check of how AI sees the business and the behind-the-scenes fixes (schema,
+  llms.txt, crawler access) in the first month, 50 customer questions tracked on Google AI,
+  ChatGPT and Gemini, two new pages a month that answer those questions, Google Business Profile
+  kept fresh plus an easy way to get more reviews, Google SEO basics (page titles, speed, broken
+  links), and a plain-English report every month on what moved.
+- **North Star: $1,500 per month.** For brands that want the spot AI keeps giving to a
+  competitor. Everything in Beacon, 200 questions tracked across 6 AI tools (Google AI, ChatGPT,
+  Gemini, Perplexity, Claude and Copilot), six new pages a month, mentions on the sites AI trusts
+  (press, directories, review sites and "best of" lists), a live dashboard of how often AI picks
+  the brand over named competitors, and entity work so AI has the business facts right.
+- **Compass: $1,250, one payment.** Get the full picture and the basics fixed once, without a
+  monthly bill. 50 customer questions checked across 6 AI tools, which competitors AI recommends
+  instead and why, the behind-the-scenes fixes, Google Business Profile and basic SEO problems
+  fixed, a 90-day plan with a walkthrough call and a recheck at the end. Nothing is redone or
+  charged twice if the client moves to a monthly plan later.
+- **New websites, priced separately.** Clean, minimal sites of one to four pages, optimized for
+  AI. Bigger builds go to the UI/UX designers at Crispy Studio (https://crispy.studio).
 
-No setup fee and no percentage of ad spend. Compass is a single payment with nothing after it.
-Monthly plans start with a 90-day term, then run month to month. Multi-location,
-ecommerce catalogue and enterprise scopes are quoted separately. Every engagement can start
-with a free AI visibility audit: which engines mention the brand, the prompts where it's
-missing, and which competitors take the slot instead.
+No setup fee, no lock-in contract and no percentage of ad spend. Compass is a single payment
+with nothing after it. Monthly plans run month to month; we recommend giving it 90 days.
+Multi-location, ecommerce catalogue and enterprise scopes are quoted separately. Every
+engagement can start with a free AI visibility audit: which engines mention the brand, the
+prompts where it's missing, and which competitors take the slot instead.
 
 ## How engagements run
 

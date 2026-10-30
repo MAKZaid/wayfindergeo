@@ -1208,54 +1208,28 @@
   edges();
 })();
 
-/* (v51, Zaid; 20 Oct: clay.global's timing, rebuilt so it runs on the graphics chip)
-   FAQ answers open and close on clay.global's curve and the +/x turns in step (v2.css, .is-open).
-   The answer's height is not animated (that is drawn by the page at 60fps and judders next to 120Hz motion on iPhones).
-   The page jumps to its new layout at once, and everything below the question slides from where it was with transform
-   only: answer, rows below, the contact section and the footer. Without script, or with reduced motion, it opens at once */
+/* (v66) FAQ answers grow open and shut: the answer's grid row goes 0fr -> 1fr (v2.css), so the list reflows on its own and the
+   map beside it can stick again. The + becomes a minus. <details> stays open until the closing slide ends.
+   Without script it is plain <details>; with reduced motion the CSS has no transitions, so it opens at once */
 (function () {
   var qs = [].slice.call(document.querySelectorAll('.faq2 .faq-qs .qa')); if (!qs.length) return;
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, EASE = 'cubic-bezier(.19,1,.22,1)', DUR = 700, FADE = 250;
-  function below(d) {                                   // everything that sits after this question: later rows, then later sections
-    var out = [], el = d;
-    while (el && el !== document.body) {
-      for (var s = el.nextElementSibling; s; s = s.nextElementSibling) {
-        var cs = getComputedStyle(s);
-        if (cs.display !== 'none' && cs.position !== 'fixed' && cs.position !== 'absolute' && s.tagName !== 'SCRIPT') out.push(s);
-      }
-      el = el.parentElement;
-    }
-    return out;
-  }
+  var ICON = '<span class="qa-ic" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 8h12"/><path class="qa-v" d="M8 2v12"/></svg></span>';
   qs.forEach(function (d) {
-    var s = d.querySelector('summary'), a = document.createElement('div'); a.className = 'qa-a';
-    [].slice.call(d.children).forEach(function (c) { if (c !== s) a.appendChild(c); }); d.appendChild(a);
+    var s = d.querySelector('summary'), a = document.createElement('div'), inner = document.createElement('div');
+    a.className = 'qa-a'; inner.className = 'qa-in';
+    [].slice.call(d.children).forEach(function (c) { if (c !== s) inner.appendChild(c); });
+    a.appendChild(inner); d.appendChild(a); s.insertAdjacentHTML('beforeend', ICON);
     d.classList.add('js-qa'); d.classList.toggle('is-open', d.open);
-    var running = [], done = null;
-    function stop() { running.forEach(function (x) { x.cancel(); }); running = []; if (done) { var f = done; done = null; f(); } [].forEach.call(d.parentNode.querySelectorAll('.qa-line'), function (l) { l.remove(); }); d.classList.remove('qa-gliding'); }
+    var t = 0;
     s.addEventListener('click', function (e) {
-      e.preventDefault();
-      stop();
-      var opening = !d.classList.contains('is-open');
-      d.classList.toggle('is-open', opening);
-      if (reduce || !a.animate) { d.open = opening; return; }
-      var line = document.createElement('i'); line.className = 'qa-line'; d.after(line); d.classList.add('qa-gliding');   // the question's bottom line rides with the rows below
-      var movers = below(d), h;
-      var root = document.documentElement; root.style.overflowAnchor = 'none';   // browsers must not scroll the page to "keep its place" while we move it
-      if (opening) {
-        var h0 = d.offsetHeight; d.open = true; h = d.offsetHeight - h0;   // new layout now; the rows below start h higher and glide down
-        movers.forEach(function (m) { running.push(m.animate([{ transform: 'translateY(' + -h + 'px)' }, { transform: 'none' }], { duration: DUR, easing: EASE })); });
-        running.push(a.animate([{ opacity: 0, transform: 'translateY(-10px)' }, { opacity: 1, transform: 'none' }], { duration: FADE + 150, delay: 40, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' }));
+      e.preventDefault(); clearTimeout(t);
+      if (!d.classList.contains('is-open')) {
+        d.open = true; void a.offsetHeight;          // lay out the closed row first, so the change to open animates
+        d.classList.add('is-open');
       } else {
-        var h1 = d.offsetHeight; d.open = false; h = h1 - d.offsetHeight; d.open = true;   // measure the closed height, then keep it open while it glides
-        running.push(a.animate([{ opacity: 1 }, { opacity: 0 }], { duration: FADE, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'forwards' }));
-        movers.forEach(function (m) { running.push(m.animate([{ transform: 'none' }, { transform: 'translateY(' + -h + 'px)' }], { duration: Math.round(DUR * .75), easing: EASE, fill: 'forwards' })); });
-        done = function () { d.open = false; };
+        d.classList.remove('is-open');
+        t = setTimeout(function () { d.open = false; }, 520);
       }
-      Promise.all(running.map(function (x) { return x.finished; })).then(function () {
-        if (done) { var f = done; done = null; f(); }
-        running.forEach(function (x) { x.cancel(); }); running = []; root.style.overflowAnchor = ''; line.remove(); d.classList.remove('qa-gliding');
-      }, function () {});
     });
   });
 })();

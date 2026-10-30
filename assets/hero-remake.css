@@ -21,6 +21,8 @@
 /* (v64 round 7) FAQ: the left side (heading + map) no longer sticks while scrolling. Held at the bottom of the list, it
    snapped down ~80px whenever an answer opened (the list grew under it) and back when it closed */
 .faq-side{position:static}
+/* (v66) back to sticking on desktop: answers now grow open smoothly (page.js), so the map follows the list instead of snapping */
+@media (min-width:901px){.faq-side{position:sticky;top:112px}}
 
 /* the new second line is longer than "in the AI answers now.", so the heading box is no longer capped at 672px (it spilled
    out of it, off centre); the font-size cap from v2.css still keeps it inside the screen */
@@ -53,3 +55,7 @@
   html.wf-js .hx.o5:not(.fit-ready) :is(.hx-stage,.hx-cardwrap){visibility:hidden;animation:wfFitShow 0s 2s forwards}
 }
 @keyframes wfFitShow{to{visibility:visible}}
+
+/* (v66, Zaid picked option B) nav pill: the star a touch bigger (27 -> 30px) and closer to "The Shift" (23 -> 19px);
+   its distance from the pill's left edge stays 17px */
+@media (min-width:901px){.wn.is-pill .wn-logo .mk{transform:scale(1.07)}.wn.is-pill .wn-logo{margin-right:-16.5px}.wn.is-pill .wn-bar{padding-left:17px}}
