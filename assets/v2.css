@@ -418,7 +418,7 @@ body{overflow-x:clip}
 .reel-card{position:relative;flex:none;width:clamp(200px,18vw,262px);aspect-ratio:4/5;margin:0;border-radius:18px;overflow:hidden;background:#0b0703}
 .reel-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(11,7,3,.35),rgba(11,7,3,0) 30%,rgba(11,7,3,0) 45%,rgba(11,7,3,.8))}
 .reel-card.key::before{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;box-shadow:inset 0 0 0 1.5px rgba(242,154,85,.85);pointer-events:none}
-.reel-card figcaption{position:absolute;inset:12px;z-index:1;display:flex;flex-direction:column;justify-content:space-between;color:#fffdf8}
+.reel-card .rc-cap{position:absolute;inset:12px;z-index:1;display:flex;flex-direction:column;justify-content:space-between;color:#fffdf8}
 .rc-meta{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
 .rc-meta b{font-size:.95rem;font-weight:700;letter-spacing:-.01em}
 .rc-time{font-size:.72rem;color:#e7dcc9;font-variant-numeric:tabular-nums}
@@ -557,7 +557,7 @@ body{overflow-x:clip}
 .co-logo{display:inline-flex;align-items:center;gap:.5rem;color:var(--ink-2);font-family:var(--font-display);font-weight:600;font-size:.95rem;letter-spacing:-.015em;white-space:nowrap}
 .co-logo svg{height:22px;width:auto;flex:none}
 .co-cm svg{height:17px}.co-ibf svg{height:21px}.co-crispy svg{height:18px}
-.spot figcaption{display:flex;align-items:center;gap:.7rem}
+.spot .sp-cap{display:flex;align-items:center;gap:.7rem}
 .spot .avatar{width:42px;height:42px}
 .spot .who{text-align:left;min-width:0}
 .spot .who b{display:block;font-size:.93rem;font-weight:600;line-height:1.3;color:var(--ink)}
@@ -582,7 +582,7 @@ body{overflow-x:clip}
 .sp-q blockquote{margin:0}
 .sp-q blockquote p{margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(1.2rem,.95rem + 1vw,1.7rem);line-height:1.45;letter-spacing:-.02em;color:var(--ink);text-wrap:pretty}
 .sp-q mark{background:linear-gradient(transparent 60%,rgba(242,154,85,.34) 60%);color:inherit;padding:0 .05em}
-.sp-q figcaption{justify-content:center;margin-top:1.75rem}
+.sp-q .sp-cap{justify-content:center;margin-top:1.75rem}
 @media (max-width:520px){.sp-tabs .co-logo span{display:none}.sp-tab{padding-inline:1rem}}
 
 .clients{margin-top:clamp(3rem,6vw,4.5rem);padding-top:clamp(2rem,4vw,2.75rem);border-top:1px solid var(--rule);text-align:center}
@@ -897,9 +897,9 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
 .spot3 .sp-q blockquote{margin:0 auto;max-width:46rem}
 .spot3 .sp-q blockquote p{font-family:var(--font-display);font-weight:500;font-size:clamp(1.2rem,.95rem + .95vw,1.65rem);line-height:1.5;letter-spacing:-.018em;color:#fffdf8;text-wrap:pretty}
 .spot3 .sp-q mark{background:linear-gradient(transparent 62%,rgba(242,154,85,.38) 62%);color:inherit;padding:0 .05em}
-.spot3 .sp-q figcaption{display:flex;flex-direction:column;align-items:center;gap:.3rem;margin-top:1.9rem}
-.spot3 .sp-q figcaption b{font-size:1rem;font-weight:600;color:#fffdf8}
-.spot3 .sp-q figcaption span{font-size:.88rem;color:#a8977d}
+.spot3 .sp-q .sp-cap{display:flex;flex-direction:column;align-items:center;gap:.3rem;margin-top:1.9rem}
+.spot3 .sp-q .sp-cap b{font-size:1rem;font-weight:600;color:#fffdf8}
+.spot3 .sp-q .sp-cap span{font-size:.88rem;color:#a8977d}
 .spot3 .sp-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0;border-top:1px solid rgba(255,236,214,.12)}
 .spot3 .sp-tab{position:relative;display:flex;align-items:center;justify-content:center;min-height:clamp(72px,8vw,104px);padding:0 1rem;border:0;border-radius:0;background:none;opacity:1;cursor:pointer;transition:background .3s}
 .spot3 .sp-tab + .sp-tab{border-left:1px solid rgba(255,236,214,.12)}
@@ -923,8 +923,8 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
 .spot3 .sp-q .avatar{box-shadow:0 0 0 1px var(--rule-mid)}
 .spot3 .sp-q blockquote p{color:var(--ink)}
 .spot3 .sp-q mark{background:linear-gradient(transparent 62%,rgba(242,154,85,.34) 62%)}
-.spot3 .sp-q figcaption b{color:var(--ink)}
-.spot3 .sp-q figcaption span{color:var(--muted)}
+.spot3 .sp-q .sp-cap b{color:var(--ink)}
+.spot3 .sp-q .sp-cap span{color:var(--muted)}
 .spot3 .sp-q .li{color:var(--linkedin);background:var(--paper);border-color:var(--rule)}
 .spot3 .sp-q .li:hover{color:var(--linkedin);background:#f2f7fc;border-color:var(--linkedin)}
 .spot3 .sp-tabs{border-top:1px solid var(--rule)}
@@ -984,7 +984,7 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
   .spot3[data-look="c"] .sp-q .avatar{width:60px;height:60px;margin:0 0 1.5rem}
   .spot3[data-look="c"] .sp-q blockquote{max-width:none;margin:0}
   .spot3[data-look="c"] .sp-q blockquote p{text-align:left;font-size:clamp(1.15rem,.85rem + .75vw,1.5rem)}
-  .spot3[data-look="c"] .sp-q figcaption{align-items:flex-start;margin-top:1.5rem}
+  .spot3[data-look="c"] .sp-q .sp-cap{align-items:flex-start;margin-top:1.5rem}
   .spot3[data-look="c"] .sp-win{display:block;grid-area:1/2;align-self:stretch;position:relative;min-height:440px;border:1px solid var(--rule);border-radius:14px;overflow:hidden;background:var(--paper)}
   .scn > svg{position:absolute;inset:0;width:100%;height:100%;display:block}
   @keyframes sc-fade{from{opacity:0}}
@@ -1024,7 +1024,7 @@ html[data-foot="c"] .footer{margin:clamp(1rem,2.5vw,2rem) clamp(8px,1vw,14px) cl
   .spot3:is([data-look="cp"],[data-look="cf"]) .sp-q .avatar{width:60px;height:60px;margin:0 0 1.5rem}
   .spot3:is([data-look="cp"],[data-look="cf"]) .sp-q blockquote{max-width:none;margin:0}
   .spot3:is([data-look="cp"],[data-look="cf"]) .sp-q blockquote p{text-align:left;font-size:clamp(1.15rem,.85rem + .75vw,1.5rem)}
-  .spot3:is([data-look="cp"],[data-look="cf"]) .sp-q figcaption{align-items:flex-start;margin-top:1.5rem}
+  .spot3:is([data-look="cp"],[data-look="cf"]) .sp-q .sp-cap{align-items:flex-start;margin-top:1.5rem}
   .spot3:is([data-look="cp"],[data-look="cf"]) .sp-photo{display:block;grid-area:1/2;align-self:stretch;position:relative;min-height:440px;overflow:hidden;background:#1c1408}
   .spot3[data-look="cf"] .sp-stage{padding-top:0;padding-right:0;padding-bottom:0}
   .spot3[data-look="cf"] .sp-q{padding:clamp(3rem,5vw,4.5rem) 0}
